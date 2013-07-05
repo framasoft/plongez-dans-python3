@@ -28,9 +28,9 @@ h1:before,h2:before{content:''}
 <h2>Avancement</h2>
 
 <table class="table table-bordered">
-{% assign sorted_pages = site.pages | sort:"toc-index" %}
+{% assign sorted_pages = site.pages | sort:"name" %}
 {% for item in sorted_pages  %}
-{% if item.toc-index %}
+{% if item.status %}
 <tr>
     <td><a href="{{site.baseurl}}{{item.url}}">{{ item.title }}</a></td>
     <td>{{ item.status }}</td>
