@@ -1,5 +1,5 @@
 .framatable tr td:first-child {
-    vertical-align: right;
+    text-align: right;
 }
 .published {
     color: #859900;
