@@ -1,0 +1,15 @@
+.framatable tr td:first-child {
+    text-align: right;
+}
+.published {
+    color: #859900;
+}
+.review {
+    color: #bd4b16;
+}
+.ongoing {
+    color: #000;
+}
+.untranslated {
+    color: #dc322f;
+}
