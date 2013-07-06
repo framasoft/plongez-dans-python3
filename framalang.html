@@ -26,7 +26,7 @@ h1:before,h2:before{content:''}
 
 <h2>Avancement</h2>
 
-<table class="table table-bordered">
+<table class="framatable">
 {% assign sorted_pages = site.pages | sort:"name" %}
 {% for item in sorted_pages  %}
 {% if item.status %}
