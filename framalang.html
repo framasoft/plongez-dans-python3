@@ -38,9 +38,36 @@ h1:before,h2:before{content:''}
 {% endfor %}
 </table>
 
-<h2>Méthodologie Git</h2>
 
-TODO: Include le README ici.
+<h2 id="flux-travail">Flux de travail pour la traduction</h2>
+
+<p>La section qui suit assume une compréhension de git. Si vous ne savez pas ce
+qu'est git, veuillez vous référer <a
+    href="#git-petit-guide-à-lusage-du-débutant">à la section suivante</a>.</p>
+<p>Pour contribuer, il faut idéalement respecter le processus suivant.
+Nous prendrons l'exemple de T, un/une traducteur/trice qui désire traduire une
+page.</p>
+<ol>
+    <li>T modifie le statut de la page de <code>Non traduit</code> à <code>En
+        cours</code></li>
+    <li>T commite le changement de statut (et juste le changement), et on
+        fusionne son commit dans les branches <code>master</code> et
+        <code>gh-pages</code></li>
+    <li>T crée une branche spéciale pour la page continue à traduire sa page sur sa branche</li>
+    <li>A la fin de sa traduction, T fait une pull request (PR) pour intégrer ses
+        changements dans <code>master</code>.</li>
+    <li>La relecture a lieu, et les relecteurs/trices commentent la PR, et
+        peuvent y rajouter des changements</li>
+    <li>La PR est intégrée dans <code>master</code>, et quelqu'un la fusionne
+    (<code>git merge</code>) dans <code>gh-pages</code> afin de "publier" les
+    changements.</li>
+</ol>
+
+<p>Si vous êtes perdu par cette méthodologie, veuillez en parler à la <a
+href="http://www.framalistes.org/sympa/info/plongez-dans-python-3">liste de
+discussion</a></p>
+
+
 
 <p>Ce livre est sous licence libre <a rel=license href=http://creativecommons.org/licenses/by-sa/3.0/>Creative Commons Attribution Share-Alike</a>. Vous pouvez le télécharger en <a href="https://github.com/diveintomark/diveintopython3/zipball/master"><abbr>HTML</abbr></a> ou <a href="https://github.com/downloads/diveintomark/diveintopython3/dive-into-python3.pdf"><abbr>PDF</abbr></a>. Les &uuml;ber-geeks peuvent aussi cloner le dépôt Git :
 
