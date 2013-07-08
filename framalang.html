@@ -7,7 +7,7 @@ title: Framalang
 <link rel=alternate type=application/atom+xml href=https://github.com/diveintomark/diveintopython3/commits/master.atom>
 <link rel=stylesheet href=dip3.css>
 <style>
-h1:before,h2:before{content:''}
+/*h1:before,h2:before{content:''}*/
 #a,#b,#c,#d{list-style:none;margin:0 0 0 -1.7em}
 #a:before{content:'A. \00a0 \00a0'}
 #b:before{content:'B. \00a0 \00a0'}
@@ -24,7 +24,16 @@ h1:before,h2:before{content:''}
 
 <h1>Plongez dans Python 3 &mdash; Framalang</h1>
 
-<h2>Avancement</h2>
+<div id="toc">
+    <h2>Table des matières</h2>
+    <ul>
+        <li><a href="#avancement">Avancement</a>
+        <li><a href="#flux-travail">Flux de travail pour la traduction</a>
+        <li><a href="#git-petit-guide-à-lusage-du-débutant">GIT : petit guide à l’usage du débutant</a>
+    </ul>
+</div>
+
+<h2 id="avancement">Avancement</h2>
 
 <table class="framatable">
 {% assign sorted_pages = site.pages | sort:"name" %}
@@ -68,6 +77,143 @@ href="http://www.framalistes.org/sympa/info/plongez-dans-python-3">liste de
 discussion</a></p>
 
 
+<h2 id="git-petit-guide-à-lusage-du-débutant">GIT : petit guide à l’usage du débutant</h2>
+<p>Git est un système de gestion de versions décentralisé <a href="https://en.wikipedia.org/wiki/Distributed_revision_control">DVCS</a>. Voilà pour les gros mots.</p>
+<p>Passons maintenant à quelque chose de compréhensible pour l’humain courant. Ce guide doit vous mettre le pied à l’étrier du projet de traduction de Dive Into Python 3.</p>
+<h3 id="git-kesako">Git : kesako ?</h3>
+<p>Git permet de gérer des versions de fichiers. Grâce à Git, on sait qui a fait quoi et à quel moment. Le savoir c’est bien, mais en faire quelque chose c’est mieux. Grâce à cette faculté de versionning, il est ainsi possible de voyager dans le temps : essayer de nouvelles choses, revenir en arrière… Moultes possibilités à découvrir.</p>
+<h3 id="je-ny-connais-rien.-que-fais-je">Je n’y connais rien. Que fais je ?</h3>
+<p>Eh bien vous apprenez. Pas de panique : inutile d’avoir fait Polytechnique. La courbe d’apprentissage des commandes de base est très rapide. Vous allez apprendre comment fonctionne Git avec des explications pour être humain et comment utiliser les commandes de base de Git : clone, pull, push, log, commit, branch, status…</p>
+<h4 id="installation">Installation</h4>
+<p>Pour utiliser Git, il vous faut tout d’abord <a href="http://git-scm.com/book/fr/D%C3%A9marrage-rapide-Installation-de-Git">l’installer sur votre poste</a>. L’installation est très simple et surtout, Git est disponible sur de nombreux systèmes, même si vous n’utilisez pas un système libre (tant pis pour vous).</p>
+<p>Cette installation ne concerne que le moteur. Vous n’aurez besoin de rien d’autre mais vous pouvez aussi faire le choix d’y ajouter une interface graphique. Le présent guide vous donnera les bases de l’utilisation en ligne de commande (donc sans interface graphique).</p>
+<h4 id="principes-de-fonctionnement">Principes de fonctionnement</h4>
+<p>Les principes sont assez simples : * Créer un nouveau dépôt ou copier un dépôt existant. En langage Git, copier s’appelle cloner.</p>
+<pre><code>Dans les deux cas, cela revient au même : vous disposez localement d&#39;un dépôt sur lequel vous allez pouvoir travailler.</code></pre>
+<ul>
+<li><p>Travailler sur votre dépôt.</p>
+<p>Une fois satisfait de votre modification ou de votre ajout, vous pouvez versionner vos modifications. En langage Git, on parle de commit. Ce commit crée une nouvelle version du fichier. S’il s’agit d’un nouveau fichier, ce sera la première version.</p></li>
+<li><p>Versionner vos modifications → Créer un commit.</p>
+<p>Vos commits sont dans votre dépôt local. Vous avez alors la possibilité de les publier vers le dépôt initial ou même vers un autre dépôt. En langage Git, on parle de push. Si vous ne disposez pas des droit de publication sur dépôt distant, vous pouvez aussi proposer vos modifications au responsable du dépôt. En langage Git on parle de pull request.</p></li>
+<li><p>Publier vos modifications.</p></li>
+</ul>
+<p>En résumé, vous créez un dépôt local, vous travaillez, vous committez et vous publiez. Facile, non ?</p>
+<h4 id="du-rêve-à-la-réalité">Du rêve à la réalité</h4>
+<p>Concrètement, voici ce que ça donne pour ce projet. Commençons pas cloner joyeusement le projet. Dans votre dossier personnel, placez vous à l’endroit où vous souhaitez créer votre dépôt local puis exécutez la commande de clonage</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="ot">$git</span> <span class="kw">clone</span> https://github.com/framasoft/plongez-dans-python3.git</code></pre>
+<p>Vous devriez obtenir le résultat suivant. Vous remarquerez que cette opération crée automatiquement un dossier dans lequel figurera votre dépôt :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">Cloning</span> into <span class="st">&#39;plongez-dans-python3&#39;</span>...
+<span class="kw">remote</span>: Counting objects: 5482, done.
+<span class="kw">remote</span>: Compressing objects: 100% (3893/3893), <span class="kw">done.</span>
+<span class="kw">remote</span>: Total 5482 (delta 1587), <span class="kw">reused</span> 5471 (delta 1579)
+<span class="kw">Receiving</span> objects: 100% (5482/5482), <span class="kw">25.51</span> MiB <span class="kw">|</span> <span class="kw">1.92</span> MiB/s, done.
+<span class="kw">Resolving</span> deltas: 100% (1587/1587), <span class="kw">done.</span></code></pre>
+<p>Faites une modification. Vous pouvez obtenir à tout moment le statut de votre dépôt :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> status
+<span class="co"># On branch master</span>
+<span class="co"># Untracked files:</span>
+<span class="co">#   (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span>
+<span class="co">#</span>
+<span class="co">#   README.md</span>
+<span class="kw">nothing</span> added to commit but untracked files present (use <span class="st">&quot;git add&quot;</span> to track)</code></pre>
+<p>Ici un fichier README.md a été ajouté mais n’a pas encore été committé. Git le voit et vous informe qu’il existe mais ne le suit. Vous pouvez obtenir d’autres types de réponses de statut pour les fichiers déjà suivis et ayant fait l’objet d’une modification</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># On branch master</span>
+<span class="co"># Changes not staged for commit:</span>
+<span class="co">#   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span>
+<span class="co">#   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span>
+<span class="co">#</span>
+<span class="co">#   modified:   README.md</span>
+<span class="co">#</span></code></pre>
+<p>Ajoutons maintenant le fichier au suivi de version et committons. L’opération se déroule donc en deux fois : add puis commit. Un commit est toujours accompagné d’un message expliquant ce que vous avez fait.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> add README.md 
+$ <span class="kw">git</span> commit -m <span class="st">&quot;Ajout du README.md&quot;</span> 
+[<span class="kw">master</span> 2c53431] Ajout du README.md
+ <span class="kw">1</span> file changed, 80 insertions(+)
+ <span class="kw">create</span> mode 100644 README.md</code></pre>
+<p>Il ne reste plus qu’à publier la modification sur le dépôt distant :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> push origin master
+<span class="kw">Counting</span> objects: 4, done.
+<span class="kw">Delta</span> compression using up to 4 threads.
+<span class="kw">Compressing</span> objects: 100% (3/3), <span class="kw">done.</span>
+<span class="kw">Writing</span> objects: 100% (3/3), <span class="kw">2.14</span> KiB, done.
+<span class="kw">Total</span> 3 (delta 1), <span class="kw">reused</span> 0 (delta 0)
+<span class="kw">To</span> https://github.com/framasoft/plongez-dans-python3.git
+   <span class="kw">67ef8e6..2c53431</span>  master -<span class="kw">&gt;</span> master</code></pre>
+<h4 id="cest-bien-joli-mais-je-ne-suis-pas-tout-seul">C’est bien joli, mais je ne suis pas tout seul</h4>
+<p>Effectivement, d’autres que vous travaillent sur cette traduction. Il faut donc que vous puissiez récupérer leurs modifications. Encore une fois, c’est un jeu d’enfant. Placez vous simplement dans votre dépôt et magie :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> pull origin master
+<span class="kw">From</span> https://github.com/framasoft/plongez-dans-python3
+ <span class="kw">*</span> branch            master     -<span class="kw">&gt;</span> FETCH_HEAD
+<span class="kw">Already</span> up-to-date.</code></pre>
+<p>Ici ce n’est pas très parlant : le dépôt local était déjà à jour. Mais c’est bien là que vous verrez apparaître toutes les modifications de vos petits camarades. Attention, si vous avez des modifications en cours, Git refusera de faire l’opération de pull. Il suffit de mettre de côté vos modifications, de récupérer la dernière version du dépôt distant puis d’y appliquer vos modifications en cours. En langage git, ça donne ça :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> stash
+<span class="kw">Saved</span> working directory and index state WIP on master: 7583460 README : coloration syntaxique pour les blocs de code
+<span class="kw">HEAD</span> is now at 7583460 README : coloration syntaxique pour les blocs de code</code></pre>
+<p>puis :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> pull origin master</code></pre>
+<p>et enfin :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> stash apply
+<span class="co"># On branch master</span>
+<span class="co"># Changes not staged for commit:</span>
+<span class="co">#   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span>
+<span class="co">#   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span>
+<span class="co">#</span>
+<span class="co">#   modified:   README.md</span>
+<span class="co">#</span>
+<span class="kw">no</span> changes added to commit (use <span class="st">&quot;git add&quot;</span> and/or <span class="st">&quot;git commit -a&quot;</span>)</code></pre>
+<h4 id="origin-master-cest-quoi-cette-bouteille-de-lait">Origin master : c’est quoi cette bouteille de lait ?</h4>
+<p>Lors des opérations de récupératio (pull) et publication (push), vous avez utilisé des choses inconnues : origin master. Tout d’abord, c’est dangereux d’exécuter une commande sans savoir ce qu’elle fait :) . Bon, ici aucun chaton n’a été tué, l’honneur est sauf. Mais alors qu’est ce que c’est que ce ‘origin master’ ?</p>
+<p>Votre dépôt local est autonome. Vous pouvez n’utiliser que lui et ne jamais rien publier. Mais si vous souhaitez contribuer à un autre dépôt, il y a un moment où votre votre dépôt local doit connaitre un plusieurs dépôts externes vers lesquels il pourra publier ou desquels il pourra récupérer des mise à jour. En langage Git, cela s’appelle un remote. Un remote est un dépôt distant qui est associé au votre.</p>
+<p>Par ailleurs, votre dépôt local peut être associé à plusieurs remotes. Il faut donc un moyen de différencier ces remotes. Ils sont donc nommés.</p>
+<p>Enfin, un remote contient au moins une branche, il faut donc pouvoir identifier la branche distante avec laquelle vous souhaitez communiquer. Comment ça vous ne savez pas ce qu’est une branche ? Un peu de patience, ça vient.</p>
+<p>Pour en revenir à ce qui nous intéresse, origin est donc un dépôt distant et master une branche dans ce dépôt. La magie, c’est que vous n’avez rien fait pour créer ou nommer ce remote. En fait, Git l’a fait tout seul comme un grand lorsque vous avez cloné le dépôt. Vous pouvez voir les dépôts auxquels vous être abonnés avec une simple commande :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> remote -v
+<span class="kw">origin</span>  git@github.com:framasoft/plongez-dans-python3.git (fetch)
+<span class="kw">origin</span>  git@github.com:framasoft/plongez-dans-python3.git (push)
+<span class="kw">no</span> changes added to commit (use <span class="st">&quot;git add&quot;</span> and/or <span class="st">&quot;git commit -a&quot;</span>)</code></pre>
+<p>Il y a beaucoup de choses que l’on peut faire avec les remotes. Il y a cependant de grandes chances que cette simple commande vous soit suffisante dans le cadre de ce projet.</p>
+<h4 id="jardinons-un-peu-les-branches">Jardinons un peu : les branches</h4>
+<p>Pour en terminer avec ce petit voyage au pays de Git, soyons un peu bucoliques. Lorsque vous créez ou clonez un dépôt, Git crée une branche par défaut appelée master. Une branche est une sorte de copie du dépôt (en fait Git ne copie pas vraiment les données, mais nous n’irons pas aussi loin). Vous pouvez alors travailler sur cette copie sans impacter les autres branches : toute ce qui est committé dans cette nouvelle branche n’apparaîtra pas dans les autres. Si au final vous êtes satisfaits de votre travail, il ne vous reste plus qu’à commiter vos modifications dans cette branche puis à les rapatrier dans la branche master. En langage Git, on parle de merge. Mais vous pouvez aussi ne pas être content de ce que vous avez fait et ne pas vouloir conserver ces modifications. Il suffit de les committer puis de supprimer la nouvelle branche.</p>
+<p>Pour connaitre la liste des branches de votre dépôt local :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> branch
+<span class="kw">*</span> master</code></pre>
+<p>Pour créer une nouvelle branche :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> branch maNouvelleBranche
+$ <span class="kw">git</span> branch
+  <span class="kw">maNouvelleBranche</span>
+<span class="kw">*</span> master</code></pre>
+<p>L’astérisque vous indique le dépôt sur lequel vous travaillez. Changeons de branche pour travailler sur maNouvelleBranche :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> checkout maNouvelleBranche 
+<span class="kw">M</span>   README.md
+<span class="kw">Switched</span> to branch <span class="st">&#39;maNouvelleBranche&#39;</span>
+<span class="kw">gilles@Arctica</span>:~/Developpement/Python/DiveIntoPython3$ git branch 
+<span class="kw">*</span> maNouvelleBranche
+  <span class="kw">master</span></code></pre>
+<p>L’astérisque vous montre que vous êtes désormais sur la branche maNouvelleBranche.</p>
+<h4 id="faites-le-petit-chef-lister-les-commits">Faites le petit chef : lister les commits</h4>
+<p>Dans votre activité professionnelle, vous avez sûrement un (petit) chef qui vient vous voir 20 fois par jour en vous disant “Alors, t’en es où ?”. Oui, c’est énervant.</p>
+<p>Mais Git est un gars calme et posé qui répondra toujours à vos sollicitations. Alors n’hésitez pas à faire le chef :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> log
+<span class="kw">commit</span> 35c2a4c061a953e0ced1f69b0ecaabc1dbb224cd
+<span class="kw">Author</span>: Sinma <span class="kw">&lt;</span>eichi237@mailoo.org<span class="kw">&gt;</span>
+<span class="kw">Date</span>:   Sat Jul 6 23:08:02 2013 +0200
+
+    <span class="kw">Correction</span> d’espace insécable (mode typo nazi)
+
+<span class="kw">commit</span> 0262e7670d638e98db2e0aee34592612522da980
+<span class="kw">Author</span>: Sinma <span class="kw">&lt;</span>eichi237@mailoo.org<span class="kw">&gt;</span>
+<span class="kw">Date</span>:   Sat Jul 6 22:37:39 2013 +0200
+
+    <span class="kw">R</span>éorganisation de «Principes de fonctionnement» et simplification de la présentation des commandes
+    
+    <span class="kw">Dans</span> la partie «Principes de fonctionnement», j’ai placé le texte explicatif avant la description pour les deux derniers points de la liste.
+    
+    <span class="kw">J</span>’ai aussi supprimé ce qu’il y avait avant le $ pour les lignes de commandes, ça risque moins de provoquer la confusion (moi-même je n’ai pas comp
+
+<span class="kw">commit</span> f38a3530decc51c6ec72163f9595387409e506af
+[<span class="kw">...</span>]</code></pre>
+<p>Vous pouvez naviguer dans l’historique des commits avec les flèches haut et bas de votre clavier. Quittez avec q.</p>
+<p>Vous avez désormais les armes pour démarrer. Il y a énormément d’autres choses que vous pouvez faire avec Git mais ce n’est pas l’objet de ce tutoriel. Pour savoir comment faire telle ou telle chose, vous pouvez consulter le <a href="http://git-scm.com/book/fr/">Git Book</a> ou solliciter la <a href="http://www.framalistes.org/sympa/info/plongez-dans-python-3">liste de discussion</a>.</p>
 
 <p>Ce livre est sous licence libre <a rel=license href=http://creativecommons.org/licenses/by-sa/3.0/>Creative Commons Attribution Share-Alike</a>. Vous pouvez le télécharger en <a href="https://github.com/diveintomark/diveintopython3/zipball/master"><abbr>HTML</abbr></a> ou <a href="https://github.com/downloads/diveintomark/diveintopython3/dive-into-python3.pdf"><abbr>PDF</abbr></a>. Les &uuml;ber-geeks peuvent aussi cloner le dépôt Git :
 
