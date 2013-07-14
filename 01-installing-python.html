@@ -33,7 +33,7 @@ h2,.i>li{clear:both}
 
 <p>Si vous utilisez un compte sur un serveur mutualisé, votre hébergeur a probablement déjà installé Python 3. Si vous utilisez Linux chez vous, il se peut aussi que vous ayiez déjà Python 3. La plupart des distributions GNU/Linux fournissent Python 2 comme installation par défaut ; une partie, petite mais grandissante, d'entre elles inclut même Python 3. MacOS X inclut la version en ligne de commande de Python 2, mais, à l'heure où j'écris ces lignes, n'inclut pas encore Python 3. Microsoft Windows n'est distribué avec aucune version de Python. Mais ne désespérez pas ! Vous pouvez installer Python simplement quel que soit votre système d'exploitation.
 
-<p>La façon la plus simple de savoir si Python 3 est sur votre système Linux ou Mac OS X est de le faire par la <a href=troubleshooting.html#getting-to-the-command-line>ligne de commande</a>. Une fois que vous avez un terminal, écrivez simplement <kbd>python3</kbd> (en minuscules, sans espace), appuyez sur <kbd>ENTER</kbd>, et regardez ce qu'il se passe. Sur mon système Linux, Python 3.1 est installé, et cette commande m'affiche le<i><dfn>shell interactif</dfn> de Python</i>.
+<p>La façon la plus simple de savoir si Python 3 est sur votre système Linux ou Mac OS X est de le faire par la <a href=troubleshooting.html#getting-to-the-command-line>ligne de commande</a>. Une fois que vous avez un terminal, écrivez simplement <kbd>python3</kbd> (en minuscules, sans espace), appuyez sur <kbd>ENTRÉE</kbd>, et regardez ce qu'il se passe. Sur mon système Linux, Python 3.1 est installé, et cette commande m'affiche le<i><dfn>shell interactif</dfn> de Python</i>.
 
 <pre class='nd screen cmdline'>
 <samp class=p>mark@atlantis:~$ </samp><kbd>python3</kbd>
@@ -42,7 +42,7 @@ h2,.i>li{clear:both}
 Type "help", "copyright", "credits" or "license" for more information.
 >>></samp></pre>
 
-<p>(Écrivez <kbd>exit()</kbd> et appuyez sur <kbd>ENTER</kbd> pour quitter le shell interactif de Python.)
+<p>(Écrivez <kbd>exit()</kbd> et appuyez sur <kbd>ENTRÉE</kbd> pour quitter le shell interactif de Python.)
 
 <p>Mon <a href=http://cornerhost.com/>hébergeur web</a> utilise également Linux et fournit un accès par ligne de commande, mais mon serveur n'a pas Python 3 installé. (Ouh !)
 
@@ -275,7 +275,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>Les trois chevrons, <samp class=p>>>></samp>, correspondent au « prompt » du Shell Python. N'écrivez pas cette partie. Elle vous permet simpelement de savoir que cet exemple est censé être tapé dans le Shell Python.
 
-<p><kbd class=pp>1 + 1</kbd> est la partie que vous tapez. Vous pouvez taper n'importe quelle expression ou commandePython valide dans le Shell Python. Ne soyez pas timide ; il ne mord pas ! Le pire que vous puissiez obtenir est un message d'erreur. Les commandes sont exécutées immédiatement (une vois que vous appuyez sur <kbd>ENTER</kbd>) ; les expressions sont évaluées immédiatement, et le Shell Python affichera le résultat.
+<p><kbd class=pp>1 + 1</kbd> est la partie que vous tapez. Vous pouvez taper n'importe quelle expression ou commandePython valide dans le Shell Python. Ne soyez pas timide ; il ne mord pas ! Le pire que vous puissiez obtenir est un message d'erreur. Les commandes sont exécutées immédiatement (une vois que vous appuyez sur <kbd>ENTRÉE</kbd>) ; les expressions sont évaluées immédiatement, et le Shell Python affichera le résultat.
 
 <p><samp class=pp>2</samp> est le résultat de l'évaluation de l'expression. En effet, <kbd class=pp>1 + 1</kbd> est une expression Python valide. Le résultat, bien sûr, est <samp class=pp>2</samp>.
 
@@ -286,7 +286,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 <samp>Bonjour tout le monde !</samp>
 </pre>
 
-<p>Plutôt simple, non ? Mais il y a beaucoup d'autres choses que vous pouvez faire dans le Shell Python. Si à un moment vous vous retrouvez coincé(e)&nbsp;&mdash;&nbsp;vous ne pouvez vous souvenir d'une commande, ou vous ne vous souvenez pas des bons arguments à passer à une certaine fonction&nbsp;&mdash;&nbsp;vous pouvez obtenir une aide interactive dans le Shell Python. Tapez simplement <kbd>help</kbd> et appuyez sur <kbd>ENTER</kbd>.
+<p>Plutôt simple, non ? Mais il y a beaucoup d'autres choses que vous pouvez faire dans le Shell Python. Si à un moment vous vous retrouvez coincé(e)&nbsp;&mdash;&nbsp;vous ne pouvez vous souvenir d'une commande, ou vous ne vous souvenez pas des bons arguments à passer à une certaine fonction&nbsp;&mdash;&nbsp;vous pouvez obtenir une aide interactive dans le Shell Python. Tapez simplement <kbd>help</kbd> et appuyez sur <kbd>ENTRÉE</kbd>.
 
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd>help</kbd>
@@ -294,7 +294,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>Il y a deux modes d'aide. Vous pouvez obtenir de l'aide pour un seul objet, qui affiche seulement la documentation et retour au Shell Python. Vous pouvez aussi entrer en <i>mode aide</i>, où, au lieu d'évaluer des expressions Python, vous tapez juste des mots-clefs ou des noms de commandes et il affichera ce qu'il sait à propos de cette commande.
 
-<p>Pour entrer en mode d'aide interactive, tapez <kbd>help()</kbd> et appuyez sur <kbd>ENTER</kbd>.
+<p>Pour entrer en mode d'aide interactive, tapez <kbd>help()</kbd> et appuyez sur <kbd>ENTRÉE</kbd>.
 
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>help()</kbd>
@@ -340,9 +340,9 @@ interpreter, you can type "help(object)".  Executing "help('string')"
 has the same effect as typing a particular string at the help> prompt.</samp>
 <a><samp class=p>>>> </samp>                                                                        <span class=u>&#x2463;</span></a></pre>
 <ol>
-<li>Pour avoir la documentation de la fonction <code>print()</code>, tapez simplement <kbd>print</kbd> et appuyez sur <kbd>ENTER</kbd>. Le mode d'aide interactive affichera automatiquement quelque chose de similaire à une page man : un nom de fonction, un résumé bref, les arguments de la fonction et leurs valeur par défaut, etc. Si la documentation vous semble opaque, je paniquez vous. Vous en appendrez plus sur ces concepts au cours des chapitres suivants.
+<li>Pour avoir la documentation de la fonction <code>print()</code>, tapez simplement <kbd>print</kbd> et appuyez sur <kbd>ENTRÉE</kbd>. Le mode d'aide interactive affichera automatiquement quelque chose de similaire à une page man : un nom de fonction, un résumé bref, les arguments de la fonction et leurs valeur par défaut, etc. Si la documentation vous semble opaque, je paniquez vous. Vous en appendrez plus sur ces concepts au cours des chapitres suivants.
 <li>Bien spur, le mode d'aide interactive ne sait pas tout. Si vous tapez quelque chose qui n'est pas une commande, un module, une fonction, ou un mot-clef natif, le mode d'aide interactif va seulement hausser ses épaules virtuelles.
-<li>Pour quitter le mode d'aide interactif, tapez <kbd>quit</kbd> et appuyez sur <kbd>ENTER</kbd>.
+<li>Pour quitter le mode d'aide interactif, tapez <kbd>quit</kbd> et appuyez sur <kbd>ENTRÉE</kbd>.
 <li>Le prompt retournera à <samp class=p>>>></samp> pour vous signaler que vous avez quitté le mode d'aide interactif et que vous êtes retourné(e) au Shell Python.
 </ol>
 
