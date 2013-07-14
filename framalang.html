@@ -41,7 +41,7 @@ title: Framalang
 {% if item.status %}
 <tr>
     <td><a href="{{site.baseurl}}{{item.url}}">{{ item.title }}</a></td>
-    <td><span class="{% case item.status %}{% when 'Publié' %}published{% when 'Relecture' %}review{% when 'En cours' %}ongoing{% else %}untranslated{% endcase %}">{{ item.status }}</span></td>
+    <td class="{% case item.status %}{% when 'Publié' %}published{% when 'Relecture' %}review{% when 'En cours' %}ongoing{% else %}untranslated{% endcase %}">{{ item.status }}</td>
 </tr>
 {% endif %}
 {% endfor %}

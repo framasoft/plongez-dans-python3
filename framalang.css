@@ -2,16 +2,16 @@
     text-align: right;
 }
 .published {
-    color: #859900;
+    background-color: #9BAE5F;
 }
 .review {
-    color: #bd4b16;
+    background-color: #EB7B41;
 }
 .ongoing {
-    color: #000;
+    background-color: #DBA306;
 }
 .untranslated {
-    color: #dc322f;
+    background-color: #CC2D18;
 }
 /* Loosely based on pygment's default colors */
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode, table.sourceCode pre
