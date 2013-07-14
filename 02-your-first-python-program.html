@@ -19,16 +19,16 @@ mark{display:inline}
 <link rel=stylesheet media=print href=print.css>
 <meta name=viewport content='initial-scale=1.0'>
 <form action=http://www.google.com/cse><div><input type=hidden name=cx value=014021643941856155761:l5eihuescdw><input type=hidden name=ie value=UTF-8>&nbsp;<input type=search name=q size=25 placeholder="powered by Google&trade;">&nbsp;<input type=submit name=sa value=Search></div></form>
-<p>You are here: <a href=index.html>Home</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#your-first-python-program>Dive Into Python 3</a> <span class=u>&#8227;</span>
-<p id=level>Difficulty level: <span class=u title=novice>&#x2666;&#x2662;&#x2662;&#x2662;&#x2662;</span>
-<h1>Your First Python Program</h1>
+<p>Vous êtes ici : <a href=index.html>Index</a> <span class=u>&#8226;</span> <a href=table-of-contents.html#your-first-python-program>Plongez dans Python 3</a> <span class=u>&#8227;</span>
+<p id=level>Niveau de difficulté : <span class=u title=novice>&#x2666;&#x2662;&#x2662;&#x2662;&#x2662;</span>
+<h1>Votre premier programme Python</h1>
 <blockquote class=q>
-<p><span class=u>&#x275D;</span> Don&#8217;t bury your burden in saintly silence. You have a problem?  Great. Rejoice, dive in, and investigate. <span class=u>&#x275E;</span><br>&mdash; <a href=http://en.wikiquote.org/wiki/Buddhism>Ven. Henepola Gunaratana</a>
+<p><span class=u>&#x275D;</span> N'enterre pas ton fardeau dans un silence saint. Tu as un problème ? Bien. Réjouis-toi, approfondis, et investigues. <span class=u>&#x275E;</span><br>&mdash; <a href=http://en.wikiquote.org/wiki/Buddhism>Ven. Henepola Gunaratana</a>
 </blockquote>
 <p id=toc>&nbsp;
-<h2 id=divingin>Diving In</h2>
-<p class=f>Convention dictates that I should bore you with the fundamental building blocks of programming, so we can slowly work up to building something useful. Let&#8217;s skip all that. Here is a complete, working Python program. It probably makes absolutely no sense to you. Don&#8217;t worry about that, because you&#8217;re going to dissect it line by line. But read through it first and see what, if anything, you can make of it.
-<p class=d>[<a href=examples/humansize.py>download <code>humansize.py</code></a>]
+<h2 id=divingin>Approfondir</h2>
+<p class=f>Les conventions dictent que je dois vous bassiner avec les briques fondamentales de la programmation, donc nous pouvons lentement travailler à construire quelque chose d'utile. Sautons tout ça. Ceci est un programme Python complet et fonctionnel. Il n'a probablement aucun sens pour vous. Ne vous en faites pas, car je vas le disséquer ligne par ligne. Mais commencez par le lire et voir si vous y comprenez quelque chose.
+<p class=d>[<a href=examples/humansize.py>télécharger <code>humansize.py</code></a>]
 <pre class=pp><code>SUFFIXES = {1000: ['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
             1024: ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']}
 
@@ -57,48 +57,48 @@ def approximate_size(size, a_kilobyte_is_1024_bytes=True):
 if __name__ == '__main__':
     print(approximate_size(1000000000000, False))
     print(approximate_size(1000000000000))</code></pre>
-<p>Now let&#8217;s run this program on the command line. On Windows, it will look something like this:
+<p>Maintenant, lançons ce programme par la ligne de commandes. Sous Windows, ça ressemblera à quelque chose comme ça :
 <pre class='nd screen'>
 <samp class=p>c:\home\diveintopython3\examples> </samp><kbd>c:\python31\python.exe humansize.py</kbd>
 <samp>1.0 TB
 931.3 GiB</samp></pre>
-<p>On Mac OS X or Linux, it would look something like this:
+<p>Sur Mac OS X ou Linux, ça ressemblera plutôt à ça :
 <pre class='nd screen cmdline'>
-<samp class=p>you@localhost:~/diveintopython3/examples$ </samp><kbd>python3 humansize.py</kbd>
+<samp class=p>vous@localhost:~/diveintopython3/examples$ </samp><kbd>python3 humansize.py</kbd>
 <samp>1.0 TB
 931.3 GiB</samp></pre>
 
-<p>What just happened? You executed your first Python program. You called the Python interpreter on the command line, and you passed the name of the script you wanted Python to execute. The script defines a single function, the <code>approximate_size()</code> function, which takes an exact file size in bytes and calculates a &#8220;pretty&#8221; (but approximate) size. (You&#8217;ve probably seen this in Windows Explorer, or the Mac OS X Finder, or Nautilus or Dolphin or Thunar on Linux. If you display a folder of documents as a multi-column list, it will display a table with the document icon, the document name, the size, type, last-modified date, and so on. If the folder contains a 1093-byte file named <code>TODO</code>, your file manager won&#8217;t display <code>TODO 1093 bytes</code>; it&#8217;ll say something like <code>TODO 1 KB</code> instead. That&#8217;s what the <code>approximate_size()</code> function does.)
+<p>Qu'est-ce qui vient de se passer ? Vous venez d'exécuter votre premire programme Python. Vous appelez l'interprète Python par la ligne de commandes et vous lui donnez le nom du script Python que vous voulez exécuter. Le script définit une unique fonction, la fonction <code>approximate_size()</code> qui prend une taille de fichier exacte en octets et calcule une taille plus esthétique (mais approximative). (Vous avez probablement déjà vu ça dans l'Explorateur de Windows, le Finder de Mac OS X, ou Nautilus ou Dolphin ou Thunar sous Linux. Si vous avez un répertoire avec des documents dans liste multi-colonnes, il affichera un tableau avec l'icône du document, le nom du document, la taille, le type, la date de dernière modification, etc. Si le fichier contient un fichier de 1093 octets nommé <code>TODO</code>, votre gestionnaire de fichiers n'affichera pas  <code>TODO 1093 octets</code> ; mais plutôt quelque chose du genre <code>TODO 1 KO</code>. C'est ce que fait la fonction <code>approximate_size()</code>.)
 
-<p>Look at the bottom of the script, and you&#8217;ll see two calls to <code>print(approximate_size(<var>arguments</var>))</code>. These are function calls&nbsp;&mdash;&nbsp;first calling the <code>approximate_size()</code> function and passing a number of arguments, then taking the return value and passing it straight on to the <code>print()</code> function. The <code>print()</code> function is built-in; you&#8217;ll never see an explicit declaration of it. You can just use it, anytime, anywhere. (There are lots of built-in functions, and lots more functions that are separated into <i>modules</i>. Patience, grasshopper.)
+<p>Regardez à la fin du script et vous verrez deux appels à <code>print(approximate_size(<var>arguments</var>))</code>. Ce sont des appels de fonctions &nbsp;&mdash;&nbsp;le ppremier appelle la fonction <code>approximate_size()</code> et lui passe des arguments (aussi appelés paramètres), puis prend la valeur de retour et la passe directement à la fonction <code>print()</code>. La fonction <code>print()</code> est fournie par Python ; vous ne verrez jamais de déclaration explicite de celle-ci. Vous pouvez l'utiliser n'importe où, n'importe quand. (Il y a beaucoup de fonctions fournies par Python, et beaucoup d'entre elles sont séparées dans des modules <i>modules</i>. Patience, jeune padawan.)
 
-<p>So why does running the script on the command line give you the same output every time? We&#8217;ll get to that. First, let&#8217;s look at that <code>approximate_size()</code> function.
+<p>Donc, pourquoi exécuter ce script dans la ligne de commande vous donne le même résultat à chaque fois ? Nous y arriverons. Jetons d'abord un coup d'œil à la fonction <code>approximate_size()</code>.
 
 <p class=a>&#x2042;
 
-<h2 id=declaringfunctions>Declaring Functions</h2>
-<p>Python has functions like most other languages, but it does not have separate header files like <abbr>C++</abbr> or <code>interface</code>/<code>implementation</code> sections like Pascal. When you need a function, just declare it, like this:
+<h2 id=declaringfunctions>Déclarer des Fonctions</h2>
+<p>Python a des fonctions comme la plupart des autres langages, mais n'a pas de fichiers d'en-têtes séparés comme le <abbr>C++</abbr> ou des sections <code>interface</code>/<code>implémentation</code> comme le Pascal. Lorsque vous avez besoin d'une fonction, déclarez-la simplement, comme ceci :
 <pre class='nd pp'><code>def approximate_size(size, a_kilobyte_is_1024_bytes=True):</code></pre>
-<aside>When you need a function, just declare it.</aside>
-<p>The keyword <code>def</code> starts the function declaration, followed by the function name, followed by the arguments in parentheses. Multiple arguments are separated with commas.
-<p>Also note that the function doesn&#8217;t define a return datatype. Python functions do not specify the datatype of their return value; they don&#8217;t even specify whether or not they return a value. (In fact, every Python function returns a value; if the function ever executes a <code>return</code> statement, it will return that value, otherwise it will return <code>None</code>, the Python null value.)
+<aside>Quand vous avez besoin d'une fonction, déclarez-la, simplement.</aside>
+<p>Le mot-clef <code>def</code> commence une déclaration de fonction, suivi par le nom de la fonction, suivi par les paramètres entre parenthèses. Plusieurs paramètres peuvent être séparés par des virgules.
+<p>Notez qu'une fonction ne définit pas de type de retour. Les fonctions Python ne spécifient pas le type de leur valeur de retour ; elles ne spécifient même si si elles retournent ou non une valeur. (En fait, toute fonction Python retourne une valeur ; si la fonction exécute une instruction <code>return</code>, elle retournera cette valeur, sinon elle retournera <code>None</code>, la valeure nulle de Python.)
 <blockquote class=note>
-<p><span class=u>&#x261E;</span>In some languages, functions (that return a value) start with <code>function</code>, and subroutines (that do not return a value) start with <code>sub</code>. There are no subroutines in Python. Everything is a function, all functions return a value (even if it&#8217;s <code>None</code>), and all functions start with <code>def</code>.
+<p><span class=u>&#x261E;</span>Dans certains langages, les fonctions (qui retournent une valeur) commencent par <code>function</code>, et les sous-routines (qui n'en retournent pas) commencent par <code>sub</code>. Il n'y a pas de sous-routine en Python. Tout est fonction, toutes les fonctions retournent des valeurs (même si c'est <code>None</code>), et toutes les fonctions commencent par <code>def</code>.
 </blockquote>
-<p>The <code>approximate_size()</code> function takes the two arguments&nbsp;&mdash;&nbsp;<var>size</var> and <var>a_kilobyte_is_1024_bytes</var>&nbsp;&mdash;&nbsp;but neither argument specifies a datatype. In Python, variables are never explicitly typed. Python figures out what type a variable is and keeps track of it internally.
+<p>La fonction <code>approximate_size()</code> prend deux paramètres&nbsp;&mdash;&nbsp;<var>size</var> et <var>a_kilobyte_is_1024_bytes</var>&nbsp;&mdash;&nbsp;mais aucun des deux ne spécifie un type. En Python, les variables ne sont jamais spécifiquement typées. Python devine quel est le type d'une variable et le garde en mémoire en interne.
 <blockquote class='note compare java'>
-<p><span class=u>&#x261E;</span>In Java and other statically-typed languages, you must specify the datatype of the function return value and each function argument. In Python, you never explicitly specify the datatype of anything. Based on what value you assign, Python keeps track of the datatype internally.
+<p><span class=u>&#x261E;</span>en Java et dans les autres langages typés statiquement, vous devez spécifier le type de retour de la fonction, et le type de chacun des paramètres de la fonction. En Python vous n'avez jamais besoin de spécifier explicitement le type de quoi que ce soit. En fonction de la valeur que vous assignez, Python garde l'information sur le type de données en interne.
 </blockquote>
 
-<h3 id=optional-arguments>Optional and Named Arguments</h3>
+<h3 id=optional-arguments>Paramètres Optionels et Nommés</h3>
 
-<p>Python allows function arguments to have default values; if the function is called without the argument, the argument gets its default value. Furthermore, arguments can be specified in any order by using named arguments.
+<p>Python autorise les paramètres de fonctions à avoir des valeurs par défaut ; si une fonction est appelée sans paramètre, l'paramètre prend sa valeur par défaut. De plus, les paramètres peuvent être spécifiés dans n'importe quel ordre en utilisant les paramètres nommés.
 
-<p>Let&#8217;s take another look at that <code>approximate_size()</code> function declaration:
+<p>Regardons à nouveau la déclaration de la fonction <code>approximate_size()</code> :
 
 <pre class='nd pp'><code>def approximate_size(size, a_kilobyte_is_1024_bytes=True):</code></pre>
 
-<p>The second argument, <var>a_kilobyte_is_1024_bytes</var>, specifies a default value of <code>True</code>. This means the argument is <i>optional</i>; you can call the function without it, and Python will act as if you had called it with <code>True</code> as a second parameter.
+<p>Le second paramètre, <var>a_kilobyte_is_1024_bytes</var>, spécifie une valeur par défaut qui est <code>True</code>. Cela signifie que le paramètre est <i>optional</i> ; vous pouvez appeler la fonction sans celui-ci, et PYthon fera comme si vous aviez appelé la fonction avec <code>True</code> comme second paramètre.
 
 <p>Now look at the bottom of the script:
 
@@ -106,11 +106,11 @@ if __name__ == '__main__':
 <a>    print(approximate_size(1000000000000, False))  <span class=u>&#x2460;</span></a>
 <a>    print(approximate_size(1000000000000))         <span class=u>&#x2461;</span></a></code></pre>
 <ol>
-<li>This calls the <code>approximate_size()</code> function with two arguments. Within the <code>approximate_size()</code> function, <var>a_kilobyte_is_1024_bytes</var> will be <code>False</code>, since you explicitly passed <code>False</code> as the second argument.
-<li>This calls the <code>approximate_size()</code> function with only one argument. But that&#8217;s OK, because the second argument is optional! Since the caller doesn&#8217;t specify, the second argument defaults to <code>True</code>, as defined by the function declaration.
+<li>Ceci appelle la fonction <code>approximate_size()</code> avec deux paramètres. Dans la fonction <code>approximate_size()</code>, <var>a_kilobyte_is_1024_bytes</var> sera <code>False</code>, puisque vous avez passé explicitement <code>False</code> comme second paramètre.
+<li>Ceci appelle la fonction <code>approximate_size()</code> avec un seul paramètre. Mais c'est correct, car le second paramètre est optionnel ! Puisque l'appel ne le spécifie pas, le second argument prend par défaut la valeur <code>True</code>, comme défini dans la déclaration de la fonction.
 </ol>
 
-<p>You can also pass values into a function by name.
+<p>Vous pouvez également passer des valeurs à une fonction par leur nom.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>from humansize import approximate_size</kbd>
@@ -127,11 +127,11 @@ SyntaxError: non-keyword arg after keyword arg</samp>
 <samp class=traceback>  File "&lt;stdin>", line 1
 SyntaxError: non-keyword arg after keyword arg</samp></pre>
 <ol>
-<li>This calls the <code>approximate_size()</code> function with <code>4000</code> for the first argument (<var>size</var>) and <code>False</code> for the argument named <var>a_kilobyte_is_1024_bytes</var>. (That happens to be the second argument, but doesn&#8217;t matter, as you&#8217;ll see in a minute.)
-<li>This calls the <code>approximate_size()</code> function with <code>4000</code> for the argument named <var>size</var> and <code>False</code> for the argument named <var>a_kilobyte_is_1024_bytes</var>. (These named arguments happen to be in the same order as the arguments are listed in the function declaration, but that doesn&#8217;t matter either.)
-<li>This calls the <code>approximate_size()</code> function with <code>False</code> for the argument named <var>a_kilobyte_is_1024_bytes</var> and <code>4000</code> for the argument named <var>size</var>. (See? I told you the order didn&#8217;t matter.)
-<li>This call fails, because you have a named argument followed by an unnamed (positional) argument, and that never works. Reading the argument list from left to right, once you have a single named argument, the rest of the arguments must also be named.
-<li>This call fails too, for the same reason as the previous call. Is that surprising? After all, you passed <code>4000</code> for the argument named <code>size</code>, then &#8220;obviously&#8221; that <code>False</code> value was meant for the <var>a_kilobyte_is_1024_bytes</var> argument. But Python doesn&#8217;t work that way. As soon as you have a named argument, all arguments to the right of that need to be named arguments, too.
+<li>Ceci appelle la fonction la fonction <code>approximate_size()</code> avec <code>4000</code> comme premier paramètre (<var>size</var>) et <code>False</code> pour le paramètre nommé <var>a_kilobyte_is_1024_bytes</var>. (Il s'avère qu'il s'agit du second paramètre, mais ça n'a pas d'importance, comme vous allez le voir dans une minute.)
+<li>Ceci appelle la fonction <code>approximate_size()</code> avec <code>4000</code> pour le paramètre nommé <var>size</var> et <code>False</code> pour l'argument nommé <var>a_kilobyte_is_1024_bytes</var>. (Il s'avère que ces arguments sont dans le même ordre que ceux listés dans la déclaration de la fonction, mais ça n'a pas d'importance non plus.)
+<li>Ceci appelle la fonction <code>approximate_size()</code> avec <code>False</code> pour le paramètre nommé <var>a_kilobyte_is_1024_bytes</var> et <code>4000</code> pour l'argument nommé <var>size</var>. (Vous voyez ? Je vous avez dit que l'ordre n'avait pas d'importance.)
+<li>Si cet appel échoue c'est parce que vous avez un paramètre nommé suivi d'un paramètre non nommé (positionel), et ça ne marche jamais. Lisez la liste d'argument de gauche à droite, une fois que vous avez un paramètre nommé, tous ceux qui suivent doivent aussi être nommés.
+<li>Cet appel échoue également, pour la même raison que le précédent. Est-ce surprenant ? Après tout, nous avons passé <code>4000</code> à l'argument nommé <code>size</code>, donc évidemment, <code>False</code> était destiné au paramètre <var>a_kilobyte_is_1024_bytes</var>. Mais Python ne fonctionne pas de cette façon. Dès que vous avez un paramètre nommé, tous les paramètres à la droite de celui-ci doivent aussi être nommés.
 </ol>
 
 <p class=a>&#x2042;
