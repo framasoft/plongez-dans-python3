@@ -19,21 +19,21 @@ h2,.i>li{clear:both}
 <link rel=stylesheet media=print href=print.css>
 <meta name=viewport content='initial-scale=1.0'>
 <form action=http://www.google.com/cse><div><input type=hidden name=cx value=014021643941856155761:l5eihuescdw><input type=hidden name=ie value=UTF-8>&nbsp;<input type=search name=q size=25 placeholder="powered by Google&trade;">&nbsp;<input type=submit name=sa value=Search></div></form>
-<p>You are here: <a href=index.html>Home</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#installing-python>Dive Into Python 3</a> <span class=u>&#8227;</span>
-<p id=level>Difficulty level: <span class=u title=novice>&#x2666;&#x2662;&#x2662;&#x2662;&#x2662;</span>
-<h1>Installing Python</h1>
+<p>Vous êtes ici : <a href=index.html>Home</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#installing-python>Dive Into Python 3</a> <span class=u>&#8227;</span>
+<p id=level>Niveau de difficulté : <span class=u title=novice>&#x2666;&#x2662;&#x2662;&#x2662;&#x2662;</span>
+<h1>Installer Python</h1>
 <blockquote class=q>
-<p><span class=u>&#x275D;</span> <i lang=la>Tempora mutantur nos et mutamur in illis.</i> (Times change, and we change with them.) <span class=u>&#x275E;</span><br>&mdash; ancient Roman proverb
+<p><span class=u>&#x275D;</span> <i lang=la>Tempora mutantur nos et mutamur in illis.</i> (Les temps changent et nous changeons avec eux.) <span class=u>&#x275E;</span><br>&mdash; ancien proverbe romain
 </blockquote>
 <p id=toc>&nbsp;
 <h2 id=divingin>Diving In</h2>
-<p class=f>Before you can start programming in Python 3, you need to install it. Or do you?
+<p class=f>Avant de commencer à programmer avec Python 3, vous devez l'installer. Quoi que...
 
-<h2 id=which>Which Python Is Right For You?</h2>
+<h2 id=which>Quel Python vous sied ?</h2>
 
-<p>If you're using an account on a hosted server, your <abbr>ISP</abbr> may have already installed Python 3. If you&#8217;re running Linux at home, you may already have Python 3, too. Most popular GNU/Linux distributions come with Python 2 in the default installation; a small but growing number of distributions also include Python 3. Mac OS X includes a command-line version of Python 2, but as of this writing it does not include Python 3. Microsoft Windows does not come with any version of Python. But don&#8217;t despair! You can point-and-click your way through installing Python, regardless of what operating system you have.
+<p>Si vous utilisez un compte sur un serveur mutualisé, votre hébergeur a probablement déjà installé Python 3. Si vous utilisez Linux chez vous, il se peut aussi que vous ayiez déjà Python 3. La plupart des distributions GNU/Linux fournissent Python 2 comme installation par défaut ; une partie, petite mais grandissante, d'entre elles inclut même Python 3. MacOS X inclut la version en ligne de commande de Python 2, mais, à l'heure où j'écris ces lignes, n'inclut pas encore Python 3. Microsoft Windows n'est distribué avec aucune version de Python. Mais ne désespérez pas ! Vous voulez installer Python quel que soit votre système d'exploitation.
 
-<p>The easiest way to check for Python 3 on your Linux or Mac OS X system is <a href=troubleshooting.html#getting-to-the-command-line>from the command line</a>. Once you&#8217;re at a command line prompt, just type <kbd>python3</kbd> (all lowercase, no spaces), press <kbd>ENTER</kbd>, and see what happens. On my home Linux system, Python 3.1 is already installed, and this command gets me into the <i>Python <dfn>interactive shell</dfn></i>.
+<p>La façon la plus simple de savoir si Python 3 est sur votre système Linux ou Mac OS X est de le faire par la <a href=troubleshooting.html#getting-to-the-command-line>ligne de commande</a>. Une fois que vous avez un terminal, écrivez simplement <kbd>python3</kbd> (en minuscules, sans espace), appuyez sur <kbd>ENTER</kbd>, et regardez ce qu'il se passe. Sur mon système Linux, Python 3.1 est installé, et cette commande m'affiche le<i><dfn>shell interactif</dfn> de Python</i>.
 
 <pre class='nd screen cmdline'>
 <samp class=p>mark@atlantis:~$ </samp><kbd>python3</kbd>
@@ -42,259 +42,259 @@ h2,.i>li{clear:both}
 Type "help", "copyright", "credits" or "license" for more information.
 >>></samp></pre>
 
-<p>(Type <kbd>exit()</kbd> and press <kbd>ENTER</kbd> to exit the Python interactive shell.)
+<p>(Écrivez <kbd>exit()</kbd> et appuyez sur <kbd>ENTER</kbd> pour quitter le shell interactif de Python.)
 
-<p>My <a href=http://cornerhost.com/>web hosting provider</a> also runs Linux and provides command-line access, but my server does not have Python 3 installed. (Boo!)
+<p>Mon <a href=http://cornerhost.com/>hébergeur web</a> utilise également Linux et fournit un accès par ligne de commande, mais mon serveur n'a pas Python 3 installé. (Ouh !)
 
 <pre class='nd screen cmdline'>
 <samp class=p>mark@manganese:~$ </samp><kbd>python3</kbd>
 <samp>bash: python3: command not found</samp></pre>
 
-<p>So back to the question that started this section, &#8220;Which Python is right for you?&#8221;  Whichever one runs on the computer you already have.
+<p>Donc, pour revenir à la question qui a commencé cette section, quel Python vous sied ?&#8221;  N'importe lequel, du moment qu'il tourne sur l'ordinateur que vous avez déjà.
 
-<p>[Read on for Windows instructions, or skip to <a href=#macosx>Installing on Mac OS X</a>, <a href=#ubuntu>Installing on Ubuntu Linux</a>, or <a href=#other>Installing on Other Platforms</a>.]
+<p>[Continuez de lire pour les instructions pour Windows, ou sautez à <a href=#macosx>Installer sur Mac OS X</a>, <a href=#ubuntu>Installer sur Ubuntu Linux</a>, ou <a href=#other>Installer sur d'autres plateformes</a>.]
 
 <p class=a>&#x2042;
 
-<h2 id=windows>Installing on Microsoft Windows</h2>
+<h2 id=windows>Installer sur Microsoft Windows</h2>
 
-<p>Windows comes in two architectures these days: 32-bit and 64-bit. Of course, there are lots of different <i>versions</i> of Windows&nbsp;&mdash;&nbsp;XP, Vista, Windows 7&nbsp;&mdash;&nbsp;but Python runs on all of them. The more important distinction is 32-bit v. 64-bit. If you have no idea what architecture you&#8217;re running, it&#8217;s probably 32-bit.
+<p>Windows est disponible sous deux architectures de nos jours : 32-bit et 64-bit. Bien sûr, il y a beaucoup de <i>versions</i> de Windows&nbsp;&mdash;&nbsp;XP, Vista, Windows 7&nbsp;&mdash;&nbsp;mais Python fonctionne sur toutes. La distinction la plus importante est 32-bit / 64-bit. Si vous n'avez aucune idée de l'architecture que vous utilisez, il s'agit probablement de 32-bit.
 
-<p>Visit <a href=http://python.org/download/><code>python.org/download/</code></a> and download the appropriate Python 3 Windows installer for your architecture. Your choices will look something like this:
+<p>Allez sur <a href=http://python.org/download/><code>python.org/download/</code></a> (en anglais) et téléchargez la version appropriée à votre architecture de l'installateur Python 3 pour Windows. Les choix qui vous sont proposez seront quelque chose du genre :
 
 <ul>
-<li><b>Python 3.1 Windows installer</b> (Windows binary&nbsp;&mdash;&nbsp;does not include source)
-<li><b>Python 3.1 Windows AMD64 installer</b> (Windows AMD64 binary&nbsp;&mdash;&nbsp;does not include source)
+<li><b>Python 3.1 Windows installer</b> (Binaire Windows &nbsp;&mdash;&nbsp;n'inclut pas les sources)
+<li><b>Python 3.1 Windows AMD64 installer</b> (Binaire Windows AMD64&nbsp;&mdash;&nbsp;n'inclut pas les sources)
 </ul>
 
-<p>I don&#8217;t want to include direct download links here, because minor updates of Python happen all the time and I don&#8217;t want to be responsible for you missing important updates. You should always install the most recent version of Python 3.x unless you have some esoteric reason not to.
+<p>Je ne veux pas inclure des liens de téléchargement direct ici, car des mises à jour mineures de Python arrivent régulièrement et je ne veux pas être responsable de vous faire manquer des mises à jour importantes. Vous devriez toujours installer la version la plus récente de Python 3.x à moins que vous ayiez une raison ésotérique de ne pas le faire.
 
 <ol class=i>
 <li>
-<p class='ss nm'><img src=i/win-install-0-security-warning.png width=409 height=309 alt='[Windows dialog: open file security warning]'>
-<p>Once your download is complete, double-click the <code>.msi</code> file. Windows will pop up a security alert, since you&#8217;re about to be running executable code. The official Python installer is digitally signed by the <a href=http://www.python.org/psf/>Python Software Foundation</a>, the non-profit corporation that oversees Python development. Don&#8217;t accept imitations!
-<p>Click the <code>Run</code> button to launch the Python 3 installer.
+<p class='ss nm'><img src=i/win-install-0-security-warning.png width=409 height=309 alt='[Dialogue Windows : avertissement de sécurité à l&#8217;ouverture d&#8217;un fichier'>
+<p>Une fois que votre téléchargement est terminé, double-cliquez sur le fichier <code>.msi</code>. Windows affichera une alerte de sécurité, puisque vous êtes sur le point de lancer du code exécutable. L'installateur Python officiel est signé numériquement par la <a href=http://www.python.org/psf/>Python Software Foundation</a>, l'organisation à but non lucratif qui gère le développement de Python. N'acceptez pas les imitations !
+<p>Cliquez sur le bouton <code>Exécuter</code> pour lancer l'installateur de Python 3.
 
 <li>
-<p class='ss nm'><img src=i/win-install-1-all-users-or-just-me.png width=499 height=432 alt='[Python installer: select whether to install Python 3.1 for all users of this computer]'>
-<p>The first question the installer will ask you is whether you want to install Python 3 for all users or just for you. The default choice is &#8220;install for all users,&#8221; which is the best choice unless you have a good reason to choose otherwise. (One possible reason why you would want to &#8220;install just for me&#8221; is that you are installing Python on your company&#8217;s computer and you don&#8217;t have administrative rights on your Windows account. But then, why are you installing Python without permission from your company&#8217;s Windows administrator? Don&#8217;t get me in trouble here!)
-<p>Click the <code>Next</code> button to accept your choice of installation type.
+<p class='ss nm'><img src=i/win-install-1-all-users-or-just-me.png width=499 height=432 alt='[Installateur Python : choisissez si vous voulez installer Python 3.1 pour tous les utilisateurs/trices de cet ordinateur]'>
+<p>La première question que l'installateur va vous poser et de savoir si vous voulez installer Python 3 pour tous les utilisateurs/trices ou seulement pour vous. Le choix par défaut et de le faire pour tous, ce qui est le meilleur choix à moins que vous ayiez une bonne raison d'en faire autrement. (Une des raisons possible de vouloir l'installer seulement pour vous et que vous installez Python sur un ordinateur de votre entreprise et que vous n'avez pas les droits administrateur pour votre compte Windows. Mais dans ce cas, pourquoi installez-vous Python sans la permission de l'administrateur/trice Windows de votre entreprise ? Ne me causez pas d'ennuis !)
+<p>Cliquez sur le bouton <code>Suivant</code> pour valider le choix de votre type d'installation.
 
 <li>
-<p class='ss nm'><img src=i/win-install-2-destination-directory.png width=499 height=432 alt='[Python installer: select destination directory]'>
-<p>Next, the installer will prompt you to choose a destination directory. The default for all versions of Python 3.1.x is <code>C:\Python31\</code>, which should work well for most users unless you have a specific reason to change it. If you maintain a separate drive letter for installing applications, you can browse to it using the embedded controls, or simply type the pathname in the box below. You are not limited to installing Python on the <code>C:</code> drive; you can install it on any drive, in any folder.
-<p>Click the <code>Next</code> button to accept your choice of destination directory.
+<p class='ss nm'><img src=i/win-install-2-destination-directory.png width=499 height=432 alt='[Installateur Python : sélectionnez le répertoire de destination]'>
+<p>Ensuite, l'installateur vous demandera de choisir un répertoire d'installation. Le choix par défaut pour toutes les version de Python 3.1.x est <code>C:\Python31\</code>, ce qui devrait fonctionner pour la plupart des utilisateurs à moins que vous n'ayiez une raison particulière de le changer. Si vous maintenez une lettre de lecteur séparée pour installer des applications, vous pouvez naviguer vers celle-ci avec les contrôles proposés, ou simplement taper le chemin dans la boître dessous. Vous n'êtes pas limité(e) à installer Python sur le disque <code>C:</code> ; vous pouvez l'installer sur n'importe quel disque, dans n'importe quel dossier.
+<p>Cliquez sur le bouton <code>Suivant</code> pour valider le choix de votre répertoire de destination.
 
 <li>
-<p class='ss nm'><img src=i/win-install-3-customize.png width=499 height=432 alt='[Python installer: customize Python 3.1]'>
-<p>The next page looks complicated, but it&#8217;s not really. Like many installers, you have the option not to install every single component of Python 3. If disk space is especially tight, you can exclude certain components.
+<p class='ss nm'><img src=i/win-install-3-customize.png width=499 height=432 alt='[Installateur Python : personnaliser Python 3.1]'>
+<p>La page suivante a l'air compliquée, mais elle ne l'est pas vraiment. Comme beaucoup d'installateurs, vous avez le choix de ne pas installer tous les composants de Python 3. Si l'espace disque est restreint vous pouvez choisir d'exclure certains composants.
 <ul>
-<li><b>Register Extensions</b> allows you to double-click Python scripts (<code>.py</code> files) and run them. Recommended but not required. (This option doesn&#8217;t require any disk space, so there is little point in excluding it.)
-<li><b>Tcl/Tk</b> is the graphics library used by the Python Shell, which you will use throughout this book. I strongly recommend keeping this option.
-<li><b>Documentation</b> installs a help file that contains much of the information on <a href=http://docs.python.org/><code>docs.python.org</code></a>. Recommended if you are on dialup or have limited Internet access.
-<li><b>Utility Scripts</b> includes the <code>2to3.py</code> script which you&#8217;ll learn about <a href=case-study-porting-chardet-to-python-3.html>later in this book</a>. Required if you want to learn about migrating existing Python 2 code to Python 3. If you have no existing Python 2 code, you can skip this option.
-<li><b>Test Suite</b> is a collection of scripts used to test the Python interpreter itself. We will not use it in this book, nor have I ever used it in the course of programming in Python. Completely optional.
+<li><b>Register Extensions</b> vous permet de double-cliquer les scripts Python (les fichiers <code>.py</code>) et de les lancer. Recommandé mais pas nécessaire. (Cette option ne requiert pas du tout d'espace disque donc ça n'a pas grand intérêt de l'exclure.)
+<li><b>Tcl/Tk</b> est la bibliothèque graphique utilisée par le Shell Python, que nous utiliseront tout au long de ce libre. Je recommande fortement de garder cette option.
+<li><b>Documentation</b> installe un fichier d'aide qui contient la plupart des informations disponibles sur <a href=http://docs.python.org/><code>docs.python.org</code></a>. Recommandé si vous avez une connexion par réseau commuté ou un accès limité à Internet.
+<li><b>Utility Scripts</b> inclut le script <code>2to3.py</code> que vous allez apprendre à utiliser <a href=case-study-porting-chardet-to-python-3.html>plus tard dans ce livre</a>. Requis si vous voulez apprendre à migrer sur code Python 2 vers Python 3. Si vous n'avez pas de code Python 3 existant, vous pouvez sauter cette option.
+<li><b>Test Suite</b> est un ensemble de scripts utilisés pour tester l'interprète Python lui-même. Nous ne l'utiliserons pas dans ce livre, et je ne m'en suis jamais servis pour programmer en Python. Totalement optionel.
 </ul>
 
 <li>
-<p class='ss nm'><img src=i/win-install-3a-disk-usage.png width=499 height=432 alt='[Python installer: disk space requirements]'>
-<p>If you&#8217;re unsure how much disk space you have, click the <code>Disk Usage</code> button. The installer will list your drive letters, compute how much space is available on each drive, and calculate how much would be left after installation.
-<p>Click the <code>OK</code> button to return to the &#8220;Customizing Python&#8221; page.
+<p class='ss nm'><img src=i/win-install-3a-disk-usage.png width=499 height=432 alt='[Installateur Python : espace disque nécessaire]'>
+<p>Si vous ne savez pas combien d'espace disque il vous reste, cliquez sur le bouton <code>Disk Usage</code>. L'installateur listera les lettres de lecteur, calculera combien d'espace est disponible sur chaque disque, et calculera combien il en restera après l'installation.
+<p>Cliquez sur le bouton <code>OK</code> pour retourner à la page « Customizing Python ».
 
 <li>
-<p class='ss nm'><img src=i/win-install-3b-test-suite.png width=499 height=432 alt='[Python installer: removing Test Suite option will save 7908KB on your hard drive]'>
-<p>If you decide to exclude an option, select the drop-down button before the option and select &#8220;Entire feature will be unavailable.&#8221; For example, excluding the test suite will save you a whopping 7908<abbr>KB</abbr> of disk space.
-<p>Click the <code>Next</code> button to accept your choice of options.
+<p class='ss nm'><img src=i/win-install-3b-test-suite.png width=499 height=432 alt='[Installateur Python : supprimer l&#8217;option Test Suite qui libèrera 7908KO de votre disque dur]'>
+<p>Si vous décidez d'exclure une option, sélectionnez la bouton à la gauche de l'option et sélectionnez « Entire feature will be unavailable ». Par exemple, exclure la suite de tests vous épargnera l'utilisation de 7908<abbr>KO</abbr> d'espace disque.
+<p>Cliquez sur le bouton <code>Suivant</code> pour valider votre choix d'options.
 
 <li>
-<p class='ss nm'><img src=i/win-install-4-copying.png width=499 height=432 alt='[Python installer: progress meter]'>
-<p>The installer will copy all the necessary files to your chosen destination directory. (This happens so quickly, I had to try it three times to even get a screenshot of it!)
+<p class='ss nm'><img src=i/win-install-4-copying.png width=499 height=432 alt='[Installateur Python : affichage de la progresstion]'>
+<p>L'installateur va copier les fichiers nécessaires dans le répertoire d'insallation. (Ça se passe vite, j'ai dû m'y prendre à trois fois pour réussir à en faire une capture d'écran !)
 
 <li>
-<p class='ss nm'><img src=i/win-install-5-finish.png width=499 height=432 alt='[Python installer: installation completed. Special Windows thanks to Mark Hammond, without whose years of freely shared Windows expertise, Python for Windows would still be Python for DOS.]'>
-<p>Click the <code>Finish</code> button to exit the installer.
+<p class='ss nm'><img src=i/win-install-5-finish.png width=499 height=432 alt='[Installateur Python : installation terminée. Remerciements particuliers à Mark Hammond, qui a passé des années à partager gratuitement son expertise Windows pour transformer Python pour DOS en Python pour Windows.]'>
+<p>Cliquez sur le bouton <code>Terminer</code> pour quitter l'installateur.
 
 <li>
-<p class='ss nm'><img src=i/win-interactive-shell.png width=677 height=715 alt='[Windows Python Shell, a graphical interactive shell for Python]'>
-<p>In your <code>Start</code> menu, there should be a new item called <code>Python 3.1</code>. Within that, there is a program called <abbr>IDLE</abbr>. Select this item to run the interactive Python Shell.
+<p class='ss nm'><img src=i/win-interactive-shell.png width=677 height=715 alt='[Shell Python pour Windows, un shell graphique interactif pour Python]'>
+<p>Dans votre menu <code>Démarrer</code>, il devrait y avoir un nouvel élément appelé <code>Python 3.1</code>. Dans celui-ci, un programme appelé <abbr>IDLE</abbr>. Sélectionnez cet élément pour lancer le Shell Python interactif.
 
 </ol>
 
-<p>[Skip to <a href=#idle>using the Python Shell</a>]
+<p>[Aller à <a href=#idle>utiliser le Shell Python</a>]
 
 <p class=a>&#x2042;
 
-<h2 id=macosx>Installing on Mac OS X</h2>
+<h2 id=macosx>Installer sur Mac OS X</h2>
 
-<p>All modern Macintosh computers use the Intel chip (like most Windows PCs). Older Macs used PowerPC chips. You don&#8217;t need to understand the difference, because there&#8217;s just one Mac Python installer for all Macs.
+<p>Tous les ordinateurs Macintosh modernes utilisent un processeur Intel (comme la plupart des PC sous Windows). Les plus vieux Macs utilisent des processeurs Power PC. Vous n'avez pas besoin de comprendre la différence car il n'y a qu'un seul installateur de Python pour Mac, pour tous les Macs.
 
-<p>Visit <a href=http://python.org/download/><code>python.org/download/</code></a> and download the Mac installer. It will be called something like <b>Python 3.1 Mac Installer Disk Image</b>, although the version number may vary. Be sure to download version 3.x, not 2.x.
+<p>Visitez <a href=http://python.org/download/><code>python.org/download/</code></a> et téléchagez l'installateur pour Mac. Il doit avoir un nom du genre <b>Python 3.1 Mac Installer Disk Image</b>, même si le numéro de version peut varier. Assurez-vous de télécharger la version 3.x et pas 2.x.
 
 <ol class=i>
 
 <li>
-<p class='ss nm'><img src=i/mac-install-0-dmg-contents.png width=752 height=438 alt='[contents of Python installer disk image]'>
-<p>Your browser should automatically mount the disk image and open a Finder window to show you the contents. (If this doesn&#8217;t happen, you&#8217;ll need to find the disk image in your downloads folder and double-click to mount it. It will be named something like <code>python-3.1.dmg</code>.) The disk image contains a number of text files (<code>Build.txt</code>, <code>License.txt</code>, <code>ReadMe.txt</code>), and the actual installer package, <code>Python.mpkg</code>.
-<p>Double-click the <code>Python.mpkg</code> installer package to launch the Mac Python installer.
+<p class='ss nm'><img src=i/mac-install-0-dmg-contents.png width=752 height=438 alt='[contenu de l&#8217;image disque de l&#8217;installateur Python]'>
+<p>Votre navigateur devrait automatiquement monter l'image disque et ouvrir une fenêtre Finder pour vous en afficher le contenu. (Si ce n'est pas le cas, vous devez trouver l'image disque dans votre dossier de téléchargement et double-cliquer pour la monter. Elle aura un nom du genre <code>python-3.1.dmg</code>.) L'image disque contient un certain nombre de fichiers texte (<code>Build.txt</code>, <code>License.txt</code>, <code>ReadMe.txt</code>), et l'installateur Python en lui-même, <code>Python.mpkg</code>.
+<p>Double-cliquez sur le paquet d'installation <code>Python.mpkg</code> pour lancer l'installateur Python pour Mac.
 
 <li>
-<p class='ss nm'><img src=i/mac-install-1-welcome.png width=622 height=442 alt='[Python installer: welcome screen]'>
-<p>The first page of the installer gives a brief description of Python itself, then refers you to the <code>ReadMe.txt</code> file (which you didn&#8217;t read, did you?) for more details.
-<p>Click the <code>Continue</code> button to move along.
+<p class='ss nm'><img src=i/mac-install-1-welcome.png width=622 height=442 alt='[Installateur Python : écran d&#8217;accueil]'>
+<p>La première page de l'installateur donne une brève description de Python lui-même, puis vous dirige vers le fichier <code>ReadMe.txt</code> (que vous n'avez pas lu, n'est-ce pas ?) pour plus de détails.
+<p>Cliquez sur le bouton <code>Continuer</code> pour aller plus loin.
 
 <li>
-<p class='ss nm'><img src=i/mac-install-2-information.png width=622 height=442 alt='[Python installer: information about supported architectures, disk space, and acceptable destination folders]'>
-<p>The next page actually contains some important information: Python requires Mac OS X 10.3 or later. If you are still running Mac OS X 10.2, you should really upgrade. Apple no longer provides security updates for your operating system, and your computer is probably at risk if you ever go online. Also, you can&#8217;t run Python 3.
+<p class='ss nm'><img src=i/mac-install-2-information.png width=622 height=442 alt='[Installateur Python: information à propos des architectures supporées, espace disque, et dossiers de destination acceptables]'>
+<p>La page suivante contient quelques informations importantes : Python requiert Mac OS X 10.3 ou plus récent. Si vous utilisez encore Mac OS X 10.2 vous devriez vraiment faire une mise à jour. Apple ne fournit plus de mises à jour de sécurité pour votre système d'exploitation et votre ordinateur est probablement vulnérable si vous allez en ligne. De plus, vous ne pouvez pas utiliser Python 3.
 <p>Click the <code>Continue</code> button to advance.
 
 <li>
-<p class='ss nm'><img src=i/mac-install-3-license.png width=622 height=442 alt='[Python installer: software license agreement]'>
-<p>Like all good installers, the Python installer displays the software license agreement. Python is open source, and its license is <a href=http://opensource.org/licenses/>approved by the Open Source Initiative</a>. Python has had a number of owners and sponsors throughout its history, each of which has left its mark on the software license. But the end result is this: Python is open source, and you may use it on any platform, for any purpose, without fee or obligation of reciprocity.
+<p class='ss nm'><img src=i/mac-install-3-license.png width=622 height=442 alt='[Installateur Python : accord de licence logicielle]'>
+<p>Comme tous les bons installateurs, Python affiche un accord de licence logicielle. Python est open source, et sa licence est <a href=http://opensource.org/licenses/>approuvée par l'Open Source Initiative</a>. Python a eu un certain nombre de propriétaires et de sponsors au cours de son histoire, chacun ayant laissé sa marque sur la licence logicelle. Mais le résultat final est le suivant : Python est open source, et vous pouvez l'utiliser sur n'importe quelle plateforme, pour n'importe quel but, gratuitement ou obligation de réciprocité.
 <p>Click the <code>Continue</code> button once again.
 
 <li>
-<p class='ss nm'><img src=i/mac-install-4-license-dialog.png width=622 height=442 alt='[Python installer: dialog to accept license agreement]'>
-<p>Due to quirks in the standard Apple installer framework, you must &#8220;agree&#8221; to the software license in order to complete the installation. Since Python is open source, you are really &#8220;agreeing&#8221; that the license is granting you additional rights, rather than taking them away.
-<p>Click the <code>Agree</code> button to continue.
+<p class='ss nm'><img src=i/mac-install-4-license-dialog.png width=622 height=442 alt='[Installateur Python : dialogue pour accepter l&#8217;accord de licence]'>
+<p>À cause des bizarreries dans le framework d'installation standard d'Apple, vous devez « accepter » l'accord de licence logicielle pour continuer m'installation. Étant donné que Python est open source, vous avez vraiment à accepter que la licence vous offre des droits additionnels plutôt que de vous les retirer.
+<p>Cliquez sur le bouton <code>Accepter</code> pour continuer.
 
 <li>
-<p class='ss nm'><img src=i/mac-install-5-standard-install.png width=622 height=442 alt='[Python installer: standard install screen]'>
-<p>The next screen allows you to change your install location. You <strong>must</strong> install Python on your boot drive, but due to limitations of the installer, it does not enforce this. In truth, I have never had the need to change the install location.
-<p>From this screen, you can also customize the installation to exclude certain features. If you want to do this, click the <code>Customize</code> button; otherwise click the <code>Install</code> button.
+<p class='ss nm'><img src=i/mac-install-5-standard-install.png width=622 height=442 alt='[Installateur Python: écran d&#8217;installation standard]'>
+<p>L'écran suivant vous permet de changer l'endroit où vous installez Python. Vous <strong>devez</strong> installer Python sur votre lecteur de démarrage, mais à cause des limitations de l'installateur, il ne vérifie pas ceci. En vrai, je n'ai jamais eu besoin de changer la destination de l'installation.
+<p>À partir de cet écran, vous pouvez également personnaliser l'installation pour exclure certaines fonctionnalités. Si vous voulez le fiare, cliquez sur le bouton <code>Personnaliser</code> ; sinon, cliquez sur le bouton <code>Installer</code>.
 
 <li>
-<p class='ss nm'><img src=i/mac-install-6-custom-install.png width=622 height=442 alt='[Python installer: custom install screen]'>
-<p>If you choose a Custom Install, the installer will present you with the following list of features:
+<p class='ss nm'><img src=i/mac-install-6-custom-install.png width=622 height=442 alt='[Installateur Python : écran d&#8217;installation personnalisée]'>
+<p>Si vous choisissez une installation personnalisée, l'installateur vous présentera une liste des fonctionnalités suivantes : 
 <ul>
-<li><b>Python Framework</b>. This is the guts of Python, and is both selected and disabled because it must be installed.
-<li><b>GUI Applications</b> includes IDLE, the graphical Python Shell which you will use throughout this book. I strongly recommend keeping this option selected.
-<li><b>UNIX command-line tools</b> includes the command-line <code>python3</code> application. I strongly recommend keeping this option, too.
-<li><b>Python Documentation</b> contains much of the information on <a href=http://docs.python.org/><code>docs.python.org</code></a>. Recommended if you are on dialup or have limited Internet access.
-<li><b>Shell profile updater</b> controls whether to update your shell profile (used in <code>Terminal.app</code>) to ensure that this version of Python is on the search path of your shell. You probably don&#8217;t need to change this.
-<li><b>Fix system Python</b> should not be changed. (It tells your Mac to use Python 3 as the default Python for all scripts, including built-in system scripts from Apple. This would be very bad, since most of those scripts are written for Python 2, and they would fail to run properly under Python 3.)
+<li><b>Python Framework</b>. ce sont les entrailles de Python, qui est à la fois sélectionné et bloqué car il doit être installé.
+<li><b>GUI Applications</b> inclut IDLE, le Shell Python graphique que nous allons utiliser tout au long de ce livre. Je recommande fortement de laisser cette option sélectionnée.
+<li><b>UNIX command-line tools</b> inclut l'application <code>python3</code> en ligne de commande. Je recommande fortement de conserver cette option aussi.
+<li><b>Python Documentation</b> contient la plupart des informations disponibles sur <a href=http://docs.python.org/><code>docs.python.org</code></a>. Recommandé si vous avez une connexion par réseau commuté ou un accès limité à Internet.
+<li><b>Shell profile updater</b> vérifie s'il faut vérifier votre profil de shell (utilisé dans <code>Terminal.app</code>) pour s'assurer que cette version de Python est dans le chemin dans lequel cherche votre chell. Vous n'avez probablement pas besoin de changer cela.
+<li><b>Fix system Python</b> ne devrait pas être changé. (Il dit à votre Mac d'utiliser Python 3 comme le Python par défaut pour tous les scripts, y compris les scripts d'Apple fournis pas le système. Ce serait vraiment mauvais étant donné que la plupart de ces scripts sont écrits pour Python 2 et qu'ils ne pourraient pas s'exécuter sur Python 3.)
 </ul>
-<p>Click the <code>Install</code> button to continue.
+<p>Cliquez sur le bouton <code>Installer</code> pour continuer.
 
 <li>
-<p class='ss nm'><img src=i/mac-install-7-admin-password.png width=622 height=457 alt='[Python installer: dialog to enter administrative password]'>
-<p>Because it installs system-wide frameworks and binaries in <code>/usr/local/bin/</code>, the installer will ask you for an administrative password. There is no way to install Mac Python without administrator privileges.
-<p>Click the <code>OK</code> button to begin the installation.
+<p class='ss nm'><img src=i/mac-install-7-admin-password.png width=622 height=457 alt='[Installateur Python : dialogue demandant le mot de passe d&#8217;administration]'>
+<p>Étant donné qu'il installe des frameworks et des binaires disponibles pour tout le système dans <code>/usr/local/bin/</code>, l'installateur vous demander le mot de passe administrateur. Il n'y a aucun moyen d'installer Python sur Mac sans privilège d'administration.
+<p>Cliquez sur le bouton <code>OK</code> pour commencer l'installation.
 
 <li>
-<p class='ss nm'><img src=i/mac-install-8-progress.png width=622 height=442 alt='[Python installer: progress meter]'>
-<p>The installer will display a progress meter while it installs the features you&#8217;ve selected.
+<p class='ss nm'><img src=i/mac-install-8-progress.png width=622 height=442 alt='[Installateur Python : affichage de la progression]'>
+<p>L'installateur va afficher la progression de l'installation pendant qu'il installe les fonctionnalités que vous avez sélectionnées.
 
 <li>
-<p class='ss nm'><img src=i/mac-install-9-succeeded.png width=622 height=442 alt='[Python installer: install succeeded]'>
-<p>Assuming all went well, the installer will give you a big green checkmark to tell you that the installation completed successfully.
-<p>Click the <code>Close</code> button to exit the installer.
+<p class='ss nm'><img src=i/mac-install-9-succeeded.png width=622 height=442 alt='[Installateur Python : installation réussie]'>
+<p>En considérant que tout s'est bien passé, l'installateur vous affiche une grosse icône verte qui vous dit que l'installation s'est effectuée correctement.
+<p>Cliquez sur le bouton <code>Quitter</code> pour fermer l'installateur.
 
 <li>
-<p class='ss nm'><img src=i/mac-install-10-application-folder.png width=488 height=482 alt='[contents of /Applications/Python 3.1/ folder]'>
-<p>Assuming you didn&#8217;t change the install location, you can find the newly installed files in the <code>Python 3.1</code> folder within your <code>/Applications</code> folder. The most important piece is <abbr>IDLE</abbr>, the graphical Python Shell.
-<p>Double-click <abbr>IDLE</abbr> to launch the Python Shell.
+<p class='ss nm'><img src=i/mac-install-10-application-folder.png width=488 height=482 alt='[contenu du dossier /Applications/Python 3.1/]'>
+<p>En considérant que vous n'avez pas changé la destination de l'installation, vous pouvez trouver les fichiers nouvellement installés dans le dossier <code>Python 3.1</code> de votre répertoire <code>/Applications</code>. La partie la plus importante est le Shell Python graphique <abbr>IDLE</abbr>.
+<p>Double-cliquez sur <abbr>IDLE</abbr> pour lancer le Shell Python.
 
 <li>
-<p class='ss nm'><img src=i/mac-interactive-shell.png width=522 height=538 alt='[Mac Python Shell, a graphical interactive shell for Python]'>
-<p>The Python Shell is where you will spend most of your time exploring Python. Examples throughout this book will assume that you can find your way into the Python Shell.
+<p class='ss nm'><img src=i/mac-interactive-shell.png width=522 height=538 alt='[Le Shell Python pour Mac, un shell graphique et interactif pour Python]'>
+<p>Le Shell Python est l'endroit où vous passerez le plus de temps dans votre exploration de Python. Les exemples que vous trouverez tout au long de ce livre considèreront que vous arrivez à y accéder.
 
 </ol>
 
-<p>[Skip to <a href=#idle>using the Python Shell</a>]
+<p>[Aller à <a href=#idle>utiliser le Shell Python</a>]
 
 <p class=a>&#x2042;
 
-<h2 id=ubuntu>Installing on Ubuntu Linux</h2>
+<h2 id=ubuntu>Installer sur Ubuntu Linux</h2>
 
-<p>Modern Linux distributions are backed by vast repositories of precompiled applications, ready to install. The exact details vary by distribution. In Ubuntu Linux, the easiest way to install Python 3 is through the <code>Add/Remove</code> application in your <code>Applications</code> menu.
+<p>Les distributions Linux modernes proposent de vastes dépôts d'applications précompilées, prêtes à être installées. Les détails varient d'une distribution à l'autre. Pour Ubuntu Linux, la façon la plus simple d'installer Python est l'application <code>Ajouter/supprimer des applications</code> dans votre menu <code>Applications</code>.
 
 <ol class=i>
 <li>
-<p class='ss nm'><img src=i/ubu-install-0-add-remove-programs.png width=920 height=473 alt='[Add/Remove: Canonical-maintained applications]'>
-<p>When you first launch the <code>Add/Remove</code> application, it will show you a list of preselected applications in different categories. Some are already installed; most are not. Because the repository contains over 10,000 applications, there are different filters you can apply to see small parts of the repository. The default filter is &#8220;Canonical-maintained applications,&#8221; which is a small subset of the total number of applications that are officially supported by Canonical, the company that creates and maintains Ubuntu Linux.
+<p class='ss nm'><img src=i/ubu-install-0-add-remove-programs.png width=920 height=473 alt='[Ajouter/supprimer : des applications maintenues par Canonical]'>
+<p>Lorsque vous lancez pour la première fois l'application <code>Ajouter/supprimer</code> application, elle vous affirchera une liste des applications préselectionnées de différentes catégories. Certaines sont déjà installées ; la plupart ne l'est pas. Étant donné que le dépôt contient plus de 10 milliers d'applications, il y a différents filtres que vous pouvez appliquer pour voir de plus petites parties du dépôt. Le filter par défaut est « Applications maintenues par Canonical », qui est un petit sous-ensemble de toutes les applications : celles qui sont supportées par Canonical, qui est l'entreprise que a créé et qui maintient Ubuntu Linux.
 
 <li>
-<p class='ss nm'><img src=i/ubu-install-1-all-open-source-applications.png width=920 height=473 alt='[Add/Remove: all open source applications]'>
-<p>Python 3 is not maintained by Canonical, so the first step is to drop down this filter menu and select &#8220;All Open Source applications.&#8221;
+<p class='ss nm'><img src=i/ubu-install-1-all-open-source-applications.png width=920 height=473 alt='[Ajouter/supprimer : toutes les applications open source]'>
+<p>Python 3 n'est pas maintenant par Canonical, donc la première étape est de dérouler ce menu de filtre et de sélectionner « Toutes les applications Open Source ».
 
 <li>
-<p class='ss nm'><img src=i/ubu-install-2-search-python-3.png width=920 height=473 alt='[Add/Remove: search for Python 3]'>
-<p>Once you&#8217;ve widened the filter to include all open source applications, use the Search box immediately after the filter menu to search for <kbd>Python 3</kbd>.
+<p class='ss nm'><img src=i/ubu-install-2-search-python-3.png width=920 height=473 alt='[Ajouter/Supprimer : rechercher Python 3]'>
+<p>Une fois que vous avez agrandi le filtre pour inclure toutes les applications open source, utilisez la boîte de recherche juste après le menu de filtrage pour chercher <kbd>Python 3</kbd>.
 
 <li>
-<p class='ss nm'><img src=i/ubu-install-3-select-python-3.png width=920 height=473 alt='[Add/Remove: select Python 3.0 package]'>
-<p>Now the list of applications narrows to just those matching <kbd>Python 3</kbd>. You&#8217;re going to check two packages. The first is <code>Python (v3.0)</code>. This contains the Python interpreter itself.
+<p class='ss nm'><img src=i/ubu-install-3-select-python-3.png width=920 height=473 alt='[Ajouter/Supprimer : Sélectionner le paquet Python 3.0]'>
+<p>Maintenant, une liste d'application se restreint à celles correspondant à <kbd>Python 3</kbd>. Vous allez devoir cocher deux paquets. Le premier est <code>Python (v3.0)</code> (ou une version plus grande, telle que v3.3). Cette application contient l'interpréteur Python lui-même.
 <li>
-<p class='ss nm'><img src=i/ubu-install-4-select-idle.png width=920 height=473 alt='[Add/Remove: select IDLE for Python 3.0 package]'>
-<p>The second package you want is immediately above: <code>IDLE (using Python-3.0)</code>. This is a graphical Python Shell that you will use throughout this book.
-<p>After you&#8217;ve checked those two packages, click the <code>Apply Changes</code> button to continue.
+<p class='ss nm'><img src=i/ubu-install-4-select-idle.png width=920 height=473 alt='[Ajouter/Supprimer : sélectionner le paquet IDLE pour Python 3.0]'>
+<p>Le second paquet devrait être juste au-dessus : <code>IDLE (utilisant Python-3.0)</code>. C'est un Shell Graphique Python que nous utiliserons tout au long de ce livre.
+<p>Une fois que vous avez coché ces deux paquets, cliquez sur le bouton <code>Appliquer les modifications</code> pour continuer.
 
 <li>
-<p class='ss nm'><img src=i/ubu-install-5-apply-changes.png width=635 height=364 alt='[Add/Remove: apply changes]'>
-<p>The package manager will ask you to confirm that you want to add both <code>IDLE (using Python-3.0)</code> and <code>Python (v3.0)</code>.
-<p>Click the <code>Apply</code> button to continue.
+<p class='ss nm'><img src=i/ubu-install-5-apply-changes.png width=635 height=364 alt='[Ajouter/Supprimer : appliquer les changements]'>
+<p>Le gestionnaire de paquets vous demandera de confirmer que vous voulez bien ajouer <code>IDLE (utilisant Python-3.0)</code> et <code>Python (v3.0)</code>.
+<p>Cliquez sur le bouton <code>Appliquer</code> pour continuer
 
 <li>
-<p class='ss nm'><img src=i/ubu-install-6-download-progress.png width=287 height=211 alt='[Add/Remove: download progress meter]'>
-<p>The package manager will show you a progress meter while it downloads the necessary packages from Canonical&#8217;s Internet repository.
+<p class='ss nm'><img src=i/ubu-install-6-download-progress.png width=287 height=211 alt='[Ajouter/Supprimer : affichage de la progression du téléchargement]'>
+<p>Le gestionnaire de paquets vous affichera la progression du téléchargement des paquets depuis le dépôt Internet de Canonical.
 
 <li>
-<p class='ss nm'><img src=i/ubu-install-7-install-progress.png width=486 height=258 alt='[Add/Remove: installation progress meter]'>
-<p>Once the packages are downloaded, the package manager will automatically begin installing them.
+<p class='ss nm'><img src=i/ubu-install-7-install-progress.png width=486 height=258 alt='[Ajouter/Supprimer : progression de l&#8217;installation]'>
+<p>Une fois les paquets téléchargés, le gestionnaire de paquets va commencer à les installer.
 
 <li>
-<p class='ss nm'><img src=i/ubu-install-8-success.png width=591 height=296 alt='[Add/Remove: new applications have been installed]'>
-<p>If all went well, the package manager will confirm that both packages were successfully installed. From here, you can double-click <abbr>IDLE</abbr> to launch the Python Shell, or click the <code>Close</code> button to exit the package manager.
-<p>You can always relaunch the Python Shell by going to your <code>Applications</code> menu, then the <code>Programming</code> submenu, and selecting <abbr>IDLE</abbr>.
+<p class='ss nm'><img src=i/ubu-install-8-success.png width=591 height=296 alt='[Ajouter/Supprimer : de nouvelles applications ont été installées]'>
+<p>Si tout s'est bien passé, le gestionnaire de paquets va confirmer que les deux paquets ont été installés avec succès. À partir de maintenant, vous pouvez double-cliquer sur <abbr>IDLE</abbr> pour lancer le Shell Python ou cliquer sur le bouton <code>Fermer</code> pour quitter le gestionnaire de paquets.
+<p>Vous pouvez à tout moment re-lancer le Shell Python en allant dans le menu <code>Applications</code>, puis dans le sous-menu <code>Programmation</code>, et en sélectionnant <abbr>IDLE</abbr>.
 
 <li>
-<p class='ss nm'><img src=i/ubu-interactive-shell.png width=679 height=687 alt='[Linux Python Shell, a graphical interactive shell for Python]'>
-<p>The Python Shell is where you will spend most of your time exploring Python. Examples throughout this book will assume that you can find your way into the Python Shell.
+<p class='ss nm'><img src=i/ubu-interactive-shell.png width=679 height=687 alt='[Le Shell Python pour Linux, un shell graphique interactif pour Python]'>
+<p>Le Shell Python est l'endroit où vous passerez le plus clair de votre temps pendant votre exploration de Python. Les exemples fournis tout au long de ce livre assumeront que vous êtes capable de lancer le Shell Python.
 
 </ol>
 
-<p>[Skip to <a href=#idle>using the Python Shell</a>]
+<p>[Aller à <a href=#idle>utiliser le Shell Python</a>]
 
 <p class=a>&#x2042;
 
-<h2 id=other>Installing on Other Platforms</h2>
+<h2 id=other>Installer sur d'autres plateformes</h2>
 
-<p>Python 3 is available on a number of different platforms. In particular, it is available in virtually every Linux, <abbr>BSD</abbr>, and Solaris-based distribution. For example, RedHat Linux uses the <code>yum</code> package manager. FreeBSD has its <a href=http://www.freebsd.org/ports/>ports and packages collection</a>, <abbr>SUSE</abbr> has <code>zypper</code>, and Solaris has <code>pkgadd</code>. A quick web search for <code>Python 3</code> + <i>your operating system</i> should tell you whether a Python 3 package is available, and if so, how to install it.
+<p>Python 3 est disponible sur un certain nombre d'autres plateformes. En particulier, il est disponible en théorie sur n'importe quelle distribution Linux, <abbr>BSD</abbr>, ou basée sur Solaris. Par exemple, RedHat Linux utilise le gestionnaire de paquets <code>yum</code>. FreeBSD a sa propre <a href=http://www.freebsd.org/ports/>collection de ports et paquets</a>, <abbr>SUSE</abbr> a <code>zypper</code>, et Solaris a <code>pkgadd</code>. Une rapide recherche sur le web de <code>Python 3</code> + <i>votre système d'exploitation</i> devrait vous dire si un paquet Python 3 est disponible ; et si c'est le cas, comment l'installer.
 
 <p class=a>&#x2042;
 
-<h2 id=idle>Using The Python Shell</h2>
+<h2 id=idle>Utiliser le Shell Python</h2>
 
-<p>The Python Shell is where you can explore Python syntax, get interactive help on commands, and debug short programs. The graphical Python Shell (named <abbr>IDLE</abbr>) also contains a decent text editor that supports Python syntax coloring and integrates with the Python Shell. If you don&#8217;t already have a favorite text editor, you should give <abbr>IDLE</abbr> a try.
+<p>Le Shell Python est l'endoit où vous pourrez explorer la syntaxe de Python, obtenir une aide interactive sur les commande, et déboguer de courts programmes. Le Shell Python graphique (nommé <abbr>IDLE</abbr>) contient aussi un éditeur de texte décent qui supporte la coloration syntaxe pour Python et s'intègre au Shell Python. Si vous n'avez pas déjà un éditeur de texte favori, vous devriez donner sa chance à <abbr>IDLE</abbr>.
 
-<p>First things first. The Python Shell itself is an amazing interactive playground. Throughout this book, you&#8217;ll see examples like this:
+<p>Commençons par le commencement. Le Shell Python lui-même est un terrain de jeu interactif surprenant. Au cours de ce livre, vous verrez des exemples comme celui-ci :
 
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>1 + 1</kbd>
 <samp class=pp>2</samp></pre>
 
-<p>The three angle brackets, <samp class=p>>>></samp>, denote the Python Shell prompt. Don&#8217;t type that part. That&#8217;s just to let you know that this example is meant to be followed in the Python Shell.
+<p>Les trois chevrons, <samp class=p>>>></samp>, correspondent au « prompt » du Shell Python. N'écrivez pas cette partie. Elle vous permet simpelement de savoir que cet exemple est censé être tapé dans le Shell Python.
 
-<p><kbd class=pp>1 + 1</kbd> is the part you type. You can type any valid Python expression or command in the Python Shell. Don&#8217;t be shy; it won&#8217;t bite! The worst that will happen is you&#8217;ll get an error message. Commands get executed immediately (once you press <kbd>ENTER</kbd>); expressions get evaluated immediately, and the Python Shell prints out the result.
+<p><kbd class=pp>1 + 1</kbd> est la partie que vous tapez. Vous pouvez taper n'importe quelle expression ou commandePython valide dans le Shell Python. Ne soyez pas timide ; il ne mord pas ! Le pire que vous puissiez obtenir est un message d'erreur. Les commandes sont exécutées immédiatement (une vois que vous appuyez sur <kbd>ENTER</kbd>) ; les expressions sont évaluées immédiatement, et le Shell Python affichera le résultat.
 
-<p><samp class=pp>2</samp> is the result of evaluating this expression. As it happens, <kbd class=pp>1 + 1</kbd> is a valid Python expression. The result, of course, is <samp class=pp>2</samp>.
+<p><samp class=pp>2</samp> est le résultat de l'évaluation de l'expression. En effet, <kbd class=pp>1 + 1</kbd> est une expression Python valide. Le résultat, bien sûr, est <samp class=pp>2</samp>.
 
-<p>Let&#8217;s try another one.
+<p>Essayons-en un autre.
 
 <pre class='nd screen'>
-<samp class=p>>>> </samp><kbd class=pp>print('Hello world!')</kbd>
-<samp>Hello world!</samp>
+<samp class=p>>>> </samp><kbd class=pp>print('Bonjour tout le monde !')</kbd>
+<samp>Bonjour tout le monde !</samp>
 </pre>
 
-<p>Pretty simple, no? But there&#8217;s lots more you can do in the Python shell. If you ever get stuck&nbsp;&mdash;&nbsp;you can&#8217;t remember a command, or you can&#8217;t remember the proper arguments to pass a certain function&nbsp;&mdash;&nbsp;you can get interactive help in the Python Shell. Just type <kbd>help</kbd> and press <kbd>ENTER</kbd>.
+<p>Plutôt simple, non ? Mais il y a beaucoup d'autres choses que vous pouvez faire dans le Shell Python. Si à un moment vous vous retrouvez coincé(e)&nbsp;&mdash;&nbsp;vous ne pouvez vous souvenir d'une commande, ou vous ne vous souvenez pas des bons arguments à passer à une certaine fonction&nbsp;&mdash;&nbsp;vous pouvez obtenir une aide interactive dans le Shell Python. Tapez simplement <kbd>help</kbd> et appuyez sur <kbd>ENTER</kbd>.
 
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd>help</kbd>
 <samp>Type help() for interactive help, or help(object) for help about object.</samp></pre>
 
-<p>There are two modes of help. You can get help about a single object, which just prints out the documentation and returns you to the Python Shell prompt. You can also enter <i>help mode</i>, where instead of evaluating Python expressions, you just type keywords or command names and it will print out whatever it knows about that command.
+<p>Il y a deux modes d'aide. Vous pouvez obtenir de l'aide pour un seul objet, qui affiche seulement la documentation et retour au Shell Python. Vous pouvez aussi entrer en <i>mode aide</i>, où, au lieu d'évaluer des expressions Python, vous tapez juste des mots-clefs ou des noms de commandes et il affichera ce qu'il sait à propos de cette commande.
 
-<p>To enter the interactive help mode, type <kbd>help()</kbd> and press <kbd>ENTER</kbd>.
+<p>Pour entrer en mode d'aide interactive, tapez <kbd>help()</kbd> et appuyez sur <kbd>ENTER</kbd>.
 
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>help()</kbd>
@@ -340,27 +340,27 @@ interpreter, you can type "help(object)".  Executing "help('string')"
 has the same effect as typing a particular string at the help> prompt.</samp>
 <a><samp class=p>>>> </samp>                                                                        <span class=u>&#x2463;</span></a></pre>
 <ol>
-<li>To get documentation on the <code>print()</code> function, just type <kbd>print</kbd> and press <kbd>ENTER</kbd>. The interactive help mode will display something akin to a man page: the function name, a brief synopsis, the function&#8217;s arguments and their default values, and so on. If the documentation seems opaque to you, don&#8217;t panic. You&#8217;ll learn more about all these concepts in the next few chapters.
-<li>Of course, the interactive help mode doesn&#8217;t know everything. If you type something that isn&#8217;t a Python command, module, function, or other built-in keyword, the interactive help mode will just shrug its virtual shoulders.
-<li>To quit the interactive help mode, type <kbd>quit</kbd> and press <kbd>ENTER</kbd>.
-<li>The prompt changes back to <samp class=p>>>></samp> to signal that you&#8217;ve left the interactive help mode and returned to the Python Shell.
+<li>Pour avoir la documentation de la fonction <code>print()</code>, tapez simplement <kbd>print</kbd> et appuyez sur <kbd>ENTER</kbd>. Le mode d'aide interactive affichera automatiquement quelque chose de similaire à une page man : un nom de fonction, un résumé bref, les arguments de la fonction et leurs valeur par défaut, etc. Si la documentation vous semble opaque, je paniquez vous. Vous en appendrez plus sur ces concepts au cours des chapitres suivants.
+<li>Bien spur, le mode d'aide interactive ne sait pas tout. Si vous tapez quelque chose qui n'est pas une commande, un module, une fonction, ou un mot-clef natif, le mode d'aide interactif va seulement hausser ses épaules virtuelles.
+<li>Pour quitter le mode d'aide interactif, tapez <kbd>quit</kbd> et appuyez sur <kbd>ENTER</kbd>.
+<li>Le prompt retournera à <samp class=p>>>></samp> pour vous signaler que vous avez quitté le mode d'aide interactif et que vous êtes retourné(e) au Shell Python.
 </ol>
 
-<p><abbr>IDLE</abbr>, the graphical Python Shell, also includes a Python-aware text editor.
+<p><abbr>IDLE</abbr>, le shell Python qui inclut aussi un éditeur de texte pour Python.
 
 <p class=a>&#x2042;
 
-<h2 id=editors>Python Editors and IDEs</h2>
+<h2 id=editors>Éditeurs et IDEs pour Python</h2>
 
-<p><abbr>IDLE</abbr> is not the only game in town when it comes to writing programs in Python. While it&#8217;s useful to get started with learning the language itself, many developers prefer other text editors or Integrated Development Environments (<abbr>IDE</abbr>s). I won&#8217;t cover them here, but the Python community maintains <a href=http://wiki.python.org/moin/PythonEditors>a list of Python-aware editors</a> that covers a wide range of supported platforms and software licenses.
+<p><abbr>IDLE</abbr> n'est pas la seule solution pour écrire des programmes en Python. Même s'il est utile pour commencer à apprendre le langage lui-même, beaucoup de développeurs(euses) lui préfèrent d'autres éditeurs de texte ou des Environnements de Développement Intégrés (<abbr>IDE</abbr>s). Je ne les couvrirai pas ici, mais la communauté de Python maintient <a href=http://wiki.python.org/moin/PythonEditors>une liste d'éditeurs pour Python</a> qui couvre un large champ de plateformes supportées et le licences logicielles.
 
-<p>You might also want to check out the <a href=http://wiki.python.org/moin/IntegratedDevelopmentEnvironments>list of Python-aware <abbr>IDE</abbr>s</a>, although few of them support Python 3 yet. One that does is <a href=http://pydev.sourceforge.net/>PyDev</a>, a plugin for <a href=http://eclipse.org/>Eclipse</a> that turns Eclipse into a full-fledged Python <abbr>IDE</abbr>. Both Eclipse and PyDev are cross-platform and open source.
+<p>Vous pouvez également vouloir jeter un coup d'œil à la liste des <a href=http://wiki.python.org/moin/IntegratedDevelopmentEnvironments><abbr>IDE</abbr>s supportant Python</a>, même si quelques uns ne supportent pas encore Python 3. Par exemple <a href=http://pydev.sourceforge.net/>PyDev</a>, un plugin pour <a href=http://eclipse.org/>Eclipse</a> qui transforme Eclipse en un véritable <abbr>IDE</abbr> pour Python. Eclipse et PyDev sont tous deux disponibles sur un grand nombre de plateformes et sont open source.
 
-<p>On the commercial front, there is ActiveState&#8217;s <a href=http://www.activestate.com/komodo/>Komodo <abbr>IDE</abbr></a>. It has per-user licensing, but students can get a discount, and a free time-limited trial version is available.
+<p>Du côté commercial, il y a <a href=http://www.activestate.com/komodo/>l'<abbr>IDE</abbr> Komodo</a> d'ActiveState. C'est une licence par utilisateur, mais les étudiants peuvent obtenir une réduction, et une licence gratuite d'essay limitée dans le temps est disponible.
 
-<p>I&#8217;ve been programming in Python for nine years, and I edit my Python programs in <a href=http://www.gnu.org/software/emacs/>GNU Emacs</a> and debug them in the command-line Python Shell. There&#8217;s no right or wrong way to develop in Python. Find a way that works for you!
+<p>Je programme en Python depuis neuf ans, et j'écris mes programmes Python avec <a href=http://www.gnu.org/software/emacs/>GNU Emacs</a> et je les débogue avec le Shell Python en lignes de commandes. Il n'y a pas de bonne ou de mauvaise méthode pour développer en Python. Trouvez une façon qui vous convient !
 
-<p class=v><a href=whats-new.html rel=prev title='back to &#8220;What&#8217;s New In Dive Into Python 3&#8221;'><span class=u>&#x261C;</span></a> <a href=your-first-python-program.html rel=next title='onward to &#8220;Your First Python Program&#8221;'><span class=u>&#x261E;</span></a>
+<p class=v><a href=whats-new.html rel=prev title='retourner à « Ce qu&#8217;il y a de nouveau dans Plongez dans Python 3 »'><span class=u>&#x261C;</span></a> <a href=your-first-python-program.html rel=next title='aller à « Votre premier programme Python »'><span class=u>&#x261E;</span></a>
 
 <p class=c>&copy; 2001&ndash;11 <a href=about.html>Mark Pilgrim</a>
 <script src=j/jquery.js></script>
