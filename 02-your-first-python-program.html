@@ -19,15 +19,15 @@ mark{display:inline}
 <link rel=stylesheet media=print href=print.css>
 <meta name=viewport content='initial-scale=1.0'>
 <form action=http://www.google.com/cse><div><input type=hidden name=cx value=014021643941856155761:l5eihuescdw><input type=hidden name=ie value=UTF-8>&nbsp;<input type=search name=q size=25 placeholder="powered by Google&trade;">&nbsp;<input type=submit name=sa value=Search></div></form>
-<p>Vous êtes ici : <a href=index.html>Index</a> <span class=u>&#8226;</span> <a href=table-of-contents.html#your-first-python-program>Plongez dans Python 3</a> <span class=u>&#8227;</span>
-<p id=level>Niveau de difficulté : <span class=u title=novice>&#x2666;&#x2662;&#x2662;&#x2662;&#x2662;</span>
+<p>Vous êtes ici&nbsp;: <a href=index.html>Index</a> <span class=u>&#8226;</span> <a href=table-of-contents.html#your-first-python-program>Plongez dans Python 3</a> <span class=u>&#8227;</span>
+<p id=level>Niveau de difficulté&nbsp;: <span class=u title=novice>&#x2666;&#x2662;&#x2662;&#x2662;&#x2662;</span>
 <h1>Votre premier programme Python</h1>
 <blockquote class=q>
-<p><span class=u>&#x275D;</span> N'enterre pas ton fardeau dans un silence saint. Tu as un problème ? Bien. Réjouis-toi, approfondis, et investigues. <span class=u>&#x275E;</span><br>&mdash; <a href=http://en.wikiquote.org/wiki/Buddhism>Ven. Henepola Gunaratana</a>
+<p><span class=u>&#x275D;</span> N’enterre pas ton fardeau dans un silence saint. Tu as un problème&nbsp;? Bien. Réjouis-toi, approfondis, et investigue. <span class=u>&#x275E;</span><br>&mdash; <a href=http://en.wikiquote.org/wiki/Buddhism>Ven. Henepola Gunaratana</a>
 </blockquote>
 <p id=toc>&nbsp;
 <h2 id=divingin>Approfondir</h2>
-<p class=f>Les conventions dictent que je dois vous bassiner avec les briques fondamentales de la programmation, donc nous pouvons lentement travailler à construire quelque chose d'utile. Sautons tout ça. Ceci est un programme Python complet et fonctionnel. Il n'a probablement aucun sens pour vous. Ne vous en faites pas, car je vas le disséquer ligne par ligne. Mais commencez par le lire et voir si vous y comprenez quelque chose.
+<p class=f>Les conventions dictent que je dois vous bassiner avec les briques fondamentales de la programmation, donc nous pouvons lentement travailler à construire quelque chose d’utile. Sautons tout ça. Ceci est un programme Python complet et fonctionnel. Il n’a probablement aucun sens pour vous. Ne vous en faites pas, car je vais le disséquer ligne par ligne. Mais commencez par le lire et voir si vous y comprenez quelque chose.
 <p class=d>[<a href=examples/humansize.py>télécharger <code>humansize.py</code></a>]
 <pre class=pp><code>SUFFIXES = {1000: ['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
             1024: ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']}
@@ -40,7 +40,7 @@ def approximate_size(size, a_kilobyte_is_1024_bytes=True):
     a_kilobyte_is_1024_bytes -- si True (par défaut), utilise des multiples de 1024
                                 si False, utilise des multiples de 1000
 
-    Retourne : une chaine de caractères
+    Retourne : une chaîne de caractères
 
     '''
     if size &lt; 0:
@@ -57,7 +57,7 @@ def approximate_size(size, a_kilobyte_is_1024_bytes=True):
 if __name__ == '__main__':
     print(approximate_size(1000000000000, False))
     print(approximate_size(1000000000000))</code></pre>
-<p>Maintenant, lançons ce programme par la ligne de commandes. Sous Windows, ça ressemblera à quelque chose comme ça :
+<p>Maintenant, lançons ce programme par la ligne de commande. Sous Windows, ça ressemblera à quelque chose comme ça&nbsp;:
 <pre class='nd screen'>
 <samp class=p>c:\home\diveintopython3\examples> </samp><kbd>c:\python31\python.exe humansize.py</kbd>
 <samp>1.0 TB
@@ -68,7 +68,7 @@ if __name__ == '__main__':
 <samp>1.0 TB
 931.3 GiB</samp></pre>
 
-<p>Qu'est-ce qui vient de se passer ? Vous venez d'exécuter votre premire programme Python. Vous appelez l'interprète Python par la ligne de commandes et vous lui donnez le nom du script Python que vous voulez exécuter. Le script définit une unique fonction, la fonction <code>approximate_size()</code> qui prend une taille de fichier exacte en octets et calcule une taille plus esthétique (mais approximative). (Vous avez probablement déjà vu ça dans l'Explorateur de Windows, le Finder de Mac OS X, ou Nautilus ou Dolphin ou Thunar sous Linux. Si vous avez un répertoire avec des documents dans liste multi-colonnes, il affichera un tableau avec l'icône du document, le nom du document, la taille, le type, la date de dernière modification, etc. Si le fichier contient un fichier de 1093 octets nommé <code>TODO</code>, votre gestionnaire de fichiers n'affichera pas  <code>TODO 1093 octets</code> ; mais plutôt quelque chose du genre <code>TODO 1 KO</code>. C'est ce que fait la fonction <code>approximate_size()</code>.)
+<p>Qu'est-ce qui vient de se passer&nbsp;? Vous venez d'exécuter votre premier programme Python. Vous appelez l'interpréteur Python par la ligne de commandes et vous lui donnez le nom du script Python que vous voulez exécuter. Le script définit une unique fonction, la fonction <code>approximate_size()</code> qui prend une taille de fichier exacte en octets et calcule une taille plus esthétique (mais approximative). (Vous avez probablement déjà vu ça dans l'Explorateur de Windows, le Finder de Mac OS X, ou Nautilus ou Dolphin ou Thunar sous Linux. Si vous avez un répertoire avec des documents dans liste multi-colonnes, il affichera un tableau avec l'icône du document, le nom du document, la taille, le type, la date de dernière modification, etc. Si le fichier contient un fichier de 1093 octets nommé <code>TODO</code>, votre gestionnaire de fichiers n'affichera pas  <code>TODO 1093 octets</code> ; mais plutôt quelque chose du genre <code>TODO 1 KO</code>. C'est ce que fait la fonction <code>approximate_size()</code>.)
 
 <p>Regardez à la fin du script et vous verrez deux appels à <code>print(approximate_size(<var>arguments</var>))</code>. Ce sont des appels de fonctions &nbsp;&mdash;&nbsp;le ppremier appelle la fonction <code>approximate_size()</code> et lui passe des arguments (aussi appelés paramètres), puis prend la valeur de retour et la passe directement à la fonction <code>print()</code>. La fonction <code>print()</code> est fournie par Python ; vous ne verrez jamais de déclaration explicite de celle-ci. Vous pouvez l'utiliser n'importe où, n'importe quand. (Il y a beaucoup de fonctions fournies par Python, et beaucoup d'entre elles sont séparées dans des modules <i>modules</i>. Patience, jeune padawan.)
 
