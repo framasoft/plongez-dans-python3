@@ -270,18 +270,18 @@ SyntaxError: non-keyword arg after keyword arg</samp></pre>
 <p>Une exception ne résulte pas nécessairement en un plantage du programme, cependant. Les exceptions peuvent très bien être <em>gérées</em>. Parfois, une exception est vraiment parce que vous avez un bogue dans votre code (comme accéder à une variable qui n’existe pas), mais parfois, une exception est quelque chose que vous pouvez anticiper. Si vous ouvrez un fichier, il peut ne pas exister. Si vous importez un module, il peut ne pas être installé. Si vous vous connectez à une base de données, elle peut être indisponible, ou vous pouvez ne pas y avoir les droits d’accès. Si vous savez qu’une ligne de votre code peut lever une exception, vous pouvez gérer l’exception en utilisant un bloc <code>try...except</code>.
 
 <blockquote class='note compare java'>
-<p><span class=u>&#x261E;</span>Python utiliser des blocs <code>try...except</code> pour gérer les exceptions, et l’instruction <code>raise</code> pour les engendrer. Java et <abbr>C++</abbr> utilisent <code>try...catch</code> pour gérer les exceptions et l’instruction <code>throw</code> pour les engendrer.
+<p><span class=u>&#x261E;</span>Python utilise des blocs <code>try...except</code> pour gérer les exceptions, et l’instruction <code>raise</code> pour les engendrer. Java et <abbr>C++</abbr> utilisent <code>try...catch</code> pour gérer les exceptions et l’instruction <code>throw</code> pour les engendrer.
 </blockquote>
 
-<p>La fonction <code>approximate_size()</code> lève des exceptions dans deux cas : si la taille donnée est plus grande que ce que la fonction peut gérer, ou si elle est plus petite que zéro.
+<p>La fonction <code>approximate_size()</code> lève des exceptions dans deux cas&nbsp;: si la taille donnée est plus grande que ce que la fonction peut gérer, ou si elle est plus petite que zéro.
 
 <pre class='nd pp'><code>if size &lt; 0:
     raise ValueError('number must be non-negative')</code></pre>
 
-<p>La syntaxe pour lever une exception est assez simple. Utilisez l’instruction <code>raise</raise>, suivie du nom de l’exception, et une chaine lisible humainement pour du débogage éventuel. La syntaxe est nous rappelle un appel de fonction. (En réalité, les exceptions sont implémentées comme étant des classes, et l’instruction <code>raise</code> sert en fait à créer une instance de la classe  <code>ValueError</code> en lui passant la chaine <code>'number must be non-negative'</code> à sa méthode d’initialisation. Mais <a href=iterators.html#defining-classes>nous sommes en train de prendre trop d’avance</a>&nbsp;!)
+<p>La syntaxe pour lever une exception est assez simple. Utilisez l’instruction <code>raise</raise>, suivie du nom de l’exception, et une chaine lisible humainement pour du débogage éventuel. La syntaxe nous rappelle un appel de fonction. En réalité, les exceptions sont implémentées comme étant des classes, et l’instruction <code>raise</code> sert en fait à créer une instance de la classe <code>ValueError</code> en lui passant la chaîne <code>'number must be non-negative'</code> à sa méthode d’initialisation. Mais <a href=iterators.html#defining-classes>nous sommes en train de prendre trop d’avance</a>&nbsp;!
 
 <blockquote class=note>
-<p><span class=u>&#x261E;</span>Vous n’avez pas besoin de gérer une exception que vous levez. Si une fonction ne la gère pas, elle est passée à la fonction appelante, puis à la fonction qui a appelé la fonction appelante, et ainsi de suite jusqu’en haut de la pile. Si l’exception n’est jamais gérer, votre programme plantera, Python affichera un «&nbsp;traceback&nbsp;» dans <var>stderr</var> et ce sera tout. Encore une fois, ce peut être quelque chose que vous voulez&nbsp;; ça dépend de ce que fait votre programme.
+<p><span class=u>&#x261E;</span>Vous n’avez pas besoin de gérer une exception que vous levez. Si une fonction ne la gère pas, elle est passée à la fonction appelante, puis à la fonction qui a appelé la fonction appelante, et ainsi de suite jusqu’en haut de la pile. Si l’exception n’est jamais gérée, votre programme plantera, Python affichera un «&nbsp;traceback&nbsp;» dans <var>stderr</var> et ce sera tout. Encore une fois, ce peut être quelque chose que vous voulez&nbsp;; ça dépend de ce que fait votre programme.
 </blockquote>
 
 <h3 id=importerror>Catching Import Errors</h3>
