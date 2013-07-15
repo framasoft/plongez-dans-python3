@@ -129,41 +129,41 @@ SyntaxError: non-keyword arg after keyword arg</samp></pre>
 <ol>
 <li>Ceci appelle la fonction la fonction <code>approximate_size()</code> avec <code>4000</code> comme premier paramètre (<var>size</var>) et <code>False</code> pour le paramètre nommé <var>a_kilobyte_is_1024_bytes</var>. (Il s’avère qu’il s’agit du second paramètre, mais ça n’a pas d’importance, comme vous allez le voir dans une minute.)
 <li>Ceci appelle la fonction <code>approximate_size()</code> avec <code>4000</code> pour le paramètre nommé <var>size</var> et <code>False</code> pour l’argument nommé <var>a_kilobyte_is_1024_bytes</var>. (Il s’avère que ces arguments sont dans le même ordre que ceux listés dans la déclaration de la fonction, mais ça n’a pas d’importance non plus.)
-<li>Ceci appelle la fonction <code>approximate_size()</code> avec <code>False</code> pour le paramètre nommé <var>a_kilobyte_is_1024_bytes</var> et <code>4000</code> pour l’argument nommé <var>size</var>. (Vous voyez&nbsp;? Je vous avez dit que l’ordre n’avait pas d’importance.)
-<li>Si cet appel échoue c'est parce que vous avez un paramètre nommé suivi d'un paramètre non nommé (positionel), et ça ne marche jamais. Lisez la liste d'argument de gauche à droite, une fois que vous avez un paramètre nommé, tous ceux qui suivent doivent aussi être nommés.
-<li>Cet appel échoue également, pour la même raison que le précédent. Est-ce surprenant ? Après tout, nous avons passé <code>4000</code> à l'argument nommé <code>size</code>, donc évidemment, <code>False</code> était destiné au paramètre <var>a_kilobyte_is_1024_bytes</var>. Mais Python ne fonctionne pas de cette façon. Dès que vous avez un paramètre nommé, tous les paramètres à la droite de celui-ci doivent aussi être nommés.
+<li>Ceci appelle la fonction <code>approximate_size()</code> avec <code>False</code> pour le paramètre nommé <var>a_kilobyte_is_1024_bytes</var> et <code>4000</code> pour l’argument nommé <var>size</var>. (Vous voyez&nbsp;? Je vous avais dit que l’ordre n’avait pas d’importance.)
+<li>Si cet appel échoue c’est parce que vous avez un paramètre nommé suivi d’un paramètre non nommé (positionel), et ça ne marche jamais. Lisez la liste d’argument de gauche à droite, une fois que vous avez un paramètre nommé, tous ceux qui suivent doivent aussi être nommés.
+<li>Cet appel échoue également, pour la même raison que le précédent. Est-ce surprenant&nbsp;? Après tout, nous avons passé <code>4000</code> à l’argument nommé <code>size</code>, donc évidemment, <code>False</code> était destiné au paramètre <var>a_kilobyte_is_1024_bytes</var>. Mais Python ne fonctionne pas de cette façon. Dès que vous avez un paramètre nommé, tous les paramètres à la droite de celui-ci doivent aussi être nommés.
 </ol>
 
 <p class=a>&#x2042;
 
 <h2 id=readability>Écrire du Code Lisible</h2>
-<p>Je ne vais pas vous ennuyer avec un long discours menaçant à propos de documenter son code. Sachez simplement que du code est écrit une fois, mais lu souvent, et l'audience la plus importante de votre code est vous-même, six mois après l'avoir écrit (c'est-à-dire après que vous ayiez tout oublié mais que devez corriger quelque chose). Python rend facile l'écriture de code lisible, tirez-en donc avantage. Vous me remercierez dans six mois.
+<p>Je ne vais pas vous ennuyer avec un long discours menaçant à propos de documenter son code. Sachez simplement que du code est écrit une fois, mais lu souvent, et l’audience la plus importante de votre code est vous-même, six mois après l’avoir écrit (c’est-à-dire après que vous ayiez tout oublié mais que devez corriger quelque chose). Python rend facile l’écriture de code lisible, tirez-en donc avantage. Vous me remercierez dans six mois.
 <h3 id=docstrings>Chaînes de Documentation</h3>
-<p>Vous pouvez documenter une fonction Python en lui donnant une chaine de documentation (« documentation string » en anglais, abrégé en <code>docstring</code>). Dans ce programme, la fonction <code>approximate_size()</code> a <code>docstring</code> une :
+<p>Vous pouvez documenter une fonction Python en lui donnant une chaîne de documentation («&nbsp;documentation string&nbsp;» en anglais, abrégé en <code>docstring</code>). Dans ce programme, la fonction <code>approximate_size()</code> a une <code>docstring</code>&nbsp;:
 <pre class='nd pp'><code>def approximate_size(size, a_kilobyte_is_1024_bytes=True):
-    '''Convertit une taille de fichier en une forme lisible par un humain.
+    '''Convertit une taille de fichier en un format lisible par un humain.
 
     Paramètres par mot-clef :
     size -- taille de fichiers en octets
     a_kilobyte_is_1024_bytes -- si True (par défaut), utilise des multiples de 1024
                                 si False, utilise des multiples de 1000
 
-    Retourne : une chaine de caractères
+    Retourne : une chaîne de caractères
 
     '''</code></pre>
 <aside>Toute fonction a droit à une docstring décente.</aside>
-<p>Les triple apostrophes signifient qu'il s'agit d'une chaine multiligne. Tout ce qui est entre les apostrophes de début et de fin fait partie de la même chaine, y compris les retour chariot, les espaces de début de ligne, et les autres caractères de citation. Vous pouvez les utiliser n'importe où, mais vous les verrez le plus fréquemment lors de la définition d'une <code>docstring</code>.
+<p>Les triple apostrophes signifient qu’il s’agit d’une chaîne multiligne. Tout ce qui est entre les apostrophes de début et de fin fait partie de la même chaîne, y compris les retour chariot, les espaces de début de ligne, et les autres caractères de citation. Vous pouvez les utiliser n’importe où, mais vous les verrez le plus fréquemment lors de la définition d’une <code>docstring</code>.
 <blockquote class='note compare perl5'>
-<p><span class=u>&#x261E;</span>Les triples apostrophes sont aussi une façon simple de définir une chaine contenant à la fois des apostrophes et des guillemets, comme <code>qq/.../</code> dans Perl 5.
+<p><span class=u>&#x261E;</span>Les triples apostrophes sont aussi une façon simple de définir une chaîne contenant à la fois des apostrophes et des guillemets, comme <code>qq/.../</code> dans Perl 5.
 </blockquote>
-<p>Tout ce qui est entre les triples apostrophes est la <code>docstring</code> de la fonction, qui documente ce que fait la fonction. Une <code>docstring</code>, si elle existe, doit être la première chose définie dans la fonction (c'est-à-dire la ligne suivant immédiatement la déclaration de la fonction). Vous n'avez pas techniquement besoin de donner une <code>docstring</code>  votre fonction, mais vous devriez toujours. Je sais que vous avez déjà entendu cela dans tous les cours de programmation que vous avez eu, mais Python vous y incite encore plus : la <code>docstring</code> est disponible à tout moment de l'exécution en tant qu'attribut de la fonction.
+<p>Tout ce qui est entre les triples apostrophes est la <code>docstring</code> de la fonction, qui documente ce que fait la fonction. Une <code>docstring</code>, si elle existe, doit être la première chose définie dans la fonction (c’est-à-dire la ligne suivant immédiatement la déclaration de la fonction). Vous n’avez pas techniquement besoin de donner une <code>docstring</code> à votre fonction, mais vous devriez toujours. Je sais que vous avez déjà entendu cela dans tous les cours de programmation que vous avez eu, mais Python vous y incite encore plus&nbsp;: la <code>docstring</code> est disponible à tout moment de l’exécution en tant qu’attribut de la fonction.
 <blockquote class=note>
-<p><span class=u>&#x261E;</span>Beaucoup d'<abbr>IDE</abbr>s Python utilisent la <code>docstring</code> pour fournir de la documentation contextuelle, de telle façon que lorsque vous tapez le nom d'une fonction, sa <code>docstring</code> apparait dans une infobulle. Ça peut être incroyablement utile, mais sa qualité dépend de la qualité des <code>docstring</code>s que vous écrivez.
+<p><span class=u>&#x261E;</span>Beaucoup d’<abbr>EDI</abbr>s Python utilisent la <code>docstring</code> pour fournir de la documentation contextuelle, de telle façon que lorsque vous tapez le nom d’une fonction, sa <code>docstring</code> apparait dans une infobulle. Ça peut être incroyablement utile, mais sa qualité dépend de la qualité des <code>docstring</code>s que vous écrivez.
 </blockquote>
 <p class=a>&#x2042;
 
 <h2 id=importsearchpath>Le Chemin de Recherche de <code>import</code></h2>
-<p>Avant d'aller plus loin, je voudrais mentionner brièvement le chemin de recherche de bibliothèques. Python cherche à plusieurs endroits lorsque vous essayez d'importer un module. Plus spécifiquement, il regarde dans tous les dossiers définis dans <code>sys.path</code>. Il s'agit uniquement d'une liste, et vous pouvez facilement la voir ou la modifier avec les méthodes de liste standards (Vous en sourez plus sur les listes dans <a href=native-datatypes.html#lists>Les Types Prédéfinis</a>.)
+<p>Avant d’aller plus loin, je voudrais mentionner brièvement le chemin de recherche de bibliothèques. Python cherche à plusieurs endroits lorsque vous essayez d’importer un module. Plus spécifiquement, il regarde dans tous les dossiers définis dans <code>sys.path</code>. Il s’agit uniquement d’une liste, et vous pouvez facilement la voir ou la modifier avec les méthodes de liste standards (Vous en saurez plus sur les listes dans <a href=native-datatypes.html#lists>Les Types Prédéfinis</a>.)
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>import sys</kbd>                                                 <span class=u>&#x2460;</span></a>
 <a><samp class=p>>>> </samp><kbd class=pp>sys.path</kbd>                                                   <span class=u>&#x2461;</span></a>
@@ -188,10 +188,10 @@ SyntaxError: non-keyword arg after keyword arg</samp></pre>
  '/usr/local/lib/python3.1/dist-packages']</samp></pre>
 <ol>
 <li>Importer le module <code>sys</code> rend disponible toutes ses fonctions et attributs.
-<li><code>sys.path</code> est une liste de noms de dossiers qui constitue le chemin de recherche actuel. (Le votre ressemblera à autre chose, en fonction de votre système d'exploitation, la version de Python que vous utilisez, et où il a été installé à l'origine.). Python recherchera dans ces dossiers (et dans cet ordre) un fichier <code>.py</code> dont le nom correspond à celui que vous essayez d'importer.
-<li>En fait, j'ai menti ; la vérité est bien plus compliquée que cela, car tous les modules ne sont pas stockés dans des fichiers <code>.py</code>. Certains sont des Actually, I lied; the truth is more complicated than that, because not all modules are stored as <code>.py</code> files. Certains sont des <i>modules natifs</i> ; ils font en effet partie de Python lui-même. Les modules natifs se comportent comme des modules classiques, mais leur code Python n'est pas disponible, car ils ne sont pas écrits en Python ! (Comme Python lui-même, ces modules natifs sont écrits en C.)
-<li>Vous pouvez ajouter un nouveau dossier au chemin de recherche de Python en ajoutant le nom de celui-ci à <code>sys.path</ode>, et alors Python regardera aussi dans ce dossier quand vous essayez d'importer un module. Et ce tant que Python est en cours d'exécution.
-<li>En utilisant <code>sys.path.insert(0, <var>new_path</var>)</code>, vous ajoutez un nouveau dossier comme premier élément de la liste <code>sys.path</code>, et donc au début du chemin de recherche de Python. C'est presque toujours ce que vous voulez. Dans le cas de conflits de noms (par exemple si Python est distribué avec la version 2 d'une bibliothèque donnée mais que vous voulez utiliser la version 3), cela permet de s'assurer que vous modules seront trouvés et utilisés à la place de ceux qui sont distribués avec Python.
+<li><code>sys.path</code> est une liste de noms de dossiers qui constitue le chemin de recherche actuel. (Le vôtre ressemblera à autre chose, en fonction de votre système d’exploitation, la version de Python que vous utilisez, et où il a été installé à l’origine.). Python recherchera dans ces dossiers (et dans cet ordre) un fichier <code>.py</code> dont le nom correspond à celui que vous essayez d’importer.
+<li>En fait, j’ai menti ; la vérité est bien plus compliquée que cela, car tous les modules ne sont pas stockés dans des fichiers <code>.py</code>. Certains sont des <i>modules natifs</i>&nbsp;: ils font en effet partie de Python lui-même. Les modules natifs se comportent comme des modules classiques, mais leur code Python n’est pas disponible, car ils ne sont pas écrits en Python&nbsp;:! (Comme Python lui-même, ces modules natifs sont écrits en C.)
+<li>Vous pouvez ajouter un nouveau dossier au chemin de recherche de Python en ajoutant le nom de celui-ci à <code>sys.path</code>, et alors Python regardera aussi dans ce dossier quand vous essayez d’importer un module. Et ce tant que Python est en cours d’exécution.
+<li>En utilisant <code>sys.path.insert(0, <var>new_path</var>)</code>, vous ajoutez un nouveau dossier comme premier élément de la liste <code>sys.path</code>, et donc au début du chemin de recherche de Python. C’est presque toujours ce que vous voulez. Dans le cas de conflits de noms (par exemple si Python est distribué avec la version 2 d’une bibliothèque donnée mais que vous voulez utiliser la version 3), cela permet de s’assurer que vos modules seront trouvés et utilisés à la place de ceux qui sont distribués avec Python.
 </ol>
 
 <p class=a>&#x2042;
