@@ -15,44 +15,44 @@ body{counter-reset:h1 3}
 <link rel=stylesheet media=print href=print.css>
 <meta name=viewport content='initial-scale=1.0'>
 <form action=http://www.google.com/cse><div><input type=hidden name=cx value=014021643941856155761:l5eihuescdw><input type=hidden name=ie value=UTF-8>&nbsp;<input type=search name=q size=25 placeholder="powered by Google&trade;">&nbsp;<input type=submit name=root value=Search></div></form>
-<p>You are here: <a href=index.html>Home</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#comprehensions>Dive Into Python 3</a> <span class=u>&#8227;</span>
-<p id=level>Difficulty level: <span class=u title=beginner>&#x2666;&#x2666;&#x2662;&#x2662;&#x2662;</span>
+<p>Vous êtes ici : <a href=index.html>Index</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#comprehensions>Plongez dans Python 3</a> <span class=u>&#8227;</span>
+<p id=level>Niveau de difficulté : <span class=u title=beginner>&#x2666;&#x2666;&#x2662;&#x2662;&#x2662;</span>
 <h1>Comprehensions</h1>
 <blockquote class=q>
-<p><span class=u>&#x275D;</span> Our imagination is stretched to the utmost, not, as in fiction, to imagine things which are not really there, but just to comprehend those things which are. <span class=u>&#x275E;</span><br>&mdash; <a href=http://en.wikiquote.org/wiki/Richard_Feynman>Richard Feynman</a>
+<p><span class=u>&#x275D;</span> Notre imagination est étirée à l’extrême, non pas, comme dans la fiction, à imaginer des choses qui n’existent pas vraiment, mais seulement à comprendre ces choses qui sont là. <span class=u>&#x275E;</span><br>&mdash; <a href=http://en.wikiquote.org/wiki/Richard_Feynman>Richard Feynman</a>
 </blockquote>
 <p id=toc>&nbsp;
-<h2 id=divingin>Diving In</h2>
-<p class=f>Every programming language has that one feature, a complicated thing intentionally made simple. If you&#8217;re coming from another language, you could easily miss it, because your old language didn&#8217;t make that thing simple (because it was busy making something else simple instead). This chapter will teach you about list comprehensions, dictionary comprehensions, and set comprehensions: three related concepts centered around one very powerful technique. But first, I want to take a little detour into two modules that will help you navigate your local file system.
+<h2 id=divingin>Approfondir</h2>
+<p class=f>Tout langage de programmation a cette fonctionnalité, une chose compliquée intentionellement rendue simple. Si vous venez d’un autre langage, vous pourriez facilement la manquer, car votre ancien langage ne la rendait pas simple (parce qu’il était occupé à rendre quelque chose d’autre simple à la place). Ce chapitre vous apprendra à utiliser les listes par compréhension, les dictionnaires par compréhension, et les ensembles par compréhension : ces trois concepts sont centrés autour d’une technique très puissante. Mais d’abord, je vais faire un détour par deux modules qui vous aideront à naviguer à travers votre système de fichiers.
 
 <p class=a>&#x2042;
 
-<h2 id=os>Working With Files And Directories</h2>
+<h2 id=os>Travailler Avec Des Fichiers Et Des Répertoires.</h2>
 
-<p>Python 3 comes with a module called <code>os</code>, which stands for &#8220;operating system.&#8221; The <a href=http://docs.python.org/3.1/library/os.html><code>os</code> module</a> contains a plethora of functions to get information on&nbsp;&mdash;&nbsp;and in some cases, to manipulate&nbsp;&mdash;&nbsp;local directories, files, processes, and environment variables. Python does its best to offer a unified <abbr>API</abbr> across <a href=installing-python.html>all supported operating systems</a> so your programs can run on any computer with as little platform-specific code as possible.
+<p>Python 3 est fourni avec un module appelé <code>os</code>, ce qui signifie « système d’exploitation ». Le <a href=http://docs.python.org/3.1/library/os.html>module <code>os</code></a> contient une pléthore de fonctions pour obtenir des informations sur &nbsp;&mdash;&nbsp;et dans certains cas pour manipuler&nbsp;&mdash;&nbsp;les répertoires et fichiers locaux, les processus, et les variables d’environnement. Python fait de son mieux pour offrir une <abbr>API</abbr> unifiée pour <a href=installing-python.html>tous les systèmes d’exploitation supportés</a> de façon à ce que vos programmes puissent tourner sur n’importe quel ordinateur avec le moins de code spécifique à une plateforme possible.
 
-<h3 id=getcwd>The Current Working Directory</h3>
+<h3 id=getcwd>Le Répertoire De Travail Actuel</h3>
 
-<p>When you&#8217;re just getting started with Python, you&#8217;re going to spend a lot of time in <a href=installing-python.html#idle>the Python Shell</a>. Throughout this book, you will see examples that go like this:
-
-<ol>
-<li>Import one of the modules in the <a href=examples/><code>examples</code> folder</a>
-<li>Call a function in that module
-<li>Explain the result
-</ol>
-
-<aside>There is always a current working directory.</aside>
-
-<p>If you don&#8217;t know about the current working directory, step 1 will probably fail with an <code>ImportError</code>. Why? Because Python will look for the example module in <a href=your-first-python-program.html#importsearchpath>the import search path</a>, but it won&#8217;t find it because the <code>examples</code> folder isn&#8217;t one of the directories in the search path. To get past this, you can do one of two things:
+<p>Lorsque vous commencez à vous familiariser avec Python, vous passez beaucoup de temps dans <a href=installing-python.html#idle>le Shell Python</a>. Au cours de ce livre, vous verrez des exemples qui sont présentés de cette façon :
 
 <ol>
-<li>Add the <code>examples</code> folder to the import search path
-<li>Change the current working directory to the <code>examples</code> folder
+<li>Importez un des modules du répertoire <a href=examples/><code>examples</code></a>
+<li>Appelez une fonction de ce module
+<li>Expliquez le résultat
 </ol>
 
-<p>The current working directory is an invisible property that Python holds in memory at all times. There is always a current working directory, whether you&#8217;re in the Python Shell, running your own Python script from the command line, or running a Python <abbr>CGI</abbr> script on a web server somewhere.
+<aside>Il y a toujours un répertoire de travail.</aside>
 
-<p>The <code>os</code> module contains two functions to deal with the current working directory.
+<p>Si vous ne connaissez pas le répertoire de travail, l’étape 1 va probablement échouer avec une <code>ImportError</code>. Pourquoi ? Parce que Pythonn recherchera le module d’exemple dans <a href=your-first-python-program.html#importsearchpath>le chemin de recherche d’import</a>, mais ne le trouvera pas car le dossier <code>examples</code> n’est pas l’un des répertoires du chemin de recherche. Pour régler ce problème, vous avez deux possibilités :
+
+<ol>
+<li>Ajouter le dossier <code>examples</code> au chemin de recherche d’import
+<li>Changer le répertoire de travail actuel pour être le dossier <code>examples</code>
+</ol>
+
+<p>Le répertoire de travail courant est une propriété invisible que Python conserve en mémoire en permanence. Il y a toujours un répertoire de travail courant, que vous soyiez dans le Shell Python, que vous exécutiez votre script depuis la ligne de commande ou en temps que script CGI quelque part sur un serveur web.
+
+<p>Le module <code>os</code> contient deux fonctions traitant du répertoire d’exécution actuel.
 
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>import os</kbd>                                            <span class=u>&#x2460;</span></a>
@@ -62,15 +62,15 @@ body{counter-reset:h1 3}
 <a><samp class=p>>>> </samp><kbd class=pp>print(os.getcwd())</kbd>                                   <span class=u>&#x2463;</span></a>
 <samp>C:\Users\pilgrim\diveintopython3\examples</samp></pre>
 <ol>
-<li>The <code>os</code> module comes with Python; you can import it anytime, anywhere.
-<li>Use the <code>os.getcwd()</code> function to get the current working directory. When you run the graphical Python Shell, the current working directory starts as the directory where the Python Shell executable is. On Windows, this depends on where you installed Python; the default directory is <code>c:\Python31</code>. If you run the Python Shell from the command line, the current working directory starts as the directory you were in when you ran <code>python3</code>.
-<li>Use the <code>os.chdir()</code> function to change the current working directory.
-<li>When I called the <code>os.chdir()</code> function, I used a Linux-style pathname (forward slashes, no drive letter) even though I&#8217;m on Windows. This is one of the places where Python tries to paper over the differences between operating systems.
+<li>Le module <code>os</code> est fournit avec Python ; vous pouvez l’importer de n’importe où, n’importe quand.
+<li>Utilisez la fonction <code>os.getcwd()</code> pour obtenir le répertoire d’exécution. Quand vous utilisez le Shell Python graphique, le répertoire de travail initial est votre répertoire utilisateur. Sous Windows c’est l’endroit où vous avez installé Python, le répertoire par défaut étant <code>c:\Python31</code>. Si vous lancez le Shell Python depuis la ligne de commande, le répertoire de travail initial sera le répertoire d’où vous avez exécuté <code>python3</code>.
+<li>Utilisez la fonction <code>os.chdir()</code> pour changer le répertoire de travail courant.
+<li>Quand j’ai appellé la fonction <code>os.chdir()</code>, j’ai utilisé un nom de chemin tels que ceux utilisé par Linux (slashs, pas de lettre de lecteur) même si je suis sous Windows. C’est un des cas où Python essaye de palier les différences entre les systèmes d’exploitation.
 </ol>
 
-<h3 id=ospath>Working With Filenames and Directory Names</h3>
+<h3 id=ospath>Travailler Avec Les Noms de Fichiers Et De Répertoires</h3>
 
-<p>While we&#8217;re on the subject of directories, I want to point out the <code>os.path</code> module. <code>os.path</code> contains functions for manipulating filenames and directory names.
+<p>Puisque nous sommes en train de parler de répertoires, je voulais vous montrer le module <code>os.path</code>. <code>os.path</code> contient des fonctions pour manipuler les noms de fichiers et de répertoires.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os</kbd>
@@ -83,13 +83,13 @@ body{counter-reset:h1 3}
 <a><samp class=p>>>> </samp><kbd class=pp>print(os.path.join(os.path.expanduser('~'), 'diveintopython3', 'examples', 'humansize.py'))</kbd>  <span class=u>&#x2463;</span></a>
 <samp>c:\Users\pilgrim\diveintopython3\examples\humansize.py</samp></pre>
 <ol>
-<li>The <code>os.path.join()</code> function constructs a pathname out of one or more partial pathnames. In this case, it simply concatenates strings.
-<li>In this slightly less trivial case, calling the <code>os.path.join()</code> function will add an extra slash to the pathname before joining it to the filename. It&#8217;s a backslash instead of a forward slash, because I constructed this example on Windows. If you replicate this example on Linux or Mac OS X, you&#8217;ll see a forward slash instead. Don&#8217;t fuss with slashes; always use <code>os.path.join()</code> and let Python do the right thing.
-<li>The <code>os.path.expanduser()</code> function will expand a pathname that uses <code>~</code> to represent the current user&#8217;s home directory. This works on any platform where users have a home directory, including Linux, Mac OS X, and Windows. The returned path does not have a trailing slash, but the <code>os.path.join()</code> function doesn&#8217;t mind.
-<li>Combining these techniques, you can easily construct pathnames for directories and files in the user&#8217;s home directory. The <code>os.path.join()</code> function can take any number of arguments. I was overjoyed when I discovered this, since <code>addSlashIfNecessary()</code> is one of the stupid little functions I always need to write when building up my toolbox in a new language. <em>Do not</em> write this stupid little function in Python; smart people have already taken care of it for you.
+<li>La fonction <code>os.path.join()</code> construit un nom de chemin à partir d’un ou plusieurs noms de chemins partiels. Dans ce cas, il concatène simplement des chaines.
+<li>Dans ce cas un peu moins trivial, appeler la fonction <code>os.path.join()</code> ajoutera un backslash supplémentaire à la fin du nom du chemin avant de le joindre au nom du fichier. C’est un backlash plutôt qu’slash, car j’ai construit cet exemple sur Windows. Si vous le faites sur Linux ou Mac OS X, vous verez un slash à la place. Ne vous embêtez pas avec les (anti)slashs, utilisez toujours<code>os.path.join()</code> et laissez Python le faire correctement.
+<li>La fonction <code>os.path.expanduser()</code> étendra un chemin qui utilise <code>~</code> pour représenter le dossier personnel d’un utilisateur. Ceci fonctionne sur n’importe quelle plateforme sur laquelle les utilisateurs ont un répertoire personne, y compris Linux, Mac OS X, et Windows. Le chemin retourné n’a pas de slash final, mais la fonction <code>os.path.join()</code> n’en a pas besoin.
+<li>En combinant ces deux techniques, vous pouvez facilement construire des chemins pour les répertoires et fichiers dans le répertoire pesonnel de l’utilisateur. La fonction <code>os.path.join()</code> peut prendre autant de paramètres que nécessaire. J’étais aux anges quand j’ai découvert ceci, puisque <code>addSlashIfNecessary()</code> était une de ces stupides petites fonctions que je devais toujous écrire lorsque je construisais ma boîte à outils dans un nouveau langage. N’écrivez <em>pas</em> cette stupide petite fonction en Python ; des personnes intelligentes s’en sont déjà chargées pour vous.
 </ol>
 
-<p><code>os.path</code> also contains functions to split full pathnames, directory names, and filenames into their constituent parts.
+<p><code>os.path</code> contient également des fonctions pour séparer les noms de chemins, de répertoires, et de fichiers en plusieurs parties.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>pathname = '/Users/pilgrim/diveintopython3/examples/humansize.py'</kbd>
@@ -106,11 +106,11 @@ body{counter-reset:h1 3}
 <samp class=p>>>> </samp><kbd class=pp>extension</kbd>
 <samp class=pp>'.py'</samp></pre>
 <ol>
-<li>The <code>split</code> function splits a full pathname and returns a tuple containing the path and filename.
-<li>Remember when I said you could use <a href=native-datatypes.html#multivar>multi-variable assignment</a> to return multiple values from a function? The <code>os.path.split()</code> function does exactly that. You assign the return value of the <code>split</code> function into a tuple of two variables. Each variable receives the value of the corresponding element of the returned tuple.
-<li>The first variable, <var>dirname</var>, receives the value of the first element of the tuple returned from the <code>os.path.split()</code> function, the file path.
-<li>The second variable, <var>filename</var>, receives the value of the second element of the tuple returned from the <code>os.path.split()</code> function, the filename.
-<li><code>os.path</code> also contains the <code>os.path.splitext()</code> function, which splits a filename and returns a tuple containing the filename and the file extension.  You use the same technique to assign each of them to separate variables.
+<li>La fonction <code>split</code> sépare un chemin complet et retourne un doublet contenant le chemin et le nom du fichier.
+<li>Vous souvenez-vous de quand je vous ai dit d’utiliser <a href=native-datatypes.html#multivar>l’assignation à plusieurs variables</a> pour retourner plusieurs variables d’une fonction ? La fonction  <code>os.path.split()</code> fait exactement ça. Vous pouvez assigner la valeur de retour de la fonction <code>split</code> à un doublet (un <code>tuple</code> à deux éléments). Chacune des variables recevra la valeur de l’élément correspondant du doublet retourné.
+<li>La première variable, <var>dirname</var>, reçoit la valeur du premier élement du doublet retourné par la fonction <code>os.path.split()</code>, le chemin du fichier.
+<li>La seconde variable, <var>filename</var>, reçoit la valeur du second élément du doublet retourné par la fonction <code>os.path.split()</code>, le nom du fichier.
+<li><code>os.path</code> contient également la fonction <code>os.path.splitext()</code>, qui sépare un nom de fichier et retourne un doublet contenant le nom du fichier, et l’extension du fichier. Vous pouvez utiliser la même technique d’assigner chacune des deux pour séparer les variables.
 </ol>
 
 <h3 id=glob>Listing Directories</h3>
