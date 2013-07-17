@@ -251,7 +251,7 @@ SyntaxError: non-keyword arg after keyword arg</samp></pre>
 </ol>
 <p>Après quelques protestations initiales et des analogies narquoises à Fortran, vous ferez la paix avec ceci et commencerez à en voir les bénéfices. Un avantage majeur est que tous les programmes Python se ressemblent, puisque l’indentation est une attente du langage et pas seulement une question de style. Cela rend plus simple la lecture et la compréhension de votre code Python par d’autres personnes.
 <blockquote class='note compare java'>
-<p><span class=u>&#x261E;</span>Python utilise les retours chariot pour séparer les instructions et un double-point et une indentation pour séparer les blocs de code. <abbr>C++</abbr> et Java utilisent des point-virgules pour séparer les instructions et des accolades pour séparer les blocs de code.
+<p><span class=u>&#x261E;</span>Python utilise les retours chariot pour séparer les instructions et un double point et une indentation pour séparer les blocs de code. <abbr>C++</abbr> et Java utilisent des point-virgules pour séparer les instructions et des accolades pour séparer les blocs de code.
 </blockquote>
 <p class=a>&#x2042;
 
@@ -259,9 +259,9 @@ SyntaxError: non-keyword arg after keyword arg</samp></pre>
 
 <p>Les exceptions sont partout en Python. Presque tous les modules de la bibliothèque standard de Python les utilise, et Python lui-même en lève dans beaucoup de situations différentes. Vous verrez que nous en utilisons fréquemment au cours de ce livre.
 
-<p>Qu’est-ce qu’une exception ? En général c’est une erreur indiquant que quelque chose s’est mal passé (Toutes les exceptions ne sont pas des erreurs, mais nous passerons là-dessus pour le moment.). Certains langages de programmation encouragent l’utilisation de code de retour d’erreur, que vous pouvez <em>vérifier</em>. Python encourage l’utilisation d’exceptions que vous pouvez <em>gérer</em>.
+<p>Qu’est-ce qu’une exception ? En général, c’est une erreur indiquant que quelque chose s’est mal passé (Toutes les exceptions ne sont pas des erreurs, mais nous passerons là-dessus pour le moment.). Certains langages de programmation encouragent l’utilisation de code de retour d’erreur, que vous pouvez <em>vérifier</em>. Python encourage l’utilisation d’exceptions que vous pouvez <em>gérer</em>.
 
-<p>Quand une erreur survient dans le Shell Python, elle est affichée avec quelques détails à propos de l’exceptions et de comment elle est survenue, et c’est tout. Ceci est appelé une exception <em>non gérée</em>. Lorsque l’exception a été levée, il n’y avait pas de code pour explicitement la remarquer et la gérer, donc elle est remontée jusqu’au niveau supérieur : le Shell Python, qui affiche quelques informations de débogage et met un point final à cette histoire. Dans le shell, ce n’est pas bien grave. Mais si ça arrive alors que votre programme Python réel est en cours d’exécution, tout le programme va s’arrêter en hurlant et rien ne gèrera l’exception. Ça peut être ce que vous désirez, mais peut-être pas.
+<p>Quand une erreur survient dans le Shell Python, elle est affichée avec quelques détails à propos de l’exception et de comment elle est survenue, et c’est tout. Ceci est appelé une exception <em>non gérée</em>. Lorsque l’exception a été levée, il n’y avait pas de code pour explicitement la remarquer et la gérer, donc elle est remontée jusqu’au niveau supérieur&nbsp;: le Shell Python, qui affiche quelques informations de débogage et met un point final à cette histoire. Dans le shell, ce n’est pas bien grave. Mais si ça arrive alors que votre programme Python réel est en cours d’exécution, tout le programme va s’arrêter en hurlant et rien ne gèrera l’exception. Ça peut être ce que vous désirez, mais peut-être pas.
 
 <blockquote class='note compare java'>
 <p><span class=u>&#x261E;</span>Contrairement à Java, les fonctions Python ne déclarent pas quelles exceptions elles peuvent lever. C’est à vous de déterminer quelles exceptions vous avez à gérer.
@@ -278,7 +278,7 @@ SyntaxError: non-keyword arg after keyword arg</samp></pre>
 <pre class='nd pp'><code>if size &lt; 0:
     raise ValueError('number must be non-negative')</code></pre>
 
-<p>La syntaxe pour lever une exception est assez simple. Utilisez l’instruction <code>raise</raise>, suivie du nom de l’exception, et une chaine lisible humainement pour du débogage éventuel. La syntaxe nous rappelle un appel de fonction. En réalité, les exceptions sont implémentées comme étant des classes, et l’instruction <code>raise</code> sert en fait à créer une instance de la classe <code>ValueError</code> en lui passant la chaîne <code>'number must be non-negative'</code> à sa méthode d’initialisation. Mais <a href=iterators.html#defining-classes>nous sommes en train de prendre trop d’avance</a>&nbsp;!
+<p>La syntaxe pour lever une exception est assez simple. Utilisez l’instruction <code>raise</raise>, suivie du nom de l’exception, et une chaîne lisible humainement pour du débogage éventuel. La syntaxe nous rappelle un appel de fonction. En réalité, les exceptions sont implémentées comme étant des classes, et l’instruction <code>raise</code> sert en fait à créer une instance de la classe <code>ValueError</code> en lui passant la chaîne <code>'number must be non-negative'</code> à sa méthode d’initialisation. Mais <a href=iterators.html#defining-classes>nous sommes en train de prendre trop d’avance</a>&nbsp;!
 
 <blockquote class=note>
 <p><span class=u>&#x261E;</span>Vous n’avez pas besoin de gérer une exception que vous levez. Si une fonction ne la gère pas, elle est passée à la fonction appelante, puis à la fonction qui a appelé la fonction appelante, et ainsi de suite jusqu’en haut de la pile. Si l’exception n’est jamais gérée, votre programme plantera, Python affichera un «&nbsp;traceback&nbsp;» dans <var>stderr</var> et ce sera tout. Encore une fois, ce peut être quelque chose que vous voulez&nbsp;; ça dépend de ce que fait votre programme.
@@ -286,28 +286,28 @@ SyntaxError: non-keyword arg after keyword arg</samp></pre>
 
 <h3 id=importerror>Gérer les Erreurs d’Import</h3>
 
-<p>Une des exceptions fournies par Python est <code>ImportError</code>, qui est levée lorsque vous essayez d’importer un module et échouez. Cela peut arriver pour diverses raisons, mais le cas le plus simplement est que le module n’existe pas dans votre <a href=#importsearchpath>chemin de recherche d’import</a>. Vous pouvez utiliser ceci pour inclure des fonctionnalités optionelles dans votre programme. Par exemple <a href=case-study-porting-chardet-to-python-3.html>la bibliothèque <code>chardet</code></a> fournit une détection automatique des encodages de caractères. Peut-être que votre programme veut utiliser cette bibliothèque <em>si elle est disponible</em>, mais continuer correctement si l’utilisateur ne l’a pas installée. Vous pouvez faire cela avec un bloc <code>try..exception</code>.
+<p>Une des exceptions fournies par Python est <code>ImportError</code>, qui est levée lorsque vous essayez d’importer un module et échouez. Cela peut arriver pour diverses raisons, mais le cas le plus simplement est que le module n’existe pas dans votre <a href=#importsearchpath>chemin de recherche d’import</a>. Vous pouvez utiliser ceci pour inclure des fonctionnalités optionelles dans votre programme. Par exemple <a href=case-study-porting-chardet-to-python-3.html>la bibliothèque <code>chardet</code></a> fournit une détection automatique des encodages de caractères. Peut-être que votre programme veut utiliser cette bibliothèque <em>si elle est disponible</em>, mais continuer correctement si l’utilisateur ne l’a pas installée. Vous pouvez faire cela avec un bloc <code>try..except</code>.
 
 <pre class='nd pp'><code><mark>try</mark>:
   import chardet
 <mark>except</mark> ImportError:
   chardet = None</code></pre>
 
-<p>Par la suite, vous pouvez vérifier la présence du module <code>chardet</code> avec une simple instruction <code>if</code> :
+<p>Par la suite, vous pouvez vérifier la présence du module <code>chardet</code> avec une simple instruction <code>if</code>&nbsp;:
 
 <pre class='nd pp'><code>if chardet:
   # faire quelque chose
 else:
-  # continuer de toutes façons</code></pre>
+  # continuer de toute façon</code></pre>
 
-<p>Un autre cas courant d’utilisation de l’exception <code>ImportError</code> est lorsque deux modules implémentent une même <abbr>API</abbr>, mais que l’un est préférable à l’autre. (Par exemple s’il est plus rapide ou utilise moins de mémoire.) Vous pouvez essayer d’importer le premier module, mais vous résigner à en utiliser un autre si le premier import échoue. Par exemple, <a href=xml.html>le chapitre sur XML</a> parle de deux modules qui implémentent une même <abbr>API</abbr>, appelée <abbr>API</abbr> <code>ElementTree</code>. Le premier, <code>lxml</code>, est un module tiers que vous devez télécharger et installer vous-même. Le second, <code>xml.etree.ElementTree</code>, est plus lent, mais fait partie de la bibliothèque standard de Python 3.
+<p>Un autre cas courant d’utilisation de l’exception <code>ImportError</code> est lorsque deux modules implémentent une même <abbr>API</abbr>, mais que l’un est préférable à l’autre (Par exemple s’il est plus rapide ou utilise moins de mémoire.). Vous pouvez essayer d’importer le premier module, mais vous résigner à en utiliser un autre si le premier import échoue. Par exemple, <a href=xml.html>le chapitre sur XML</a> parle de deux modules qui implémentent une même <abbr>API</abbr>, appelée <abbr>API</abbr> <code>ElementTree</code>. Le premier, <code>lxml</code>, est un module tiers que vous devez télécharger et installer vous-même. Le second, <code>xml.etree.ElementTree</code>, est plus lent, mais fait partie de la bibliothèque standard de Python 3.
 
 <pre class='nd pp'><code>try:
     from lxml import etree
 except ImportError:
     import xml.etree.ElementTree as etree</code></pre>
 
-<p>À propos, à la fin de ce bloc <code>try..except</code>, vous avez importé <em>un</em> des modules et l’avez appelé <var>etree</var>. Puisque les deux modules ont une même <abbr>API</abbr>, le reste du code n’a pas besoin de savoir lequel des deux a été importé. Et puisque le module qui a <em>effectivment</em> été importé est toujours appelé <var>etree</var>, le reste de votre code n’a pas besoin d'avoir recours à des instructions <code>if</code> pour appeler des modules nommés différement.
+<p>À propos, à la fin de ce bloc <code>try..except</code>, vous avez importé <em>un</em> des modules et l’avez appelé <var>etree</var>. Puisque les deux modules ont une même <abbr>API</abbr>, le reste du code n’a pas besoin de savoir lequel des deux a été importé. Et puisque le module qui a <em>effectivement</em> été importé est toujours appelé <var>etree</var>, le reste de votre code n’a pas besoin d’avoir recours à des instructions <code>if</code> pour appeler des modules nommés différement.
 
 <p class=a>&#x2042;
 
@@ -333,7 +333,7 @@ NameError: name 'x' is not defined</samp>
 
 <h2 id=case>La Casse a Toujours de l’Importance.</h2>
 
-<p>Tous les noms en Python sont sensibles à la casse : noms de variables, de fonctions, de classes, de modules, et d’exceptions. Vous pouvez les récupérer, les définir, les appeler, les construire, les importer, et ou les lever, c’est sensible à la casse.
+<p>Tous les noms en Python sont sensibles à la casse&nbsp;: noms de variables, de fonctions, de classes, de modules, et d’exceptions. Vous pouvez les récupérer, les définir, les appeler, les construire, les importer, et ou les lever, c’est sensible à la casse.
 
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>an_integer = 1</kbd>
@@ -367,7 +367,7 @@ if __name__ == '__main__':
 <blockquote class='note compare clang'>
 <p><span class=u>&#x261E;</span>Comme le <abbr>C</abbr>, Python utilise <code>==</code> pour les comparaisons et <code>=</code> pour les assignations. Contrairement au <abbr>C</abbr>, Python ne supporte pas l’assignation à l’intérieur d’une autre instruction, donc il n’y a aucun risque d’assigner accidentellement une valeur que vous voulez comparer.
 </blockquote>
-<p>Qu’est-ce qui rend cette instruction <code>if</code> si spéciale ? Eh bien, les modules sont des objets, et tous les objets ont un attribut automatique <code>__name__</code>, qui contient le nom d’un module. Le nom d’un module dépend de la façon dont vous utilisez le module. Si vous avez importé le module, <code>__name__</code> est le nom du module, sans le nom du répertoire et sans l’extension du fichier.
+<p>Qu’est-ce qui rend cette instruction <code>if</code> si spéciale&nbsp;? Eh bien, les modules sont des objets, et tous les objets ont un attribut automatique <code>__name__</code>, qui contient le nom d’un module. Le nom d’un module dépend de la façon dont vous utilisez le module. Si vous avez importé le module, <code>__name__</code> est le nom du module, sans le nom du répertoire et sans l’extension du fichier.
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>import humansize</kbd>
 <samp class=p>>>> </samp><kbd class=pp>humansize.__name__</kbd>
@@ -377,17 +377,17 @@ if __name__ == '__main__':
 <samp class=p>c:\home\diveintopython3> </samp><kbd>c:\python31\python.exe humansize.py</kbd>
 <samp>1.0 TB
 931.3 GiB</samp></pre>
-<p>Et c’est votre premier programmer Python !
+<p>Et c’est votre premier programme Python&nbsp;!
 <p class=a>&#x2042;
 
 <h2 id=furtherreading>Aller Plus Loin</h2>
 <ul>
 <li><a href=http://www.python.org/dev/peps/pep-0257/>PEP 257: Docstring Conventions</a> explique ce qui distingue une bonne <code>docstring</code> d’une grande <code>docstring</code>.
 <li><a href=http://docs.python.org/3.1/tutorial/controlflow.html#documentation-strings>Python Tutorial: Documentation Strings</a> traite aussi ce sujet.
-<li><a href=http://www.python.org/dev/peps/pep-0008/>PEP 8: Style Guide for Python Code</a> discute d’un bon style d’indentations.
-<li><a href=http://docs.python.org/3.1/reference/><cite>Python Reference Manual</cite></a> explique ce que signifie que de dire qu’<a href=http://docs.python.org/3.1/reference/datamodel.html#objects-values-and-types>en Python tout est objet</a>, cat les gens sont <a href=http://www.douglasadams.com/dna/pedants.html>pédants</a> et aiment discuter de ce genre de choses pendant des heures.
+<li><a href=http://www.python.org/dev/peps/pep-0008/>PEP 8: Style Guide for Python Code</a> discute d’un bon style d’indentation.
+<li><a href=http://docs.python.org/3.1/reference/><cite>Python Reference Manual</cite></a> explique ce que signifie que de dire qu’<a href=http://docs.python.org/3.1/reference/datamodel.html#objects-values-and-types>en Python tout est objet</a>, car les gens sont <a href=http://www.douglasadams.com/dna/pedants.html>pédants</a> et aiment discuter de ce genre de choses pendant des heures.
 </ul>
-<p class=v><a rel=prev href=installing-python.html title='retourner à « Installer Python »'><span class=u>&#x261C;</span></a> <a rel=next href=native-datatypes.html title='aller à « Les Types Prédéfinis »'><span class=u>&#x261E;</span></a>
+<p class=v><a rel=prev href=installing-python.html title='retourner à «&nbsp;Installer Python&nbsp;»'><span class=u>&#x261C;</span></a> <a rel=next href=native-datatypes.html title='aller à «&nbsp;Les Types Prédéfinis&nbsp;»'><span class=u>&#x261E;</span></a>
 <p class=c>&copy; 2001&ndash;11 <a href=about.html>Mark Pilgrim</a>
 <script src=j/jquery.js></script>
 <script src=j/prettify.js></script>
