@@ -113,11 +113,11 @@ body{counter-reset:h1 3}
 <li><code>os.path</code> contient également la fonction <code>os.path.splitext()</code>, qui sépare un nom de fichier et retourne un doublet contenant le nom du fichier, et l’extension du fichier. Vous pouvez utiliser la même technique d’assigner chacune des deux pour séparer les variables.
 </ol>
 
-<h3 id=glob>Listing Directories</h3>
+<h3 id=glob>Lister des Répertoires</h3>
 
-<p>The <code>glob</code> module is another tool in the Python standard library. It&#8217;s an easy way to get the contents of a directory programmatically, and it uses the sort of wildcards that you may already be familiar with from working on the command line.
+<p>Le module <code>glob</code> est un autre outil de la bibliothèque standard de Python. C’est une façon simple de récupérer le contenu d’un répertoire programmatiquement, et d’utiliser le genre de jokers avec lesquels vous êtes probablement déjà familier(ère) si vous avez déjà utilisé la ligne de commande.
 
-<aside>The <code>glob</code> module uses shell-like wildcards.</aside>
+<aside>Le module <code>glob</code> utilise des jokers semblable à ceux d’un shell.</aside>
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>os.chdir('/Users/pilgrim/diveintopython3/')</kbd>
@@ -146,14 +146,14 @@ body{counter-reset:h1 3}
  'romantest8.py',
  'romantest9.py']</samp></pre>
 <ol>
-<li>The <code>glob</code> module takes a wildcard and returns the path of all files and directories matching the wildcard. In this example, the wildcard is a directory path plus &#8220;<code>*.xml</code>&#8221;, which will match all <code>.xml</code> files in the <code>examples</code> subdirectory.
-<li>Now change the current working directory to the <code>examples</code> subdirectory. The <code>os.chdir()</code> function can take relative pathnames.
-<li>You can include multiple wildcards in your glob pattern. This example finds all the files in the current working directory that end in a <code>.py</code> extension and contain the word <code>test</code> anywhere in their filename.
+<li>Le module <code>glob</code> prend un schéma et retourne les chemins de tous les fichiers et répertoires qui y correspondent. Dans cet exemple, le joker est le chemin du répertoire plus «&nbsp;<code>*.xml</code>&nbsp;», ce qui correspond à tous les fichiers <code>.xml</code> dans le sous-répertoire <code>examples</code>.
+<li>À présent nous changeons le répertoire de travail pour qu’il soit <code>examples</code>. La fonction <code>os.chdir()</code> accepte les chemins relatifs.
+<li>Vous pouvez inclure plusieurs jokers dans votre schéma glob. Cet exemple trouve tous les fichiers du répertoire de travail courant qui se terminent par l’extension <code>.py</code> et contiennent le mot <code>test</code> n’importe où dans leur nom.
 </ol>
 
-<h3 id=osstat>Getting File Metadata</h3>
+<h3 id=osstat>Récupérer les Méta-données d’un Fichier</h3>
 
-<p>Every modern file system stores metadata about each file: creation date, last-modified date, file size, and so on. Python provides a single <abbr>API</abbr> to access this metadata. You don&#8217;t need to open the file; all you need is the filename.
+<p>Tous les systèmer de fichiers modernes stockent des méta-données à propos de chaque fichier : date de création, de dernière modification, taille du fichier, etc. Python fournit une <abbr>API</abbr> unique pour accéder à ces méta-données. Vous n’avez pas besoin d’ouvrir le fichier ; tout ce dont vous avez besoin est le nom du fichier.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os</kbd>
@@ -168,28 +168,28 @@ body{counter-reset:h1 3}
   tm_min=25, tm_sec=44, tm_wday=0, tm_yday=194, tm_isdst=1)</samp>
 </pre>
 <ol>
-<li>The current working directory is the <code>examples</code> folder.
-<li><code>feed.xml</code> is a file in the <code>examples</code> folder. Calling the <code>os.stat()</code> function returns an object that contains several different types of metadata about the file.
-<li><code>st_mtime</code> is the modification time, but it&#8217;s in a format that isn&#8217;t terribly useful. (Technically, it&#8217;s the number of seconds since the Epoch, which is defined as the first second of January 1st, 1970. Seriously.)
-<li>The <code>time</code> module is part of the Python standard library. It contains functions to convert between different time representations, format time values into strings, and fiddle with timezones.
-<li>The <code>time.localtime()</code> function converts a time value from seconds-since-the-Epoch (from the <code>st_mtime</code> property returned from the <code>os.stat()</code> function) into a more useful structure of year, month, day, hour, minute, second, and so on. This file was last modified on July 13, 2009, at around 5:25 PM.
+<li>Le répertoire de travail est le dossier <code>examples</code>.
+<li><code>feed.xml</code> est un fichier du dossier <code>examples</code>. Appeler la fonction <code>os.stat()</code> retourne un objet qui contient différent types de méta-données à propos du fichier.
+<li><code>st_mtime</code> est la date de dernière modification, mais dans un format qui n’est pas particulièrement utile. (Techniquement, c’est le nombre de secondes depuis Epoch, qui est défini comme la première seconde depuis le 1er janvier 1970. Sérieusement.)
+<li>Le module <code>time</code> fait partie de la bibliothèque standard de Python. Il contient des fonctions pour convertir entre différentes représentations de temps, des formats de valeurs temporelles en chaines, et gérer les fuseau horaires.
+<li>La fonction <code>time.localtime()</code> convertit une valeur temporelle de secondes-depuis-Epoch (à partir de la propriété <code>st_mtime</code> retournée par la fonction <code>os.stat()</code>) en une structure plus utile d’année, mois, jour, heure, minute, seconde, etc. Ce fichier a été modifié pour la dernière fois le 13 juillet 2009, vers 17h25.
 </ol>
 
 <pre class=screen>
-# continued from the previous example
+# Poursuite de l’exemple précédent
 <a><samp class=p>>>> </samp><kbd class=pp>metadata.st_size</kbd>                              <span class=u>&#x2460;</span></a>
 <samp class=pp>3070</samp>
 <samp class=p>>>> </samp><kbd class=pp>import humansize</kbd>
 <a><samp class=p>>>> </samp><kbd class=pp>humansize.approximate_size(metadata.st_size)</kbd>  <span class=u>&#x2461;</span></a>
 <samp class=pp>'3.0 KiB'</samp></pre>
 <ol>
-<li>The <code>os.stat()</code> function also returns the size of a file, in the <code>st_size</code> property. The file <code>feed.xml</code> is <code>3070</code> bytes.
-<li>You can pass the <code>st_size</code> property to the <a href=your-first-python-program.html#divingin><code>approximate_size()</code> function</a>.
+<li>La fonction <code>os.stat()</code> retourne aussi la taille du fichier, dans la propriété <code>st_size</code>. Le fichier <code>feed.xml</code> fait <code>3070</code> octets.
+<li>Vous pouvez passer la propriété <code>st_size</code> à la fonction <a href=your-first-python-program.html#divingin><code>approximate_size()</code></a>.
 </ol>
 
 <h3 id=abspath>Constructing Absolute Pathnames</h3>
 
-<p>In <a href=#osstat>the previous section</a>, the <code>glob.glob()</code> function returned a list of relative pathnames. The first example had pathnames like <code>'examples\feed.xml'</code>, and the second example had even shorter relative pathnames like <code>'romantest1.py'</code>. As long as you stay in the same current working directory, these relative pathnames will work for opening files or getting file metadata. But if you want to construct an absolute pathname&nbsp;&mdash;&nbsp;<i>i.e.</i> one that includes all the directory names back to the root directory or drive letter&nbsp;&mdash;&nbsp;then you&#8217;ll need the <code>os.path.realpath()</code> function.
+<p>Dans <a href=#osstat>la section précédente</a>, la fonction <code>glob.glob()</code> retournait une liste de chemins relatifs. Le premier exemple avait des chemins tels que <code>'examples\feed.xml'</code>, et le second en avait des encore plus courts, tels que <code>'romantest1.py'</code>. Du moment que vous restez dans le même répertoire de travail, ces chemins relatifs fonctionneront pour ouvrir des fichiers ou accéder à leurs méta-données. Mais si vous voulez construire un chemin absolu&nbsp;&mdash;&nbsp;c’est-à-dire un qui inclut tous les noms de répertoires depuis la racine ou la lettre de lecteur&nbsp;&mdash;&nbsp;alors vous aurez besoin de la fonction <code>os.path.realpath()</code>.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os</kbd>
