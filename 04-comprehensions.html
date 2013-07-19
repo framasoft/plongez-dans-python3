@@ -200,11 +200,11 @@ body{counter-reset:h1 3}
 
 <p class=a>&#x2042;
 
-<h2 id=listcomprehension>List Comprehensions</h2>
+<h2 id=listcomprehension>Listes Par Comprehensions</h2>
 
-<aside>You can use any Python expression in a list comprehension.</aside>
+<aside>Vous pouvez utiliser n’importe quelle expression Python dans une liste par compréhension.</aside>
 
-<p>A <dfn>list comprehension</dfn> provides a compact way of mapping a list into another list by applying a function to each of the elements of the list.
+<p>Une <dfn>liste par comprehension</dfn> est une façon compacte de créer une liste à partir d’une autre en applicant une fonction à chacun des éléments de la liste.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_list = [1, 9, 8, 4]</kbd>
@@ -216,12 +216,12 @@ body{counter-reset:h1 3}
 <samp class=p>>>> </samp><kbd>a_list</kbd>
 <samp class=pp>[2, 18, 16, 8]</samp></pre>
 <ol>
-<li>To make sense of this, look at it from right to left. <var>a_list</var> is the list you&#8217;re mapping. The Python interpreter loops through <var>a_list</var> one element at a time, temporarily assigning the value of each element to the variable <var>elem</var>. Python then applies the function <code><var>elem</var> * 2</code> and appends that result to the returned list.
-<li>A list comprehension creates a new list; it does not change the original list.
-<li>It is safe to assign the result of a list comprehension to the variable that you&#8217;re mapping. Python constructs the new list in memory, and when the list comprehension is complete, it assigns the result to the original variable.
+<li>Pour comprendre le sens de ceci, lisez-le de droite à gauche. <var>a_list</var> est la liste de départ. L’interpréteur Python parcourt la liste <var>a_list</var> élément par élément, assignant temporairement chaque élément à la variable <var>elem</var>. Python applique alors la fonction <code><var>elem</var> * 2</code> et ajoute le résultat à la liste retournée.
+<li>Une liste par compréhension est une nouvelle liste et non une modification de la liste originale.
+<li>Assigner le résultat d’une compréhension de liste à la variable d’origine est sans risque. Python construit la nouvelle liste en mémoire et, lorsque la nouvelle liste est complète, il assigne le résultat à la variable originale.
 </ol>
 
-<p>You can use any Python expression in a list comprehension, including the functions in the <code>os</code> module for manipulating files and directories.
+<p>Vous pouvez utiliser n’importe quelle expression Python pour une liste par compréhension, y compris les fonctions définies dans le module <code>os</code> pour manipuler fichiers et répertoires.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os, glob</kbd>
@@ -233,11 +233,11 @@ body{counter-reset:h1 3}
  'c:\\Users\\pilgrim\\diveintopython3\\examples\\feed.xml']</samp>
 </pre>
 <ol>
-<li>This returns a list of all the <code>.xml</code> files in the current working directory.
-<li>This list comprehension takes that list of <code>.xml</code> files and transforms it into a list of full pathnames.
+<li>Ceci retourne une liste de tous les fichiers <code>.xml</code> dans le répertoire de travail.
+<li>Cette liste par compréhension est construite à partir d’une liste de fichiers <code>.xml</code> transformés en chemins complets.
 </ol>
 
-<p>List comprehensions can also filter items, producing a result that can be smaller than the original list.
+<p>Les compréhensions de liste peuvent aussi filtrer des éléments, rendant le résultat plus petit que la liste originale.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os, glob</kbd>
@@ -250,10 +250,10 @@ body{counter-reset:h1 3}
  'romantest9.py']</samp>
 </pre>
 <ol>
-<li>To filter a list, you can include an <code>if</code> clause at the end of the list comprehension. The expression after the <code>if</code> keyword will be evaluated for each item in the list. If the expression evaluates to <code>True</code>, the item will be included in the output. This list comprehension looks at the list of all <code>.py</code> files in the current directory, and the <code>if</code> expression filters that list by testing whether the size of each file is greater than <code>6000</code> bytes. There are six such files, so the list comprehension returns a list of six filenames.
+<li>Pour filtrer une liste, vous pouvez inclure une clause <code>if</code> à la fin de la compréhension de liste. L’expression après le mot-clé <code>if</code> sera évaluée pour chaque élément de la liste. Si l’expression est évaluée à <code>True</code>, l’élément sera inclu dans la sortie. La compréhension de liste regardera la liste de tous les fichiers <code>.py</code> dans le répertoire courant, et l’expression <code>if</code> filtre cette liste en testant si la taille de chaque fichier est supérieure à <code>6000</code> octets. Il y a six fichiers répondant à ces critères donc la compréhension de liste retournera une liste de six fichiers.
 </ol>
 
-<p>All the examples of list comprehensions so far have featured simple expressions&nbsp;&mdash;&nbsp;multiply a number by a constant, call a single function, or simply return the original list item (after filtering). But there&#8217;s no limit to how complex a list comprehension can be.
+<p>Tous les exemples de listes par compréhension jusqu’à présent utilisaient des expressions simples&nbsp;&mdash;&nbsp;multiplier un nombre par une constance, appeler une unique fonction, ou retourner la liste originale (après filtrage). Mais il n’y a aucune limite à la complexité d’une compréhension de liste.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os, glob</kbd>
@@ -267,8 +267,8 @@ body{counter-reset:h1 3}
  ('3.3 KiB', 'feed-ns0.xml'),
  ('3.0 KiB', 'feed.xml')]</samp></pre>
 <ol>
-<li>This list comprehension finds all the <code>.xml</code> files in the current working directory, gets the size of each file (by calling the <code>os.stat()</code> function), and constructs a tuple of the file size and the absolute path of each file (by calling the <code>os.path.realpath()</code> function).
-<li>This comprehension builds on the previous one to call the <a href=your-first-python-program.html#divingin><code>approximate_size()</code> function</a> with the file size of each <code>.xml</code> file.
+<li>Cette compréhension de liste trouve tous les fichiers <code>.xml</code> dans le répertoire de travail, récupère la taille de chaque fichier (en appelant la fonction <code>os.stat()</code>), et construit un doublet contenant à la fois la taille du fichier et le chemin absolu de celui-ci (en appelant la fonction <code>os.path.realpath()</code>).
+<li>Cette comprehension se base sur la précédente en appelant la <a href=your-first-python-program.html#divingin>fonction<code>approximate_size()</code></a> avec la taille de chaque fichier <code>.xml</code>.
 </ol>
 
 <p class=a>&#x2042;
