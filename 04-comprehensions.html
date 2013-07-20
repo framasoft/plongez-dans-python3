@@ -5,7 +5,7 @@ permalink: comprehensions.html
 ---
 <!DOCTYPE html>
 <meta charset=utf-8>
-<title>Comprehensions - Dive Into Python 3</title>
+<title>En compréhension - Plongez dans Python 3</title>
 <!--[if IE]><script src=j/html5.js></script><![endif]-->
 <link rel=stylesheet href=dip3.css>
 <style>
@@ -15,25 +15,25 @@ body{counter-reset:h1 3}
 <link rel=stylesheet media=print href=print.css>
 <meta name=viewport content='initial-scale=1.0'>
 <form action=http://www.google.com/cse><div><input type=hidden name=cx value=014021643941856155761:l5eihuescdw><input type=hidden name=ie value=UTF-8>&nbsp;<input type=search name=q size=25 placeholder="powered by Google&trade;">&nbsp;<input type=submit name=root value=Search></div></form>
-<p>Vous êtes ici : <a href=index.html>Index</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#comprehensions>Plongez dans Python 3</a> <span class=u>&#8227;</span>
-<p id=level>Niveau de difficulté : <span class=u title=beginner>&#x2666;&#x2666;&#x2662;&#x2662;&#x2662;</span>
+<p>Vous êtes ici&nbsp;: <a href=index.html>Index</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#comprehensions>Plongez dans Python 3</a> <span class=u>&#8227;</span>
+<p id=level>Niveau de difficulté&nbsp;: <span class=u title=beginner>&#x2666;&#x2666;&#x2662;&#x2662;&#x2662;</span>
 <h1>Comprehensions</h1>
 <blockquote class=q>
 <p><span class=u>&#x275D;</span> Notre imagination est étirée à l’extrême, non pas, comme dans la fiction, à imaginer des choses qui n’existent pas vraiment, mais seulement à comprendre ces choses qui sont là. <span class=u>&#x275E;</span><br>&mdash; <a href=http://en.wikiquote.org/wiki/Richard_Feynman>Richard Feynman</a>
 </blockquote>
 <p id=toc>&nbsp;
 <h2 id=divingin>Plongée</h2>
-<p class=f>Tout langage de programmation a cette fonctionnalité, une chose compliquée intentionellement rendue simple. Si vous venez d’un autre langage, vous pourriez facilement la manquer, car votre ancien langage ne la rendait pas simple (parce qu’il était occupé à rendre quelque chose d’autre simple à la place). Ce chapitre vous apprendra à utiliser les listes par compréhension, les dictionnaires par compréhension, et les ensembles par compréhension : ces trois concepts sont centrés autour d’une technique très puissante. Mais d’abord, je vais faire un détour par deux modules qui vous aideront à naviguer à travers votre système de fichiers.
+<p class=f>Tout langage de programmation a cette fonctionnalité, une chose compliquée intentionellement rendue simple. Si vous venez d’un autre langage, vous pourriez facilement la manquer, car votre ancien langage ne la rendait pas simple (parce qu’il était occupé à rendre quelque chose d’autre simple à la place). Ce chapitre vous apprendra à utiliser les listes par compréhension, les dictionnaires par compréhension, et les ensembles par compréhension&nbsp;: ces trois concepts sont centrés autour d’une technique très puissante. Mais d’abord, je vais faire un détour par deux modules qui vous aideront à naviguer à travers votre système de fichiers.
 
 <p class=a>&#x2042;
 
 <h2 id=os>Travailler Avec Des Fichiers Et Des Répertoires.</h2>
 
-<p>Python 3 est fourni avec un module appelé <code>os</code>, ce qui signifie « système d’exploitation ». Le <a href=http://docs.python.org/3.1/library/os.html>module <code>os</code></a> contient une pléthore de fonctions pour obtenir des informations sur &nbsp;&mdash;&nbsp;et dans certains cas pour manipuler&nbsp;&mdash;&nbsp;les répertoires et fichiers locaux, les processus, et les variables d’environnement. Python fait de son mieux pour offrir une <abbr>API</abbr> unifiée pour <a href=installing-python.html>tous les systèmes d’exploitation supportés</a> de façon à ce que vos programmes puissent tourner sur n’importe quel ordinateur avec le moins de code spécifique à une plateforme possible.
+<p>Python 3 est fourni avec un module appelé <code>os</code>, ce qui signifie «&nbsp;système d’exploitation&nbsp;». Le <a href=http://docs.python.org/3.1/library/os.html>module <code>os</code></a> contient une pléthore de fonctions pour obtenir des informations sur&nbsp;&mdash;&nbsp;et dans certains cas pour manipuler&nbsp;&mdash;&nbsp;les répertoires et fichiers locaux, les processus, et les variables d’environnement. Python fait de son mieux pour offrir une <abbr>API</abbr> unifiée pour <a href=installing-python.html>tous les systèmes d’exploitation supportés</a> de façon à ce que vos programmes puissent tourner sur n’importe quel ordinateur avec le moins de code spécifique à une plateforme possible.
 
 <h3 id=getcwd>Le Répertoire De Travail Actuel</h3>
 
-<p>Lorsque vous commencez à vous familiariser avec Python, vous passez beaucoup de temps dans <a href=installing-python.html#idle>le Shell Python</a>. Au cours de ce livre, vous verrez des exemples qui sont présentés de cette façon :
+<p>Lorsque vous commencez à vous familiariser avec Python, vous passez beaucoup de temps dans <a href=installing-python.html#idle>le Shell Python</a>. Au cours de ce livre, vous verrez des exemples qui sont présentés de cette façon&nbsp;:
 
 <ol>
 <li>Importez un des modules du répertoire <a href=examples/><code>examples</code></a>
@@ -43,7 +43,7 @@ body{counter-reset:h1 3}
 
 <aside>Il y a toujours un répertoire de travail.</aside>
 
-<p>Si vous ne connaissez pas le répertoire de travail, l’étape 1 va probablement échouer avec une <code>ImportError</code>. Pourquoi ? Parce que Pythonn recherchera le module d’exemple dans <a href=your-first-python-program.html#importsearchpath>le chemin de recherche d’import</a>, mais ne le trouvera pas car le dossier <code>examples</code> n’est pas l’un des répertoires du chemin de recherche. Pour régler ce problème, vous avez deux possibilités :
+<p>Si vous ne connaissez pas le répertoire de travail, l’étape 1 va probablement échouer avec une <code>ImportError</code>. Pourquoi&nbsp;? Parce que Python recherchera le module d’exemple dans <a href=your-first-python-program.html#importsearchpath>le chemin de recherche d’import</a>, mais ne le trouvera pas car le dossier <code>examples</code> n’est pas l’un des répertoires du chemin de recherche. Pour régler ce problème, vous avez deux possibilités&nbsp;:
 
 <ol>
 <li>Ajouter le dossier <code>examples</code> au chemin de recherche d’import
@@ -62,10 +62,10 @@ body{counter-reset:h1 3}
 <a><samp class=p>>>> </samp><kbd class=pp>print(os.getcwd())</kbd>                                   <span class=u>&#x2463;</span></a>
 <samp>C:\Users\pilgrim\diveintopython3\examples</samp></pre>
 <ol>
-<li>Le module <code>os</code> est fournit avec Python ; vous pouvez l’importer de n’importe où, n’importe quand.
-<li>Utilisez la fonction <code>os.getcwd()</code> pour obtenir le répertoire d’exécution. Quand vous utilisez le Shell Python graphique, le répertoire de travail initial est votre répertoire utilisateur. Sous Windows c’est l’endroit où vous avez installé Python, le répertoire par défaut étant <code>c:\Python31</code>. Si vous lancez le Shell Python depuis la ligne de commande, le répertoire de travail initial sera le répertoire d’où vous avez exécuté <code>python3</code>.
+<li>Le module <code>os</code> est fourni avec Python&nbsp;: vous pouvez l’importer de n’importe où, n’importe quand.
+<li>Utilisez la fonction <code>os.getcwd()</code> pour obtenir le répertoire d’exécution. Quand vous utilisez le Shell Python graphique, le répertoire de travail initial est votre répertoire utilisateur. Sous Windows, c’est l’endroit où vous avez installé Python, le répertoire par défaut étant <code>c:\Python31</code>. Si vous lancez le Shell Python depuis la ligne de commande, le répertoire de travail initial sera le répertoire d’où vous avez exécuté <code>python3</code>.
 <li>Utilisez la fonction <code>os.chdir()</code> pour changer le répertoire de travail courant.
-<li>Quand j’ai appellé la fonction <code>os.chdir()</code>, j’ai utilisé un nom de chemin tels que ceux utilisé par Linux (slashs, pas de lettre de lecteur) même si je suis sous Windows. C’est un des cas où Python essaye de palier les différences entre les systèmes d’exploitation.
+<li>Quand j’ai appellé la fonction <code>os.chdir()</code>, j’ai utilisé un nom de chemin tels que ceux utilisés par Linux (slashs, pas de lettre de lecteur) même si je suis sous Windows. C’est un des cas où Python essaye de palier les différences entre les systèmes d’exploitation.
 </ol>
 
 <h3 id=ospath>Travailler Avec Les Noms de Fichiers Et De Répertoires</h3>
@@ -84,9 +84,9 @@ body{counter-reset:h1 3}
 <samp>c:\Users\pilgrim\diveintopython3\examples\humansize.py</samp></pre>
 <ol>
 <li>La fonction <code>os.path.join()</code> construit un nom de chemin à partir d’un ou plusieurs noms de chemins partiels. Dans ce cas, il concatène simplement des chaines.
-<li>Dans ce cas un peu moins trivial, appeler la fonction <code>os.path.join()</code> ajoutera un backslash supplémentaire à la fin du nom du chemin avant de le joindre au nom du fichier. C’est un backlash plutôt qu’slash, car j’ai construit cet exemple sur Windows. Si vous le faites sur Linux ou Mac OS X, vous verez un slash à la place. Ne vous embêtez pas avec les (anti)slashs, utilisez toujours<code>os.path.join()</code> et laissez Python le faire correctement.
-<li>La fonction <code>os.path.expanduser()</code> étendra un chemin qui utilise <code>~</code> pour représenter le dossier personnel d’un utilisateur. Ceci fonctionne sur n’importe quelle plateforme sur laquelle les utilisateurs ont un répertoire personne, y compris Linux, Mac OS X, et Windows. Le chemin retourné n’a pas de slash final, mais la fonction <code>os.path.join()</code> n’en a pas besoin.
-<li>En combinant ces deux techniques, vous pouvez facilement construire des chemins pour les répertoires et fichiers dans le répertoire pesonnel de l’utilisateur. La fonction <code>os.path.join()</code> peut prendre autant de paramètres que nécessaire. J’étais aux anges quand j’ai découvert ceci, puisque <code>addSlashIfNecessary()</code> était une de ces stupides petites fonctions que je devais toujous écrire lorsque je construisais ma boîte à outils dans un nouveau langage. N’écrivez <em>pas</em> cette stupide petite fonction en Python ; des personnes intelligentes s’en sont déjà chargées pour vous.
+<li>Dans ce cas un peu moins trivial, appeler la fonction <code>os.path.join()</code> ajoutera un backslash supplémentaire à la fin du nom du chemin avant de le joindre au nom du fichier. C’est un backlash plutôt qu’un slash, car j’ai construit cet exemple sur Windows. Si vous le faites sur Linux ou Mac OS X, vous verrez un slash à la place. Ne vous embêtez pas avec les (anti)slashs, utilisez toujours<code>os.path.join()</code> et laissez Python le faire correctement.
+<li>La fonction <code>os.path.expanduser()</code> étendra un chemin qui utilise <code>~</code> pour représenter le dossier personnel d’un utilisateur. Ceci fonctionne sur n’importe quelle plateforme sur laquelle les utilisateurs ont un répertoire personnel, y compris Linux, Mac OS X, et Windows. Le chemin retourné n’a pas de slash final, mais la fonction <code>os.path.join()</code> n’en a pas besoin.
+<li>En combinant ces deux techniques, vous pouvez facilement construire des chemins pour les répertoires et fichiers dans le répertoire personnel de l’utilisateur. La fonction <code>os.path.join()</code> peut prendre autant de paramètres que nécessaire. J’étais aux anges quand j’ai découvert ceci, puisque <code>addSlashIfNecessary()</code> était une de ces stupides petites fonctions que je devais toujours écrire lorsque je construisais ma boîte à outils dans un nouveau langage. N’écrivez <em>pas</em> cette stupide petite fonction en Python&nbsp;: des personnes intelligentes s’en sont déjà chargées pour vous.
 </ol>
 
 <p><code>os.path</code> contient également des fonctions pour séparer les noms de chemins, de répertoires, et de fichiers en plusieurs parties.
@@ -107,17 +107,17 @@ body{counter-reset:h1 3}
 <samp class=pp>'.py'</samp></pre>
 <ol>
 <li>La fonction <code>split</code> sépare un chemin complet et retourne un doublet contenant le chemin et le nom du fichier.
-<li>Vous souvenez-vous de quand je vous ai dit d’utiliser <a href=native-datatypes.html#multivar>l’assignation à plusieurs variables</a> pour retourner plusieurs variables d’une fonction ? La fonction  <code>os.path.split()</code> fait exactement ça. Vous pouvez assigner la valeur de retour de la fonction <code>split</code> à un doublet (un <code>tuple</code> à deux éléments). Chacune des variables recevra la valeur de l’élément correspondant du doublet retourné.
+<li>Vous souvenez-vous de quand je vous ai dit d’utiliser <a href=native-datatypes.html#multivar>l’assignation à plusieurs variables</a> pour retourner plusieurs variables d’une fonction&nbsp;? La fonction <code>os.path.split()</code> fait exactement ça. Vous pouvez assigner la valeur de retour de la fonction <code>split</code> à un doublet (un <code>tuple</code> à deux éléments). Chacune des variables recevra la valeur de l’élément correspondant du doublet retourné.
 <li>La première variable, <var>dirname</var>, reçoit la valeur du premier élement du doublet retourné par la fonction <code>os.path.split()</code>, le chemin du fichier.
 <li>La seconde variable, <var>filename</var>, reçoit la valeur du second élément du doublet retourné par la fonction <code>os.path.split()</code>, le nom du fichier.
-<li><code>os.path</code> contient également la fonction <code>os.path.splitext()</code>, qui sépare un nom de fichier et retourne un doublet contenant le nom du fichier, et l’extension du fichier. Vous pouvez utiliser la même technique d’assigner chacune des deux pour séparer les variables.
+<li><code>os.path</code> contient également la fonction <code>os.path.splitext()</code>, qui sépare un nom de fichier et retourne un doublet contenant le nom du fichier et l’extension du fichier. Vous pouvez utiliser la même technique pour assigner chacun d’entre eux à des variables séparées.
 </ol>
 
 <h3 id=glob>Lister des Répertoires</h3>
 
 <p>Le module <code>glob</code> est un autre outil de la bibliothèque standard de Python. C’est une façon simple de récupérer le contenu d’un répertoire programmatiquement, et d’utiliser le genre de jokers avec lesquels vous êtes probablement déjà familier(ère) si vous avez déjà utilisé la ligne de commande.
 
-<aside>Le module <code>glob</code> utilise des jokers semblable à ceux d’un shell.</aside>
+<aside>Le module <code>glob</code> utilise des jokers semblables à ceux d’un shell.</aside>
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>os.chdir('/Users/pilgrim/diveintopython3/')</kbd>
@@ -153,7 +153,7 @@ body{counter-reset:h1 3}
 
 <h3 id=osstat>Récupérer les Méta-données d’un Fichier</h3>
 
-<p>Tous les systèmer de fichiers modernes stockent des méta-données à propos de chaque fichier : date de création, de dernière modification, taille du fichier, etc. Python fournit une <abbr>API</abbr> unique pour accéder à ces méta-données. Vous n’avez pas besoin d’ouvrir le fichier ; tout ce dont vous avez besoin est le nom du fichier.
+<p>Tous les systèmes de fichiers modernes stockent des méta-données à propos de chaque fichier&nbsp;: date de création, de dernière modification, taille du fichier, etc. Python fournit une <abbr>API</abbr> unique pour accéder à ces méta-données. Vous n’avez pas besoin d’ouvrir le fichier&nbsp;: tout ce dont vous avez besoin est le nom du fichier.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os</kbd>
@@ -169,9 +169,9 @@ body{counter-reset:h1 3}
 </pre>
 <ol>
 <li>Le répertoire de travail est le dossier <code>examples</code>.
-<li><code>feed.xml</code> est un fichier du dossier <code>examples</code>. Appeler la fonction <code>os.stat()</code> retourne un objet qui contient différent types de méta-données à propos du fichier.
+<li><code>feed.xml</code> est un fichier du dossier <code>examples</code>. Appeler la fonction <code>os.stat()</code> retourne un objet qui contient différents types de méta-données à propos du fichier.
 <li><code>st_mtime</code> est la date de dernière modification, mais dans un format qui n’est pas particulièrement utile. (Techniquement, c’est le nombre de secondes depuis Epoch, qui est défini comme la première seconde depuis le 1er janvier 1970. Sérieusement.)
-<li>Le module <code>time</code> fait partie de la bibliothèque standard de Python. Il contient des fonctions pour convertir entre différentes représentations de temps, des formats de valeurs temporelles en chaines, et gérer les fuseau horaires.
+<li>Le module <code>time</code> fait partie de la bibliothèque standard de Python. Il contient des fonctions pour convertir entre différentes représentations de temps, des formats de valeurs temporelles en chaines, et gérer les fuseaux horaires.
 <li>La fonction <code>time.localtime()</code> convertit une valeur temporelle de secondes-depuis-Epoch (à partir de la propriété <code>st_mtime</code> retournée par la fonction <code>os.stat()</code>) en une structure plus utile d’année, mois, jour, heure, minute, seconde, etc. Ce fichier a été modifié pour la dernière fois le 13 juillet 2009, vers 17h25.
 </ol>
 
@@ -187,7 +187,7 @@ body{counter-reset:h1 3}
 <li>Vous pouvez passer la propriété <code>st_size</code> à la fonction <a href=your-first-python-program.html#divingin><code>approximate_size()</code></a>.
 </ol>
 
-<h3 id=abspath>Constructing Absolute Pathnames</h3>
+<h3 id=abspath>Construction de Chemins Absolus</h3>
 
 <p>Dans <a href=#osstat>la section précédente</a>, la fonction <code>glob.glob()</code> retournait une liste de chemins relatifs. Le premier exemple avait des chemins tels que <code>'examples\feed.xml'</code>, et le second en avait des encore plus courts, tels que <code>'romantest1.py'</code>. Du moment que vous restez dans le même répertoire de travail, ces chemins relatifs fonctionneront pour ouvrir des fichiers ou accéder à leurs méta-données. Mais si vous voulez construire un chemin absolu&nbsp;&mdash;&nbsp;c’est-à-dire un qui inclut tous les noms de répertoires depuis la racine ou la lettre de lecteur&nbsp;&mdash;&nbsp;alors vous aurez besoin de la fonction <code>os.path.realpath()</code>.
 
@@ -200,11 +200,11 @@ body{counter-reset:h1 3}
 
 <p class=a>&#x2042;
 
-<h2 id=listcomprehension>Listes Par Comprehensions</h2>
+<h2 id=listcomprehension>Listes En Compréhension</h2>
 
-<aside>Vous pouvez utiliser n’importe quelle expression Python dans une liste par compréhension.</aside>
+<aside>Vous pouvez utiliser n’importe quelle expression Python dans une liste en compréhension.</aside>
 
-<p>Une <dfn>liste par comprehension</dfn> est une façon compacte de créer une liste à partir d’une autre en applicant une fonction à chacun des éléments de la liste.
+<p>Une <dfn>liste en compréhension</dfn> est une façon compacte de créer une liste à partir d’une autre en applicant une fonction à chacun des éléments de la liste.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_list = [1, 9, 8, 4]</kbd>
@@ -217,11 +217,11 @@ body{counter-reset:h1 3}
 <samp class=pp>[2, 18, 16, 8]</samp></pre>
 <ol>
 <li>Pour comprendre le sens de ceci, lisez-le de droite à gauche. <var>a_list</var> est la liste de départ. L’interpréteur Python parcourt la liste <var>a_list</var> élément par élément, assignant temporairement chaque élément à la variable <var>elem</var>. Python applique alors la fonction <code><var>elem</var> * 2</code> et ajoute le résultat à la liste retournée.
-<li>Une liste par compréhension est une nouvelle liste et non une modification de la liste originale.
+<li>Une liste en compréhension est une nouvelle liste et non une modification de la liste originale.
 <li>Assigner le résultat d’une compréhension de liste à la variable d’origine est sans risque. Python construit la nouvelle liste en mémoire et, lorsque la nouvelle liste est complète, il assigne le résultat à la variable originale.
 </ol>
 
-<p>Vous pouvez utiliser n’importe quelle expression Python pour une liste par compréhension, y compris les fonctions définies dans le module <code>os</code> pour manipuler fichiers et répertoires.
+<p>Vous pouvez utiliser n’importe quelle expression Python pour une liste en compréhension, y compris les fonctions définies dans le module <code>os</code> pour manipuler fichiers et répertoires.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os, glob</kbd>
@@ -234,7 +234,7 @@ body{counter-reset:h1 3}
 </pre>
 <ol>
 <li>Ceci retourne une liste de tous les fichiers <code>.xml</code> dans le répertoire de travail.
-<li>Cette liste par compréhension est construite à partir d’une liste de fichiers <code>.xml</code> transformés en chemins complets.
+<li>Cette liste en compréhension est construite à partir d’une liste de fichiers <code>.xml</code> transformés en chemins complets.
 </ol>
 
 <p>Les compréhensions de liste peuvent aussi filtrer des éléments, rendant le résultat plus petit que la liste originale.
@@ -275,7 +275,7 @@ body{counter-reset:h1 3}
 
 <h2 id=dictionarycomprehension>Dictionary par Compréhension</h2>
 
-<p>Un <dfn>dictionaire par compréhension</dfn> est comme une liste par compréhension, mais c’est un dictionnaire qui est construit plutôt qu’une liste.
+<p>Un <dfn>dictionaire par compréhension</dfn> est comme une liste en compréhension, mais c’est un dictionnaire qui est construit plutôt qu’une liste.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os, glob</kbd>
@@ -296,7 +296,7 @@ body{counter-reset:h1 3}
 <a><samp class=p>>>> </samp><kbd class=pp>metadata_dict['alphameticstest.py'].st_size</kbd>                     <span class=u>&#x2465;</span></a>
 <samp class=pp>2509</samp></pre>
 <ol>
-<li>Ce n’est pas un dictionnaire par compréhension&nbsp;; c’est une <a href=#listcomprehension>liste par compréhension</a>. La définition prend tous les fichiers <code>.py</code> avec <code>test</code> dans leur nom, puis construit un doublet avec le nom du fichier et les méta-données de celui-ci (obtenues en appelant la fonction <code>os.stat()</code>.
+<li>Ce n’est pas un dictionnaire par compréhension&nbsp;; c’est une <a href=#listcomprehension>liste en compréhension</a>. La définition prend tous les fichiers <code>.py</code> avec <code>test</code> dans leur nom, puis construit un doublet avec le nom du fichier et les méta-données de celui-ci (obtenues en appelant la fonction <code>os.stat()</code>.
 <li>Chaque élément de la liste résultat est un doublet.
 <li>Ceci est un dictionnaire construit par compréhension. La syntaxe est similaire à celle utilisée pour les listes, à deux différences près. D’abord, des accolades sont utilisées à la place des crochets pour encadrer l’expression. Ensuite, à la place d’une expression pour chaque élément, il y en a deux, séparées par un double point. L’expression avant le double point (<code>f</code> dans cet exemple) est une clé du dictionnaire&nbsp;; l’expression après le double point (<code>os.stat(f)</code> dans cet exemple) est la valeur associée.
 <li>Un dictionnaire par compréhension est un dictionnaire.
