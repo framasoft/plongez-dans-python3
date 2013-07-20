@@ -253,7 +253,7 @@ body{counter-reset:h1 3}
 <li>Pour filtrer une liste, vous pouvez inclure une clause <code>if</code> à la fin de la compréhension de liste. L’expression après le mot-clé <code>if</code> sera évaluée pour chaque élément de la liste. Si l’expression est évaluée à <code>True</code>, l’élément sera inclu dans la sortie. La compréhension de liste regardera la liste de tous les fichiers <code>.py</code> dans le répertoire courant, et l’expression <code>if</code> filtre cette liste en testant si la taille de chaque fichier est supérieure à <code>6000</code> octets. Il y a six fichiers répondant à ces critères donc la compréhension de liste retournera une liste de six fichiers.
 </ol>
 
-<p>Tous les exemples de listes par compréhension jusqu’à présent utilisaient des expressions simples&nbsp;&mdash;&nbsp;multiplier un nombre par une constance, appeler une unique fonction, ou retourner la liste originale (après filtrage). Mais il n’y a aucune limite à la complexité d’une compréhension de liste.
+<p>Tous les exemples de listes par compréhension jusqu’à présent utilisaient des expressions simples&nbsp;&mdash;&nbsp;multiplier un nombre par une constante, appeler une unique fonction, ou retourner la liste originale (après filtrage). Mais il n’y a aucune limite à la complexité d’une compréhension de liste.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os, glob</kbd>
@@ -268,14 +268,14 @@ body{counter-reset:h1 3}
  ('3.0 KiB', 'feed.xml')]</samp></pre>
 <ol>
 <li>Cette compréhension de liste trouve tous les fichiers <code>.xml</code> dans le répertoire de travail, récupère la taille de chaque fichier (en appelant la fonction <code>os.stat()</code>), et construit un doublet contenant à la fois la taille du fichier et le chemin absolu de celui-ci (en appelant la fonction <code>os.path.realpath()</code>).
-<li>Cette comprehension se base sur la précédente en appelant la <a href=your-first-python-program.html#divingin>fonction<code>approximate_size()</code></a> avec la taille de chaque fichier <code>.xml</code>.
+<li>Cette compréhension se base sur la précédente en appelant la <a href=your-first-python-program.html#divingin>fonction<code>approximate_size()</code></a> avec la taille de chaque fichier <code>.xml</code>.
 </ol>
 
 <p class=a>&#x2042;
 
-<h2 id=dictionarycomprehension>Dictionary par Compréhension</h2>
+<h2 id=dictionarycomprehension>Dictionnaire en Compréhension</h2>
 
-<p>Un <dfn>dictionaire par compréhension</dfn> est comme une liste en compréhension, mais c’est un dictionnaire qui est construit plutôt qu’une liste.
+<p>Un <dfn>dictionaire en compréhension</dfn> est comme une liste en compréhension, mais c’est un dictionnaire qui est construit plutôt qu’une liste.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os, glob</kbd>
@@ -296,12 +296,12 @@ body{counter-reset:h1 3}
 <a><samp class=p>>>> </samp><kbd class=pp>metadata_dict['alphameticstest.py'].st_size</kbd>                     <span class=u>&#x2465;</span></a>
 <samp class=pp>2509</samp></pre>
 <ol>
-<li>Ce n’est pas un dictionnaire par compréhension&nbsp;; c’est une <a href=#listcomprehension>liste en compréhension</a>. La définition prend tous les fichiers <code>.py</code> avec <code>test</code> dans leur nom, puis construit un doublet avec le nom du fichier et les méta-données de celui-ci (obtenues en appelant la fonction <code>os.stat()</code>.
+<li>Ce n’est pas un dictionnaire en compréhension&nbsp;; c’est une <a href=#listcomprehension>liste en compréhension</a>. La définition prend tous les fichiers <code>.py</code> avec <code>test</code> dans leur nom, puis construit un doublet avec le nom du fichier et les méta-données de celui-ci (obtenues en appelant la fonction <code>os.stat()</code>.
 <li>Chaque élément de la liste résultat est un doublet.
 <li>Ceci est un dictionnaire construit par compréhension. La syntaxe est similaire à celle utilisée pour les listes, à deux différences près. D’abord, des accolades sont utilisées à la place des crochets pour encadrer l’expression. Ensuite, à la place d’une expression pour chaque élément, il y en a deux, séparées par un double point. L’expression avant le double point (<code>f</code> dans cet exemple) est une clé du dictionnaire&nbsp;; l’expression après le double point (<code>os.stat(f)</code> dans cet exemple) est la valeur associée.
-<li>Un dictionnaire par compréhension est un dictionnaire.
+<li>Un dictionnaire en compréhension est un dictionnaire.
 <li>Les clés de ce dictionnaire sont simplement les noms de fichier retournés par l’appel à <code>glob.glob('*test*.py')</code>.
-<li>La valeur associée à chaque clé est la valeur retournée par la fonction <code>os.stat()</code>. Cela signifie que l’on peut « rechercher » un fichier par son nom dans ce dictionnaire et obtenir ses méta-données. L’une de ces méta-données est la taille du fichier. Le fichier <code>alphameticstest.py</code> fait <code>2509</code> octets.
+<li>La valeur associée à chaque clé est la valeur retournée par la fonction <code>os.stat()</code>. Cela signifie que l’on peut «&nbsp;rechercher&nbsp;» un fichier par son nom dans ce dictionnaire et obtenir ses méta-données. L’une de ces méta-données est la taille du fichier. Le fichier <code>alphameticstest.py</code> fait <code>2509</code> octets.
 </ol>
 
 <p>Comme pour les listes par compréhension, vous pouvez inclure une clause <code>if</code> pour filtrer la séquence de départ en se basant sur une expression évaluée pour chaque élément.
@@ -316,15 +316,15 @@ body{counter-reset:h1 3}
 <a><samp class=p>>>> </samp><kbd class=pp>humansize_dict['romantest9']</kbd>                                                            <span class=u>&#x2463;</span></a>
 <samp class=pp>'6.5 KiB'</samp></pre>
 <ol>
-<li>Ce dictionnaire par compréhension est construit à partir d’une liste de tous les fichiers dans le répertoire de travail (<code>glob.glob('*')</code>), à laquelle sont associées les méta-données de chaque fichier (<code>os.stat(f)</code>).
-<li>Cette définition est construite à partir de la première, filtrant les fichiers qui qui font moins de <code>6000</code> octets (<code>if meta.st_size > 6000</code>), et utilise cette liste filtrée pour construire un dictionnaire dont les clés sont les noms de fichiers auxquels on a retiré l’extension (<code>os.path.splitext(f)[0]</code>) et dont les valeurs sont la taille approximative de chacun de ces fichiers (<code>humansize.approximate_size(meta.st_size)</code>).
+<li>Ce dictionnaire en compréhension est construit à partir d’une liste de tous les fichiers dans le répertoire de travail (<code>glob.glob('*')</code>), à laquelle sont associées les méta-données de chaque fichier (<code>os.stat(f)</code>).
+<li>Cette définition est construite à partir de la première, filtrant les fichiers qui font moins de <code>6000</code> octets (<code>if meta.st_size > 6000</code>), et utilise cette liste filtrée pour construire un dictionnaire dont les clefs sont les noms de fichiers auxquels on a retiré l’extension (<code>os.path.splitext(f)[0]</code>) et dont les valeurs sont la taille approximative de chacun de ces fichiers (<code>humansize.approximate_size(meta.st_size)</code>).
 <li>Comme vous l’avez vu dans l’exemple précédent, il y a six fichiers correspondants. Ainsi, il y a six éléments dans le dictionnaire.
 <li>La valeur associée à chacune des clefs est la chaine retournée par la fonction <code>approximate_size()</code>.
 </ol>
 
-<h3 id=stupiddicttricks>D’Autres Choses Amusantes À Faire Avec Les Définitions de Dictionnaires Par Compréhension</h3>
+<h3 id=stupiddicttricks>D’Autres Choses Amusantes À Faire Avec Les Définitions De Dictionnaires En Compréhension</h3>
 
-<p>Voici une astuce avec les dictionnaires définis par compréhension qui peut vous être utile un jour : échanger les clefs et les valeurs d’un dictionnaire.
+<p>Voici une astuce avec les dictionnaires définis en compréhension qui peut vous être utile un jour&nbsp;: échanger les clefs et les valeurs d’un dictionnaire.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_dict = {'a': 1, 'b': 2, 'c': 3}</kbd>
@@ -343,9 +343,9 @@ TypeError: unhashable type: 'list'</samp></pre>
 
 <p class=a>&#x2042;
 
-<h2 id=setcomprehension>Ensembles Définis Par Compréhension</h2>
+<h2 id=setcomprehension>Ensembles Définis En Compréhension</h2>
 
-<p>Sans les oublier, les ensembles ont leur propre syntaxe pour les définir par compréhension. Elle est remarquablement similaire à la syntaxe utilisée pour les dictionnaires. La seule différence est quùil n’y a que des valeurs au lieu de paires clé:valeur.
+<p>Sans les oublier, les ensembles ont leur propre syntaxe pour les définir par compréhension. Elle est remarquablement similaire à la syntaxe utilisée pour les dictionnaires. La seule différence est qu’il n’y a que des valeurs au lieu de paires clé:valeur.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_set = set(range(10))</kbd>
@@ -359,9 +359,9 @@ TypeError: unhashable type: 'list'</samp></pre>
 <samp class=pp>{32, 1, 2, 4, 8, 64, 128, 256, 16, 512}</samp>
 </pre>
 <ol>
-<li>Les ensembles définis par compréhension peuvent prendre un autre ensemble comme entrée. La définition de l’ensemble claclule le carré de tous les éléments de l’ensemble de 0 à <code>9</code>.
+<li>Les ensembles définis par compréhension peuvent prendre un autre ensemble comme entrée. La définition de l’ensemble calcule le carré de tous les éléments de l’ensemble de 0 à <code>9</code>.
 <li>Comme les définitions par compréhension de listes et de dictionnaires, celles de dictionnaires peuvent contenir une clause <code>if</code> pour filter les éléments avant de les retourner dans l’ensemble de résultats.
-<li>Une définition par compréhension d’ensemble n’a pas nécessairement besoin d’un autre ensemble comme entrée&nbsp;; une séquence suffit.
+<li>Une définition par compréhension d’ensemble n’a pas nécessairement besoin d’un autre ensemble comme entrée&nbsp;: une séquence suffit.
 </ol>
 
 <p class=a>&#x2042;
@@ -380,7 +380,7 @@ TypeError: unhashable type: 'list'</samp></pre>
 <li><a href=http://docs.python.org/3.1/tutorial/datastructures.html#nested-list-comprehensions>Listes imbriquées définies par compréhensions</a>
 <li><a href=http://docs.python.org/3.1/tutorial/datastructures.html#looping-techniques>Techniques de boucles</a>
 </ul>
-<p class=v><a href=native-datatypes.html rel=prev title='back to &#8220;Types Prédéfinis&#8221;'><span class=u>&#x261C;</span></a> <a href=strings.html rel=next title='onward to &#8220;Chaines&#8221;'><span class=u>&#x261E;</span></a>
+<p class=v><a href=native-datatypes.html rel=prev title='retourner à &#8220;Types Prédéfinis&#8221;'><span class=u>&#x261C;</span></a> <a href=strings.html rel=next title='aller à &#8220;Chaines&#8221;'><span class=u>&#x261E;</span></a>
 <p class=c>&copy; 2001&ndash;11 <a href=about.html>Mark Pilgrim</a>
 <script src=j/jquery.js></script>
 <script src=j/prettify.js></script>
