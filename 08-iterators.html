@@ -16,7 +16,7 @@ body{counter-reset:h1 7}
 <meta name=viewport content='initial-scale=1.0'>
 <form action=http://www.google.com/cse><div><input type=hidden name=cx value=014021643941856155761:l5eihuescdw><input type=hidden name=ie value=UTF-8>&nbsp;<input type=search name=q size=25 placeholder="powered by Google&trade;">&nbsp;<input type=submit name=sa value=Search></div></form>
 <p>Vous êtes ici&nbsp;: <a href=index.html>Home</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#iterators>Plongez dans Python 3</a> <span class=u>&#8227;</span>
-<p id=level>Difficulty level: <span class=u title=intermediate>&#x2666;&#x2666;&#x2666;&#x2662;&#x2662;</span>
+<p id=level>Difficulé&nbsp;: <span class=u title=intermediate>&#x2666;&#x2666;&#x2666;&#x2662;&#x2662;</span>
 <h1>Classes <i class=baa>&amp;</i> Itérateurs</h1>
 <blockquote class=q>
 <p><span class=u>&#x275D;</span> L’Orient et l’Occident&nbsp;: deux mondes qui jamais ne pourront se rejoindre <span class=u>&#x275E;</span><br>&mdash; <a href=http://en.wikiquote.org/wiki/Rudyard_Kipling>Rudyard Kipling</a>
@@ -165,7 +165,7 @@ Vous pouvez accéder l’instance <code>docstring</code> comme pour une fonction
 Chacune de ces trois méthodes de classe, <code>__init__</code>,<code>__iter__</code>, et <code>__next__</code>, commencent et finissent avec une paire de caractères underscore (<code>_</code>). Pourquoi&nbsp;? Il n’y a rien de magique, mais cela indique généralement que ce sont des «&nbsp;<dfn>méthodes spéciales</dfn>&nbsp;». La seule chose «&nbsp;spéciale&nbsp;» sur les méthodes spéciales, c’est qu’elles ne sont pas appelées directement&nbsp;: Python les appelle lorsque vous utilisez une autre syntaxe ou  instance de la classe. <a href=special-method-names.html>Davantage sur les méthodes spéciales</a>.
 </aside>
 
-<p class=d>[<a href=examples/fibonacci2.py>download <code>fibonacci2.py</code></a>]
+<p class=d>[<a href=examples/fibonacci2.py>télécharger <code>fibonacci2.py</code></a>]
 <pre class=pp><code><a>class Fib:                    <span class=u>&#x2460;</span></a>
 <a>    def __init__(self, max):                      <span class=u>&#x2461;</span></a>
         self.max = max
@@ -205,16 +205,16 @@ Chacune de ces trois méthodes de classe, <code>__init__</code>,<code>__iter__</
 <ul>
 <li>La boucle <code>for</code> appelle <code>Fib(1000)</code>, comme indiqué. Ceci retourne une instance de la classe <code>Fib</code>. Appelons-la <var>fib_inst</var>.
 <li>Secrètement, et assez habilement, la boucle <code>for</code> appelle <code>iter(fib_inst)</code>, qui renvoie un objet itérateur. Appelons-la <var>fib_iter</var>. Dans ce cas, <var>fib_iter</var> == <var>fib_inst</var>, parce que la méthode <code>__iter__()</code> retourne <var>self</var>, mais la boucle <code>for</code> ne sait rien (ou ne se préoccupe) à ce sujet.
-<li>Pour «&nbsp;boucler à l’intérieur&nbsp;» de l’itérateur, la boucle <code>for</code> appelle <code>next(fib_iter)</code>, qui appelle la méthode <code>__next__()</code> sur l’objet <<code>fib_iter</code>, qui effectue les calculs du prochain nombre de Fibonacci et renvoie une valeur. La boucle <code>for</code> prend cette valeur, et l’assigne à <var>n</var>, puis exécute le corps de la boucle <code>for</code> pour cette valeur de <var>n</var>.
-<li>Comment la boucle <code>for</code> sait quand s'arrêter&nbsp;? Je suis content que vous posiez la question&nbsp;! Quand <code>next(fib_iter)</code> soulève une exception <code>StopIteration</code>, la boucle <code>for</code> va avaler l’exception et se terminer normalement. (Toute autre exception va passer à travers et sera soulevée comme d'habitude.) Et où avez-vous vu une exception <code>StopIteration</code>&nbsp;? Dans la méthode <code>__next__()</code>, bien sûr&nbsp;!
+<li>Pour «&nbsp;boucler à l’intérieur&nbsp;» de l’itérateur, la boucle <code>for</code> appelle <code>next(fib_iter)</code>, qui appelle la méthode <code>__next__()</code> sur l’objet <code>fib_iter</code>, qui effectue les calculs du prochain nombre de Fibonacci et renvoie une valeur. La boucle <code>for</code> prend cette valeur, et l’assigne à <var>n</var>, puis exécute le corps de la boucle <code>for</code> pour cette valeur de <var>n</var>.
+<li>Comment la boucle <code>for</code> sait quand s’arrêter&nbsp;? Je suis content que vous posiez la question&nbsp;! Quand <code>next(fib_iter)</code> soulève une exception <code>StopIteration</code>, la boucle <code>for</code> va avaler l’exception et se terminer normalement. (Toute autre exception va passer à travers et sera soulevée comme d’habitude.) Et où avez-vous vu une exception <code>StopIteration</code>&nbsp;? Dans la méthode <code>__next__()</code>, bien sûr&nbsp;!
 </ul>
 
 <p class=a>&#x2042;
 
-<h2 id=a-plural-rule-iterator>A Plural Rule Iterator</h2>
+<h2 id=a-plural-rule-iterator>Un itérateur d’accord au pluriel</h2>
 
-<aside>iter(f) calls f.__iter__<br>next(f) calls f.__next__</aside>
-<p>Now it&#8217;s time for the finale. Let&#8217;s rewrite the <a href=generators.html>plural rules generator</a> as an iterator.
+<aside>iter(f) appelle f.__iter__<br>next(f) appelle f.__next__</aside>
+<p>Voici venu le temps du final. Réécrivons le <a href=generators.html>générateur de règles pour le pluriel</a> comme un itérateur.
 
 <p class=d>[<a href=examples/plural6.py>télécharger <code>plural6.py</code></a>]
 <pre class=pp><code>class LazyRules:
@@ -249,9 +249,9 @@ Chacune de ces trois méthodes de classe, <code>__init__</code>,<code>__iter__</
 
 rules = LazyRules()</code></pre>
 
-<p>So this is a class that implements <code>__iter__()</code> and <code>__next__()</code>, so it can be used as an iterator. Then, you instantiate the class and assign it to <var>rules</var>. This happens just once, on import.
+<p>Voici une classe qui implémente <code>__iter__()</code> et <code>__next__()</code>, de manière à pouvoir être utilisé comme un itérateur. Ensuite, vous instanciez la classe et l’assignez aux <var>règles</var>. Ça ne se fait qu’une fois, à l’import.
 
-<p>Let&#8217;s take the class one bite at a time.
+<p>Analysons cette classe un bit à la fois.
 
 <pre class=pp><code>class LazyRules:
     rules_filename = 'plural6-rules.txt'
@@ -260,11 +260,11 @@ rules = LazyRules()</code></pre>
 <a>        self.pattern_file = open(self.rules_filename, encoding='utf-8')  <span class=u>&#x2460;</span></a>
 <a>        self.cache = []                                                  <span class=u>&#x2461;</span></a></code></pre>
 <ol>
-<li>When we instantiate the <code>LazyRules</code> class, open the pattern file but don&#8217;t read anything from it. (That comes later.)
-<li>After opening the patterns file, initialize the cache. You&#8217;ll use this cache later (in the <code>__next__()</code> method) as you read lines from the pattern file.
+<li>Nous instancions la classe <code>LazyRules</code>, ouvrons le fichier de règles mais ne le lisons pas. (Ça viendra plus tard.)
+<li>Après avoir ouvert le fichier de règles, initialisons le cache. Vous utiliserez ce cache plus tard (dans la méthode <code>__next__()</code>) lorsque vous lisez les lignes du fichier de règles.
 </ol>
 
-<p>Before we continue, let&#8217;s take a closer look at <var>rules_filename</var>. It&#8217;s not defined within the <code>__iter__()</code> method. In fact, it&#8217;s not defined within <em>any</em> method. It&#8217;s defined at the class level. It&#8217;s a <i>class variable</i>, and although you can access it just like an instance variable (<var>self.rules_filename</var>), it is shared across all instances of the <code>LazyRules</code> class.
+<p>Avant de continuer, nous allons jeter un coup d’oeil de plus près à la variable <var>rules_filename</var>. Elle n’est pas définie dans le <code>__iter__()</code>. En fait, elle n’est définie dans <em>aucune</em> méthode. Elle est définie au niveau de la classe. Il s’agit d’une <i>variable de classe</i>, et bien que vous puissiez y accéder comme une variable d’instance (<var>self.rules_filename</var>), elle est partagée par toutes les instances de la classe <code>LazyRules</code>.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import plural6</kbd>
@@ -287,22 +287,22 @@ rules = LazyRules()</code></pre>
 <a><samp class=p>>>> </samp><kbd class=pp>r2.rules_filename</kbd>                               <span class=u>&#x2464;</span></a>
 <samp class=pp>'r2-overridetxt'</samp></pre>
 <ol>
-<li>Each instance of the class inherits the <var>rules_filename</var> attribute with the value defined by the class.
-<li>Changing the attribute&#8217;s value in one instance does not affect other instances&hellip;
-<li>&hellip;nor does it change the class attribute. You can access the class attribute (as opposed to an individual instance&#8217;s attribute) by using the special <code>__class__</code> attribute to access the class itself.
-<li>If you change the class attribute, all instances that are still inheriting that value (like <var>r1</var> here) will be affected.
-<li>Instances that have overridden that attribute (like <var>r2</var> here) will not be affected.
-</ol>
+<li>Chaque instance de la classe hérite de l’attribut <var>rules_filename</var> avec la valeur définie par la classe.
+<li>Changer la valeur de l’attribut dans un cas n’affecte pas les autres cas&hellip; 
+<li>&hellip;ni ne change l’attribut de classe. Vous pouvez accéder à l’attribut de classe (par opposition à l’attribut d’une instance individuelle) en utilisant l’attribut spécial <code>__class__</code> pour accéder à la classe elle-même.
+<li>Si vous modifiez l’attribut de classe, toutes les instances qui héritent encore de cette valeur (comme <var>r1</var> ici) seront affectées.
+<li>Les instances qui ont annulé cet attribut (comme <var>r2</var> ici) ne seront pas affectées.
+</ ol>
 
-<p>And now back to our show.
+<p>Et maintenant, revenons à notre spectacle.
 
 <pre class=pp><code><a>    def __iter__(self):       <span class=u>&#x2460;</span></a>
         self.cache_index = 0
 <a>        return self           <span class=u>&#x2461;</span></a>
 </code></pre>
 <ol>
-<li>The <code>__iter__()</code> method will be called every time someone&nbsp;&mdash;&nbsp;say, a <code>for</code> loop&nbsp;&mdash;&nbsp;calls <code>iter(rules)</code>.
-<li>The one thing that every <code>__iter__()</code> method must do is return an iterator. In this case, it returns <var>self</var>, which signals that this class defines a <code>__next__()</code> method which will take care of returning values throughout the iteration.
+<li>La méthode <code>__iter__()</code> sera appelée à chaque fois que quelqu’un&nbsp;&mdash;&nbsp;disons une boucle <code>for</code>&nbsp;&mdash;&nbsp;appelle <code>iter(rules)</code>.
+<li>La seule chose que chaque <code>__iter__()</code> doit faire, c’est retourner un itérateur. Dans ce cas, il retourne <var>self</var>, qui signale que cette classe définit un <code>__next__()</code> qui va prendre soin de retourner les valeurs tout au long de l’itération.
 </ol>
 
 <pre class=pp><code><a>    def __next__(self):                                 <span class=u>&#x2460;</span></a>
@@ -315,9 +315,9 @@ rules = LazyRules()</code></pre>
 <a>        self.cache.append(funcs)                        <span class=u>&#x2462;</span></a>
         return funcs</code></pre>
 <ol>
-<li>The <code>__next__()</code> method gets called whenever someone&nbsp;&mdash;&nbsp;say, a <code>for</code> loop&nbsp;&mdash;&nbsp;calls <code>next(rules)</code>. This method will only make sense if we start at the end and work backwards. So let&#8217;s do that.
-<li>The last part of this function should look familiar, at least. The <code>build_match_and_apply_functions()</code> function hasn&#8217;t changed; it&#8217;s the same as it ever was.
-<li>The only difference is that, before returning the match and apply functions (which are stored in the tuple <var>funcs</var>), we&#8217;re going to save them in <code>self.cache</code>.
+<li>La méthode <code>__next__()</code> sera appelée à chaque fois que quelqu’un&nbsp;&mdash;&nbsp;disons une boucle <code>for</code>&nbsp;&mdash;&nbsp;appelle <code>next(rules)</code>. Cette méthode n’a de sens que si nous commençons à la fin et travaillons à rebours. Faisons ça.
+<li>Au moins la dernière partie de cette fonction devrait vous être familière. La fonction <code>build_match_and_apply_functions()</code> n’a pas changé&nbsp;: c’est toujours la même fonction.
+<li>La seule différence est que, avant de retourner le match et les fonctions applicables (qui sont stockées dans le tuple <var>funcs</var>), nous allons les enregistrer dans <code>self.cache</code>.
 </ol>
 
 <p>Moving backwards&hellip;
@@ -334,12 +334,12 @@ rules = LazyRules()</code></pre>
         .
         .</code></pre>
 <ol>
-<li>A bit of advanced file trickery here. The <code>readline()</code> method (note: singular, not the plural <code>readlines()</code>) reads exactly one line from an open file. Specifically, the next line. (<em>File objects are iterators too! It&#8217;s iterators all the way down&hellip;</em>)
-<li>If there was a line for <code>readline()</code> to read, <var>line</var> will not be an empty string. Even if the file contained a blank line, <var>line</var> would end up as the one-character string <code>'\n'</code> (a carriage return). If <var>line</var> is really an empty string, that means there are no more lines to read from the file.
-<li>When we reach the end of the file, we should close the file and raise the magic <code>StopIteration</code> exception. Remember, we got to this point because we needed a match and apply function for the next rule. The next rule comes from the next line of the file&hellip; but there is no next line! Therefore, we have no value to return. The iteration is over. (<span class=u>&#x266B;</span> The party&#8217;s over&hellip; <span class=u>&#x266B;</span>)
+<li>Un peu de bidouillage avancé sur les fichiers ici. La méthode <code>readline()</code> (note&nbsp;: singulier, non au pluriel <code>readlines()</code>) lit exactement une ligne à partir d’un fichier ouvert. Plus précisément, la ligne suivante. (<em>Les objets fichier sont aussi des itérateurs&nbsp;! Ce sont des itérateurs tout le long&hellip;</em>)
+<li>S’il y avait une ligne à lire pour <code>readline()</code>, <var>line</var> ne sera pas une chaîne vide. Même si le fichier contient une ligne vide, <var>line</var> finirait comme une chaîne d’un caractère <code> '\n'</code> (un retour chariot). Si <var>line</var> est vraiment une chaîne vide, cela signifie qu’il n’y a plus de lignes à lire à partir du fichier.
+<li>Lorsque nous arrivons à la fin du fichier, nous devrions fermer le fichier et soulever l’exception magique <code>StopIteration</code>. Rappelez-vous, nous sommes arrivés à ce point parce que nous avions besoin d’une fonction de correspondance et d’application pour la règle suivante. La règle suivante vient de la ligne suivante du fichier&hellip; mais il n’y a pas de ligne suivante&nbsp;! Par conséquent, nous n’avons aucune valeur à renvoyer. L’itération est terminée. (<span class=u>&#x266B;</span> La fête est terminée&hellip; <span class=u>&#x266B;</span>)
 </ol>
 
-<p>Moving backwards all the way to the start of the <code>__next__()</code> method&hellip;
+<p>Travaillons à reculons vers le début de la méthode <code>__next__()</code>&hellip;
 
 <pre class=pp><code>    def __next__(self):
         self.cache_index += 1
@@ -352,38 +352,39 @@ rules = LazyRules()</code></pre>
         .
         .</code></pre>
 <ol>
-<li><code>self.cache</code> will be a list of the functions we need to match and apply individual rules. (At least <em>that</em> should sound familiar!) <code>self.cache_index</code> keeps track of which cached item we should return next. If we haven&#8217;t exhausted the cache yet (<i>i.e.</i> if the length of <code>self.cache</code> is greater than <code>self.cache_index</code>), then we have a cache hit! Hooray! We can return the match and apply functions from the cache instead of building them from scratch.
-<li>On the other hand, if we don&#8217;t get a hit from the cache, <em>and</em> the file object has been closed (which could happen, further down the method, as you saw in the previous code snippet), then there&#8217;s nothing more we can do. If the file is closed, it means we&#8217;ve exhausted it&nbsp;&mdash;&nbsp;we&#8217;ve already read through every line from the pattern file, and we&#8217;ve already built and cached the match and apply functions for each pattern. The file is exhausted; the cache is exhausted; I&#8217;m exhausted. Wait, what? Hang in there, we&#8217;re almost done.
+<li><code>self.cache</code> sera une liste des fonctions dont nous avons besoin pour faire correspondre et appliquer des règles différentes. (Au moins <em>ceci</em> devrait vous paraître familier&nbsp;!) <code>self.cache_index</code> garde la trace des élément mis en cache que nous devrions retourner ensuite. Si nous n’avons pas encore épuisé le cache (<i>i.e.</i> si la longueur de <code>self.cache</code> est supérieure à <code>self.cache_index</code>), alors nous avons un cache hit&nbsp;! Hourra&nbsp;! Nous pouvons retourner la correspondance et appliquer des fonctions de la mémoire cache au lieu de les construire à partir de zéro.
+<li>D’autre part, si nous n’obtenons pas un hit dans le cache, <em>et</em> l’objet fichier a été fermé (ce qui pourrait se passer, plus bas dans la méthode, comme vous l’avez vu dans le précédent extrait de code), alors il n’y a rien que nous puissions faire. Si le fichier est fermé, cela signifie que nous avons épuisé&nbsp;&mdash;&nbsp;nous avons déjà lu chaque ligne du fichier de règles, et nous avons déjà construit et mis en cache la correspondance et appliqué des fonctions pour chaque règle. Le fichier est épuisé, le cache est épuisé, je suis épuisé. Attendez, quoi&nbsp;? Accrochez-vous, nous avons presque terminé.
 </ol>
 
-<p>Putting it all together, here&#8217;s what happens when:
+<p>En rassemblant tout ça, voici ce qui arrive quand&nbsp;:
 
 <ul>
-<li>When the module is imported, it creates a single instance of the <code>LazyRules</code> class, called <var>rules</var>, which opens the pattern file but does not read from it.
-<li>When asked for the first match and apply function, it checks its cache but finds the cache is empty. So it reads a single line from the pattern file, builds the match and apply functions from those patterns, and caches them.
-<li>Let&#8217;s say, for the sake of argument, that the very first rule matched. If so, no further match and apply functions are built, and no further lines are read from the pattern file.
-<li>Furthermore, for the sake of argument, suppose that the caller calls the <code>plural()</code> function <em>again</em> to pluralize a different word. The <code>for</code> loop in the <code>plural()</code> function will call <code>iter(rules)</code>, which will reset the cache index but will not reset the open file object.
-<li>The first time through, the <code>for</code> loop will ask for a value from <var>rules</var>, which will invoke its <code>__next__()</code> method. This time, however, the cache is primed with a single pair of match and apply functions, corresponding to the patterns in the first line of the pattern file. Since they were built and cached in the course of pluralizing the previous word, they&#8217;re retrieved from the cache. The cache index increments, and the open file is never touched.
-<li>Let&#8217;s say, for the sake of argument, that the first rule does <em>not</em> match this time around. So the <code>for</code> loop comes around again and asks for another value from <var>rules</var>. This invokes the <code>__next__()</code> method a second time. This time, the cache is exhausted&nbsp;&mdash;&nbsp;it only contained one item, and we&#8217;re asking for a second&nbsp;&mdash;&nbsp;so the <code>__next__()</code> method continues. It reads another line from the open file, builds match and apply functions out of the patterns, and caches them.
-<li>This read-build-and-cache process will continue as long as the rules being read from the pattern file don&#8217;t match the word we&#8217;re trying to pluralize. If we do find a matching rule before the end of the file, we simply use it and stop, with the file still open. The file pointer will stay wherever we stopped reading, waiting for the next <code>readline()</code> command. In the meantime, the cache now has more items in it, and if we start all over again trying to pluralize a new word, each of those items in the cache will be tried before reading the next line from the pattern file.
+<li>Lorsque le module est importé, il crée une instance unique de la classe <code>LazyRules</code>, appelée <var>rules</var>, qui ouvre le fichier de règles, mais ne le lit pas.
+<li>Lorsqu’il est interrogé pour la première correspondance et l’application de fonction, il vérifie son cache, mais trouve le cache vide. Alors il lit une seule ligne dans le fichier de règles, construit la correspondance, applique les fonctions de cette règle et les met en cache.
+<li>Disons que, pour les besoins du raisonnement, la première règle correspond. Si c’est le cas, aucune autre correspondance ni application de fonctions n’est construit, et aucune autre ligne n’est lue à partir du fichier de règles.
+<li>En outre, pour les besoins du raisonnement, supposons que l’appelant appelle la fonction code>plural()</code> <em>à nouveau</em> afin de mettre au pluriel un mot différent. La boucle <code>for</code> dans la fonction <code>plural()</code> appellera <code>iter(rules)</code>, qui permet de réinitialiser l’index du cache, mais pas de réinitialiser le fichier objet ouvert.
+<li>La première fois, la boucle <code>for</code> demandera une valeur de <var>rules</var>, qui invoquera la méthode <code>__next__()</code>. Cette fois, cependant, le cache est apprêté avec une seule paire de correspondances et appliquera les fonctions, correspondant à la règle de la première ligne du fichier de règles. Depuis qu’ils ont été construits et mis en cache dans le cadre de pluriel du mot précédent, ils sont récupérés à partir du cache. L’indice de cache est incrémenté, et le fichier ouvert n’est jamais touché.
+
+<li>Disons que, pour les besoins du raisonnement, la première règle ne correspond <em>pas</em> cette fois-ci. Ainsi, la boucle <code>for</code> est à nouveau lancée et demande une autre valeur de <var>rules</var>. Ceci invoque la méthode <code>__next__()</code> une seconde fois. Cette fois, le cache est épuisé&nbsp;&mdash;&nbsp;il ne contenait qu’un élément, et nous l’interrogeons pour un second&nbsp;&mdash;&nbsp;donc le <code>__next__()</code> continue. Il lit une autre ligne du fichier ouvert, construit la correspondance et applique les fonctions sur les règles et les caches.
+<li>Ce processus de lecture-construction-et-cache se poursuivra aussi longtemps que les règles lues à partir du fichier de règles ne correspondent pas avec le mot que nous essayons de mettre au pluriel. Si nous trouvons une règle de correspondance avant la fin du fichier, nous l’utilisons et arrêtons tout, avec le fichier toujours ouvert. Le pointeur de fichier va rester là où nous nous sommes arrêtés de lire, en attendant la commande <code>readline()</code> suivante. En attendant, le cache a maintenant davantage d’éléments dedans, et si nous recommençons tout en essayant de mettre au pluriel un nouveau mot, chacun des éléments restants dans le cache sera testé avant de lire la ligne suivante dans le fichier de règles.
 </ul>
 
-<p>We have achieved pluralization nirvana.
+<p>Nous avons atteint le nirvana de la pluralisation.
 
 <ol>
-<li><strong>Minimal startup cost.</strong> The only thing that happens on <code>import</code> is instantiating a single class and opening a file (but not reading from it).
-<li><strong>Maximum performance.</strong> The previous example would read through the file and build functions dynamically every time you wanted to pluralize a word. This version will cache functions as soon as they&#8217;re built, and in the worst case, it will only read through the pattern file once, no matter how many words you pluralize.
-<li><strong>Separation of code and data.</strong> All the patterns are stored in a separate file. Code is code, and data is data, and never the twain shall meet.
+<li><strong>Coût de démarrage minimal.</strong> La seule chose qui se passe dans <code>import</code> est l’instanciation d’une seule classe et l’ouverture d’un fichier (mais pas la lecture de celui-ci).
+<li><strong>Performances maximales.</strong> L’exemple précédent lit le fichier et construit les fonctions dynamiquement à chaque fois que vous voulez mettre un mot au pluriel. Cette version met en cache les fonctions dès qu’ells sont construites, et dans le pire des cas, il ne fera que lire le fichier de règles une fois, peu importe combien de mots vous souhaitez mettre au pluriel.
+<li><strong>Séparation du code et des données.</strong> Tous les modèles sont stockés dans un fichier séparé. Le code est du code, et les données sont des données, et jamais ils ne se rencontreront.
 </ol>
 
 <blockquote class=note>
-<p><span class=u>&#x261E;</span>Is this really nirvana? Well, yes and no. Here&#8217;s something to consider with the <code>LazyRules</code> example: the pattern file is opened (during <code>__init__()</code>), and it remains open until the final rule is reached. Python will eventually close the file when it exits, or after the last instantiation of the <code>LazyRules</code> class is destroyed, but still, that could be a <em>long</em> time. If this class is part of a long-running Python process, the Python interpreter may never exit, and the <code>LazyRules</code> object may never get destroyed.
-<p>There are ways around this. Instead of opening the file during <code>__init__()</code> and leaving it open while you read rules one line at a time, you could open the file, read all the rules, and immediately close the file. Or you could open the file, read one rule, save the file position with the <a href=files.html#read><code>tell()</code> method</a>, close the file, and later re-open it and use the <a href=files.html#read><code>seek()</code> method</a> to continue reading where you left off. Or you could not worry about it and just leave the file open, like this example code does. Programming is design, and design is all about trade-offs and constraints. Leaving a file open too long might be a problem; making your code more complicated might be a problem. Which one is the bigger problem depends on your development team, your application, and your runtime environment.
+<p><span class=u>&#x261E;</span>Est-ce vraiment le nirvana&nbsp;? Eh bien, oui et non. Voici quelque chose à considérer avec l’exemple <code>LazyRules</code>&nbsp;: le fichier de règles est ouvert (pendant <code>__init__()</code>), et il reste ouvert jusqu’à ce que la dernière règle soit atteinte. Python finira par fermer le fichier quand il se termine, ou après que la dernière instanciation de la classe <code>LazyRules</code> soit détruite, ce qui pourrait prendre un <em>long</em> moment. Si cette classe fait partie d’un processus Python de longue durée, l’interpréteur Python peut ne jamais quitter, et l’objet <code>LazyRules</code> peut ne jamais être détruit.
+<p>Il y a des façons de contourner cela. Au lieu d’ouvrir le fichier pendant <code>__init__()</code> et le laisser ouvert pendant que vous lisez les règles une ligne à la fois, vous pouvez ouvrir le fichier, lire toutes les règles, et fermer immédiatement le fichier. Ou vous pouvez ouvrir le fichier, lire une règle, enregistrer la position de fichier avec la <a href=files.html#read>méthode <code>tell()</code></a>, fermer le fichier, et plus tard ré-ouvrir et utiliser la <a href=files.html#read>méthode <code>seek()</code></a> pour poursuivre la lecture là où vous l’aviez laissée. Ou vous pourriez ne pas vous inquiéter à ce sujet et laisser le fichier ouvert, comme le fait cet exemple de code. La programmation est de la conception, et la conception est tout au sujet des arbitrages et des contraintes. Laisser une image ouverte trop longtemps pourrait être un problème&nbsp;; rendre votre code plus complexe pourrait être un problème. Lequel est le plus gros problème dépend de votre équipe de développement, votre application et votre environnement d’exécution.
 </blockquote>
 
 <p class=a>&#x2042;
 
-<h2 id=furtherreading>Further Reading</h2>
+<h2 id=furtherreading>Lectures complémentaires</h2>
 <ul>
 <li><a href=http://docs.python.org/3.1/library/stdtypes.html#iterator-types>Iterator types</a>
 <li><a href=http://www.python.org/dev/peps/pep-0234/>PEP 234: Iterators</a>
@@ -391,7 +392,7 @@ rules = LazyRules()</code></pre>
 <li><a href=http://www.dabeaz.com/generators/>Generator Tricks for Systems Programmers</a>
 </ul>
 
-<p class=v><a href=generators.html rel=prev title='back to &#8220;Closures &amp; Generators&#8221;'><span class=u>&#x261C;</span></a> <a href=advanced-iterators.html rel=next title='onward to &#8220;Advanced Iterators&#8221;'><span class=u>&#x261E;</span></a>
+<p class=v><a href=generators.html rel=prev title='retourner à «&nbsp;Fermetures &amp; Générateurs&nbsp;»'><span class=u>&#x261C;</span></a> <a href=advanced-iterators.html rel=next title='aller à «&nbsp;Itérateurs avancés&nbsp;»'><span class=u>&#x261E;</span></a>
 
 <p class=c>&copy; 2001&ndash;11 <a href=about.html>Mark Pilgrim</a>
 <script src=j/jquery.js></script>
