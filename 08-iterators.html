@@ -65,7 +65,7 @@ body{counter-reset:h1 7}
 <ol>
 <li>Le nom de cette classe est <code>PapayaWhip</code>, et elle n’hérite pas d’une autre classe. Les noms de classes sont habituellement capitalisés, <code>ChaqueMotCommeCeci</code>, mais ce n’est qu’une convention, pas une obligation.
 <li>Vous l’aurez sans doute deviné, mais tout dans une classe est indenté, tout comme le code dans une fonction, bloc <code>if</code>, boucle <code>for</code>, ou tout autre bloc de code. La première ligne non indentée est en dehors de la classe.
-</ ol>
+</ol>
 
 <p><code>PapayaWhip</code> ne définit aucune méthode ni attribut, mais syntaxiquement, il doit y avoir quelque chose dans la définition, d’où l’utilisation de <code>pass</code>. Il s’agit d’un mot réservé de Python qui signifie simplement «&nbsp;Circulez, rien à voir ici.&nbsp;» C’est une déclaration qui ne fait rien, et c’est un bon marqueur lorsque vous écrivez un squelette de fonction ou de classe.
 
@@ -198,7 +198,7 @@ Chacune de ces trois méthodes de classe, <code>__init__</code>,<code>__iter__</
 <samp class=p>... </samp><kbd class=pp>    print(n, end=' ')</kbd>
 <samp class=pp>0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987</samp></pre>
 
-<p>Eh bien, c'est exactement la même chose&nbsp;! C’est identique octet par octet à la façon dont vous avez appelé <a href=generators.html#a-fibonacci-generator>Fibonacci-comme-un-générateur</a> (modulo une majuscule). Mais comment?
+<p>Eh bien, c’est exactement la même chose&nbsp;! C’est identique octet par octet à la façon dont vous avez appelé <a href=generators.html#a-fibonacci-generator>Fibonacci-comme-un-générateur</a> (modulo une majuscule). Mais comment?
 
 <p>Il y a un peu de magie impliquée dans les boucles <code>for</code>. Voici ce qui arrive&nbsp;:
 
@@ -292,7 +292,7 @@ rules = LazyRules()</code></pre>
 <li>&hellip;ni ne change l’attribut de classe. Vous pouvez accéder à l’attribut de classe (par opposition à l’attribut d’une instance individuelle) en utilisant l’attribut spécial <code>__class__</code> pour accéder à la classe elle-même.
 <li>Si vous modifiez l’attribut de classe, toutes les instances qui héritent encore de cette valeur (comme <var>r1</var> ici) seront affectées.
 <li>Les instances qui ont annulé cet attribut (comme <var>r2</var> ici) ne seront pas affectées.
-</ ol>
+</ol>
 
 <p>Et maintenant, revenons à notre spectacle.
 
@@ -364,7 +364,6 @@ rules = LazyRules()</code></pre>
 <li>Disons que, pour les besoins du raisonnement, la première règle correspond. Si c’est le cas, aucune autre correspondance ni application de fonctions n’est construit, et aucune autre ligne n’est lue à partir du fichier de règles.
 <li>En outre, pour les besoins du raisonnement, supposons que l’appelant appelle la fonction <code>plural()</code> <em>à nouveau</em> afin de mettre au pluriel un mot différent. La boucle <code>for</code> dans la fonction <code>plural()</code> appellera <code>iter(rules)</code>, qui permet de réinitialiser l’index du cache, mais pas de réinitialiser le fichier objet ouvert.
 <li>La première fois, la boucle <code>for</code> demandera une valeur de <var>rules</var>, qui invoquera la méthode <code>__next__()</code>. Cette fois, cependant, le cache est apprêté avec une seule paire de correspondances et appliquera les fonctions, correspondant à la règle de la première ligne du fichier de règles. Depuis qu’ils ont été construits et mis en cache pour mettre au pluriel le mot précédent, ils sont récupérés à partir du cache. L’indice de cache est incrémenté, et le fichier ouvert n’est jamais touché.
-
 <li>Disons que, pour les besoins du raisonnement, la première règle <em>ne</em> correspond <em>pas</em> cette fois-ci. Ainsi, la boucle <code>for</code> est à nouveau lancée et demande une autre valeur de <var>rules</var>. Ceci invoque la méthode <code>__next__()</code> une seconde fois. Cette fois, le cache est épuisé&nbsp;&mdash;&nbsp;il ne contenait qu’un élément, et nous l’interrogeons pour un second&nbsp;&mdash;&nbsp;donc le <code>__next__()</code> continue. Il lit une autre ligne du fichier ouvert, construit la correspondance et applique les fonctions sur les règles et les caches.
 <li>Ce processus de lecture-construction-et-cache se poursuivra aussi longtemps que les règles lues à partir du fichier de règles ne correspondent pas avec le mot que nous essayons de mettre au pluriel. Si nous trouvons une règle de correspondance avant la fin du fichier, nous l’utilisons et arrêtons tout, avec le fichier toujours ouvert. Le pointeur de fichier va rester là où nous nous sommes arrêtés de lire, en attendant la commande <code>readline()</code> suivante. En attendant, le cache a maintenant davantage d’éléments dedans, et si nous recommençons tout en essayant de mettre au pluriel un nouveau mot, chacun des éléments restants dans le cache sera testé avant de lire la ligne suivante dans le fichier de règles.
 </ul>
