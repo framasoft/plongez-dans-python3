@@ -17,7 +17,7 @@ body{counter-reset:h1 3}
 <form action=http://www.google.com/cse><div><input type=hidden name=cx value=014021643941856155761:l5eihuescdw><input type=hidden name=ie value=UTF-8>&nbsp;<input type=search name=q size=25 placeholder="powered by Google&trade;">&nbsp;<input type=submit name=root value=Search></div></form>
 <p>Vous êtes ici&nbsp;: <a href=index.html>Index</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#comprehensions>Plongez dans Python 3</a> <span class=u>&#8227;</span>
 <p id=level>Niveau de difficulté&nbsp;: <span class=u title=beginner>&#x2666;&#x2666;&#x2662;&#x2662;&#x2662;</span>
-<h1>Comprehensions</h1>
+<h1>En compréhension</h1>
 <blockquote class=q>
 <p><span class=u>&#x275D;</span> Notre imagination est étirée à l’extrême, non pas, comme dans la fiction, à imaginer des choses qui n’existent pas vraiment, mais seulement à comprendre ces choses qui sont là. <span class=u>&#x275E;</span><br>&mdash; <a href=http://en.wikiquote.org/wiki/Richard_Feynman>Richard Feynman</a>
 </blockquote>
@@ -36,9 +36,9 @@ body{counter-reset:h1 3}
 <p>Lorsque vous commencez à vous familiariser avec Python, vous passez beaucoup de temps dans <a href=installing-python.html#idle>le Shell Python</a>. Au cours de ce livre, vous verrez des exemples qui sont présentés de cette façon&nbsp;:
 
 <ol>
-<li>Importez un des modules du répertoire <a href=examples/><code>examples</code></a>
-<li>Appelez une fonction de ce module
-<li>Expliquez le résultat
+<li>Import d’un des modules du répertoire <a href=examples/><code>examples</code></a>
+<li>Appel d’une fonction de ce module
+<li>Explication du résultat
 </ol>
 
 <aside>Il y a toujours un répertoire de travail.</aside>
@@ -47,12 +47,12 @@ body{counter-reset:h1 3}
 
 <ol>
 <li>Ajouter le dossier <code>examples</code> au chemin de recherche d’import
-<li>Changer le répertoire de travail actuel pour être le dossier <code>examples</code>
+<li>Changer le répertoire de travail actuel pour être dans le dossier <code>examples</code>
 </ol>
 
 <p>Le répertoire de travail courant est une propriété invisible que Python conserve en mémoire en permanence. Il y a toujours un répertoire de travail courant, que vous soyiez dans le Shell Python, que vous exécutiez votre script depuis la ligne de commande ou en temps que script CGI quelque part sur un serveur web.
 
-<p>Le module <code>os</code> contient deux fonctions traitant du répertoire d’exécution actuel.
+<p>Le module <code>os</code> contient deux fonctions pour travailler avec le répertoire courant.
 
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>import os</kbd>                                            <span class=u>&#x2460;</span></a>
@@ -106,11 +106,11 @@ body{counter-reset:h1 3}
 <samp class=p>>>> </samp><kbd class=pp>extension</kbd>
 <samp class=pp>'.py'</samp></pre>
 <ol>
-<li>La fonction <code>split</code> sépare un chemin complet et retourne un doublet contenant le chemin et le nom du fichier.
-<li>Vous souvenez-vous de quand je vous ai dit d’utiliser <a href=native-datatypes.html#multivar>l’assignation à plusieurs variables</a> pour retourner plusieurs variables d’une fonction&nbsp;? La fonction <code>os.path.split()</code> fait exactement ça. Vous pouvez assigner la valeur de retour de la fonction <code>split</code> à un doublet (un <code>tuple</code> à deux éléments). Chacune des variables recevra la valeur de l’élément correspondant du doublet retourné.
-<li>La première variable, <var>dirname</var>, reçoit la valeur du premier élement du doublet retourné par la fonction <code>os.path.split()</code>, le chemin du fichier.
-<li>La seconde variable, <var>filename</var>, reçoit la valeur du second élément du doublet retourné par la fonction <code>os.path.split()</code>, le nom du fichier.
-<li><code>os.path</code> contient également la fonction <code>os.path.splitext()</code>, qui sépare un nom de fichier et retourne un doublet contenant le nom du fichier et l’extension du fichier. Vous pouvez utiliser la même technique pour assigner chacun d’entre eux à des variables séparées.
+<li>La fonction <code>split</code> sépare un chemin complet et retourne un tuple contenant le chemin et le nom du fichier.
+<li>Vous souvenez-vous de quand je vous ai dit d’utiliser <a href=native-datatypes.html#multivar>l’assignation à plusieurs variables</a> pour retourner plusieurs variables d’une fonction&nbsp;? La fonction <code>os.path.split()</code> fait exactement ça. Vous pouvez assigner la valeur de retour de la fonction <code>split</code> à un tuple (un <code>tuple</code> à deux éléments). Chacune des variables recevra la valeur de l’élément correspondant au tuple retourné.
+<li>La première variable, <var>dirname</var>, reçoit la valeur du premier élément du tuple retourné par la fonction <code>os.path.split()</code>, le chemin du fichier.
+<li>La seconde variable, <var>filename</var>, reçoit la valeur du second élément du tuple retourné par la fonction <code>os.path.split()</code>, le nom du fichier.
+<li><code>os.path</code> contient également la fonction <code>os.path.splitext()</code>, qui sépare un nom de fichier et retourne un tuple contenant le nom du fichier et l’extension du fichier. Vous pouvez utiliser la même technique pour assigner chacun d’entre eux à des variables séparées.
 </ol>
 
 <h3 id=glob>Lister des Répertoires</h3>
@@ -147,7 +147,7 @@ body{counter-reset:h1 3}
  'romantest9.py']</samp></pre>
 <ol>
 <li>Le module <code>glob</code> prend un schéma et retourne les chemins de tous les fichiers et répertoires qui y correspondent. Dans cet exemple, le joker est le chemin du répertoire plus «&nbsp;<code>*.xml</code>&nbsp;», ce qui correspond à tous les fichiers <code>.xml</code> dans le sous-répertoire <code>examples</code>.
-<li>À présent nous changeons le répertoire de travail pour qu’il soit <code>examples</code>. La fonction <code>os.chdir()</code> accepte les chemins relatifs.
+<li>À présent, changeons le répertoire de travail pour qu’il soit <code>examples</code>. La fonction <code>os.chdir()</code> accepte les chemins relatifs.
 <li>Vous pouvez inclure plusieurs jokers dans votre schéma glob. Cet exemple trouve tous les fichiers du répertoire de travail courant qui se terminent par l’extension <code>.py</code> et contiennent le mot <code>test</code> n’importe où dans leur nom.
 </ol>
 
@@ -171,7 +171,7 @@ body{counter-reset:h1 3}
 <li>Le répertoire de travail est le dossier <code>examples</code>.
 <li><code>feed.xml</code> est un fichier du dossier <code>examples</code>. Appeler la fonction <code>os.stat()</code> retourne un objet qui contient différents types de méta-données à propos du fichier.
 <li><code>st_mtime</code> est la date de dernière modification, mais dans un format qui n’est pas particulièrement utile. (Techniquement, c’est le nombre de secondes depuis Epoch, qui est défini comme la première seconde depuis le 1er janvier 1970. Sérieusement.)
-<li>Le module <code>time</code> fait partie de la bibliothèque standard de Python. Il contient des fonctions pour convertir entre différentes représentations de temps, des formats de valeurs temporelles en chaines, et gérer les fuseaux horaires.
+<li>Le module <code>time</code> fait partie de la bibliothèque standard de Python. Il contient des fonctions pour convertir les différentes représentations du temps, formater des valeurs temporelles en chaines et gérer les fuseaux horaires.
 <li>La fonction <code>time.localtime()</code> convertit une valeur temporelle de secondes-depuis-Epoch (à partir de la propriété <code>st_mtime</code> retournée par la fonction <code>os.stat()</code>) en une structure plus utile d’année, mois, jour, heure, minute, seconde, etc. Ce fichier a été modifié pour la dernière fois le 13 juillet 2009, vers 17h25.
 </ol>
 
@@ -250,10 +250,10 @@ body{counter-reset:h1 3}
  'romantest9.py']</samp>
 </pre>
 <ol>
-<li>Pour filtrer une liste, vous pouvez inclure une clause <code>if</code> à la fin de la compréhension de liste. L’expression après le mot-clé <code>if</code> sera évaluée pour chaque élément de la liste. Si l’expression est évaluée à <code>True</code>, l’élément sera inclu dans la sortie. La compréhension de liste regardera la liste de tous les fichiers <code>.py</code> dans le répertoire courant, et l’expression <code>if</code> filtre cette liste en testant si la taille de chaque fichier est supérieure à <code>6000</code> octets. Il y a six fichiers répondant à ces critères donc la compréhension de liste retournera une liste de six fichiers.
+<li>Pour filtrer une liste, vous pouvez inclure une clause <code>if</code> à la fin de la compréhension de liste. L’expression après le mot-clef <code>if</code> sera évaluée pour chaque élément de la liste. Si l’expression est évaluée à <code>True</code>, l’élément sera inclu dans la sortie. La compréhension de liste regardera la liste de tous les fichiers <code>.py</code> dans le répertoire courant, et l’expression <code>if</code> filtrera cette liste en testant si la taille de chaque fichier est supérieure à <code>6000</code> octets. Il y a six fichiers répondant à ces critères, donc la compréhension de liste retournera une liste de six noms de fichiers.
 </ol>
 
-<p>Tous les exemples de listes par compréhension jusqu’à présent utilisaient des expressions simples&nbsp;&mdash;&nbsp;multiplier un nombre par une constante, appeler une unique fonction, ou retourner la liste originale (après filtrage). Mais il n’y a aucune limite à la complexité d’une compréhension de liste.
+<p>Jusqu’à présent, tous les exemples de listes par compréhension utilisaient des expressions simples&nbsp;&mdash;&nbsp;multiplier un nombre par une constante, appeler une unique fonction, ou retourner la liste originale (après filtrage). Mais il n’y a aucune limite à la complexité d’une compréhension de liste.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os, glob</kbd>
@@ -267,8 +267,8 @@ body{counter-reset:h1 3}
  ('3.3 KiB', 'feed-ns0.xml'),
  ('3.0 KiB', 'feed.xml')]</samp></pre>
 <ol>
-<li>Cette compréhension de liste trouve tous les fichiers <code>.xml</code> dans le répertoire de travail, récupère la taille de chaque fichier (en appelant la fonction <code>os.stat()</code>), et construit un doublet contenant à la fois la taille du fichier et le chemin absolu de celui-ci (en appelant la fonction <code>os.path.realpath()</code>).
-<li>Cette compréhension se base sur la précédente en appelant la <a href=your-first-python-program.html#divingin>fonction<code>approximate_size()</code></a> avec la taille de chaque fichier <code>.xml</code>.
+<li>Cette compréhension de liste trouve tous les fichiers <code>.xml</code> dans le répertoire de travail, récupère la taille de chaque fichier (en appelant la fonction <code>os.stat()</code>), et construit un tuple contenant à la fois la taille du fichier et le chemin absolu de celui-ci (en appelant la fonction <code>os.path.realpath()</code>).
+<li>Cette compréhension se base sur la précédente en appelant la <a href=your-first-python-program.html#divingin>fonction <code>approximate_size()</code></a> avec la taille de chaque fichier <code>.xml</code>.
 </ol>
 
 <p class=a>&#x2042;
@@ -296,15 +296,15 @@ body{counter-reset:h1 3}
 <a><samp class=p>>>> </samp><kbd class=pp>metadata_dict['alphameticstest.py'].st_size</kbd>                     <span class=u>&#x2465;</span></a>
 <samp class=pp>2509</samp></pre>
 <ol>
-<li>Ce n’est pas un dictionnaire en compréhension&nbsp;; c’est une <a href=#listcomprehension>liste en compréhension</a>. La définition prend tous les fichiers <code>.py</code> avec <code>test</code> dans leur nom, puis construit un doublet avec le nom du fichier et les méta-données de celui-ci (obtenues en appelant la fonction <code>os.stat()</code>.
-<li>Chaque élément de la liste résultat est un doublet.
-<li>Ceci est un dictionnaire construit par compréhension. La syntaxe est similaire à celle utilisée pour les listes, à deux différences près. D’abord, des accolades sont utilisées à la place des crochets pour encadrer l’expression. Ensuite, à la place d’une expression pour chaque élément, il y en a deux, séparées par un double point. L’expression avant le double point (<code>f</code> dans cet exemple) est une clé du dictionnaire&nbsp;; l’expression après le double point (<code>os.stat(f)</code> dans cet exemple) est la valeur associée.
+<li>Ce n’est pas un dictionnaire en compréhension&nbsp;; c’est une <a href=#listcomprehension>liste en compréhension</a>. La définition prend tous les fichiers <code>.py</code> avec <code>test</code> dans leur nom, puis construit un tuple avec le nom du fichier et les méta-données de celui-ci (obtenues en appelant la fonction <code>os.stat()</code>).
+<li>Chaque élément de la liste résultat est un tuple.
+<li>Ceci est un dictionnaire construit par compréhension. La syntaxe est similaire à celle utilisée pour les listes, à deux différences près. D’abord, des accolades sont utilisées à la place des crochets pour encadrer l’expression. Ensuite, à la place d’une expression pour chaque élément, il y en a deux, séparées par un double point. L’expression avant le double point (<code>f</code> dans cet exemple) est une clef du dictionnaire&nbsp;; l’expression après le double point (<code>os.stat(f)</code> dans cet exemple) est la valeur associée.
 <li>Un dictionnaire en compréhension est un dictionnaire.
-<li>Les clés de ce dictionnaire sont simplement les noms de fichier retournés par l’appel à <code>glob.glob('*test*.py')</code>.
-<li>La valeur associée à chaque clé est la valeur retournée par la fonction <code>os.stat()</code>. Cela signifie que l’on peut «&nbsp;rechercher&nbsp;» un fichier par son nom dans ce dictionnaire et obtenir ses méta-données. L’une de ces méta-données est la taille du fichier. Le fichier <code>alphameticstest.py</code> fait <code>2509</code> octets.
+<li>Les clefs de ce dictionnaire sont simplement les noms de fichier retournés par l’appel à <code>glob.glob('*test*.py')</code>.
+<li>La valeur associée à chaque clef est la valeur retournée par la fonction <code>os.stat()</code>. Cela signifie que l’on peut «&nbsp;rechercher&nbsp;» un fichier par son nom dans ce dictionnaire et obtenir ses méta-données. L’une de ces méta-données est la taille du fichier. Le fichier <code>alphameticstest.py</code> fait <code>2509</code> octets.
 </ol>
 
-<p>Comme pour les listes par compréhension, vous pouvez inclure une clause <code>if</code> pour filtrer la séquence de départ en se basant sur une expression évaluée pour chaque élément.
+<p>Comme pour les listes par compréhension, vous pouvez inclure une clause <code>if</code> dans une compréhension de dictionnaire afin de filtrer la séquence de départ basée sur une expression évaluée pour chaque élément.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os, glob, humansize</kbd>
@@ -324,14 +324,14 @@ body{counter-reset:h1 3}
 
 <h3 id=stupiddicttricks>D’Autres Choses Amusantes À Faire Avec Les Définitions De Dictionnaires En Compréhension</h3>
 
-<p>Voici une astuce avec les dictionnaires définis en compréhension qui peut vous être utile un jour&nbsp;: échanger les clefs et les valeurs d’un dictionnaire.
+<p>Voici une astuce avec les dictionnaires définis par compréhension qui peut vous être utile un jour&nbsp;: échanger les clefs et les valeurs d’un dictionnaire.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_dict = {'a': 1, 'b': 2, 'c': 3}</kbd>
 <samp class=p>>>> </samp><kbd class=pp>{value:key for key, value in a_dict.items()}</kbd>
 <samp class=pp>{1: 'a', 2: 'b', 3: 'c'}</samp></pre>
 
-<p>Bien sûr, cela ne marche que si les valeurs du dictionnaire sont immuables, comme des chaines ou des n-uplet. Si vous essayez ceci avec un dictionnaire qui contient des listes, cela échouera spectaculairement.
+<p>Bien sûr, cela ne marche que si les valeurs du dictionnaire sont immuables, comme des chaines ou des tuples. Si vous essayez ceci avec un dictionnaire qui contient des listes, cela échouera spectaculairement.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_dict = {'a': [1, 2, 3], 'b': 4, 'c': 5}</kbd>
@@ -345,7 +345,7 @@ TypeError: unhashable type: 'list'</samp></pre>
 
 <h2 id=setcomprehension>Ensembles Définis En Compréhension</h2>
 
-<p>Sans les oublier, les ensembles ont leur propre syntaxe pour les définir par compréhension. Elle est remarquablement similaire à la syntaxe utilisée pour les dictionnaires. La seule différence est qu’il n’y a que des valeurs au lieu de paires clé:valeur.
+<p>Sans les oublier, les ensembles ont leur propre syntaxe pour les définir par compréhension. Elle est remarquablement similaire à la syntaxe utilisée pour les dictionnaires. La seule différence est qu’il n’y a que des valeurs au lieu de paires clef:valeur.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_set = set(range(10))</kbd>
@@ -359,8 +359,8 @@ TypeError: unhashable type: 'list'</samp></pre>
 <samp class=pp>{32, 1, 2, 4, 8, 64, 128, 256, 16, 512}</samp>
 </pre>
 <ol>
-<li>Les ensembles définis par compréhension peuvent prendre un autre ensemble comme entrée. La définition de l’ensemble calcule le carré de tous les éléments de l’ensemble de 0 à <code>9</code>.
-<li>Comme les définitions par compréhension de listes et de dictionnaires, celles de dictionnaires peuvent contenir une clause <code>if</code> pour filter les éléments avant de les retourner dans l’ensemble de résultats.
+<li>Les ensembles définis par compréhension peuvent prendre un autre ensemble comme entrée. La définition de l’ensemble calcule le carré de tous les éléments de l’ensemble de <code>0</code> à <code>9</code>.
+<li>Comme les définitions par compréhension de listes et de dictionnaires, celles de dictionnaires peuvent contenir une clause <code>if</code> pour filtrer les éléments avant de les retourner dans l’ensemble de résultats.
 <li>Une définition par compréhension d’ensemble n’a pas nécessairement besoin d’un autre ensemble comme entrée&nbsp;: une séquence suffit.
 </ol>
 
@@ -372,9 +372,9 @@ TypeError: unhashable type: 'list'</samp></pre>
 <li><a href=http://www.doughellmann.com/PyMOTW/os/><code>os</code>&nbsp;&mdash;&nbsp;Accès portable à des fonctionnalités spécifiques à certains systèmes d’exploitation</a>
 <li><a href=http://docs.python.org/3.1/library/os.path.html>Le module <code>os.path</code></a>
 <li><a href=http://www.doughellmann.com/PyMOTW/ospath/><code>os.path</code>&nbsp;&mdash;&nbsp;Manipulation de noms de fichiers indépendante de la plateforme</a>
-<li><a href=http://docs.python.org/3.1/library/glob.html>Le module<code>glob</code></a>
+<li><a href=http://docs.python.org/3.1/library/glob.html>Le module <code>glob</code></a>
 <li><a href=http://www.doughellmann.com/PyMOTW/glob/><code>glob</code>&nbsp;&mdash;&nbsp;Schémas de noms de fichiers</a>
-<li><a href=http://docs.python.org/3.1/library/time.html>Le module<code>time</code></a>
+<li><a href=http://docs.python.org/3.1/library/time.html>Le module <code>time</code></a>
 <li><a href=http://www.doughellmann.com/PyMOTW/time/><code>time</code>&nbsp;&mdash;&nbsp;Des fonctions pour manipuler l’horloge</a>
 <li><a href=http://docs.python.org/3.1/tutorial/datastructures.html#list-comprehensions>Listes définies par compréhensions</a>
 <li><a href=http://docs.python.org/3.1/tutorial/datastructures.html#nested-list-comprehensions>Listes imbriquées définies par compréhensions</a>
