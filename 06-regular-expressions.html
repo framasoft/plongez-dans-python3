@@ -95,8 +95,8 @@ body{counter-reset:h1 5}
 <li>Les caractères en cinq ne peuvent être répétés. <code>10</code> est toujours représenté par <code>X</code>, jamais par <code>VV</code>. <code>100</code> est toujours <code>C</code>, jamais <code>LL</code>.
 <li>Les nombres reomains sont lus de gauche à droite, donc l’ordre des caractères est très important. <code>DC</code> est <code>600</code>&nbsp;; <code>CD</code> est un nombre complètement différent (<code>400</code>, «&nbsp;<code>100</code> retiré de <code>500</code>&nbsp;»). <code>CI</code> est <code>101</code>&nbsp;; <code>IC</code> n’est même pas un nombre romain valide (car vous ne pouvez retirer directement <code>1</code> de <code>100</code>&nbsp;; vous devez l’écrire <code>XCIX</code>, «&nbsp;<code>10</code> retiré de <code>100</code>, plus <code>1</code> retiré de <code>10</code>&#8221;).
 </ul>
-<h3 id=thousands>Checking For Thousands</h3>
-<p>What would it take to validate that an arbitrary string is a valid Roman numeral?  Let&#8217;s take it one digit at a time. Since Roman numerals are always written highest to lowest, let&#8217;s start with the highest: the thousands place. For numbers 1000 and higher, the thousands are represented by a series of <code>M</code> characters.
+<h3 id=thousands>Vérifier Les Milliers</h3>
+<p>De quoi aurions-nous besoin pour vérifier qu’une chaine quelconque est un nombre romain valide&nbsp;? Prenons les chiffres un par un. Étant donné que les Romains écrivaient du plus grand au plus petit, commençons par le plus grand : les milliers. Pour les nombres supérieurs ou égaux ) 1000, les milliers étaient représentés par une série de caractères <code>M</code>.
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import re</kbd>
 <a><samp class=p>>>> </samp><kbd class=pp>pattern = '^M?M?M?$'</kbd>        <span class=u>&#x2460;</span></a>
@@ -110,16 +110,16 @@ body{counter-reset:h1 5}
 <a><samp class=p>>>> </samp><kbd class=pp>re.search(pattern, '')</kbd>      <span class=u>&#x2465;</span></a>
 <samp>&lt;_sre.SRE_Match object at 0106F4A8></samp></pre>
 <ol>
-<li>This pattern has three parts. <code>^</code> matches what follows only at the beginning of the string. If this were not specified, the pattern would match no matter where the <code>M</code> characters were, which is not what you want. You want to make sure that the <code>M</code> characters, if they&#8217;re there, are at the beginning of the string. <code>M?</code> optionally matches a single <code>M</code> character. Since this is repeated three times, you&#8217;re matching anywhere from zero to three <code>M</code> characters in a row. And <code>$</code> matches the end of the string. When combined with the <code>^</code> character at the beginning, this means that the pattern must match the entire string, with no other characters before or after the <code>M</code> characters.
-<li>The essence of the <code>re</code> module is the <code>search()</code> function, that takes a regular expression (<var>pattern</var>) and a string (<code>'M'</code>) to try to match against the regular expression. If a match is found, <code>search()</code> returns an object which has various methods to describe the match; if no match is found, <code>search()</code> returns <code>None</code>, the Python null value. All you care about at the moment is whether the pattern matches, which you can tell by just looking at the return value of <code>search()</code>. <code>'M'</code> matches this regular expression, because the first optional <code>M</code> matches and the second and third optional <code>M</code> characters are ignored.
-<li><code>'MM'</code> matches because the first and second optional <code>M</code> characters match and the third <code>M</code> is ignored.
-<li><code>'MMM'</code> matches because all three <code>M</code> characters match.
-<li><code>'MMMM'</code> does not match. All three <code>M</code> characters match, but then the regular expression insists on the string ending (because of the <code>$</code> character), and the string doesn&#8217;t end yet (because of the fourth <code>M</code>). So <code>search()</code> returns <code>None</code>.
-<li>Interestingly, an empty string also matches this regular expression, since all the <code>M</code> characters are optional.
+<li>Ce schéma a trois parties. <code>^</code> qui correspond au début de la chaine. S’il n’est pas spécifié, le schéma validerait quel que soit l’endroit où les caractères <code>M</code> se trouvent, ce qui n’est pas ce que vous voulez. Ce que vous voulez, c’est que, s’il y a des caractères <code>M</code>, ils soient au début de la chaine. <code>M?</code> détecte <em>au plus</em> un caractère <code>M</code>. Étant donné qu’il est répété trois fois, vous pouvez avoir entre zéro et trois caractères <code>M</code> de suite. Et <code>$</code> correspond à la fin de la chaine. Combiné au caractère <code>^</code>, cela signifique que le schéma doit correspondre à toute la chaine, sans caractère avant ou après les caractères <code>M</code>.
+<li>L’essence-même du module <code>re</code> est la fonction <code>search()</code>, qui prend une expression réculière (<var>pattern</var>) et une chaine (<code>'M'</code>) à faire correspondre à lùexpression rationnelle. Si une correspondance existe, <code>search()</code> retourne un objet qui a différentes méthodes pour décrire la correspondance&nbsp;; et si aucune correspondance n’est trouvée, <code>search()</code> retourne <code>None</code>, la valeur nulle de Python. Pour l’instant nous ne nous occupons que de savoir si le schéma correspond, ce qui peut être sû en regardant simplement la valeur de retour de <code>search()</code>. <code>'M'</code> correspond à cette expression régulière car le premier <code>M</code> optionnel est obtenu, et que les deux <code>M</code> suivants sont ignorés.
+<li><code>'MM'</code> correspond car les deux premiers caractères <code>M</code> sont trouvés, et que le dernier <code>M</code> est ignoré.
+<li><code>'MMM'</code> correspond car tous les caractères <code>M</code> sont trouvés.
+<li><code>'MMMM'</code> ne correspond pas. Les trois caractères <code>M</code> correspondent, mais l’expression rationnelle insiste pour que la chaine s’arrête immédiatement (à cause du caractère <code>$</code>), mais au lieu de cela, elle trouve un caractère <code>M</code>. Donc <code>search()</code> retourne <code>None</code>.
+<li>Il est intéressant de noter que la chaine vide correspond également à l’expresion rationnelle, puisque tous les caractères <code>M</code> sont optionnels.
 </ol>
-<h3 id=hundreds>Checking For Hundreds</h3>
-<aside>? makes a pattern optional.</aside>
-<p>The hundreds place is more difficult than the thousands, because there are several mutually exclusive ways it could be expressed, depending on its value.
+<h3 id=hundreds>Vérifier Les Centaines</h3>
+<aside>? rend un schéma optionnel.</aside>
+<p>Les centaines sont plus difficiles à gérer que les milliers, car il y a plusieurs façons incompatibles de s’en servir, en dépendant de la valeur.
 <ul>
 <li><code>100 = C</code>
 <li><code>200 = CC</code>
@@ -131,18 +131,18 @@ body{counter-reset:h1 5}
 <li><code>800 = DCCC</code>
 <li><code>900 = CM</code>
 </ul>
-<p>So there are four possible patterns:
+<p>Il y a donc quatre schémas possibles&nbsp;:
 <ul>
 <li><code>CM</code>
 <li><code>CD</code>
-<li>Zero to three <code>C</code> characters (zero if the hundreds place is 0)
-<li><code>D</code>, followed by zero to three <code>C</code> characters
+<li>De zéro à trois caractères <code>C</code> (zéro si le chiffre des dizaines est 0)
+<li><code>D</code>, suivi par au plus trois caractères <code>C</code>
 </ul>
-<p>The last two patterns can be combined:
+<p>Les deux derniers schémas peuvent être combinés&nbsp;:
 <ul>
-<li>an optional <code>D</code>, followed by zero to three <code>C</code> characters
+<li>un <code>D</code> optionnel, suivi par au plus trois caractères <code>C</code>
 </ul>
-<p>This example shows how to validate the hundreds place of a Roman numeral.
+<p>Cet exemple montre comment valider les centaines d’un nombre romain.
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import re</kbd>
 <a><samp class=p>>>> </samp><kbd class=pp>pattern = '^M?M?M?(CM|CD|D?C?C?C?)$'</kbd>  <span class=u>&#x2460;</span></a>
@@ -156,17 +156,17 @@ body{counter-reset:h1 5}
 <a><samp class=p>>>> </samp><kbd class=pp>re.search(pattern, '')</kbd>                <span class=u>&#x2465;</span></a>
 <samp>&lt;_sre.SRE_Match object at 01071D98></samp></pre>
 <ol>
-<li>This pattern starts out the same as the previous one, checking for the beginning of the string (<code>^</code>), then the thousands place (<code>M?M?M?</code>). Then it has the new part, in parentheses, which defines a set of three mutually exclusive patterns, separated by vertical bars: <code>CM</code>, <code>CD</code>, and <code>D?C?C?C?</code> (which is an optional <code>D</code> followed by zero to three optional <code>C</code> characters). The regular expression parser checks for each of these patterns in order (from left to right), takes the first one that matches, and ignores the rest.
-<li><code>'MCM'</code> matches because the first <code>M</code> matches, the second and third <code>M</code> characters are ignored, and the <code>CM</code> matches (so the <code>CD</code> and <code>D?C?C?C?</code> patterns are never even considered). <code>MCM</code> is the Roman numeral representation of <code>1900</code>.
-<li><code>'MD'</code> matches because the first <code>M</code> matches, the second and third <code>M</code> characters are ignored, and the <code>D?C?C?C?</code> pattern matches <code>D</code> (each of the three <code>C</code> characters are optional and are ignored). <code>MD</code> is the Roman numeral representation of <code>1500</code>.
-<li><code>'MMMCCC'</code> matches because all three <code>M</code> characters match, and the <code>D?C?C?C?</code> pattern matches <code>CCC</code> (the <code>D</code> is optional and is ignored). <code>MMMCCC</code> is the Roman numeral representation of <code>3300</code>.
-<li><code>'MCMC'</code> does not match. The first <code>M</code> matches, the second and third <code>M</code> characters are ignored, and the <code>CM</code> matches, but then the <code>$</code> does not match because you&#8217;re not at the end of the string yet (you still have an unmatched <code>C</code> character). The <code>C</code> does <em>not</em> match as part of the <code>D?C?C?C?</code> pattern, because the mutually exclusive <code>CM</code> pattern has already matched.
-<li>Interestingly, an empty string still matches this pattern, because all the <code>M</code> characters are optional and ignored, and the empty string matches the <code>D?C?C?C?</code> pattern where all the characters are optional and ignored.
+<li>Ce schéma commence de la même façon que le précédent, s’assurant qu’il est au début de la chaine (<code>^</code>), puis les milliers (<code>M?M?M?</code>). Ensuite, on ajoute, entre parenthèses, qui définissent un ensemble de trois schémas mutuellement incompatibles, séparés par des barres verticales&nbsp;: <code>CM</code>, <code>CD</code>, et <code>D?C?C?C?</code> (qui est un <code>D</code> optionnel suivi d’au plus trois caractères <code>C</code>). Le parseur d’expressions régulières vérifiera chacun de ces trois schémas dans l’ordre (de gauche à droite), prendra le premier qui correspondra, et ignorera le reste.
+<li><code>'MCM'</code> correspond car le premier <code>M</code> est détecté, les deux caractères <code>M</code> suivants sont ignorés, et le <code>CM</code> correspond (donc les schémas <code>CD</code> et <code>D?C?C?C?</code> ne sont même pas testés). <code>MCM</code> est la représentation de <code>1900</code> en nombres romains.
+<li><code>'MD'</code> correspond car le premier <code>M</code> est détecté, les deux <code>M</code> suivants sont ignorés, et <code>D</code> correspond au schéma <code>D?C?C?C?</code> (chacun des trois caractères <code>C</code> est optionnel et est ignoré). <code>MD</code> est la représentation romaine de <code>1500</code>.
+<li><code>'MMMCCC'</code> correspond car les trois caractères <code>M</code> sont détectés, et le schéma <code>D?C?C?C?</code> accepte <code>CCC</code> (le <code>D</code> est optionnel et est ignoré). <code>MMMCCC</code> est la représentation romaine de <code>3300</code>.
+<li><code>'MCMC'</code> ne correspond pas. Le premier <code>M</code> va, les deux <code>M</code> suivants sont ignorés, et <code>CM</code> est accepté, mais le <code>$</code> refuse d’être validé car vous n’êtes pas à la fin de la chaine (il reste un caractère <code>C</code>). Le <code>C</code> ne correspond <em>pas</em> au schéma <code>D?C?C?C?</code>, car les schémas <code>CM</code> mutuellement incompatibles correspondent déjà à quelque chose.
+<li>Il est intéressant de noter que la chaine vide correspond toujours à ce schéma, car tous les caractères <code>M</code> sont optionnels et ignorés, et la chaine vide correspond au schéma <code>D?C?C?C?</code> où tous les caractères sont optionnels et ignorés.
 </ol>
-<p>Whew! See how quickly regular expressions can get nasty?  And you&#8217;ve only covered the thousands and hundreds places of Roman numerals. But if you followed all that, the tens and ones places are easy, because they&#8217;re exactly the same pattern. But let&#8217;s look at another way to express the pattern.
+<p>Wow ! Vous voyez à quelle vitesse les expressions rationnelles peuvent devenir sales&nbsp;? Et vous n’avez traité que les milliers et les centaines dans les nombres romains. Mais une fois que vous avez fait ça, les dizaines et les unités sont faciles car elles suivent exactement le même schéma. Mais regardons notre schéma d’une autre façon.
 <p class=a>&#x2042;
 
-<h2 id=nmsyntax>Using The <code>{n,m}</code> Syntax</h2>
+<h2 id=nmsyntax>Utiliser La Syntaxe <code>{n,m}</code></h2>
 <aside>{1,4} matches between 1 and 4 occurrences of a pattern.</aside>
 <p>In the previous section, you were dealing with a pattern where the same character could be repeated up to three times. There is another way to express this in regular expressions, which some people find more readable. First look at the method we already used in the previous example.
 <pre class=screen>
@@ -181,10 +181,10 @@ body{counter-reset:h1 5}
 <a><samp>>>> </samp><kbd class=pp>re.search(pattern, 'MMMM')</kbd>  <span class=u>&#x2463;</span></a>
 <samp class=p>>>> </samp></pre>
 <ol>
-<li>This matches the start of the string, and then the first optional <code>M</code>, but not the second and third <code>M</code> (but that&#8217;s okay because they&#8217;re optional), and then the end of the string.
-<li>This matches the start of the string, and then the first and second optional <code>M</code>, but not the third <code>M</code> (but that&#8217;s okay because it&#8217;s optional), and then the end of the string.
-<li>This matches the start of the string, and then all three optional <code>M</code>, and then the end of the string.
-<li>This matches the start of the string, and then all three optional <code>M</code>, but then does not match the end of the string (because there is still one unmatched <code>M</code>), so the pattern does not match and returns <code>None</code>.
+<li>Ceci valide le début de la chaine, puis le premier <code>M</code> optionnel, mais pas les deux <code>M</code> suivants (mais ça passe car ils sont optionnels), et la fin de la chaine.
+<li>Ceci valide le début de la chaine, puis les deux premiers <code>M</code> optionnels, mais pas le <code>M</code> suivant (mais ça passe car il est optionnel), et la fin de la chaine.
+<li>Ceci valide le début de la chaine, puis les trois caractères <code>M</code> optionnels, et la fin de la chaine.
+<li>Ceci valide le début de la chaine, puis les trois caractères <code>M</code> optionnels , mais ne correspond pas à la fin de la chaine (car il y a des <code>M</code> qui ne correspondent pas), donc le schéma ne valide pas et retourne <code>None</code>.
 </ol>
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>pattern = '^M{0,3}$'</kbd>        <span class=u>&#x2460;</span></a>
@@ -197,14 +197,14 @@ body{counter-reset:h1 5}
 <a><samp class=p>>>> </samp><kbd class=pp>re.search(pattern, 'MMMM')</kbd>  <span class=u>&#x2464;</span></a>
 <samp>>>> </samp></pre>
 <ol>
-<li>This pattern says: &#8220;Match the start of the string, then anywhere from zero to three <code>M</code> characters, then the end of the string.&#8221;  The 0 and 3 can be any numbers; if you want to match at least one but no more than three <code>M</code> characters, you could say <code>M{1,3}</code>.
-<li>This matches the start of the string, then one <code>M</code> out of a possible three, then the end of the string.
-<li>This matches the start of the string, then two <code>M</code> out of a possible three, then the end of the string.
-<li>This matches the start of the string, then three <code>M</code> out of a possible three, then the end of the string.
-<li>This matches the start of the string, then three <code>M</code> out of a possible three, but then <em>does not match</em> the end of the string. The regular expression allows for up to only three <code>M</code> characters before the end of the string, but you have four, so the pattern does not match and returns <code>None</code>.
+<li>Ce schéma dit « Détecte le débit de la chaine, puis entre zéro et trois caractères <code>M</code>, puis la fin de la chaine ». Le 0 et le 3 peuvent être n’importe quel nombre&nbsp;; si vous voulez détecter au moins 1 mais pas plus de trois caractères <code>M</code>, vous pouvez simplement dire <code>M{1,3}</code>.
+<li>Ceci détecte le début de la chaine, puis un <code>M</code> sur les trois possibles, puis la fin de la chaine.
+<li>Ceci détecte le début de la chaine, puis deux <code>M</code> sur les trois possibles, puis la fin de la chaine.
+<li>Ceci détecte le début de la chaine, puis trois <code>M</code> sur les trois possibles, puis la fin de la chaine.
+<li>Ceci détecte le début de la chaine, puis trois <code>M</code> sur les trois possibles avant la fin de la chaine. Mais il y en a quatre, donc le schéma ne valide pas et retourner <code>None</code>.
 </ol>
-<h3 id=tensandones>Checking For Tens And Ones</h3>
-<p>Now let&#8217;s expand the Roman numeral regular expression to cover the tens and ones place. This example shows the check for tens.
+<h3 id=tensandones>Vérifier Les Dizaines Et Les Unités</h3>
+<p>Maintenant, étendons notre expression rationnelle pour couvrir les dizaines et les unités. Cet exemple montrer comment vérifier les dizaines.
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>pattern = '^M?M?M?(CM|CD|D?C?C?C?)(XC|XL|L?X?X?X?)$'</kbd>
 <a><samp class=p>>>> </samp><kbd class=pp>re.search(pattern, 'MCMXL')</kbd>     <span class=u>&#x2460;</span></a>
@@ -218,17 +218,17 @@ body{counter-reset:h1 5}
 <a><samp class=p>>>> </samp><kbd class=pp>re.search(pattern, 'MCMLXXXX')</kbd>  <span class=u>&#x2464;</span></a>
 <samp class=p>>>> </samp></pre>
 <ol>
-<li>This matches the start of the string, then the first optional <code>M</code>, then <code>CM</code>, then <code>XL</code>, then the end of the string. Remember, the <code>(A|B|C)</code> syntax means &#8220;match exactly one of A, B, or C&#8221;. You match <code>XL</code>, so you ignore the <code>XC</code> and <code>L?X?X?X?</code> choices, and then move on to the end of the string. <code>MCMXL</code> is the Roman numeral representation of <code>1940</code>.
-<li>This matches the start of the string, then the first optional <code>M</code>, then <code>CM</code>, then <code>L?X?X?X?</code>. Of the <code>L?X?X?X?</code>, it matches the <code>L</code> and skips all three optional <code>X</code> characters. Then you move to the end of the string. <code>MCML</code> is the Roman numeral representation of <code>1950</code>.
-<li>This matches the start of the string, then the first optional <code>M</code>, then <code>CM</code>, then the optional <code>L</code> and the first optional <code>X</code>, skips the second and third optional <code>X</code>, then the end of the string. <code>MCMLX</code> is the Roman numeral representation of <code>1960</code>.
-<li>This matches the start of the string, then the first optional <code>M</code>, then <code>CM</code>, then the optional <code>L</code> and all three optional <code>X</code> characters, then the end of the string. <code>MCMLXXX</code> is the Roman numeral representation of <code>1980</code>.
-<li>This matches the start of the string, then the first optional <code>M</code>, then <code>CM</code>, then the optional <code>L</code> and all three optional <code>X</code> characters, then <em>fails to match</em> the end of the string because there is still one more <code>X</code> unaccounted for. So the entire pattern fails to match, and returns <code>None</code>. <code>MCMLXXXX</code> is not a valid Roman numeral.
+<li>Ceci détecte le début de la chaine, puis the first optional <code>M</code>, puis <code>CM</code>, puis <code>XL</code>, puis la fin de la chaine. Souvenez-vous, la syntaxe <code>(A|B|C)</code> correspond à « exactement A, B, <em>ou</em> (exclusif) C ». Vous testez <code>XL</code>, donc vous ignorez les choix <code>XC</code> et <code>L?X?X?X?</code>, puis passez à la fin de la chaine. <code>MCMXL</code> est la représentation romaine de <code>1940</code>.
+<li>Ceci détecte le début de la chaine, puis the first optional <code>M</code>, puis <code>CM</code>, puis <code>L?X?X?X?</code>. Le schéma <code>L?X?X?X?</code> détecte le <code>L</code> et passe à la suite en sautant les trois caractères <code>X</code> optionnels. Puis vous passez à la fin de la chaine. <code>MCML</code> est la représentation romaine de <code>1950</code>.
+<li>Ceci détecte le début de la chaine, puis the first optional <code>M</code>, puis <code>CM</code>, puis le <code>L</code> optionnel et le <code>X</code> optionnel, saute les deux <code>X</code> suivants optionnels, puis la fin de la chaine. <code>MCMLX</code> est la représentation romaine de <code>1960</code>.
+<li>Ceci détecte le début de la chaine, puis the first optional <code>M</code>, puis <code>CM</code>, puis le <code>L</code> optionnel et les trois <code>X</code> optionnels, puis la fin de la chaine. <code>MCMLXXX</code> est la représentation romaine de <code>1980</code>.
+<li>Ceci détecte le début de la chaine, puis the first optional <code>M</code>, puis <code>CM</code>, puis le <code>L</code> optionnel et les trois <code>X</code> optionnels, puis <em>ne valide pas</em> car il y a encore un <code>X</code> non validé avant la fin de la chaine. Donc tout le schéma échoue à valider et retourne <code>None</code>. <code>MCMLXXXX</code> n’est pas un nombre romaine valide.
 </ol>
-<aside>(A|B) matches either pattern A or pattern B, but not both.</aside>
-<p>The expression for the ones place follows the same pattern. I&#8217;ll spare you the details and show you the end result.
+<aside>(A|B) correspond soit à A soit à B, mais pas aux deux.</aside>
+<p>L’expression pour les unités suit le même schéma. Je vous épargne les détails et vous donne tout de suite le résultat final.
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>pattern = '^M?M?M?(CM|CD|D?C?C?C?)(XC|XL|L?X?X?X?)(IX|IV|V?I?I?I?)$'</kbd>
-</pre><p>So what does that look like using this alternate <code>{n,m}</code> syntax?  This example shows the new syntax.
+</pre><p>Donc, à quoi cela ressemble-t-il si on utilise la syntaxe alternativee <code>{n,m}</code>&nbsp;? Cet exemple montre la nouvelle syntaxe.
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>pattern = '^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$'</kbd>
 <a><samp class=p>>>> </samp><kbd class=pp>re.search(pattern, 'MDLV')</kbd>              <span class=u>&#x2460;</span></a>
