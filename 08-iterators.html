@@ -63,7 +63,7 @@ body{counter-reset:h1 7}
 <pre class=pp><code><a>class PapayaWhip:  <span class=u>&#x2460;</span></a>
 <a>    pass           <span class=u>&#x2461;</span></a></code></pre>
 <ol>
-<li> Le nom de cette classe est <code>PapayaWhip</code>, et elle n’hérite pas d’une autre classe. Les noms de classes sont habituellement capitalisés, <code>ChaqueMotCommeCeci</code>, mais ce n’est qu’une convention, pas une obligation.
+<li>Le nom de cette classe est <code>PapayaWhip</code>, et elle n’hérite pas d’une autre classe. Les noms de classes sont habituellement capitalisés, <code>ChaqueMotCommeCeci</code>, mais ce n’est qu’une convention, pas une obligation.
 <li>Vous l’aurez sans doute deviné, mais tout dans une classe est indenté, tout comme le code dans une fonction, bloc <code>if</code>, boucle <code>for</code>, ou tout autre bloc de code. La première ligne non indentée est en dehors de la classe.
 </ ol>
 
@@ -73,7 +73,7 @@ body{counter-reset:h1 7}
 <p><span class=u>&#x261E;</span>La déclaration <code>pass</code> en Python est comme un ensemble vide d’accolades (<code>{}</code>) en Java ou C.
 </blockquote>
 
-<p> De nombreuses classes sont héritées d’autres classes, mais celle-ci ne l’est pas. De nombreuses classes définissent des méthodes, mais celle-ci ne le fait pas. Il n’y a rien qu’une classe Python doit absolument avoir en dehors d’un nom. En particulier, les programmeurs C++ s’étonneront sans doute que les classes Python n’aient pas de constructeurs et de destructeurs explicites. Bien qu’il ne soit pas obligatoire, les classes Python <em>peuvent</em> avoir quelque chose de semblable à un constructeur&nbsp;: la méthode <code>__init__()</code>.
+<p>De nombreuses classes sont héritées d’autres classes, mais celle-ci ne l’est pas. De nombreuses classes définissent des méthodes, mais celle-ci ne le fait pas. Il n’y a rien qu’une classe Python doit absolument avoir en dehors d’un nom. En particulier, les programmeurs C++ s’étonneront sans doute que les classes Python n’aient pas de constructeurs et de destructeurs explicites. Bien qu’il ne soit pas obligatoire, les classes Python <em>peuvent</em> avoir quelque chose de semblable à un constructeur&nbsp;: la méthode <code>__init__()</code>.
 
 <h3 id=init-method>La méthode <code>__init__()</code></h3>
 
@@ -96,7 +96,7 @@ body{counter-reset:h1 7}
 
 <h2 id=instantiating-classes>Instantiation de Classes</h2>
 
-<p> L’instanciation de classes en Python est simple. Pour instancier une classe, appelez simplement la classe comme si elle était une fonction, en passant les arguments que le <code>__init__()</code> a besoin. La valeur de retour sera l’objet nouvellement créé.
+<p>L’instanciation de classes en Python est simple. Pour instancier une classe, appelez simplement la classe comme si elle était une fonction, en passant les arguments que le <code>__init__()</code> a besoin. La valeur de retour sera l’objet nouvellement créé.
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import fibonacci2</kbd>
 <a><samp class=p>>>> </samp><kbd class=pp>fib = fibonacci2.Fib(100)</kbd>  <span class=u>&#x2460;</span></a>
@@ -127,7 +127,7 @@ Vous pouvez accéder à l’instance <code>docstring</code> comme pour une fonct
     def __init__(self, max):
 <a>        self.max = max        <span class=u>&#x2460;</span></a></code></pre>
 <ol>
-<li> Qu’est-ce que <var>self.max</var>&nbsp;? C’est une variable d’instance. Elle est complètement séparée de <var>max</var>, qui a été adopté dans le <code>__init__()</code> comme argument. <var>self.max</var> est «&nbsp;global&nbsp;» à l’instance. Cela signifie que vous pouvez y accéder à partir d’autres méthodes.
+<li>Qu’est-ce que <var>self.max</var>&nbsp;? C’est une variable d’instance. Elle est complètement séparée de <var>max</var>, qui a été adopté dans le <code>__init__()</code> comme argument. <var>self.max</var> est «&nbsp;global&nbsp;» à l’instance. Cela signifie que vous pouvez y accéder à partir d’autres méthodes.
 </ol>
 
 <pre class=pp><code>class Fib:
@@ -335,7 +335,7 @@ rules = LazyRules()</code></pre>
         .</code></pre>
 <ol>
 <li>Un peu de bidouillage avancé sur les fichiers ici. La méthode <code>readline()</code> (note&nbsp;: singulier, non au pluriel <code>readlines()</code>) lit exactement une ligne à partir d’un fichier ouvert. Plus précisément, la ligne suivante. (<em>Les objets fichier sont aussi des itérateurs&nbsp;! Ce sont des itérateurs tout le long&hellip;</em>)
-<li>S’il y a une ligne à lire pour <code>readline()</code>, <var>line</var> ne sera pas une chaîne vide. Même si le fichier contient une ligne vide, <var>line</var> finirait comme une chaîne d’un caractère <code> '\n'</code> (un retour chariot). Si <var>line</var> est vraiment une chaîne vide, cela signifie qu’il n’y a plus de lignes à lire à partir du fichier.
+<li>S’il y a une ligne à lire pour <code>readline()</code>, <var>line</var> ne sera pas une chaîne vide. Même si le fichier contient une ligne vide, <var>line</var> finirait comme une chaîne d’un caractère <code>'\n'</code> (un retour chariot). Si <var>line</var> est vraiment une chaîne vide, cela signifie qu’il n’y a plus de lignes à lire à partir du fichier.
 <li>Lorsque nous arrivons à la fin du fichier, nous devrions fermer le fichier et soulever l’exception magique <code>StopIteration</code>. Rappelez-vous, nous sommes arrivés à ce point parce que nous avions besoin d’une fonction de correspondance et d’application pour la règle suivante. La règle suivante vient de la ligne suivante du fichier&hellip; mais il n’y a pas de ligne suivante&nbsp;! Par conséquent, nous n’avons aucune valeur à renvoyer. L’itération est terminée. (<span class=u>&#x266B;</span> La fête est terminée&hellip; <span class=u>&#x266B;</span>)
 </ol>
 
