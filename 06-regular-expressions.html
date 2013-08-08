@@ -5,7 +5,7 @@ permalink: regular-expressions.html
 ---
 <!DOCTYPE html>
 <meta charset=utf-8>
-<title>Regular expressions - Dive Into Python 3</title>
+<title>Expressions régulières - Plongez dans Python 3</title>
 <!--[if IE]><script src=j/html5.js></script><![endif]-->
 <link rel=stylesheet href=dip3.css>
 <style>
@@ -15,24 +15,24 @@ body{counter-reset:h1 5}
 <link rel=stylesheet media=print href=print.css>
 <meta name=viewport content='initial-scale=1.0'>
 <form action=http://www.google.com/cse><div><input type=hidden name=cx value=014021643941856155761:l5eihuescdw><input type=hidden name=ie value=UTF-8>&nbsp;<input type=search name=q size=25 placeholder="powered by Google&trade;">&nbsp;<input type=submit name=root value=Search></div></form>
-<p>You are here: <a href=index.html>Home</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#regular-expressions>Dive Into Python 3</a> <span class=u>&#8227;</span>
-<p id=level>Difficulty level: <span class=u title=intermediate>&#x2666;&#x2666;&#x2666;&#x2662;&#x2662;</span>
-<h1>Regular Expressions</h1>
+<p>Vous êtes ici&nbsp;: <a href=index.html>Home</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#regular-expressions>Plongez dans Python 3</a> <span class=u>&#8227;</span>
+<p id=level>Niveau de difficulté : <span class=u title=intermediate>&#x2666;&#x2666;&#x2666;&#x2662;&#x2662;</span>
+<h1>Expressions Rationnelles</h1>
 <blockquote class=q>
-<p><span class=u>&#x275D;</span> Some people, when confronted with a problem, think &#8220;I know, I&#8217;ll use regular expressions.&#8221;  Now they have two problems. <span class=u>&#x275E;</span><br>&mdash; <a href=http://www.jwz.org/hacks/marginal.html>Jamie Zawinski</a>
+<p><span class=u>&#x275D;</span> Certaines personnes, lorsqu’elles ont un problème, pensent «&nbsp;Je sais, je vais utiliser des expressions rationnelles.&nbsp;» − Maintenant elles ont deux problèmes. <span class=u>&#x275E;</span><br>&mdash; <a href=http://www.jwz.org/hacks/marginal.html>Jamie Zawinski</a>
 </blockquote>
 <p id=toc>&nbsp;
-<h2 id=divingin>Diving In</h2>
-<p class=f>Getting a small bit of text out of a large block of text is a challenge. In Python, strings have methods for searching and replacing: <code>index()</code>, <code>find()</code>, <code>split()</code>, <code>count()</code>, <code>replace()</code>, <i class=baa>&amp;</i>c. But these methods are limited to the simplest of cases. For example, the <code>index()</code> method looks for a single, hard-coded substring, and the search is always case-sensitive. To do case-insensitive searches of a string <var>s</var>, you must call <code>s.lower()</code> or <code>s.upper()</code> and make sure your search strings are the appropriate case to match. The <code>replace()</code> and <code>split()</code> methods have the same limitations.
-<p>If your goal can be accomplished with string methods, you should use them. They&#8217;re fast and simple and easy to read, and there&#8217;s a lot to be said for fast, simple, readable code. But if you find yourself using a lot of different string functions with <code>if</code> statements to handle special cases, or if you&#8217;re chaining calls to <code>split()</code> and <code>join()</code> to slice-and-dice your strings, you may need to move up to regular expressions.
-<p>Regular expressions are a powerful and (mostly) standardized way of searching, replacing, and parsing text with complex patterns of characters. Although the regular expression syntax is tight and unlike normal code, the result can end up being <em>more</em> readable than a hand-rolled solution that uses a long chain of string functions. There are even ways of embedding comments within regular expressions, so you can include fine-grained documentation within them.
-<blockquote class='note compare perl5'>
-<p><span class=u>&#x261E;</span>If you&#8217;ve used regular expressions in other languages (like Perl, JavaScript, or PHP), Python&#8217;s syntax will be very familiar. Read the summary of the <a href=http://docs.python.org/dev/library/re.html#module-contents><code>re</code> module</a> to get an overview of the available functions and their arguments.
+<h2 id=divingin>Plongée</h2>
+<p class=f>Récupérer un petit bout de texte d’un gros bloc de texte peut relever de l’exploit. En Python, les chaines ont des méthodes pour rechercher et remplacer&nbsp;: <code>index()</code>, <code>find()</code>, <code>split()</code>, <code>count()</code>, <code>replace()</code>, etc. Mais ces méthodes sont limitées aux cas les plus simples. Par exemple, la méthode <code>index()</code> recherche une unique chaine prédéfinie, et la recherche est toujours sensible à la casse. Pour faire une recherche insensible à la casse d’une chaine <var>s</var>, vous devez appeler <code>s.lower()</code> ou <code>s.upper()</code> et vous assurer que les chaines recherchées sont dans la casse appropriée. Les méthodes <code>replace()</code> et <code>split()</code> ont les mêmes limitations.
+<p>Si votre but peut être accompli avec les méthodes de chaine, vous devriez les utiliser. Elles sont rapides, simples, et faciles à lire&nbsp;; et il y a beaucoup d’arguments en faveur d’un code rapide, simple et lisible. Mais si vous vous trouvez dans un cas où vous devez utiliser beaucoup de méthodes de chaines avec des instructions <if> pour gérer les cas particuliers, ou si vous enchainez les appels à <code>split()</code> et <code>join()</code> pour séparer et recoller vos chaines, vous pourriez avoir besoin d’expressions régulières.
+<p>Les expressions rationnelles sont une façon puissante et (plutôt) standard de rechercher, remplacer, et parser du texte avec des schémas de caractères complexes. Même si la syntaxe des expressions régulières est rigoureuse et diffère du code normal, le résultat peut être au final <em>plus</em> lisible qu’une solution faite soi-même utilisant une longue série de fonctions de chaine. Il y a même moyen d’inclure des commentaires dans les expressions rationnelles, donc vous pouvez y inclure une documentation fine.
+<blockquote class='note compare perl5'
+<p><span class=u>&#x261E;</span>Si vous avez déjà utilisé des expressions dans d’autre langages (comme Perl, Javascript, ou PHP), la syntaxe de Python vous semblera très familiaire. Lisez le sommaire du <a href=http://docs.python.org/dev/library/re.html#module-contents>module <code>re</code></a> pour avoir un aperçu des fonctions disponibles et de leurs paramètres.
 </blockquote>
 <p class=a>&#x2042;
 
-<h2 id=streetaddresses>Case Study: Street Addresses</h2>
-<p>This series of examples was inspired by a real-life problem I had in my day job several years ago, when I needed to scrub and standardize street addresses exported from a legacy system before importing them into a newer system. (See, I don&#8217;t just make this stuff up; it&#8217;s actually useful.)  This example shows how I approached the problem.
+<h2 id=streetaddresses>Étude De Cas&nbsp;: Adresses Postales</h2>
+<p>Cette série d’exemple est inspirée d’un problème réel que j’ai eu à mon travail il y a quelques années, alors que je devais parcourir et standardiser des adresses postales d’un ancien système avant de les importer dans un nouveau. (Vous voyez, je n’invente pas tout&nbsp;: c’est vraiment utile.) Cet exemple montre comment j’ai approché le problème.
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>s = '100 NORTH MAIN ROAD'</kbd>
 <a><samp class=p>>>> </samp><kbd class=pp>s.replace('ROAD', 'RD.')</kbd>                <span class=u>&#x2460;</span></a>
@@ -46,14 +46,14 @@ body{counter-reset:h1 5}
 <a><samp class=p>>>> </samp><kbd class=pp>re.sub('ROAD$', 'RD.', s)</kbd>               <span class=u>&#x2464;</span></a>
 <samp class=pp>'100 NORTH BROAD RD.'</samp></pre>
 <ol>
-<li>My goal is to standardize a street address so that <code>'ROAD'</code> is always abbreviated as <code>'RD.'</code>. At first glance, I thought this was simple enough that I could just use the string method <code>replace()</code>. After all, all the data was already uppercase, so case mismatches would not be a problem. And the search string, <code>'ROAD'</code>, was a constant. And in this deceptively simple example, <code>s.replace()</code> does indeed work.
-<li>Life, unfortunately, is full of counterexamples, and I quickly discovered this one. The problem here is that <code>'ROAD'</code> appears twice in the address, once as part of the street name <code>'BROAD'</code> and once as its own word. The <code>replace()</code> method sees these two occurrences and blindly replaces both of them; meanwhile, I see my addresses getting destroyed.
-<li>To solve the problem of addresses with more than one <code>'ROAD'</code> substring, you could resort to something like this: only search and replace <code>'ROAD'</code> in the last four characters of the address (<code>s[-4:]</code>), and leave the string alone (<code>s[:-4]</code>). But you can see that this is already getting unwieldy. For example, the pattern is dependent on the length of the string you&#8217;re replacing. (If you were replacing <code>'STREET'</code> with <code>'ST.'</code>, you would need to use <code>s[:-6]</code> and <code>s[-6:].replace(...)</code>.) Would you like to come back in six months and debug this?  I know I wouldn&#8217;t.
-<li>It&#8217;s time to move up to regular expressions. In Python, all functionality related to regular expressions is contained in the <code>re</code> module.
-<li>Take a look at the first parameter: <code>'ROAD$'</code>. This is a simple regular expression that matches <code>'ROAD'</code> only when it occurs at the end of a string. The <code>$</code> means &#8220;end of the string.&#8221; (There is a corresponding character, the caret <code>^</code>, which means &#8220;beginning of the string.&#8221;) Using the <code>re.sub()</code> function, you search the string <var>s</var> for the regular expression <code>'ROAD$'</code> and replace it with <code>'RD.'</code>. This matches the <code>ROAD</code> at the end of the string <var>s</var>, but does <em>not</em> match the <code>ROAD</code> that&#8217;s part of the word <code>BROAD</code>, because that&#8217;s in the middle of <var>s</var>.
+<li>Mon but est de standardiser l’adresse de façon à ce que <code>'ROAD'</code> soit toujours abrégé par <code>'RD.'</code>. À première vue, j'ai pensé que ce serait assez simple d’utiliser la méthode de chaine <code>replace()</code>. Après tout, toutes les données sont déjà en majuscules, dont les cas où ça ne correspond pas ne sont pas un problème. Et la chaine cherchée, <code>'ROAD'</code>, est une constante. Et dans cet exemple dramatiquement simple, <code>s.replace()</code> fonctionne effectivement.
+<li>La vie est malheureusmeent pleine de contrexemples. Le problème ici est que <code>'ROAD'</code> apparait deux fois dans l’adresse, d’abord dans le nom de la rue, <code>'BROAD'</code> puis en tant que mot en lui-même. La méthode <code>replace()</code> voit ces deux occurences et remplace aveuglément les deux. Pendant ce temps, je vois mes adresses se faire détruire.
+<li>Pour résoudre ce problème avec les adresses qui ont plus d’une sous-chaine <code>'ROAD'</code>, vous pouvez faire quelque chose comme ne remplacer <code>'ROAD'</code> que dans les quatre derniers caractères de l’adresse (<code>s[-4:]</code>), et laisser le reste tel quel (<code>s[:-4]</code>). Mais vous pouvez constater que ça commence à devenir assez lourd. Par exemple, le schéma est dépendant de la longueur de la chaine que vous voulez remplacer. (Si vous voulez remplacer <code>'STREET'</code> par <code>'ST.'</coee>, vous devrez utiliser à la place <code>s[:-6]</code> et <code>s[-6:].replace(...)</code>.) Voulez-vous revenir six mois plus tard et déboguer cela&nbsp;? Je sais que ce n’est pas mon cas.
+<li>Il est temps de passer aux expressions rationnelles. En Python, toutes les fonctionnalités liées aux expressions rationelles sont contenues dans le module <code>re</code>.
+<li>Jetez un coup d’œil au premier paramètre&nbsp;: <code>'ROAD$'</code>. C’est une expression rationnelle simple qui détecte <code>'ROAD'</code> seulement lorsqu’il est à la fin d’une chaine. Le <code>$</code> signifie «&nbsp;fin de la chaine&nbsp;» (Il y a un caractère correspondant, le chapeau <code>^</code>, qui signifie «&nbsp;début de la chaine&nbsp;».) En utilisant la fonction <code>re.sub()</code> vous recherchez l’expression rationelle <code>'ROAD$'</code> dans la chaine <code>s</code> et la remplacez avec <code>'RD.'</code>. Ceci détecte <code>ROAD</code> à la fin de la chaine <var>s</var>, mais <em>pas</em> le <code>ROAD</code> qui fait partie du mot <code>BROAD</code>, car il est au milieu de <var>s</var>.
 </ol>
-<aside>^ matches the start of a string. $ matches the end of a string.</aside>
-<p>Continuing with my story of scrubbing addresses, I soon discovered that the previous example, matching <code>'ROAD'</code> at the end of the address, was not good enough, because not all addresses included a street designation at all. Some addresses simply ended with the street name. I got away with it most of the time, but if the street name was <code>'BROAD'</code>, then the regular expression would match <code>'ROAD'</code> at the end of the string as part of the word <code>'BROAD'</code>, which is not what I wanted.
+<aside>^ correspond au début d’une chaine. $ correspond à la fin d’une chaine.</aside>
+<p>Pour continuer avec mon histoire de parcourir des adresses, j’ai vite découvert que limiter la détection de <code>'ROAD'</code> à la fin de l’adresse n’était pas suffisant, car toutes les adresses n’incluent pas du tout de désignation de rue. Certaines adresses se terminent simplement par le nom de la rue. Je m’en suis sorti la plupart du temps, mais lorsque la nom de la rue était <code>'BROAD'</code>, l’expression rationnelle aurait détecté <code>'ROAD'</code> à la fin de la chaine en temps que partie du mot <code>'BROAD'</code>, ce qui n’est pas ce que je voulais.
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>s = '100 BROAD'</kbd>
 <samp class=p>>>> </samp><kbd class=pp>re.sub('ROAD$', 'RD.', s)</kbd>
@@ -68,16 +68,16 @@ body{counter-reset:h1 5}
 <a><samp class=p>>>> </samp><kbd class=pp>re.sub(r'\bROAD\b', 'RD.', s)</kbd>  <span class=u>&#x2463;</span></a>
 <samp class=pp>'100 BROAD RD. APT 3'</samp></pre>
 <ol>
-<li>What I <em>really</em> wanted was to match <code>'ROAD'</code> when it was at the end of the string <em>and</em> it was its own word (and not a part of some larger word). To express this in a regular expression, you use <code>\b</code>, which means &#8220;a word boundary must occur right here.&#8221; In Python, this is complicated by the fact that the <code>'\'</code> character in a string must itself be escaped. This is sometimes referred to as the backslash plague, and it is one reason why regular expressions are easier in Perl than in Python. On the down side, Perl mixes regular expressions with other syntax, so if you have a bug, it may be hard to tell whether it&#8217;s a bug in syntax or a bug in your regular expression.
-<li>To work around the backslash plague, you can use what is called a <i>raw string</i>, by prefixing the string with the letter <code>r</code>. This tells Python that nothing in this string should be escaped; <code>'\t'</code> is a tab character, but <code>r'\t'</code> is really the backslash character <code>\</code> followed by the letter <code>t</code>. I recommend always using raw strings when dealing with regular expressions; otherwise, things get too confusing too quickly (and regular expressions are confusing enough already).
-<li><em>*sigh*</em>  Unfortunately, I soon found more cases that contradicted my logic. In this case, the street address contained the word <code>'ROAD'</code> as a whole word by itself, but it wasn&#8217;t at the end, because the address had an apartment number after the street designation. Because <code>'ROAD'</code> isn&#8217;t at the very end of the string, it doesn&#8217;t match, so the entire call to <code>re.sub()</code> ends up replacing nothing at all, and you get the original string back, which is not what you want.
-<li>To solve this problem, I removed the <code>$</code> character and added another <code>\b</code>. Now the regular expression reads &#8220;match <code>'ROAD'</code> when it&#8217;s a whole word by itself anywhere in the string,&#8221; whether at the end, the beginning, or somewhere in the middle.
+<li>Ce que je veux <em>vraiment</em>, c’est détecter <code>'ROAD'</code> quand il est à la fin d’une chaine <em>et</em> qu’il ne fait pas partie d’un autre mot. Pour exprimer cela dans une expression rationnelle, vous utilisez <code>\b</code>, qui signifie «&nbsp;une frontière de mot doit être ici&nbsp;». En Python, ceci est complexe parce que le caractère <code>'/'</code> de la chaine lui-même doit être échappé. On appelle souvent ça le fléau du backslash, et c’est une des raisons pour laquelle les expressions rationnelles sont plus faciles en Perl qu’en Python. En même temps, Perl mélange expressions rationnelles avec la syntaxe classique, donc si vous avez un bogue, c’est plus difficile de dire s’il vient de la syntaxe ou de l’expression rationnelle.
+<li>Pour contourner le fléau du backslash, vous pouvez utiliser ce qui est appelé une <i>chaine brute</i>, en préfixant la chaine avec la lettre <code>r</code>. Ceci dit à Python que rien dans cette chaine ne doit être échappé&nbsp;; <code>'\t'</code> est un caractère de tabulaton, mais <code>r'\t'</code> est vraiment le caractère backslash <code>\</code> suivi de la lettre <code>t</code>. Je recommande toujours d’utiliser des chaines brutes lorsque vous utilisez des expressions rationnelles&nbsp;; sinon les choses peuvent devenir confuses très vite (et les expressions rationnelles le sont déjà suffisament).
+<li><em>*pfiou*</em>  Malheureusement, j’ai vite trouvé d’autres cas qui contredisaient ma logique. Dans ce cas, l’adresse contient le mot <code>'ROAD'</code> seul, mais il n’est pas à la fin, car l’adresse a un numéro d’appartement juste après la désignation de la rue. Parce que <code>'ROAD'</code> n’est pas exactement à la fin de la chaine, il n’est pas détecté, donc tout l’appel à <code>re.sub()</code> est inutile et vous récupérez la chaine de départ, ce qui n’est pas ce que vous voulez.
+<li>Pour résoudre ce problème, j’ai supprimé le caractère <code>$</code> et j’ai ajouté un autre <code>\b</code>. Maintenant l’expression rationnelle «&nbsp;détecte <code>'ROAD'</code> lorsqu’il est en tant que mot à part entière&nbsp;», que ce soit à la fin, au début, ou quelque part au milieu.
 </ol>
 <p class=a>&#x2042;
 
-<h2 id=romannumerals>Case Study: Roman Numerals</h2>
-<p>You&#8217;ve most likely seen Roman numerals, even if you didn&#8217;t recognize them. You may have seen them in copyrights of old movies and television shows (&#8220;Copyright <code>MCMXLVI</code>&#8221; instead of &#8220;Copyright <code>1946</code>&#8221;), or on the dedication walls of libraries or universities (&#8220;established <code>MDCCCLXXXVIII</code>&#8221; instead of &#8220;established <code>1888</code>&#8221;). You may also have seen them in outlines and bibliographical references. It&#8217;s a system of representing numbers that really does date back to the ancient Roman empire (hence the name).
-<p>In Roman numerals, there are seven characters that are repeated and combined in various ways to represent numbers.
+<h2 id=romannumerals>Étude De Cas&nbsp;: Les Nombres Romains</h2>
+<p>Vous avez probablement déjà vu des nombres romains, même si vous ne les avez pas reconnus. Vous avez pu les voir dans des droits d’auteurs de vieux films et séries («&nbsp;Copyright <code>MCMXLVI</code>&nbsp;» au lieu de «&nbsp;Copyright <code>1946</code>&nbsp;»), ou sur les monuments muraux de bibliothèques ou d’universités («&nbsp;established <code>MDCCCLXXXVIII</code>&nbsp;» au lieu de «&nbsp;established <code>1888</code>&nbsp;»). Vous pouvez aussi les avoir dans des titres ou des références bibliographiques. C’est un système représentant des nombres qui datent de l’ancien empire romain (d’où le nom).
+<p>Dans la numérotation romaine, il y a sept caractères qui sont répétés et combinés de différentes façons pour représenter les nombres.
 <ul>
 <li><code>I = 1</code>
 <li><code>V = 5</code>
@@ -87,16 +87,16 @@ body{counter-reset:h1 5}
 <li><code>D = 500</code>
 <li><code>M = 1000</code>
 </ul>
-<p>The following are some general rules for constructing Roman numerals:
+<p>Voici les différentes règles pour construire des nombres romains&nbsp;:
 <ul>
-<li>Sometimes characters are additive. <code>I</code> is <code>1</code>, <code>II</code> is <code>2</code>, and <code>III</code> is <code>3</code>. <code>VI</code> is <code>6</code> (literally, &#8220;<code>5</code> and <code>1</code>&#8221;), <code>VII</code> is <code>7</code>, and <code>VIII</code> is <code>8</code>.
-<li>The tens characters (<code>I</code>, <code>X</code>, <code>C</code>, and <code>M</code>) can be repeated up to three times. At <code>4</code>, you need to subtract from the next highest fives character. You can't represent <code>4</code> as <code>IIII</code>; instead, it is represented as <code>IV</code> (&#8220;<code>1</code> less than <code>5</code>&#8221;). <code>40</code> is written as <code>XL</code> (&#8220;<code>10</code> less than <code>50</code>&#8221;), <code>41</code> as <code>XLI</code>, <code>42</code> as <code>XLII</code>, <code>43</code> as <code>XLIII</code>, and then <code>44</code> as <code>XLIV</code> (&#8220;<code>10</code> less than <code>50</code>, then <code>1</code> less than <code>5</code>&#8221;).
-<li>Sometimes characters are&hellip; the opposite of additive. By putting certain characters before others, you subtract from the final value. For example, at <code>9</code>, you need to subtract from the next highest tens character: <code>8</code> is <code>VIII</code>, but <code>9</code> is <code>IX</code> (&#8220;<code>1</code> less than <code>10</code>&#8221;), not <code>VIIII</code> (since the <code>I</code> character can not be repeated four times). <code>90</code> is <code>XC</code>, <code>900</code> is <code>CM</code>.
-<li>The fives characters can not be repeated. <code>10</code> is always represented as <code>X</code>, never as <code>VV</code>. <code>100</code> is always <code>C</code>, never <code>LL</code>.
-<li>Roman numerals are read left to right, so the order of characters matters very much. <code>DC</code> is <code>600</code>; <code>CD</code> is a completely different number (<code>400</code>, &#8220;<code>100</code> less than <code>500</code>&#8221;). <code>CI</code> is <code>101</code>; <code>IC</code> is not even a valid Roman numeral (because you can't subtract <code>1</code> directly from <code>100</code>; you would need to write it as <code>XCIX</code>, &#8220;<code>10</code> less than <code>100</code>, then <code>1</code> less than <code>10</code>&#8221;).
+<li>Parfois les caractères sont additifs. <code>I</code> est <code>1</code>, <code>II</code> est <code>2</code>, et <code>III</code> est <code>3</code>. <code>VI</code> est <code>6</code> (littéralement, «&nbsp;<code>5</code> et <code>1</code>&nbsp;»), <code>VII</code> est <code>7</code>, et <code>VIII</code> est <code>8</code>.
+<li>Les caractères de dizaines (<code>I</code>, <code>X</code>, <code>C</code>, et <code>M</code>) peuvent être répétés jusqu’à trois fois. À partir de <code>4</code>, vous devez soustraire du caractère en cinq suivant. Vous ne pouvez représenter <code>4</code> par <code>IIII</code>&nbsp;; à la place, il est représenté par <code>IV</code> («&nbsp;<code>1</code> soustrait de <code>5</code>&nbsp;»). <code>40</code> est écrit <code>XL</code> («&nbsp;<code>10</code> soustrait de <code>50</code>&nbsp;»), <code>41</code> par <code>XLI</code>, <code>42</code> par <code>XLII</code>, <code>43</code> par <code>XLIII</code>, et enfin <code>44</code> par <code>XLIV</code> («&nbsp;<code>10</code> soustrait de <code>50</code>, plus <code>1</code> retiré de <code>5</code>&nbsp;»).
+<li>Parfois les caractères sont&hellip; l’opposé d’être additifs. En ajoutant certains caractères avant d’autre, vous pouvez soustraire de la valeur finale. Par exemple, pour <code>9</code>, vous devez soustraire du caractère de dizaines suivant&nbsp;: <code>8</code> est <code>VIII</code>, mais <code>9</code> est <code>IX</code> («&nbsp;<code>1</code> retiré de <code>10</code>&nbsp;»), et non pas <code>VIIII</code> (puisque le caractère <code>I</code> ne peut être répété quatre fois). <code>90</code> est <code>XC</code>, <code>900</code> est <code>CM</code>.
+<li>Les caractères en cinq ne peuvent être répétés. <code>10</code> est toujours représenté par <code>X</code>, jamais par <code>VV</code>. <code>100</code> est toujours <code>C</code>, jamais <code>LL</code>.
+<li>Les nombres reomains sont lus de gauche à droite, donc l’ordre des caractères est très important. <code>DC</code> est <code>600</code>&nbsp;; <code>CD</code> est un nombre complètement différent (<code>400</code>, «&nbsp;<code>100</code> retiré de <code>500</code>&nbsp;»). <code>CI</code> est <code>101</code>&nbsp;; <code>IC</code> n’est même pas un nombre romain valide (car vous ne pouvez retirer directement <code>1</code> de <code>100</code>&nbsp;; vous devez l’écrire <code>XCIX</code>, «&nbsp;<code>10</code> retiré de <code>100</code>, plus <code>1</code> retiré de <code>10</code>&#8221;).
 </ul>
-<h3 id=thousands>Checking For Thousands</h3>
-<p>What would it take to validate that an arbitrary string is a valid Roman numeral?  Let&#8217;s take it one digit at a time. Since Roman numerals are always written highest to lowest, let&#8217;s start with the highest: the thousands place. For numbers 1000 and higher, the thousands are represented by a series of <code>M</code> characters.
+<h3 id=thousands>Vérifier Les Milliers</h3>
+<p>De quoi aurions-nous besoin pour vérifier qu’une chaine quelconque est un nombre romain valide&nbsp;? Prenons les chiffres un par un. Étant donné que les Romains écrivaient du plus grand au plus petit, commençons par le plus grand : les milliers. Pour les nombres supérieurs ou égaux ) 1000, les milliers étaient représentés par une série de caractères <code>M</code>.
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import re</kbd>
 <a><samp class=p>>>> </samp><kbd class=pp>pattern = '^M?M?M?$'</kbd>        <span class=u>&#x2460;</span></a>
@@ -110,16 +110,16 @@ body{counter-reset:h1 5}
 <a><samp class=p>>>> </samp><kbd class=pp>re.search(pattern, '')</kbd>      <span class=u>&#x2465;</span></a>
 <samp>&lt;_sre.SRE_Match object at 0106F4A8></samp></pre>
 <ol>
-<li>This pattern has three parts. <code>^</code> matches what follows only at the beginning of the string. If this were not specified, the pattern would match no matter where the <code>M</code> characters were, which is not what you want. You want to make sure that the <code>M</code> characters, if they&#8217;re there, are at the beginning of the string. <code>M?</code> optionally matches a single <code>M</code> character. Since this is repeated three times, you&#8217;re matching anywhere from zero to three <code>M</code> characters in a row. And <code>$</code> matches the end of the string. When combined with the <code>^</code> character at the beginning, this means that the pattern must match the entire string, with no other characters before or after the <code>M</code> characters.
-<li>The essence of the <code>re</code> module is the <code>search()</code> function, that takes a regular expression (<var>pattern</var>) and a string (<code>'M'</code>) to try to match against the regular expression. If a match is found, <code>search()</code> returns an object which has various methods to describe the match; if no match is found, <code>search()</code> returns <code>None</code>, the Python null value. All you care about at the moment is whether the pattern matches, which you can tell by just looking at the return value of <code>search()</code>. <code>'M'</code> matches this regular expression, because the first optional <code>M</code> matches and the second and third optional <code>M</code> characters are ignored.
-<li><code>'MM'</code> matches because the first and second optional <code>M</code> characters match and the third <code>M</code> is ignored.
-<li><code>'MMM'</code> matches because all three <code>M</code> characters match.
-<li><code>'MMMM'</code> does not match. All three <code>M</code> characters match, but then the regular expression insists on the string ending (because of the <code>$</code> character), and the string doesn&#8217;t end yet (because of the fourth <code>M</code>). So <code>search()</code> returns <code>None</code>.
-<li>Interestingly, an empty string also matches this regular expression, since all the <code>M</code> characters are optional.
+<li>Ce schéma a trois parties. <code>^</code> qui correspond au début de la chaine. S’il n’est pas spécifié, le schéma validerait quel que soit l’endroit où les caractères <code>M</code> se trouvent, ce qui n’est pas ce que vous voulez. Ce que vous voulez, c’est que, s’il y a des caractères <code>M</code>, ils soient au début de la chaine. <code>M?</code> détecte <em>au plus</em> un caractère <code>M</code>. Étant donné qu’il est répété trois fois, vous pouvez avoir entre zéro et trois caractères <code>M</code> de suite. Et <code>$</code> correspond à la fin de la chaine. Combiné au caractère <code>^</code>, cela signifique que le schéma doit correspondre à toute la chaine, sans caractère avant ou après les caractères <code>M</code>.
+<li>L’essence-même du module <code>re</code> est la fonction <code>search()</code>, qui prend une expression réculière (<var>pattern</var>) et une chaine (<code>'M'</code>) à faire correspondre à lùexpression rationnelle. Si une correspondance existe, <code>search()</code> retourne un objet qui a différentes méthodes pour décrire la correspondance&nbsp;; et si aucune correspondance n’est trouvée, <code>search()</code> retourne <code>None</code>, la valeur nulle de Python. Pour l’instant nous ne nous occupons que de savoir si le schéma correspond, ce qui peut être sû en regardant simplement la valeur de retour de <code>search()</code>. <code>'M'</code> correspond à cette expression régulière car le premier <code>M</code> optionnel est obtenu, et que les deux <code>M</code> suivants sont ignorés.
+<li><code>'MM'</code> correspond car les deux premiers caractères <code>M</code> sont trouvés, et que le dernier <code>M</code> est ignoré.
+<li><code>'MMM'</code> correspond car tous les caractères <code>M</code> sont trouvés.
+<li><code>'MMMM'</code> ne correspond pas. Les trois caractères <code>M</code> correspondent, mais l’expression rationnelle insiste pour que la chaine s’arrête immédiatement (à cause du caractère <code>$</code>), mais au lieu de cela, elle trouve un caractère <code>M</code>. Donc <code>search()</code> retourne <code>None</code>.
+<li>Il est intéressant de noter que la chaine vide correspond également à l’expresion rationnelle, puisque tous les caractères <code>M</code> sont optionnels.
 </ol>
-<h3 id=hundreds>Checking For Hundreds</h3>
-<aside>? makes a pattern optional.</aside>
-<p>The hundreds place is more difficult than the thousands, because there are several mutually exclusive ways it could be expressed, depending on its value.
+<h3 id=hundreds>Vérifier Les Centaines</h3>
+<aside>? rend un schéma optionnel.</aside>
+<p>Les centaines sont plus difficiles à gérer que les milliers, car il y a plusieurs façons incompatibles de s’en servir, en dépendant de la valeur.
 <ul>
 <li><code>100 = C</code>
 <li><code>200 = CC</code>
@@ -131,18 +131,18 @@ body{counter-reset:h1 5}
 <li><code>800 = DCCC</code>
 <li><code>900 = CM</code>
 </ul>
-<p>So there are four possible patterns:
+<p>Il y a donc quatre schémas possibles&nbsp;:
 <ul>
 <li><code>CM</code>
 <li><code>CD</code>
-<li>Zero to three <code>C</code> characters (zero if the hundreds place is 0)
-<li><code>D</code>, followed by zero to three <code>C</code> characters
+<li>De zéro à trois caractères <code>C</code> (zéro si le chiffre des dizaines est 0)
+<li><code>D</code>, suivi par au plus trois caractères <code>C</code>
 </ul>
-<p>The last two patterns can be combined:
+<p>Les deux derniers schémas peuvent être combinés&nbsp;:
 <ul>
-<li>an optional <code>D</code>, followed by zero to three <code>C</code> characters
+<li>un <code>D</code> optionnel, suivi par au plus trois caractères <code>C</code>
 </ul>
-<p>This example shows how to validate the hundreds place of a Roman numeral.
+<p>Cet exemple montre comment valider les centaines d’un nombre romain.
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import re</kbd>
 <a><samp class=p>>>> </samp><kbd class=pp>pattern = '^M?M?M?(CM|CD|D?C?C?C?)$'</kbd>  <span class=u>&#x2460;</span></a>
@@ -156,19 +156,19 @@ body{counter-reset:h1 5}
 <a><samp class=p>>>> </samp><kbd class=pp>re.search(pattern, '')</kbd>                <span class=u>&#x2465;</span></a>
 <samp>&lt;_sre.SRE_Match object at 01071D98></samp></pre>
 <ol>
-<li>This pattern starts out the same as the previous one, checking for the beginning of the string (<code>^</code>), then the thousands place (<code>M?M?M?</code>). Then it has the new part, in parentheses, which defines a set of three mutually exclusive patterns, separated by vertical bars: <code>CM</code>, <code>CD</code>, and <code>D?C?C?C?</code> (which is an optional <code>D</code> followed by zero to three optional <code>C</code> characters). The regular expression parser checks for each of these patterns in order (from left to right), takes the first one that matches, and ignores the rest.
-<li><code>'MCM'</code> matches because the first <code>M</code> matches, the second and third <code>M</code> characters are ignored, and the <code>CM</code> matches (so the <code>CD</code> and <code>D?C?C?C?</code> patterns are never even considered). <code>MCM</code> is the Roman numeral representation of <code>1900</code>.
-<li><code>'MD'</code> matches because the first <code>M</code> matches, the second and third <code>M</code> characters are ignored, and the <code>D?C?C?C?</code> pattern matches <code>D</code> (each of the three <code>C</code> characters are optional and are ignored). <code>MD</code> is the Roman numeral representation of <code>1500</code>.
-<li><code>'MMMCCC'</code> matches because all three <code>M</code> characters match, and the <code>D?C?C?C?</code> pattern matches <code>CCC</code> (the <code>D</code> is optional and is ignored). <code>MMMCCC</code> is the Roman numeral representation of <code>3300</code>.
-<li><code>'MCMC'</code> does not match. The first <code>M</code> matches, the second and third <code>M</code> characters are ignored, and the <code>CM</code> matches, but then the <code>$</code> does not match because you&#8217;re not at the end of the string yet (you still have an unmatched <code>C</code> character). The <code>C</code> does <em>not</em> match as part of the <code>D?C?C?C?</code> pattern, because the mutually exclusive <code>CM</code> pattern has already matched.
-<li>Interestingly, an empty string still matches this pattern, because all the <code>M</code> characters are optional and ignored, and the empty string matches the <code>D?C?C?C?</code> pattern where all the characters are optional and ignored.
+<li>Ce schéma commence de la même façon que le précédent, s’assurant qu’il est au début de la chaine (<code>^</code>), puis les milliers (<code>M?M?M?</code>). Ensuite, on ajoute, entre parenthèses, qui définissent un ensemble de trois schémas mutuellement incompatibles, séparés par des barres verticales&nbsp;: <code>CM</code>, <code>CD</code>, et <code>D?C?C?C?</code> (qui est un <code>D</code> optionnel suivi d’au plus trois caractères <code>C</code>). Le parseur d’expressions régulières vérifiera chacun de ces trois schémas dans l’ordre (de gauche à droite), prendra le premier qui correspondra, et ignorera le reste.
+<li><code>'MCM'</code> correspond car le premier <code>M</code> est détecté, les deux caractères <code>M</code> suivants sont ignorés, et le <code>CM</code> correspond (donc les schémas <code>CD</code> et <code>D?C?C?C?</code> ne sont même pas testés). <code>MCM</code> est la représentation de <code>1900</code> en nombres romains.
+<li><code>'MD'</code> correspond car le premier <code>M</code> est détecté, les deux <code>M</code> suivants sont ignorés, et <code>D</code> correspond au schéma <code>D?C?C?C?</code> (chacun des trois caractères <code>C</code> est optionnel et est ignoré). <code>MD</code> est la représentation romaine de <code>1500</code>.
+<li><code>'MMMCCC'</code> correspond car les trois caractères <code>M</code> sont détectés, et le schéma <code>D?C?C?C?</code> accepte <code>CCC</code> (le <code>D</code> est optionnel et est ignoré). <code>MMMCCC</code> est la représentation romaine de <code>3300</code>.
+<li><code>'MCMC'</code> ne correspond pas. Le premier <code>M</code> va, les deux <code>M</code> suivants sont ignorés, et <code>CM</code> est accepté, mais le <code>$</code> refuse d’être validé car vous n’êtes pas à la fin de la chaine (il reste un caractère <code>C</code>). Le <code>C</code> ne correspond <em>pas</em> au schéma <code>D?C?C?C?</code>, car les schémas <code>CM</code> mutuellement incompatibles correspondent déjà à quelque chose.
+<li>Il est intéressant de noter que la chaine vide correspond toujours à ce schéma, car tous les caractères <code>M</code> sont optionnels et ignorés, et la chaine vide correspond au schéma <code>D?C?C?C?</code> où tous les caractères sont optionnels et ignorés.
 </ol>
-<p>Whew! See how quickly regular expressions can get nasty?  And you&#8217;ve only covered the thousands and hundreds places of Roman numerals. But if you followed all that, the tens and ones places are easy, because they&#8217;re exactly the same pattern. But let&#8217;s look at another way to express the pattern.
+<p>Wow ! Vous voyez à quelle vitesse les expressions rationnelles peuvent devenir sales&nbsp;? Et vous n’avez traité que les milliers et les centaines dans les nombres romains. Mais une fois que vous avez fait ça, les dizaines et les unités sont faciles car elles suivent exactement le même schéma. Mais regardons notre schéma d’une autre façon.
 <p class=a>&#x2042;
 
-<h2 id=nmsyntax>Using The <code>{n,m}</code> Syntax</h2>
-<aside>{1,4} matches between 1 and 4 occurrences of a pattern.</aside>
-<p>In the previous section, you were dealing with a pattern where the same character could be repeated up to three times. There is another way to express this in regular expressions, which some people find more readable. First look at the method we already used in the previous example.
+<h2 id=nmsyntax>Utiliser La Syntaxe <code>{n,m}</code></h2>
+<aside>{1,4} correspond à un nombre d’occurences d’un schéma compris entre 1 et 4.</aside>
+<p>Dans la section précédente, nous avions vu un schéma où le même caractère pouvait être répété jusqu’à trois fois. Voici une autre façon de l’exprimer dans des expressions régulières, ce que certaines personnes trouvent plus lisible. D’abord, regardons à la méthode que nous avons utilisée dans l’exemple précédent.
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import re</kbd>
 <samp class=p>>>> </samp><kbd class=pp>pattern = '^M?M?M?$'</kbd>
@@ -181,10 +181,10 @@ body{counter-reset:h1 5}
 <a><samp>>>> </samp><kbd class=pp>re.search(pattern, 'MMMM')</kbd>  <span class=u>&#x2463;</span></a>
 <samp class=p>>>> </samp></pre>
 <ol>
-<li>This matches the start of the string, and then the first optional <code>M</code>, but not the second and third <code>M</code> (but that&#8217;s okay because they&#8217;re optional), and then the end of the string.
-<li>This matches the start of the string, and then the first and second optional <code>M</code>, but not the third <code>M</code> (but that&#8217;s okay because it&#8217;s optional), and then the end of the string.
-<li>This matches the start of the string, and then all three optional <code>M</code>, and then the end of the string.
-<li>This matches the start of the string, and then all three optional <code>M</code>, but then does not match the end of the string (because there is still one unmatched <code>M</code>), so the pattern does not match and returns <code>None</code>.
+<li>Ceci valide le début de la chaine, puis le premier <code>M</code> optionnel, mais pas les deux <code>M</code> suivants (mais ça passe car ils sont optionnels), et la fin de la chaine.
+<li>Ceci valide le début de la chaine, puis les deux premiers <code>M</code> optionnels, mais pas le <code>M</code> suivant (mais ça passe car il est optionnel), et la fin de la chaine.
+<li>Ceci valide le début de la chaine, puis les trois caractères <code>M</code> optionnels, et la fin de la chaine.
+<li>Ceci valide le début de la chaine, puis les trois caractères <code>M</code> optionnels , mais ne correspond pas à la fin de la chaine (car il y a des <code>M</code> qui ne correspondent pas), donc le schéma ne valide pas et retourne <code>None</code>.
 </ol>
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>pattern = '^M{0,3}$'</kbd>        <span class=u>&#x2460;</span></a>
@@ -197,14 +197,14 @@ body{counter-reset:h1 5}
 <a><samp class=p>>>> </samp><kbd class=pp>re.search(pattern, 'MMMM')</kbd>  <span class=u>&#x2464;</span></a>
 <samp>>>> </samp></pre>
 <ol>
-<li>This pattern says: &#8220;Match the start of the string, then anywhere from zero to three <code>M</code> characters, then the end of the string.&#8221;  The 0 and 3 can be any numbers; if you want to match at least one but no more than three <code>M</code> characters, you could say <code>M{1,3}</code>.
-<li>This matches the start of the string, then one <code>M</code> out of a possible three, then the end of the string.
-<li>This matches the start of the string, then two <code>M</code> out of a possible three, then the end of the string.
-<li>This matches the start of the string, then three <code>M</code> out of a possible three, then the end of the string.
-<li>This matches the start of the string, then three <code>M</code> out of a possible three, but then <em>does not match</em> the end of the string. The regular expression allows for up to only three <code>M</code> characters before the end of the string, but you have four, so the pattern does not match and returns <code>None</code>.
+<li>Ce schéma dit « Détecte le débit de la chaine, puis entre zéro et trois caractères <code>M</code>, puis la fin de la chaine ». Le 0 et le 3 peuvent être n’importe quel nombre&nbsp;; si vous voulez détecter au moins 1 mais pas plus de trois caractères <code>M</code>, vous pouvez simplement dire <code>M{1,3}</code>.
+<li>Ceci détecte le début de la chaine, puis un <code>M</code> sur les trois possibles, puis la fin de la chaine.
+<li>Ceci détecte le début de la chaine, puis deux <code>M</code> sur les trois possibles, puis la fin de la chaine.
+<li>Ceci détecte le début de la chaine, puis trois <code>M</code> sur les trois possibles, puis la fin de la chaine.
+<li>Ceci détecte le début de la chaine, puis trois <code>M</code> sur les trois possibles avant la fin de la chaine. Mais il y en a quatre, donc le schéma ne valide pas et retourner <code>None</code>.
 </ol>
-<h3 id=tensandones>Checking For Tens And Ones</h3>
-<p>Now let&#8217;s expand the Roman numeral regular expression to cover the tens and ones place. This example shows the check for tens.
+<h3 id=tensandones>Vérifier Les Dizaines Et Les Unités</h3>
+<p>Maintenant, étendons notre expression rationnelle pour couvrir les dizaines et les unités. Cet exemple montrer comment vérifier les dizaines.
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>pattern = '^M?M?M?(CM|CD|D?C?C?C?)(XC|XL|L?X?X?X?)$'</kbd>
 <a><samp class=p>>>> </samp><kbd class=pp>re.search(pattern, 'MCMXL')</kbd>     <span class=u>&#x2460;</span></a>
@@ -218,17 +218,17 @@ body{counter-reset:h1 5}
 <a><samp class=p>>>> </samp><kbd class=pp>re.search(pattern, 'MCMLXXXX')</kbd>  <span class=u>&#x2464;</span></a>
 <samp class=p>>>> </samp></pre>
 <ol>
-<li>This matches the start of the string, then the first optional <code>M</code>, then <code>CM</code>, then <code>XL</code>, then the end of the string. Remember, the <code>(A|B|C)</code> syntax means &#8220;match exactly one of A, B, or C&#8221;. You match <code>XL</code>, so you ignore the <code>XC</code> and <code>L?X?X?X?</code> choices, and then move on to the end of the string. <code>MCMXL</code> is the Roman numeral representation of <code>1940</code>.
-<li>This matches the start of the string, then the first optional <code>M</code>, then <code>CM</code>, then <code>L?X?X?X?</code>. Of the <code>L?X?X?X?</code>, it matches the <code>L</code> and skips all three optional <code>X</code> characters. Then you move to the end of the string. <code>MCML</code> is the Roman numeral representation of <code>1950</code>.
-<li>This matches the start of the string, then the first optional <code>M</code>, then <code>CM</code>, then the optional <code>L</code> and the first optional <code>X</code>, skips the second and third optional <code>X</code>, then the end of the string. <code>MCMLX</code> is the Roman numeral representation of <code>1960</code>.
-<li>This matches the start of the string, then the first optional <code>M</code>, then <code>CM</code>, then the optional <code>L</code> and all three optional <code>X</code> characters, then the end of the string. <code>MCMLXXX</code> is the Roman numeral representation of <code>1980</code>.
-<li>This matches the start of the string, then the first optional <code>M</code>, then <code>CM</code>, then the optional <code>L</code> and all three optional <code>X</code> characters, then <em>fails to match</em> the end of the string because there is still one more <code>X</code> unaccounted for. So the entire pattern fails to match, and returns <code>None</code>. <code>MCMLXXXX</code> is not a valid Roman numeral.
+<li>Ceci détecte le début de la chaine, puis the first optional <code>M</code>, puis <code>CM</code>, puis <code>XL</code>, puis la fin de la chaine. Souvenez-vous, la syntaxe <code>(A|B|C)</code> correspond à « exactement A, B, <em>ou</em> (exclusif) C ». Vous testez <code>XL</code>, donc vous ignorez les choix <code>XC</code> et <code>L?X?X?X?</code>, puis passez à la fin de la chaine. <code>MCMXL</code> est la représentation romaine de <code>1940</code>.
+<li>Ceci détecte le début de la chaine, puis the first optional <code>M</code>, puis <code>CM</code>, puis <code>L?X?X?X?</code>. Le schéma <code>L?X?X?X?</code> détecte le <code>L</code> et passe à la suite en sautant les trois caractères <code>X</code> optionnels. Puis vous passez à la fin de la chaine. <code>MCML</code> est la représentation romaine de <code>1950</code>.
+<li>Ceci détecte le début de la chaine, puis the first optional <code>M</code>, puis <code>CM</code>, puis le <code>L</code> optionnel et le <code>X</code> optionnel, saute les deux <code>X</code> suivants optionnels, puis la fin de la chaine. <code>MCMLX</code> est la représentation romaine de <code>1960</code>.
+<li>Ceci détecte le début de la chaine, puis the first optional <code>M</code>, puis <code>CM</code>, puis le <code>L</code> optionnel et les trois <code>X</code> optionnels, puis la fin de la chaine. <code>MCMLXXX</code> est la représentation romaine de <code>1980</code>.
+<li>Ceci détecte le début de la chaine, puis the first optional <code>M</code>, puis <code>CM</code>, puis le <code>L</code> optionnel et les trois <code>X</code> optionnels, puis <em>ne valide pas</em> car il y a encore un <code>X</code> non validé avant la fin de la chaine. Donc tout le schéma échoue à valider et retourne <code>None</code>. <code>MCMLXXXX</code> n’est pas un nombre romaine valide.
 </ol>
-<aside>(A|B) matches either pattern A or pattern B, but not both.</aside>
-<p>The expression for the ones place follows the same pattern. I&#8217;ll spare you the details and show you the end result.
+<aside>(A|B) correspond soit à A soit à B, mais pas aux deux.</aside>
+<p>L’expression pour les unités suit le même schéma. Je vous épargne les détails et vous donne tout de suite le résultat final.
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>pattern = '^M?M?M?(CM|CD|D?C?C?C?)(XC|XL|L?X?X?X?)(IX|IV|V?I?I?I?)$'</kbd>
-</pre><p>So what does that look like using this alternate <code>{n,m}</code> syntax?  This example shows the new syntax.
+</pre><p>Donc, à quoi cela ressemble-t-il si on utilise la syntaxe alternativee <code>{n,m}</code>&nbsp;? Cet exemple montre la nouvelle syntaxe.
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>pattern = '^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$'</kbd>
 <a><samp class=p>>>> </samp><kbd class=pp>re.search(pattern, 'MDLV')</kbd>              <span class=u>&#x2460;</span></a>
@@ -240,23 +240,23 @@ body{counter-reset:h1 5}
 <a><samp class=p>>>> </samp><kbd class=pp>re.search(pattern, 'I')</kbd>                 <span class=u>&#x2463;</span></a>
 <samp>&lt;_sre.SRE_Match object at 0x008EEB48></samp></pre>
 <ol>
-<li>This matches the start of the string, then one of a possible three <code>M</code> characters, then <code>D?C{0,3}</code>. Of that, it matches the optional <code>D</code> and zero of three possible <code>C</code> characters. Moving on, it matches <code>L?X{0,3}</code> by matching the optional <code>L</code> and zero of three possible <code>X</code> characters. Then it matches <code>V?I{0,3}</code> by matching the optional <code>V</code> and zero of three possible <code>I</code> characters, and finally the end of the string. <code>MDLV</code> is the Roman numeral representation of <code>1555</code>.
-<li>This matches the start of the string, then two of a possible three <code>M</code> characters, then the <code>D?C{0,3}</code> with a <code>D</code> and one of three possible <code>C</code> characters; then <code>L?X{0,3}</code> with an <code>L</code> and one of three possible <code>X</code> characters; then <code>V?I{0,3}</code> with a <code>V</code> and one of three possible <code>I</code> characters; then the end of the string. <code>MMDCLXVI</code> is the Roman numeral representation of <code>2666</code>.
-<li>This matches the start of the string, then three out of three <code>M</code> characters, then <code>D?C{0,3}</code> with a <code>D</code> and three out of three <code>C</code> characters; then <code>L?X{0,3}</code> with an <code>L</code> and three out of three <code>X</code> characters; then <code>V?I{0,3}</code> with a <code>V</code> and three out of three <code>I</code> characters; then the end of the string. <code>MMMDCCCLXXXVIII</code> is the Roman numeral representation of <code>3888</code>, and it&#8217;s the longest Roman numeral you can write without extended syntax.
-<li>Watch closely. (I feel like a magician. &#8220;Watch closely, kids, I&#8217;m going to pull a rabbit out of my hat.&#8221;)  This matches the start of the string, then zero out of three <code>M</code>, then matches <code>D?C{0,3}</code> by skipping the optional <code>D</code> and matching zero out of three <code>C</code>, then matches <code>L?X{0,3}</code> by skipping the optional <code>L</code> and matching zero out of three <code>X</code>, then matches <code>V?I{0,3}</code> by skipping the optional <code>V</code> and matching one out of three <code>I</code>. Then the end of the string. Whoa.
+<li>Ceci correspond au début de la chaine, puis un des trois caractères <code>M</code> possibles, puis <code>D?C{0,3}</code>. À cela correspond de <code>D</code> optionnel et aucun des trois caractères <code>C</code> possibles. En continuant, il détecte <code>L?X{0,3}</code> en correspondance avec <code>L</code> and et aucun des trois caractères <code>X</code> possibles. Puis il fait correspondre <code>V?I{0,3}</code> au <code>V</code> optionnel et à aucun des trois <code>I</code> possibles, et enfin à la fin de la chaine. <code>MDLV</code> est la représentation romaine de <code>1555</code>.
+<li>Ceci correspond au début de la chaine, puis deux des trois <code>M</code> possibles, puis <code>D?C{0,3}</code> à <code>D</code> et un des trois <code>C</code> possibles&nbsp;; <code>L?X{0,3}</code> à <code>L</code> et un des trois <code>X</code> possibles&nbsp;; puis <code>V?I{0,3}</code> à <code>V</code> et un des trois <code>I</code> possibles&nbsp;; et enfin la fin de la chaine. <code>MMDCLXVI</code> est la représentation romaine de <code>2666</code>.
+<li>Ceci correspond au début de la chaine, puis les trois caractères <code>M</code> autorisés, puis <code>D?C{0,3}</code> détectant <code>D</code> et les trois <code>C</code>&nbsp;; puis <code>L?X{0,3}</code> détectant <code>L</code> et les trois <code>X</code>&nbsp;; puis <code>V?I{0,3}</code> avec <code>V</code> et les trois <code>I</code>&nbsp;; puis la fin de la chaine. <code>MMMDCCCLXXXVIII</code> est la représentation romaine de <code>3888</code>, et est le plus grand nombre romain que vous puissiez écrire sans la syntaxe étendue.
+<li>Regardez attentivement. (Je me sens comme un magicien. «&nbsp;Regardez attentivement, les enfants, je vais sortir un lapin de mon chapeau.&nbsp;») Ceci correspond au début de la chaine, puis aucun des trois <code>M</code>, puis <code>D?C{0,3}</code> en sautant le <code>D</code> optionnel et ne détectant aucun des trois <code>C</code> possibles, puis fait correspondre <code>L?X{0,3}</code> en sautant le <code>L</code> optionnel et aucun des trois <code>X</code> possibles, puis <code>V?I{0,3}</code> en sautant le <code>V</code> optionnel, et un des trois <code>I</code> possibles. Et enfin la fin de la chaine. Wow.
 </ol>
-<p>If you followed all that and understood it on the first try, you&#8217;re doing better than I did. Now imagine trying to understand someone else&#8217;s regular expressions, in the middle of a critical function of a large program. Or even imagine coming back to your own regular expressions a few months later. I&#8217;ve done it, and it&#8217;s not a pretty sight.
-<p>Now let&#8217;s explore an alternate syntax that can help keep your expressions maintainable.
+<p>Si vous avez suivi et compris ceci du premier coup, vous vous en sortez mieux que moi lors de mon apprentissage. Maintenant imaginez que vous essayez de comprendre les expressions rationnelles de quelqu’un d’autre, au milieu d’une fonction critique d’un grod programme. Ou imaginez que vous revenez à une de vos propres expressions rationnelles quelques mois plus tard. Ça m’est déjà arrivé, et ce n’est pas joli à voir.
+<p>Maintenant, explorons une syntaxe alternative qui peut vous aider à garder vos expressions compréhensibles.
 <p class=a>&#x2042;
 
-<h2 id=verbosere>Verbose Regular Expressions</h2>
-<p>So far you&#8217;ve just been dealing with what I&#8217;ll call &#8220;compact&#8221; regular expressions. As you&#8217;ve seen, they are difficult to read, and even if you figure out what one does, that&#8217;s no guarantee that you&#8217;ll be able to understand it six months later. What you really need is inline documentation.
-<p>Python allows you to do this with something called <i>verbose regular expressions</i>. A verbose regular expression is different from a compact regular expression in two ways:
+<h2 id=verbosere>Expressions rationnelles verbeuses</h2>
+<p>Jusqu’à présent nous n’avons utilisé que ce que j’appelle des expressions régulières compactes. Comme vous pouvez le constater, elles sont difficiles à dire, et même si vous devinez ce que fait l’une d’entre elles, il n’y a aucune garantie que vous le compreniez toujours six mois plus tard. Ce dont vous avez besoin est de la documentation «&nbsp;en ligne&nbsp;» (c’est-à-dire sur la ligne-même de l’expression).
+<p>Python vous permet de faire ce qu’on appelle des <i>expressions rationnelles verbeuses</i>. Une expression rationnelle verbeuse est différente d’une expression régulière compacte sur deux points&nbsp;:
 <ul>
-<li>Whitespace is ignored. Spaces, tabs, and carriage returns are not matched as spaces, tabs, and carriage returns. They&#8217;re not matched at all. (If you want to match a space in a verbose regular expression, you&#8217;ll need to escape it by putting a backslash in front of it.)
-<li>Comments are ignored. A comment in a verbose regular expression is just like a comment in Python code: it starts with a <code>#</code> character and goes until the end of the line. In this case it&#8217;s a comment within a multi-line string instead of within your source code, but it works the same way.
+<li>Les espaces blanches sont ignorées. Les espaces, tabulations, et retours chariot ne snt pas considérés comme des espaces, tabulations, et retours chariot. Ils ne sont juste pas pris en compte. (Si vous voulez qu’ils le soient, vous devez les échapper en ajoutant un backslash juste avant.)
+<li>Les commenaires sont ignorés. Un commentaire dans une expression rationnelle verbeuse est comme un commentaire Python&nbsp;: il commence avec un caractère <code>#</code> et va jusqu’à la fin de la ligne. Dans ce cas, c’est un commentaire dans une chaine multilignre plutôt que dans le code source, mais ils fonctionnent de la même façon.
 </ul>
-<p>This will be more clear with an example. Let&#8217;s revisit the compact regular expression you&#8217;ve been working with, and make it a verbose regular expression. This example shows how.
+<p>Ça sera plus clair avec un exemple. Revisitons l’expression rationnelle compacte avec laquelle on avait travaillé jusqu’à présent et rendons-la verbeuse. Cet exemple montre comment.
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>pattern = '''
     ^                   # beginning of string
@@ -277,18 +277,18 @@ body{counter-reset:h1 5}
 <samp>&lt;_sre.SRE_Match object at 0x008EEB48></samp>
 <a><samp class=p>>>> </samp><kbd class=pp>re.search(pattern, 'M')</kbd>                             <span class=u>&#x2463;</span></a></pre>
 <ol>
-<li>The most important thing to remember when using verbose regular expressions is that you need to pass an extra argument when working with them: <code>re.VERBOSE</code> is a constant defined in the <code>re</code> module that signals that the pattern should be treated as a verbose regular expression. As you can see, this pattern has quite a bit of whitespace (all of which is ignored), and several comments (all of which are ignored). Once you ignore the whitespace and the comments, this is exactly the same regular expression as you saw in the previous section, but it&#8217;s a lot more readable.
-<li>This matches the start of the string, then one of a possible three <code>M</code>, then <code>CM</code>, then <code>L</code> and three of a possible three <code>X</code>, then <code>IX</code>, then the end of the string.
-<li>This matches the start of the string, then three of a possible three <code>M</code>, then <code>D</code> and three of a possible three <code>C</code>, then <code>L</code> and three of a possible three <code>X</code>, then <code>V</code> and three of a possible three <code>I</code>, then the end of the string.
-<li>This does not match. Why?  Because it doesn&#8217;t have the <code>re.VERBOSE</code> flag, so the <code>re.search</code> function is treating the pattern as a compact regular expression, with significant whitespace and literal hash marks. Python can&#8217;t auto-detect whether a regular expression is verbose or not. Python assumes every regular expression is compact unless you explicitly state that it is verbose.
+<li>La chose la plus importante à garder à l’esprit lorsque vous utilisez des expressions rationnelles verbeuses est que vous devez passer un paramètre supplémentaire lorsque vous les utilisez&nbsp;: <code>re.VERBOSE</code>, qui est une constante définie dans le module <code>re</code> et qui signale que le schéma doit être traité comme une expression régulière verbeuse. Comme vous pouvez le constater, ce schéma contient pas mal d’espaces blanches (qui sont toutes ignorées), et plusieurs commentaires (qui sont tous ignorés). Une vois que vous ignorez les espaces et les commentaires, c’est exactement la même expression rationnelle que nous avons vue dans la section précédente, mais elle est beaucoup plus lisible.
+<li>Ceci détecte le début de la chaine, puis à un des trois <code>M</code> possibles, puis <code>CM</code>, puis <code>L</code> puis les trois <code>X</code> possibles, puis <code>IX</code>, puis la fin de la chaine.
+<li>Ceci détecte le début de la chaine, puis les trois <code>M</code> possibles, puis <code>D</code> puis les trois <code>C</code> possibles, puis <code>L</code> puis les trois <code>X</code> possibles, puis <code>V</code> puis les trois <code>I</code> possibles, puis la fin de la chaine.
+<li>Ceci ne correspond pas. Pourquoi&nbsp;? Parce que nous n’avons pas le drapeau <code>re.VERBOSE</code>, donc la fonction <code>re.search</code> traite le schéma comme une expression rationnelle compacte, avec des espaces blanches significatives et des dièses littéraux Python ne peut pas détecter automatiquement si une expression régulière est verbeuse ou non. Python assume que toute expression régulière est compacte à moins que vous n’indiquiez explicitement qu’elle est verbeuse.
 </ol>
 <p class=a>&#x2042;
 
-<h2 id=phonenumbers>Case study: Parsing Phone Numbers</h2>
-<aside>\d matches any numeric digit (0&ndash;9). \D matches anything but digits.</aside>
-<p>So far you&#8217;ve concentrated on matching whole patterns. Either the pattern matches, or it doesn&#8217;t. But regular expressions are much more powerful than that. When a regular expression <em>does</em> match, you can pick out specific pieces of it. You can find out what matched where.
-<p>This example came from another real-world problem I encountered, again from a previous day job. The problem: parsing an American phone number. The client wanted to be able to enter the number free-form (in a single field), but then wanted to store the area code, trunk, number, and optionally an extension separately in the company&#8217;s database. I scoured the Web and found many examples of regular expressions that purported to do this, but none of them were permissive enough.
-<p>Here are the phone numbers I needed to be able to accept:
+<h2 id=phonenumbers>Étude De Cas&nbsp;: Parser Des Numéros De Téléphone Américains</h2>
+<aside>\d correspond à n’importe quel chiffre (0&ndash;9). \D correspond à n’importe quoi sauf un chiffre.</aside>
+<p>Donc, jusqu’à présent vous vous êtes concentré-e sur la correspondance de schémas entiers. Soit le schéma correspondait, soit il ne correspondait pas. Mais les expressions rationnelles sont bien plus puissantes que ça. Quand une expression rationnelle correspond <em>effectivement</em>, vous pouvez en extraire des morceaux spécifiques. Vous pouvez savoir ce qui a été détecté, et où.
+<p>Cet exemple vient d’un autre problème réel que j’ai rencontré, encore une fois dans mon travail. Le problème&nbsp;: parser un numéro de téléphone américain. La demande était d’entrer un numéro de n’importe quelle forme, mais les différents champs (code de zone, tronc, nombre, et optionnellement une extension) devaient être stockés séparément dans la base de données de l’entreprise. J’ai parcouru le Web et ai trouvé de nombreux exemples d’expressions régulières faisant cela, mais aucun n’était assez permissive.
+<p>Voici les numéros de téléphone que je devais accepter&nbsp;:
 <ul>
 <li><code>800-555-1212</code>
 <li><code>800 555 1212</code>
@@ -300,8 +300,8 @@ body{counter-reset:h1 5}
 <li><code>800-555-1212 ext. 1234</code>
 <li><code>work 1-(800) 555.1212 #1234</code>
 </ul>
-<p>Quite a variety! In each of these cases, I need to know that the area code was <code>800</code>, the trunk was <code>555</code>, and the rest of the phone number was <code>1212</code>. For those with an extension, I need to know that the extension was <code>1234</code>.
-<p>Let&#8217;s work through developing a solution for phone number parsing. This example shows the first step.
+<p>Quelle variété&nbsp;! Dans chacun de ces cas, le devais savoir que le code de zone était <code>800</code>, le tronc <code>555</code>, et le reste du numéro était <code>1212</code>. Pour ceux avec une extension, je devais savoir que cette extension était <code>1234</code>.
+<p>Travaillons à développer une solution pour parser des numéros de téléphone. Cet exemple montre la première étape.
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern = re.compile(r'^(\d{3})-(\d{3})-(\d{4})$')</kbd>  <span class=u>&#x2460;</span></a>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('800-555-1212').groups()</kbd>             <span class=u>&#x2461;</span></a>
@@ -312,10 +312,10 @@ body{counter-reset:h1 5}
   File "&lt;stdin>", line 1, in &lt;module>
 AttributeError: 'NoneType' object has no attribute 'groups'</samp></pre>
 <ol>
-<li>Always read regular expressions from left to right. This one matches the beginning of the string, and then <code>(\d{3})</code>. What&#8217;s <code>\d{3}</code>?  Well, <code>\d</code> means &#8220;any numeric digit&#8221; (0 through <code>9</code>). The <code>{3}</code> means &#8220;match exactly three numeric digits&#8221;; it&#8217;s a variation on the <a href=#nmsyntax><code>{n,m} syntax</code></a> you saw earlier. Putting it all in parentheses means &#8220;match exactly three numeric digits, <em>and then remember them as a group that I can ask for later</em>&#8221;. Then match a literal hyphen. Then match another group of exactly three digits. Then another literal hyphen. Then another group of exactly four digits. Then match the end of the string.
-<li>To get access to the groups that the regular expression parser remembered along the way, use the <code>groups()</code> method on the object that the <code>search()</code> method returns. It will return a tuple of however many groups were defined in the regular expression. In this case, you defined three groups, one with three digits, one with three digits, and one with four digits.
-<li>This regular expression is not the final answer, because it doesn&#8217;t handle a phone number with an extension on the end. For that, you&#8217;ll need to expand the regular expression.
-<li>And this is why you should never &#8220;chain&#8221; the <code>search()</code> and <code>groups()</code> methods in production code. If the <code>search()</code> method returns no matches, it returns <a href=native-datatypes.html#none><code>None</code></a>, not a regular expression match object. Calling <code>None.groups()</code> raises a perfectly obvious exception: <code>None</code> doesn&#8217;t have a <code>groups()</code> method. (Of course, it&#8217;s slightly less obvious when you get this exception from deep within your code. Yes, I speak from experience here.)
+<li>Lisez toujours les expressions rationnelles de gauche à droite. Celle-ci détecte le début de la chaine, puis <code>(\d{3})</code>. Qu’est-ce que <code>\d{3}</code>&nbsp;? Eh bien, <code>\d</code> signifie «&nbsp;n’importe quel chiffre&nbsp;» (de 0 à 9). Le <code>{3}</code> signifie «&nbsp;faire correspondre exactement trois fois ce schéma&nbsp;» (ici, trois fois un chiffre)&nbsp;; c’est une variation de la <a href=#nmsyntax>syntaxe <code>{n,m}</code></a> que nous avons vue plus tôt. Mettre tout cela entre parenthèses signifie «&nbsp;détecter exactement trois chiffres, et <em>s’en souvenir en tant que groupe que nous pouvons demander par la suite</em>&nbsp;». Puis détecter un tiret litéral. Puis un autre groupe de trois chiffres. Puis un autre tiret litéral. Puis un autre groupe d’exactement quatre chiffres. Puis la fin de la chaine.
+<li>Pour accéder aux groupes que le parseur d’expressions régulières a rencontré lors de son parcourt, utilisez la méthode <code>groups()</code> de l’objet retourné par la méthode <code>search()</code>. Il retourne un n-uplet où n est le nombre de groupes définis dans l’expression rationnelle. DAns ce cas, vous avez défini trois groupes, un avec trois chiffres, un autre avec trois chiffres, et un avec quatre chiffres.
+<li>Et cette expression rationnelle n’est pas la réponse finale, car elle refuse les numéros de téléphone avec une extension à la fin. Pour cela, nous allons devoir étendre l’expression rationnelle.
+<li>Et c’est pourquoi vous ne devriez jamais enchaine les méthodes <code>search()</code> et <code>groups()</code> dans un code en production. Si la méthode <code>search()</code> refuse la chaine, elle retourne <a href=native-datatypes.html#none><code>None</code></a>, pas un objet de correspondance d’expression rationnelle. Appeler <code>None.groups()</code> lève une exception tout à fait évidente&nbsp;: <code>None</code> n’a pas de méthode <code>groups()</code>. (Bien sûr, c’est beaucoup moins évident lorsque vous obtenez cette exception profondément dans votre code. Oui, je parle d’expérience ici.)
 </ol>
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern = re.compile(r'^(\d{3})-(\d{3})-(\d{4})-(\d+)$')</kbd>  <span class=u>&#x2460;</span></a>
@@ -326,12 +326,12 @@ AttributeError: 'NoneType' object has no attribute 'groups'</samp></pre>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('800-555-1212')</kbd>                            <span class=u>&#x2463;</span></a>
 <samp class=p>>>> </samp></pre>
 <ol>
-<li>This regular expression is almost identical to the previous one. Just as before, you match the beginning of the string, then a remembered group of three digits, then a hyphen, then a remembered group of three digits, then a hyphen, then a remembered group of four digits. What&#8217;s new is that you then match another hyphen, and a remembered group of one or more digits, then the end of the string.
-<li>The <code>groups()</code> method now returns a tuple of four elements, since the regular expression now defines four groups to remember.
-<li>Unfortunately, this regular expression is not the final answer either, because it assumes that the different parts of the phone number are separated by hyphens. What if they&#8217;re separated by spaces, or commas, or dots?  You need a more general solution to match several different types of separators.
-<li>Oops! Not only does this regular expression not do everything you want, it&#8217;s actually a step backwards, because now you can&#8217;t parse phone numbers <em>without</em> an extension. That&#8217;s not what you wanted at all; if the extension is there, you want to know what it is, but if it&#8217;s not there, you still want to know what the different parts of the main number are.
+<li>Cette expression rationnelle est presque identique à la précédente. Comme précédemment, vous détectez le débu de la chaine, vous souvenez d’un groupe de trois chiffres, rencontrez un tiret, puis vous souvenez d’un groupe de trois chiffres, puis rencontrez un nouveau tiet, puis vous souvenez d’un groupe de quatre chiffres. Ce qui est nouveau est que vous détectez alors un autre tiret, et vous souvenez d’un groupe de plusieurs chiffres (au moins un), puis la fin de la chaine.
+<li>La méthode <code>groups()</code> retourne maintenant un quadruplet, puisque l’expression défini quatre groupes.
+<li>Malheureusement, cette expression rationnelle n’est pas la réponse finale non plus, car elle considère que les différentes parties du numéro de téléphne sont séparées par des tirets. Et si elles étaient séparées par des espaces, virgules, ou points&nbsp;? Vous devez trouver une solution plus générale pour détecter les différents types de séparateurs.
+<li>Oups&nbsp;! Non seulement cette expression ne fait pas tout ce que l’on veut, mais en plus c’est un retour en arrière car elle ne peut pas correspondre aux numéros de téléphone <em>sans</em> extension. Ce n’est pas du tout ce que nous voulons. Si l’extension est là, nous voulons la connaitre, mais si elle ne l’est pas nous voulons tout de même connaitre les différentes parties du numéro principale.
 </ol>
-<p>The next example shows the regular expression to handle separators between the different parts of the phone number.
+<p>L’exemple suivant montre une expression rationnelle qui gère les séparateurs entre les différentes parties du numéro.
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern = re.compile(r'^(\d{3})\D+(\d{3})\D+(\d{4})\D+(\d+)$')</kbd>  <span class=u>&#x2460;</span></a>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('800 555 1212 1234').groups()</kbd>  <span class=u>&#x2461;</span></a>
@@ -343,13 +343,13 @@ AttributeError: 'NoneType' object has no attribute 'groups'</samp></pre>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('800-555-1212')</kbd>                <span class=u>&#x2464;</span></a>
 <samp class=p>>>> </samp></pre>
 <ol>
-<li>Hang on to your hat. You&#8217;re matching the beginning of the string, then a group of three digits, then <code>\D+</code>. What the heck is that?  Well, <code>\D</code> matches any character <em>except</em> a numeric digit, and <code>+</code> means &#8220;1 or more&#8221;. So <code>\D+</code> matches one or more characters that are not digits. This is what you&#8217;re using instead of a literal hyphen, to try to match different separators.
-<li>Using <code>\D+</code> instead of <code>-</code> means you can now match phone numbers where the parts are separated by spaces instead of hyphens.
-<li>Of course, phone numbers separated by hyphens still work too.
-<li>Unfortunately, this is still not the final answer, because it assumes that there is a separator at all. What if the phone number is entered without any spaces or hyphens at all?
-<li>Oops! This still hasn&#8217;t fixed the problem of requiring extensions. Now you have two problems, but you can solve both of them with the same technique.
+<li>Accrochez-vous à votre chapeau. Nous détectons le début de la chaine, puis un groupe de trois chiffres, puis <code>\D+</code>. Qu’est-ce que c’est que ce truc&nbsp;? Eh bien, <code>\D</code> détecte n’importe quel caractère <em>sauf</em> un chiffre, et <code>+</code> signifique «&nbsp;un ou plus&nbsp;». Donc <code>\D+</code> détecte un ou plusieurs caractères qui ne sont pas des chiffres. C’est ce que nous utilisons à la place des tirers litéraux pour détecter différent types de séparateurs.
+<li>Utiliser <code>\D+</code> plutôt que <code>-</code> signifique que vous pouvez des détecter des numéros de téléphone dont les parties sont séparées par des espaces plutôt que par des tirets.
+<li>Bien sûr, les numéros de téléphones séparés par des tirets marchent toujours.
+<li>Malheureusement, ce n’est toujours pas la réponse finale, car on considère qu’il doit toujours y avoir. Et si le numéro de téléphone est entré sans aucun espace ou tiret&nbsp;?
+<li>Oups&nbsp;! Ça n’a toujours pas corrigé le problème de nécessiter une extension. Maitenant nous avons deux problèmes, mais vous pouvez toujours la résoudre avec la même technique.
 </ol>
-<p>The next example shows the regular expression for handling phone numbers <em>without</em> separators.
+<p>L’exemple suivant montre l’expression rationnelle pour gérer les numéros de téléphone <em>sans</em> séparateur.
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern = re.compile(r'^(\d{3})\D*(\d{3})\D*(\d{4})\D*(\d*)$')</kbd>  <span class=u>&#x2460;</span></a>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('80055512121234').groups()</kbd>      <span class=u>&#x2461;</span></a>
@@ -361,13 +361,13 @@ AttributeError: 'NoneType' object has no attribute 'groups'</samp></pre>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('(800)5551212 x1234')</kbd>           <span class=u>&#x2464;</span></a>
 <samp class=p>>>> </samp></pre>
 <ol>
-<li>The only change you&#8217;ve made since that last step is changing all the <code>+</code> to <code>*</code>. Instead of <code>\D+</code> between the parts of the phone number, you now match on <code>\D*</code>. Remember that <code>+</code> means &#8220;1 or more&#8221;?  Well, <code>*</code> means &#8220;zero or more&#8221;. So now you should be able to parse phone numbers even when there is no separator character at all.
-<li>Lo and behold, it actually works. Why?  You matched the beginning of the string, then a remembered group of three digits (<code>800</code>), then zero non-numeric characters, then a remembered group of three digits (<code>555</code>), then zero non-numeric characters, then a remembered group of four digits (<code>1212</code>), then zero non-numeric characters, then a remembered group of an arbitrary number of digits (<code>1234</code>), then the end of the string.
-<li>Other variations work now too: dots instead of hyphens, and both a space and an <code>x</code> before the extension.
-<li>Finally, you&#8217;ve solved the other long-standing problem: extensions are optional again. If no extension is found, the <code>groups()</code> method still returns a tuple of four elements, but the fourth element is just an empty string.
-<li>I hate to be the bearer of bad news, but you&#8217;re not finished yet. What&#8217;s the problem here?  There&#8217;s an extra character before the area code, but the regular expression assumes that the area code is the first thing at the beginning of the string. No problem, you can use the same technique of &#8220;zero or more non-numeric characters&#8221; to skip over the leading characters before the area code.
+<li>Le seul changement que nous avons fait depuis la dernière étape et de changer tous les <code>+</code> en <code>*</code>. Plutôt que d’avoir <code>\D+</code> entre les parties du numéro de téléphone, nous cherchons maintenant à faire correspondre <code>\D*</code>. Vous vous souvenez que <code>+</code> signifie «&nbsp;un ou plus&nbsp;»&nbsp;? Eh bien, <code>*</code> signifie «&nbsp;zéro ou plus&nbsp;». Maintenant nous sommes capables de parser les numéros de téléphone même s’ils ne contiennent aucun séparateur.
+<li>Et voilà que ça marche pour de bon. Pourquoi&nbsp;? On détecte le début de la chaine, puis se souvient de trois chiffres (<code>800</code>), puis aucun caractère non numérique, puis un groupe de trois chiffres (<code>555</code>), puis aucun caractère non numérique, puis un groupe de quatre chiffres (<code>1212</code>), puis aucun caractère non numérique, puis un groupe d’un nombre quelconque de chiffres (<code>1234</code>), puis la fin de la chaine.
+<li>D’autres variations marchvent également à présent&nbsp;: des points à la place des tirets, et à la fois un espace et un <code>x</code> avant l’extension.
+<li>Finalement, nous avons résolu un autre problème de longue date&nbsp;: les extensions sont à nouveau optionnelles. Si aucune extension n’est trouvée, la méthode <code>groups()</code> retournera toujours un quadruplet, mais le quatrième élément sera seulement une chaine vide.
+<li>Je déteste faire l’oiseau de mauvais augure, mais nous n’avons pas encore fini. Quel est le problème ici&nbsp;? Il y a un caractère supplémentaire avant le code de zone, mais l’expression rationnelle considère que le code de zone est la première chose au début d’une chaine. Aucun problème, nous pouvons utiliser la même technique de «&nbsp;zéro caractères non numériques, ou plus&nbsp;» pour sauter les caractères avant le code de zone.
 </ol>
-<p>The next example shows how to handle leading characters in phone numbers.
+<p>L’exemple suivant montre comment gérer les caractères précédent les numéros de téléphone.
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern = re.compile(r'^\D*(\d{3})\D*(\d{3})\D*(\d{4})\D*(\d*)$')</kbd>  <span class=u>&#x2460;</span></a>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('(800)5551212 ext. 1234').groups()</kbd>                  <span class=u>&#x2461;</span></a>
@@ -377,12 +377,12 @@ AttributeError: 'NoneType' object has no attribute 'groups'</samp></pre>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('work 1-(800) 555.1212 #1234')</kbd>                      <span class=u>&#x2463;</span></a>
 <samp class=p>>>> </samp></pre>
 <ol>
-<li>This is the same as in the previous example, except now you&#8217;re matching <code>\D*</code>, zero or more non-numeric characters, before the first remembered group (the area code). Notice that you&#8217;re not remembering these non-numeric characters (they&#8217;re not in parentheses). If you find them, you&#8217;ll just skip over them and then start remembering the area code whenever you get to it.
-<li>You can successfully parse the phone number, even with the leading left parenthesis before the area code. (The right parenthesis after the area code is already handled; it&#8217;s treated as a non-numeric separator and matched by the <code>\D*</code> after the first remembered group.)
-<li>Just a sanity check to make sure you haven&#8217;t broken anything that used to work. Since the leading characters are entirely optional, this matches the beginning of the string, then zero non-numeric characters, then a remembered group of three digits (<code>800</code>), then one non-numeric character (the hyphen), then a remembered group of three digits (<code>555</code>), then one non-numeric character (the hyphen), then a remembered group of four digits (<code>1212</code>), then zero non-numeric characters, then a remembered group of zero digits, then the end of the string.
-<li>This is where regular expressions make me want to gouge my eyes out with a blunt object. Why doesn&#8217;t this phone number match? Because there&#8217;s a <code>1</code> before the area code, but you assumed that all the leading characters before the area code were non-numeric characters (<code>\D*</code>). Aargh.
+<li>C’est la même que dans l’exemple précédent, à part que maintenant on recherche <code>\D*</code>, zéro caractère non numérique ou plus, avant le premier groupe dont on se souvient (le code de zone). Notez que l’on ne se souvient pas de ces caractères non numériques (ils ne sont pas entre parenthèses). S’il y en a, on ne fait que les ignorer, et on ne commence à retenir  qu’à partir du code de zone, quel que soit l’endroit où il se trouve.
+<li>Vous pouvez parser avec succès le numéro de téléphone, même si il y a une parenthèse ouvrante avec le code de zone. (La parenthèse fermante après le code de zone est déjà gérée&nbsp;; elle est traitée comme un séparateur non numérique et correspond que <code>\D*</code> après le premier groupe retenu.)
+<li>Seulement une vérification pour s’assurer que l’on n’a pas cassé quelque chose qui marchait auparavant.
+<li>C’est là que les expressions rationnelles me donnent envie de me crever les yeux avec un objet pointu. Pourquoi ce numéro ne correspond-t-il pas&nbsp;? Parce qu’il y a un <code>1</code> avant le code de zone, mai on avait considéré que tous les caractères avant le code de zone devaient être non numériques (<code>\D*</code>). Arg.
 </ol>
-<p>Let&#8217;s back up for a second. So far the regular expressions have all matched from the beginning of the string. But now you see that there may be an indeterminate amount of stuff at the beginning of the string that you want to ignore. Rather than trying to match it all just so you can skip over it, let&#8217;s take a different approach: don&#8217;t explicitly match the beginning of the string at all. This approach is shown in the next example.
+<p>Réfléchissons une seconde. Jusqu’à présent le texte détecté par expressions rationnelles commençait forcément au début de la chaine. Mais comme vous pouvez le constater, il y a une quantité indétermée de choses que nous voulons ignorer, au début de la chaine. Plutôt que d’essayer de le faire correspondre pour le sauter, nous allons utiliser une autre approche&nbsp;: nous n’allons pas explicitement demander le début de la chaine. Cette approche est présente dans l’exemple suivant.
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern = re.compile(r'(\d{3})\D*(\d{3})\D*(\d{4})\D*(\d*)$')</kbd>  <span class=u>&#x2460;</span></a>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('work 1-(800) 555.1212 #1234').groups()</kbd>         <span class=u>&#x2461;</span></a>
@@ -392,13 +392,13 @@ AttributeError: 'NoneType' object has no attribute 'groups'</samp></pre>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('80055512121234').groups()</kbd>                      <span class=u>&#x2463;</span></a>
 <samp class=pp>('800', '555', '1212', '1234')</samp></pre>
 <ol>
-<li>Note the lack of <code>^</code> in this regular expression. You are not matching the beginning of the string anymore. There&#8217;s nothing that says you need to match the entire input with your regular expression. The regular expression engine will do the hard work of figuring out where the input string starts to match, and go from there.
-<li>Now you can successfully parse a phone number that includes leading characters and a leading digit, plus any number of any kind of separators around each part of the phone number.
-<li>Sanity check. This still works.
-<li>That still works too.
+<li>Notez l’absence de <code>^</code> dans cette expression rationnelle. Vous ne recherchez plus le début de la chaine. Il n’y a rien qui dit que vous avez besoin de faire correspondre l’intégralité du texte d’entrée avec l’expression rationnelle. Le moteur d’expression rationnelle fera le gros du travail en essayant de trouver où la chaine en entrée commence à correspondre, et partir de là.
+<li>À présent on réussit à parser un numéro de téléphone qui inclut des caractères et un chiffre au début, ainsi que n’importe quel type de séparateur autour de chacune des parties du numéro de téléphone.
+<li>Vérification. Ça fonctionne toujours.
+<li>Ça aussi.
 </ol>
-<p>See how quickly a regular expression can get out of control?  Take a quick glance at any of the previous iterations. Can you tell the difference between one and the next?
-<p>While you still understand the final answer (and it is the final answer; if you&#8217;ve discovered a case it doesn&#8217;t handle, I don&#8217;t want to know about it), let&#8217;s write it out as a verbose regular expression, before you forget why you made the choices you made.
+<p>Vous voyez à quel point une expression rationnelle devient rapidement hors de contrôle&nbsp;? Jetez un coup d’œil à n’importe lequel des essais précédents. Pouvez-vous voir la différence entre celui-ci et celui qui le suit&nbsp;?
+<p>Alors que vous comprenez encore la réponse finale (et c’est vraiment la réponse finale&nbsp;; si vous avez découvert un cas qu’il ne gère pas, je ne suis pas au courant), écrivons-la de façon verbeuse, avant que vous n’oubliez les choix que nous avons faits.
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>phonePattern = re.compile(r'''
                 # don't match beginning of string, number can start anywhere
@@ -416,29 +416,29 @@ AttributeError: 'NoneType' object has no attribute 'groups'</samp></pre>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('800-555-1212')</kbd>                          <span class=u>&#x2461;</span></a>
 <samp class=pp>('800', '555', '1212', '')</samp></pre>
 <ol>
-<li>Other than being spread out over multiple lines, this is exactly the same regular expression as the last step, so it&#8217;s no surprise that it parses the same inputs.
-<li>Final sanity check. Yes, this still works. You&#8217;re done.
+<li>En oubliant qu’elle a été séparée en plusieurs lignes, c’est exactement la même expression rationnelle que la dernière étape, donc ne soyiez pas surpris-e qu’elle parse les mêmes entrées.
+<li>Vérification finale. Ça marche toujours. Nous avons fini.
 </ol>
 <p class=a>&#x2042;
 
-<h2 id=summary>Summary</h2>
-<p>This is just the tiniest tip of the iceberg of what regular expressions can do. In other words, even though you&#8217;re completely overwhelmed by them now, believe me, you ain&#8217;t seen nothing yet.
-<p>You should now be familiar with the following techniques:
+<h2 id=summary>Résumé</h2>
+<p>Ce n’est que la partie immergée de l’iceberg de ce que les expressions rationnelles peuvent faire. En d’autres mots, même si vous êtes déjà complètement paniqué-e par celles-ci maintenant, croyez-moi, vous n’avez encore rien vu.
+<p>Vous devriez être familier-ère avec les techniques suivantes&nbsp;:
 <ul>
-<li><code>^</code> matches the beginning of a string.
-<li><code>$</code> matches the end of a string.
-<li><code>\b</code> matches a word boundary.
-<li><code>\d</code> matches any numeric digit.
-<li><code>\D</code> matches any non-numeric character.
-<li><code>x?</code> matches an optional <code>x</code> character (in other words, it matches an <code>x</code> zero or one times).
-<li><code>x*</code> matches <code>x</code> zero or more times.
-<li><code>x+</code> matches <code>x</code> one or more times.
-<li><code>x{n,m}</code> matches an <code>x</code> character at least <code>n</code> times, but not more than <code>m</code> times.
-<li><code>(a|b|c)</code> matches exactly one of <code>a</code>, <code>b</code> or <code>c</code>.
-<li><code>(x)</code> in general is a <em>remembered group</em>. You can get the value of what matched by using the <code>groups()</code> method of the object returned by <code>re.search</code>.
+<li><code>^</code> correspond au début de la chaine.
+<li><code>$</code> correspond à la fin de la chaine.
+<li><code>\b</code> correspond à la frontière d’un mot.
+<li><code>\d</code> correspond à n’importe quel chiffre.
+<li><code>\D</code> correspond à n’importe quel caractère non numérique.
+<li><code>x?</code> correspond à un caractère <code>x</code> optionnel (en d’autres mots, il correspond à <code>x</code> zéro ou une fois).
+<li><code>x*</code> correspond à <code>x</code>, au moins zéro fois.
+<li><code>x+</code> correspond à <code>x</code>, au moins une fois.
+<li><code>x{n,m}</code> correspond à <code>x</code> entre <code>n</code> et <code>m</code> fois (inclus).
+<li><code>(a|b|c)</code> correspond à exactement <code>a</code> ou <code>b</code> ou <code>c</code>, mais pas plusieurs à la fois.
+<li><code>(x)</code> est en général un <em>groupe retenu</em>. Vous pouvez récupérer la valeur correspondante en utilisant la méthode <code>groups()</code> de l’objet retourné par <code>re.search</code>.
 </ul>
-<p>Regular expressions are extremely powerful, but they are not the correct solution for every problem. You should learn enough about them to know when they are appropriate, when they will solve your problems, and when they will cause more problems than they solve.
-<p class=v><a href=strings.html rel=prev title='back to &#8220;Strings&#8221;'><span class=u>&#x261C;</span></a> <a href=generators.html rel=next title='onward to &#8220;Closures &amp; Generators&#8221;'><span class=u>&#x261E;</span></a>
+<p>Les expressions rationnelles sont extrèmement puissantes, mais elles ne sont pas la solution à tout problème. Vous devez en apprendre suffisament pour savoir que quand elles sont appropriées elles vont résoudre vos problèmes, mais sinon elles vont en poser plus qu’elles ne vont en résoudre.
+<p class=v><a href=strings.html rel=prev title='retourner à «&nbsp;Chaines&nbsp;»'><span class=u>&#x261C;</span></a> <a href=generators.html rel=next title='avancer vers «&nbsp;Fermetures &amp; Générateurs&nbsp;»'><span class=u>&#x261E;</span></a>
 <p class=c>&copy; 2001&ndash;11 <a href=about.html>Mark Pilgrim</a>
 <script src=j/jquery.js></script>
 <script src=j/prettify.js></script>
