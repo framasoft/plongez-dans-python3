@@ -23,9 +23,9 @@ body{counter-reset:h1 7}
 </blockquote>
 <p id=toc>&nbsp;
 <h2 id=divingin>Plongée</h2>
-<p class=f>Les itérateurs sont la «&nbsp;sauce secrète&nbsp;» de Python 3. Ils sont partout, sous-jacents à tout, mais toujours hors de vue. <a href=comprehensions.html>Les compréhensions</a> sont juste une forme simple d’<i>itérateurs</i>. Les générateurs sont juste une forme simple d’<i>itérateurs</i>. Une fonction qui <code>yield</code> (NdT&nbsp;: https://fr.wikipedia.org/wiki/Yield_(instruction)) les valeurs est un moyen correct et compact de construire un itérateur sans construire d’itérateur. Laissez-moi vous montrer ce que je veux dire par là.
+<p class=f>Les itérateurs sont la «&nbsp;sauce secrète&nbsp;» de Python 3. Ils sont partout, sous-jacents à tout, mais toujours hors de vue. <a href=comprehensions.html>Les compréhensions</a> sont juste une forme simple d’<i>itérateurs</i>. Les générateurs sont juste une forme simple d’<i>itérateurs</i>. Une fonction qui <code>yield</code> (cède) des valeurs est un moyen correct et compact de construire un itérateur sans construire d’itérateur. Laissez-moi vous montrer ce que je veux dire par là.
 
-<p>Vous rappelez-vous <a href=generators.html#a-fibonacci-generator>le générateur Fibonacci</a>&nbsp;? Voici un itérateur écrit à partir de zéro&nbsp;:
+<p>Vous rappelez-vous du <a href=generators.html#a-fibonacci-generator>générateur Fibonacci</a>&nbsp;? Voici un itérateur écrit à partir de zéro&nbsp;:
 
 <p class=d>[<a href=examples/fibonacci2.py>télécharger <code>fibonacci2.py</code></a>]
 <pre class=pp><code>class Fib:
@@ -73,7 +73,7 @@ body{counter-reset:h1 7}
 <p><span class=u>&#x261E;</span>La déclaration <code>pass</code> en Python est comme un ensemble vide d’accolades (<code>{}</code>) en Java ou C.
 </blockquote>
 
-<p>De nombreuses classes sont héritées d’autres classes, mais celle-ci ne l’est pas. De nombreuses classes définissent des méthodes, mais celle-ci ne le fait pas. Il n’y a rien qu’une classe Python doit absolument avoir en dehors d’un nom. En particulier, les programmeurs C++ s’étonneront sans doute que les classes Python n’aient pas de constructeurs et de destructeurs explicites. Bien qu’il ne soit pas obligatoire, les classes Python <em>peuvent</em> avoir quelque chose de semblable à un constructeur&nbsp;: la méthode <code>__init__()</code>.
+<p>De nombreuses classes sont héritées d’autres classes, mais celle-ci ne l’est pas. De nombreuses classes définissent des méthodes, mais celle-ci ne le fait pas. Il n’y a rien qu’une classe Python doit absolument avoir en dehors d’un nom. En particulier, les programmeurs C++ s’étonneront sans doute que les classes Python n’aient pas de constructeurs et de destructeurs explicites. Bien qu’ils ne soit pas obligatoire, les classes Python <em>peuvent</em> avoir quelque chose de semblable à un constructeur&nbsp;: la méthode <code>__init__()</code>.
 
 <h3 id=init-method>La méthode <code>__init__()</code></h3>
 
@@ -111,6 +111,9 @@ body{counter-reset:h1 7}
 <var>fib</var> est maintenant une instance de la classe <code>Fib</code>.
 <li>Chaque instance de classe a un attribut prédéfini, <code>__class__</code>, qui est la classe de l’objet. Les programmeurs Java sont sans doute familiers de la classe <code>Class</code>, qui contient des méthodes comme <code>getName()</code> et <code>getSuperclass()</code> pour obtenir des informations de méta-données relatives à un objet. En Python, ce genre de méta-données est disponible par le biais des attributs, mais l’idée est la même.
 Vous pouvez accéder à l’instance <code>docstring</code> comme pour une fonction ou un module. Toutes les instances d’une classe partagent la même <code>docstring</code>.
+<li>Chaque instance de classe a un attribut prédéfini, <code>__class__</code>, qui est la classe de l’objet. Les programmeurs-euses Java peuvent être familiers-ères avec la classe <code>Class</code>, qui contient des méthodes telles qui <code>getName()</code> et <code>getSuperclass()</code> pour obtenir des métadonnées à propos de l’objet. En Python, ces métadonnées sont accessibles via des attributs, mais l’idée est la même.
+<li>Vous pouvez accéder à la <code>docstring</code> de l’instance comme pour une fonction ou un module. Toutes les instances de la classe partagent la même <code>docstring</code>.
+
 </ol>
 
 <blockquote class='note compare java'>
@@ -144,7 +147,7 @@ Vous pouvez accéder à l’instance <code>docstring</code> comme pour une fonct
 <li>&hellip;et référencé dans la méthode <code>__next__()</code>.
 </ol>
 
-<p>Les variables d’instance sont spécifiques à une instance d’une classe. Par exemple, si vous créez deux instances <code>Fib</code> avec des valeurs maximales différentes, elles se souviendront chacune de leurs propres valeurs.
+<p>Les variables d’instance sont spécifiques à une instance d’une classe. Par exemple, si vous créez deux instances de <code>Fib</code> avec des valeurs maximales différentes, elles se souviendront chacune de leurs propres valeurs.
 
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>import fibonacci2</kbd>
@@ -190,7 +193,7 @@ Chacune de ces trois méthodes de classe, <code>__init__</code>,<code>__iter__</
 <li>Pour cracher la valeur suivante, une méthode <code>__next__()</code> de l’itérateur <code>retourne</code> simplement la valeur. N’utilisez pas <code>yield</code> ici, c’est un peu de sucre syntaxique qui s’applique uniquement lorsque vous utilisez les générateurs. Ici, vous créez votre propre itérateur à partir de zéro&nbsp;: utilisez plutôt <code>return</code>.
 </ol>
 
-<p>Pas encore perdu&nbsp;? Excellent. Voyons comment appeler cet itérateur&nbsp;:
+<p>Pas encore perdu-e&nbsp;? Excellent. Voyons comment appeler cet itérateur&nbsp;:
 
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>from fibonacci2 import Fib</kbd>
@@ -198,7 +201,7 @@ Chacune de ces trois méthodes de classe, <code>__init__</code>,<code>__iter__</
 <samp class=p>... </samp><kbd class=pp>    print(n, end=' ')</kbd>
 <samp class=pp>0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987</samp></pre>
 
-<p>Eh bien, c’est exactement la même chose&nbsp;! C’est identique octet par octet à la façon dont vous avez appelé <a href=generators.html#a-fibonacci-generator>Fibonacci-comme-un-générateur</a> (modulo une majuscule). Mais comment?
+<p>Eh bien, c’est exactement la même chose&nbsp;! C’est identique octet par octet à la façon dont vous avez appelé <a href=generators.html#a-fibonacci-generator>Fibonacci-comme-un-générateur</a> (modulo une majuscule). Mais comment&nbsp;?
 
 <p>Il y a un peu de magie impliquée dans les boucles <code>for</code>. Voici ce qui arrive&nbsp;:
 
@@ -251,7 +254,7 @@ rules = LazyRules()</code></pre>
 
 <p>Voici une classe qui implémente <code>__iter__()</code> et <code>__next__()</code>, de manière à pouvoir être utilisé comme un itérateur. Ensuite, vous instanciez la classe et l’assignez à <var>rules</var>. Ça ne se fait qu’une fois, à l’import.
 
-<p>Analysons cette classe un bit à la fois.
+<p>Analysons cette classe, morceau par morceau.
 
 <pre class=pp><code>class LazyRules:
     rules_filename = 'plural6-rules.txt'
@@ -302,7 +305,7 @@ rules = LazyRules()</code></pre>
 </code></pre>
 <ol>
 <li>La méthode <code>__iter__()</code> sera appelée à chaque fois que quelqu’un&nbsp;&mdash;&nbsp;disons une boucle <code>for</code>&nbsp;&mdash;&nbsp;appelle <code>iter(rules)</code>.
-<li>La seule chose que chaque <code>__iter__()</code> doit faire, c’est retourner un itérateur. Dans ce cas, il retourne <var>self</var>, qui signale que cette classe définit un <code>__next__()</code> qui va prendre soin de retourner les valeurs tout au long de l’itération.
+<li>La seule chose que chaque méthode <code>__iter__()</code> doit faire, c’est retourner un itérateur. Dans ce cas, il retourne <var>self</var>, qui signale que cette classe définit un <code>__next__()</code> qui va prendre soin de retourner les valeurs tout au long de l’itération.
 </ol>
 
 <pre class=pp><code><a>    def __next__(self):                                 <span class=u>&#x2460;</span></a>
