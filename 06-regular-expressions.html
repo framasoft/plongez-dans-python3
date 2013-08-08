@@ -15,7 +15,7 @@ body{counter-reset:h1 5}
 <link rel=stylesheet media=print href=print.css>
 <meta name=viewport content='initial-scale=1.0'>
 <form action=http://www.google.com/cse><div><input type=hidden name=cx value=014021643941856155761:l5eihuescdw><input type=hidden name=ie value=UTF-8>&nbsp;<input type=search name=q size=25 placeholder="powered by Google&trade;">&nbsp;<input type=submit name=root value=Search></div></form>
-<p>You are here: <a href=index.html>Home</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#regular-expressions>Plongez dans Python 3</a> <span class=u>&#8227;</span>
+<p>Vous êtes ici&nbsp;: <a href=index.html>Home</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#regular-expressions>Plongez dans Python 3</a> <span class=u>&#8227;</span>
 <p id=level>Niveau de difficulté : <span class=u title=intermediate>&#x2666;&#x2666;&#x2666;&#x2662;&#x2662;</span>
 <h1>Expressions Rationnelles</h1>
 <blockquote class=q>
@@ -343,13 +343,13 @@ AttributeError: 'NoneType' object has no attribute 'groups'</samp></pre>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('800-555-1212')</kbd>                <span class=u>&#x2464;</span></a>
 <samp class=p>>>> </samp></pre>
 <ol>
-<li>Hang on to your hat. You&#8217;re matching the beginning of the string, then a group of three digits, then <code>\D+</code>. What the heck is that?  Well, <code>\D</code> matches any character <em>except</em> a numeric digit, and <code>+</code> means &#8220;1 or more&#8221;. So <code>\D+</code> matches one or more characters that are not digits. This is what you&#8217;re using instead of a literal hyphen, to try to match different separators.
-<li>Using <code>\D+</code> instead of <code>-</code> means you can now match phone numbers where the parts are separated by spaces instead of hyphens.
-<li>Of course, phone numbers separated by hyphens still work too.
-<li>Unfortunately, this is still not the final answer, because it assumes that there is a separator at all. What if the phone number is entered without any spaces or hyphens at all?
-<li>Oops! This still hasn&#8217;t fixed the problem of requiring extensions. Now you have two problems, but you can solve both of them with the same technique.
+<li>Accrochez-vous à votre chapeau. Nous détectons le début de la chaine, puis un groupe de trois chiffres, puis <code>\D+</code>. Qu’est-ce que c’est que ce truc&nbsp;? Eh bien, <code>\D</code> détecte n’importe quel caractère <em>sauf</em> un chiffre, et <code>+</code> signifique «&nbsp;un ou plus&nbsp;». Donc <code>\D+</code> détecte un ou plusieurs caractères qui ne sont pas des chiffres. C’est ce que nous utilisons à la place des tirers litéraux pour détecter différent types de séparateurs.
+<li>Utiliser <code>\D+</code> plutôt que <code>-</code> signifique que vous pouvez des détecter des numéros de téléphone dont les parties sont séparées par des espaces plutôt que par des tirets.
+<li>Bien sûr, les numéros de téléphones séparés par des tirets marchent toujours.
+<li>Malheureusement, ce n’est toujours pas la réponse finale, car on considère qu’il doit toujours y avoir. Et si le numéro de téléphone est entré sans aucun espace ou tiret&nbsp;?
+<li>Oups&nbsp;! Ça n’a toujours pas corrigé le problème de nécessiter une extension. Maitenant nous avons deux problèmes, mais vous pouvez toujours la résoudre avec la même technique.
 </ol>
-<p>The next example shows the regular expression for handling phone numbers <em>without</em> separators.
+<p>L’exemple suivant montre l’expression rationnelle pour gérer les numéros de téléphone <em>sans</em> séparateur.
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern = re.compile(r'^(\d{3})\D*(\d{3})\D*(\d{4})\D*(\d*)$')</kbd>  <span class=u>&#x2460;</span></a>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('80055512121234').groups()</kbd>      <span class=u>&#x2461;</span></a>
@@ -361,13 +361,13 @@ AttributeError: 'NoneType' object has no attribute 'groups'</samp></pre>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('(800)5551212 x1234')</kbd>           <span class=u>&#x2464;</span></a>
 <samp class=p>>>> </samp></pre>
 <ol>
-<li>The only change you&#8217;ve made since that last step is changing all the <code>+</code> to <code>*</code>. Instead of <code>\D+</code> between the parts of the phone number, you now match on <code>\D*</code>. Remember that <code>+</code> means &#8220;1 or more&#8221;?  Well, <code>*</code> means &#8220;zero or more&#8221;. So now you should be able to parse phone numbers even when there is no separator character at all.
-<li>Lo and behold, it actually works. Why?  You matched the beginning of the string, then a remembered group of three digits (<code>800</code>), then zero non-numeric characters, then a remembered group of three digits (<code>555</code>), then zero non-numeric characters, then a remembered group of four digits (<code>1212</code>), then zero non-numeric characters, then a remembered group of an arbitrary number of digits (<code>1234</code>), then the end of the string.
-<li>Other variations work now too: dots instead of hyphens, and both a space and an <code>x</code> before the extension.
-<li>Finally, you&#8217;ve solved the other long-standing problem: extensions are optional again. If no extension is found, the <code>groups()</code> method still returns a tuple of four elements, but the fourth element is just an empty string.
-<li>I hate to be the bearer of bad news, but you&#8217;re not finished yet. What&#8217;s the problem here?  There&#8217;s an extra character before the area code, but the regular expression assumes that the area code is the first thing at the beginning of the string. No problem, you can use the same technique of &#8220;zero or more non-numeric characters&#8221; to skip over the leading characters before the area code.
+<li>Le seul changement que nous avons fait depuis la dernière étape et de changer tous les <code>+</code> en <code>*</code>. Plutôt que d’avoir <code>\D+</code> entre les parties du numéro de téléphone, nous cherchons maintenant à faire correspondre <code>\D*</code>. Vous vous souvenez que <code>+</code> signifie «&nbsp;un ou plus&nbsp;»&nbsp;? Eh bien, <code>*</code> signifie «&nbsp;zéro ou plus&nbsp;». Maintenant nous sommes capables de parser les numéros de téléphone même s’ils ne contiennent aucun séparateur.
+<li>Et voilà que ça marche pour de bon. Pourquoi&nbsp;? On détecte le début de la chaine, puis se souvient de trois chiffres (<code>800</code>), puis aucun caractère non numérique, puis un groupe de trois chiffres (<code>555</code>), puis aucun caractère non numérique, puis un groupe de quatre chiffres (<code>1212</code>), puis aucun caractère non numérique, puis un groupe d’un nombre quelconque de chiffres (<code>1234</code>), puis la fin de la chaine.
+<li>D’autres variations marchvent également à présent&nbsp;: des points à la place des tirets, et à la fois un espace et un <code>x</code> avant l’extension.
+<li>Finalement, nous avons résolu un autre problème de longue date&nbsp;: les extensions sont à nouveau optionnelles. Si aucune extension n’est trouvée, la méthode <code>groups()</code> retournera toujours un quadruplet, mais le quatrième élément sera seulement une chaine vide.
+<li>Je déteste faire l’oiseau de mauvais augure, mais nous n’avons pas encore fini. Quel est le problème ici&nbsp;? Il y a un caractère supplémentaire avant le code de zone, mais l’expression rationnelle considère que le code de zone est la première chose au début d’une chaine. Aucun problème, nous pouvons utiliser la même technique de «&nbsp;zéro caractères non numériques, ou plus&nbsp;» pour sauter les caractères avant le code de zone.
 </ol>
-<p>The next example shows how to handle leading characters in phone numbers.
+<p>L’exemple suivant montre comment gérer les caractères précédent les numéros de téléphone.
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern = re.compile(r'^\D*(\d{3})\D*(\d{3})\D*(\d{4})\D*(\d*)$')</kbd>  <span class=u>&#x2460;</span></a>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('(800)5551212 ext. 1234').groups()</kbd>                  <span class=u>&#x2461;</span></a>
@@ -377,12 +377,12 @@ AttributeError: 'NoneType' object has no attribute 'groups'</samp></pre>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('work 1-(800) 555.1212 #1234')</kbd>                      <span class=u>&#x2463;</span></a>
 <samp class=p>>>> </samp></pre>
 <ol>
-<li>This is the same as in the previous example, except now you&#8217;re matching <code>\D*</code>, zero or more non-numeric characters, before the first remembered group (the area code). Notice that you&#8217;re not remembering these non-numeric characters (they&#8217;re not in parentheses). If you find them, you&#8217;ll just skip over them and then start remembering the area code whenever you get to it.
-<li>You can successfully parse the phone number, even with the leading left parenthesis before the area code. (The right parenthesis after the area code is already handled; it&#8217;s treated as a non-numeric separator and matched by the <code>\D*</code> after the first remembered group.)
-<li>Just a sanity check to make sure you haven&#8217;t broken anything that used to work. Since the leading characters are entirely optional, this matches the beginning of the string, then zero non-numeric characters, then a remembered group of three digits (<code>800</code>), then one non-numeric character (the hyphen), then a remembered group of three digits (<code>555</code>), then one non-numeric character (the hyphen), then a remembered group of four digits (<code>1212</code>), then zero non-numeric characters, then a remembered group of zero digits, then the end of the string.
-<li>This is where regular expressions make me want to gouge my eyes out with a blunt object. Why doesn&#8217;t this phone number match? Because there&#8217;s a <code>1</code> before the area code, but you assumed that all the leading characters before the area code were non-numeric characters (<code>\D*</code>). Aargh.
+<li>C’est la même que dans l’exemple précédent, à part que maintenant on recherche <code>\D*</code>, zéro caractère non numérique ou plus, avant le premier groupe dont on se souvient (le code de zone). Notez que l’on ne se souvient pas de ces caractères non numériques (ils ne sont pas entre parenthèses). S’il y en a, on ne fait que les ignorer, et on ne commence à retenir  qu’à partir du code de zone, quel que soit l’endroit où il se trouve.
+<li>Vous pouvez parser avec succès le numéro de téléphone, même si il y a une parenthèse ouvrante avec le code de zone. (La parenthèse fermante après le code de zone est déjà gérée&nbsp;; elle est traitée comme un séparateur non numérique et correspond que <code>\D*</code> après le premier groupe retenu.)
+<li>Seulement une vérification pour s’assurer que l’on n’a pas cassé quelque chose qui marchait auparavant.
+<li>C’est là que les expressions rationnelles me donnent envie de me crever les yeux avec un objet pointu. Pourquoi ce numéro ne correspond-t-il pas&nbsp;? Parce qu’il y a un <code>1</code> avant le code de zone, mai on avait considéré que tous les caractères avant le code de zone devaient être non numériques (<code>\D*</code>). Arg.
 </ol>
-<p>Let&#8217;s back up for a second. So far the regular expressions have all matched from the beginning of the string. But now you see that there may be an indeterminate amount of stuff at the beginning of the string that you want to ignore. Rather than trying to match it all just so you can skip over it, let&#8217;s take a different approach: don&#8217;t explicitly match the beginning of the string at all. This approach is shown in the next example.
+<p>Réfléchissons une seconde. Jusqu’à présent le texte détecté par expressions rationnelles commençait forcément au début de la chaine. Mais comme vous pouvez le constater, il y a une quantité indétermée de choses que nous voulons ignorer, au début de la chaine. Plutôt que d’essayer de le faire correspondre pour le sauter, nous allons utiliser une autre approche&nbsp;: nous n’allons pas explicitement demander le début de la chaine. Cette approche est présente dans l’exemple suivant.
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern = re.compile(r'(\d{3})\D*(\d{3})\D*(\d{4})\D*(\d*)$')</kbd>  <span class=u>&#x2460;</span></a>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('work 1-(800) 555.1212 #1234').groups()</kbd>         <span class=u>&#x2461;</span></a>
@@ -392,13 +392,13 @@ AttributeError: 'NoneType' object has no attribute 'groups'</samp></pre>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('80055512121234').groups()</kbd>                      <span class=u>&#x2463;</span></a>
 <samp class=pp>('800', '555', '1212', '1234')</samp></pre>
 <ol>
-<li>Note the lack of <code>^</code> in this regular expression. You are not matching the beginning of the string anymore. There&#8217;s nothing that says you need to match the entire input with your regular expression. The regular expression engine will do the hard work of figuring out where the input string starts to match, and go from there.
-<li>Now you can successfully parse a phone number that includes leading characters and a leading digit, plus any number of any kind of separators around each part of the phone number.
-<li>Sanity check. This still works.
-<li>That still works too.
+<li>Notez l’absence de <code>^</code> dans cette expression rationnelle. Vous ne recherchez plus le début de la chaine. Il n’y a rien qui dit que vous avez besoin de faire correspondre l’intégralité du texte d’entrée avec l’expression rationnelle. Le moteur d’expression rationnelle fera le gros du travail en essayant de trouver où la chaine en entrée commence à correspondre, et partir de là.
+<li>À présent on réussit à parser un numéro de téléphone qui inclut des caractères et un chiffre au début, ainsi que n’importe quel type de séparateur autour de chacune des parties du numéro de téléphone.
+<li>Vérification. Ça fonctionne toujours.
+<li>Ça aussi.
 </ol>
-<p>See how quickly a regular expression can get out of control?  Take a quick glance at any of the previous iterations. Can you tell the difference between one and the next?
-<p>While you still understand the final answer (and it is the final answer; if you&#8217;ve discovered a case it doesn&#8217;t handle, I don&#8217;t want to know about it), let&#8217;s write it out as a verbose regular expression, before you forget why you made the choices you made.
+<p>Vous voyez à quel point une expression rationnelle devient rapidement hors de contrôle&nbsp;? Jetez un coup d’œil à n’importe lequel des essais précédents. Pouvez-vous voir la différence entre celui-ci et celui qui le suit&nbsp;?
+<p>Alors que vous comprenez encore la réponse finale (et c’est vraiment la réponse finale&nbsp;; si vous avez découvert un cas qu’il ne gère pas, je ne suis pas au courant), écrivons-la de façon verbeuse, avant que vous n’oubliez les choix que nous avons faits.
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>phonePattern = re.compile(r'''
                 # don't match beginning of string, number can start anywhere
@@ -416,29 +416,29 @@ AttributeError: 'NoneType' object has no attribute 'groups'</samp></pre>
 <a><samp class=p>>>> </samp><kbd class=pp>phonePattern.search('800-555-1212')</kbd>                          <span class=u>&#x2461;</span></a>
 <samp class=pp>('800', '555', '1212', '')</samp></pre>
 <ol>
-<li>Other than being spread out over multiple lines, this is exactly the same regular expression as the last step, so it&#8217;s no surprise that it parses the same inputs.
-<li>Final sanity check. Yes, this still works. You&#8217;re done.
+<li>En oubliant qu’elle a été séparée en plusieurs lignes, c’est exactement la même expression rationnelle que la dernière étape, donc ne soyiez pas surpris-e qu’elle parse les mêmes entrées.
+<li>Vérification finale. Ça marche toujours. Nous avons fini.
 </ol>
 <p class=a>&#x2042;
 
-<h2 id=summary>Summary</h2>
-<p>This is just the tiniest tip of the iceberg of what regular expressions can do. In other words, even though you&#8217;re completely overwhelmed by them now, believe me, you ain&#8217;t seen nothing yet.
-<p>You should now be familiar with the following techniques:
+<h2 id=summary>Résumé</h2>
+<p>Ce n’est que la partie immergée de l’iceberg de ce que les expressions rationnelles peuvent faire. En d’autres mots, même si vous êtes déjà complètement paniqué-e par celles-ci maintenant, croyez-moi, vous n’avez encore rien vu.
+<p>Vous devriez être familier-ère avec les techniques suivantes&nbsp;:
 <ul>
-<li><code>^</code> matches the beginning of a string.
-<li><code>$</code> matches the end of a string.
-<li><code>\b</code> matches a word boundary.
-<li><code>\d</code> matches any numeric digit.
-<li><code>\D</code> matches any non-numeric character.
-<li><code>x?</code> matches an optional <code>x</code> character (in other words, it matches an <code>x</code> zero or one times).
-<li><code>x*</code> matches <code>x</code> zero or more times.
-<li><code>x+</code> matches <code>x</code> one or more times.
-<li><code>x{n,m}</code> matches an <code>x</code> character at least <code>n</code> times, but not more than <code>m</code> times.
-<li><code>(a|b|c)</code> matches exactly one of <code>a</code>, <code>b</code> or <code>c</code>.
-<li><code>(x)</code> in general is a <em>remembered group</em>. You can get the value of what matched by using the <code>groups()</code> method of the object returned by <code>re.search</code>.
+<li><code>^</code> correspond au début de la chaine.
+<li><code>$</code> correspond à la fin de la chaine.
+<li><code>\b</code> correspond à la frontière d’un mot.
+<li><code>\d</code> correspond à n’importe quel chiffre.
+<li><code>\D</code> correspond à n’importe quel caractère non numérique.
+<li><code>x?</code> correspond à un caractère <code>x</code> optionnel (en d’autres mots, il correspond à <code>x</code> zéro ou une fois).
+<li><code>x*</code> correspond à <code>x</code>, au moins zéro fois.
+<li><code>x+</code> correspond à <code>x</code>, au moins une fois.
+<li><code>x{n,m}</code> correspond à <code>x</code> entre <code>n</code> et <code>m</code> fois (inclus).
+<li><code>(a|b|c)</code> correspond à exactement <code>a</code> ou <code>b</code> ou <code>c</code>, mais pas plusieurs à la fois.
+<li><code>(x)</code> est en général un <em>groupe retenu</em>. Vous pouvez récupérer la valeur correspondante en utilisant la méthode <code>groups()</code> de l’objet retourné par <code>re.search</code>.
 </ul>
-<p>Regular expressions are extremely powerful, but they are not the correct solution for every problem. You should learn enough about them to know when they are appropriate, when they will solve your problems, and when they will cause more problems than they solve.
-<p class=v><a href=strings.html rel=prev title='back to &#8220;Strings&#8221;'><span class=u>&#x261C;</span></a> <a href=generators.html rel=next title='onward to &#8220;Closures &amp; Generators&#8221;'><span class=u>&#x261E;</span></a>
+<p>Les expressions rationnelles sont extrèmement puissantes, mais elles ne sont pas la solution à tout problème. Vous devez en apprendre suffisament pour savoir que quand elles sont appropriées elles vont résoudre vos problèmes, mais sinon elles vont en poser plus qu’elles ne vont en résoudre.
+<p class=v><a href=strings.html rel=prev title='retourner à «&nbsp;Chaines&nbsp;»'><span class=u>&#x261C;</span></a> <a href=generators.html rel=next title='avancer vers «&nbsp;Fermetures &amp; Générateurs&nbsp;»'><span class=u>&#x261E;</span></a>
 <p class=c>&copy; 2001&ndash;11 <a href=about.html>Mark Pilgrim</a>
 <script src=j/jquery.js></script>
 <script src=j/prettify.js></script>
