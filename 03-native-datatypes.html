@@ -90,7 +90,7 @@ ZeroDivisionError: int division or modulo by zero</samp></pre>
 <li>L’addition d’un <code>int</code> et d’un <code>int</code> produit un <code>int</code>.
 <li>L’addition d’un <code>int</code> et d’un <code>float</code> produit un <code>float</code>. Python convertit l’<code>int</code> en <code>float</code> et retourne un <code>float</code> comme résultat.
 </ol>
-<h3 id=number-coercion>Conversion d’Entiers en Décimaux et Vice-Versa</h3>
+<h3 id=number-coercion>Conversion d’Entiers en Flottants et Vice-Versa</h3>
 <p>Comme vous venez de le voir, certains opérateurs (comme l’addition) convertissent des entiers en flottants lorsque cela est nécessaire. Vous pouvez également effectuer vous même des conversions.
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>float(2)</kbd>                <span class=u>&#x2460;</span></a>
@@ -208,7 +208,7 @@ ZeroDivisionError: Fraction(0, 0)</samp></pre>
 <samp class=p>>>> </samp><kbd class=pp>is_it_true(fractions.Fraction(0, 1))</kbd>
 <samp>no, it's false</samp></pre>
 <ol>
-<li>Saviez vous que vous pouvez définir vos prores fonctions dans le terminal interactif Python&nbsp;? Pressez la touche <kbd>ENTER</kbd> après chaque ligne, et <kbd>ENTER</kbd> après une ligne vide pour terminer.
+<li>Saviez vous que vous pouvez définir vos propres fonctions dans le terminal interactif Python&nbsp;? Pressez la touche <kbd>ENTER</kbd> après chaque ligne, et <kbd>ENTER</kbd> après une ligne vide pour terminer.
 <li>Dans un contexte booléen, les entiers non nuls valent Vrai, 0 vaut Faux.
 <li>Les nombres à virgule flottante non nuls valent Vrai, <code>0.0</code> vaut Faux. Soyez prudents avec celui là&nbsp;! S’il y a la moindre erreur d’arrondi (ce qui n’est pas impossible comme vous l’avez vu dans la section précédente) alors Python évaluera la valeur booléenne de <code>0.0000000000001</code> au lieu de  <code>0</code> et retournera <code>True</code>.
 <li>Les fractions aussi peuvent être évaluées dans un contexte booléen. <code>Fraction(0, n)</code> vaut Faux quelle que soit la valeur de <var>n</var>. Toutes les autres fractions valent Vrai.
@@ -498,10 +498,10 @@ AttributeError: 'tuple' object has no attribute 'remove'</samp>
 </ul>
 
 <blockquote class=note>
-<p><span class=u>&#x261E;</span>Les n-uplets peuvent être convertis en listes, et réciproquement. La fonction native <code>n-uplet()</code> prend une liste en argument et retourne un n-uplet contenant les mêmes éléments, et la fonction <code>list()</code> prend un n-uplet en argument et retourne une liste. En pratique, <code>n-uplet()</code> fige une liste, et <code>list()</code> dégêle un n-uplet.
+<p><span class=u>&#x261E;</span>Les n-uplets peuvent être convertis en listes, et réciproquement. La fonction native <code>tuple()</code> prend une liste en argument et retourne un n-uplet contenant les mêmes éléments, et la fonction <code>list()</code> prend un n-uplet en argument et retourne une liste. En pratique, <code>tuple()</code> fige une liste, et <code>list()</code> dégêle un n-uplet.
 </blockquote>
 
-<h3 id=tuples-in-a-boolean-context>Les Tuples Dans Un Contexte Booléen</h3>
+<h3 id=tuples-in-a-boolean-context>Les N-uplets Dans Un Contexte Booléen</h3>
 
 <p>Vous pouvez utiliser les n-uplets dans <a href=#booleans>un contexte booléen</a>, tel qu’une expression <code>if</code>.
 
@@ -886,7 +886,7 @@ KeyError: 'db.diveintopython3.org'</samp></pre>
 <ol>
 <li>Comme pour les <a href=#lists>listes</a> et les <a href=#sets>ensembles</a>, la fonction <code>len()</code> vous donne le nombre de clés dans un dictionnaire.
 <li>Et comme pour les listes et les ensembles, vous pouvez utiliser l’opérateur <code>in</code> pour vérifier si une clé donnée est définie dans un dictionnaire.
-<li><code>1000</code> <em>est</em> du dictionnaire <code>SUFFIXES</code>&nbsp;; sa valeur est une liste de huit éléments (huit chaînes de caractères pour être précis).
+<li><code>1000</code> <em>est</em> une clé du dictionnaire <code>SUFFIXES</code>&nbsp;; sa valeur est une liste de huit éléments (huit chaînes de caractères pour être précis).
 <li>De la même manière, <code>1024</code> est une clé du dictionnaire <code>SUFFIXES</code>; sa valeur est également une liste de huit éléments.
 <li>Puisque <code>SUFFIXES[1000]</code> est une liste, vous pouvez retrouver les éléments individuels de la liste par leur index.
 </ol>
