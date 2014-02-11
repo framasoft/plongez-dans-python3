@@ -5,7 +5,7 @@ permalink: refactoring.html
 ---
 <!DOCTYPE html>
 <meta charset=utf-8>
-<title>Refactoring - Dive Into Python 3</title>
+<title>Refactorisation - Plongez dans Python 3</title>
 <!--[if IE]><script src=j/html5.js></script><![endif]-->
 <link rel=stylesheet href=dip3.css>
 <style>
@@ -15,37 +15,37 @@ body{counter-reset:h1 10}
 <link rel=stylesheet media=print href=print.css>
 <meta name=viewport content='initial-scale=1.0'>
 <form action=http://www.google.com/cse><div><input type=hidden name=cx value=014021643941856155761:l5eihuescdw><input type=hidden name=ie value=UTF-8>&nbsp;<input type=search name=q size=25 placeholder="powered by Google&trade;">&nbsp;<input type=submit name=root value=Search></div></form>
-<p>You are here: <a href=index.html>Home</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#refactoring>Dive Into Python 3</a> <span class=u>&#8227;</span>
-<p id=level>Difficulty level: <span class=u title=advanced>&#x2666;&#x2666;&#x2666;&#x2666;&#x2662;</span>
+<p>Vous êtes ici&nbsp;: <a href=index.html>Home</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#refactoring>Plongez dans Python 3</a> <span class=u>&#8227;</span>
+<p id=level>Niveau de difficulté&nbsp;: <span class=u title=advanced>&#x2666;&#x2666;&#x2666;&#x2666;&#x2662;</span>
 <h1>Refactoring</h1>
 <blockquote class=q>
 <p><span class=u>&#x275D;</span> After one has played a vast quantity of notes and more notes, it is simplicity that emerges as the crowning reward of art. <span class=u>&#x275E;</span><br>&mdash; <a href=http://en.wikiquote.org/wiki/Fr%C3%A9d%C3%A9ric_Chopin>Fr&eacute;d&eacute;ric Chopin</a>
 </blockquote>
 <p id=toc>&nbsp;
-<h2 id=divingin>Diving In</h2>
-<p class=f>Like it or not, bugs happen. Despite your best efforts to write comprehensive <a href=unit-testing.html>unit tests</a>, bugs happen. What do I mean by &#8220;bug&#8221;? A bug is a test case you haven&#8217;t written yet.
+<h2 id=divingin>Plongée</h2>
+<p class=f>Qu’on le veuille ou non, les bogues arrivent. Malgré tous vos efforts pour écrire des <a href=unit-testing.html>tests unitaires</a> compréhensifs, les bogues arrivent. Qu’est-ce que je veux dire par « bogue » ? Un bogue est un test que vous n’avez pas encore écrit.
 
 <pre class=screen><samp class=p>>>> </samp><kbd class=pp>import roman7</kbd>
 <a><samp class=p>>>> </samp><kbd class=pp>roman7.from_roman('')</kbd> <span class=u>&#x2460;</span></a>
 <samp class=pp>0</samp></pre>
 <ol>
-<li>This is a bug. An empty string should raise an <code>InvalidRomanNumeralError</code> exception, just like any other sequence of characters that don&#8217;t represent a valid Roman numeral.
+<li>C’est un bogue. Une chaine de caractère vide devrait lever une exception <code>InvalidRomanNumeralError</code>, comme n’importe quelle autre chaine qui ne représente pas un nombre romain valide.
 </ol>
 
-<p>After reproducing the bug, and before fixing it, you should write a test case that fails, thus illustrating the bug.
+<p>Après avoir reproduit le bogue, et avant de le fixer, vous devez écrire un cas de test qui échoue, illustrant ainsi le bogue.
 
 <pre class=pp><code>class FromRomanBadInput(unittest.TestCase):  
     .
     .
     .
     def testBlank(self):
-        '''from_roman should fail with blank string'''
+        '''from_roman devrait échouer avec une chaine vide'''
 <a>        self.assertRaises(roman6.InvalidRomanNumeralError, roman6.from_roman, '') <span class=u>&#x2460;</span></a></code></pre>
 <ol>
-<li>Pretty simple stuff here. Call <code>from_roman()</code> with an empty string and make sure it raises an <code>InvalidRomanNumeralError</code> exception. The hard part was finding the bug; now that you know about it, testing for it is the easy part.
+<li>Ce qui se déroule ici est assez simple. Appelez <code>from_roman()</code> avec une chaine vide et assurez-vous qu’il lève une exception <code>InvalidRomanNumeralError</code>. La partie difficile était de trouver le bogue : ceci étant fait, écrire un test est facile.
 </ol>
 
-<p>Since your code has a bug, and you now have a test case that tests this bug, the test case will fail:
+<p>Puisque votre code a un bogue, et que vous avez un cas de test pour ce bogue, le cas de test va échouer :
 <pre class='nd screen cmdline'>
 <samp class=p>you@localhost:~/diveintopython3/examples$ </samp><kbd>python3 romantest8.py -v</kbd>
 <samp>from_roman should fail with blank string ... FAIL
@@ -73,10 +73,10 @@ Ran 11 tests in 0.171s
 
 FAILED (failures=1)</samp></pre>
 
-<p><em>Now</em> you can fix the bug.
+<p><em>Maintenant</em>, vous pouvez fixer le bogue.
 
 <pre class=pp><code>def from_roman(s):
-    '''convert Roman numeral to integer'''
+    '''convertit un nombre romain en entier'''
 <a>    if not s:                                                                  <span class=u>&#x2460;</span></a>
         raise InvalidRomanNumeralError('Input can not be blank')
     if not re.search(romanNumeralPattern, s):
@@ -90,8 +90,8 @@ FAILED (failures=1)</samp></pre>
             index += len(numeral)
     return result</code></pre>
 <ol>
-<li>Only two lines of code are required: an explicit check for an empty string, and a <code>raise</code> statement.
-<li>I don&#8217;t think I&#8217;ve mentioned this yet anywhere in this book, so let this serve as your final lesson in <a href=strings.html#formatting-strings>string formatting</a>. Starting in Python 3.1, you can skip the numbers when using positional indexes in a format specifier. That is, instead of using the format specifier <code>{0}</code> to refer to the first parameter to the <code>format()</code> method, you can simply use <code>{}</code> and Python will fill in the proper positional index for you. This works for any number of arguments; the first <code>{}</code> is <code>{0}</code>, the second <code>{}</code> is <code>{1}</code>, and so forth.
+<li>Seules deux lignes de code sont requises : une vérification explicite pour une chaine vide, et une déclaration <code>raise</code>.
+<li>Je ne pense pas l’avoir déjà mentionné dans ce livre, utilisons donc ceci comme dernière leçon dans le <a href=strings.html#formatting-strings>formatage de chaîne</a>. À partir de Python 3.1, vous pouvez ignorer les chiffres lors de l’utilisation des index de position dans une spécification de format. Autrement dit, au lieu d’utiliser le spécificateur de format <code>{0}</code> pour désigner le premier paramètre du format de <code>format()</code>, vous pouvez simplement utiliser <code>{}</code> et Python va remplir l’indice de position convenable pour vous. Cela fonctionne pour n’importe quel nombre d’arguments : le premier <code>{}</code> est équivalent à <code>{0}</code>, le deuxième <code>{}</code> à <code>{1}</code>, et ainsi de suite.
 </ol>
 
 <pre class='screen cmdline'>
@@ -113,18 +113,18 @@ Ran 11 tests in 0.156s
 </samp>
 <a><samp>OK</samp>  <span class=u>&#x2461;</span></a></pre>
 <ol>
-<li>The blank string test case now passes, so the bug is fixed.
-<li>All the other test cases still pass, which means that this bug fix didn&#8217;t break anything else. Stop coding.
+<li>Le test de la chaine vide passe maintenant, donc le bug est fixé.
+<li>Tous les autres tests passent aussi, ce qui signifie que la résolution du bogue n’a pas cassé quelque chose d’autre. Arrêtez de coder.
 </ol>
 
-<p>Coding this way does not make fixing bugs any easier. Simple bugs (like this one) require simple test cases; complex bugs will require complex test cases. In a testing-centric environment, it may <em>seem</em> like it takes longer to fix a bug, since you need to articulate in code exactly what the bug is (to write the test case), then fix the bug itself. Then if the test case doesn&#8217;t pass right away, you need to figure out whether the fix was wrong, or whether the test case itself has a bug in it. However, in the long run, this back-and-forth between test code and code tested pays for itself, because it makes it more likely that bugs are fixed correctly the first time. Also, since you can easily re-run <em>all</em> the test cases along with your new one, you are much less likely to break old code when fixing new code. Today&#8217;s unit test is tomorrow&#8217;s regression test.
+<p>Coder de cette manière ne rend pas la résolution des bogues plus facile. Des bogues simples (comme celui-ci) nécessitent des tests simples ; des bogues plus complexes nécessiteront des tests plus complexes. Dans un environnement centré sur les tests, il pourrait <em>sembler</em> que la résolution du bogue prend plus de temps, étant donné que vous devez naviguer dans le code pour comprendre exactement quel est le bogue (pour écrire le scénario de test), puis fixer le bogue lui-même. Ensuite, si le test ne passe pas, vous devez trouver si la modification du code est fausse ou si le test lui-même est bogué. Cependant, à long terme, ce va-et-vient entre le code de test et le code testé est rentable, car il est plus probable que les bogues soient corrigés correctement dès la première fois. En outre, puisque vous pouvez facilement ré-exécuter <em>tous</em> les tests en plus du nouveau, vous êtes beaucoup moins susceptible de casser l’ancien code en corrigeant le nouveau code. Le test unitaire d’aujourd'hui est le test de régression de demain.
 
 <p class=a>&#x2042;
 
-<h2 id=changing-requirements>Handling Changing Requirements</h2>
-<p>Despite your best efforts to pin your customers to the ground and extract exact requirements from them on pain of horrible nasty things involving scissors and hot wax, requirements will change. Most customers don&#8217;t know what they want until they see it, and even if they do, they aren&#8217;t that good at articulating what they want precisely enough to be useful. And even if they do, they&#8217;ll want more in the next release anyway. So be prepared to update your test cases as requirements change.
+<h2 id=changing-requirements>Supporter les exigences de changements</h2>
+<p>Malgré vos meilleurs efforts pour plaquer vos clients au sol et extraire les exigences exactes d’eux sous peine de vilaines choses horribles impliquant des ciseaux et de la cire chaude, les spécifications vont changer. La plupart des clients ne savent pas ce qu’ils veulent jusqu’à ce qu’ils le voient, et même s’ils le savent, ils ne savent pas vraiment comment exprimer ce qu’ils veulent avec suffisamment de précision pour être utile. Et même s’ils le savent, ils voudront plus dans la prochaine version de toute façon. Soyez donc prêt à mettre à jour vos tests, car les spécifications changent.
 
-<p>Suppose, for instance, that you wanted to expand the range of the Roman numeral conversion functions. Normally, no character in a Roman numeral can be repeated more than three times in a row. But the Romans were willing to make an exception to that rule by having 4 <code>M</code> characters in a row to represent <code>4000</code>. If you make this change, you&#8217;ll be able to expand the range of convertible numbers from <code>1..3999</code> to <code>1..4999</code>. But first, you need to make some changes to your test cases.
+<p>Supposons, par exemple, que vous vouliez étendre la plage des fonctions de conversion des chiffres romains. Normalement, aucun caractère dans un chiffre romain ne peut être répété plus de trois fois dans une rangée. Mais les Romains étaient prêts à faire une exception à cette règle en ayant 4 caractères <code>M</code> sur une ligne pour représenter <code>4000</code>. Si vous faites ce changement, vous serez en mesure d’élargir la gamme des nombres convertibles de <code>1..3999</code> à <code>1..4999</code>. Mais d’abord, vous avez besoin de faire quelques changements à vos tests.
 
 <p class=d>[<a href=examples/roman8.py>download <code>roman8.py</code></a>]
 <pre class=pp><code>class KnownValues(unittest.TestCase):
@@ -165,13 +165,14 @@ class RoundtripCheck(unittest.TestCase):
             result = roman8.from_roman(numeral)
             self.assertEqual(integer, result)</code></pre>
 <ol>
-<li>The existing known values don&#8217;t change (they&#8217;re all still reasonable values to test), but you need to add a few more in the <code>4000</code> range. Here I&#8217;ve included <code>4000</code> (the shortest), <code>4500</code> (the second shortest), <code>4888</code> (the longest), and <code>4999</code> (the largest).
-<li>The definition of &#8220;large input&#8221; has changed. This test used to call <code>to_roman()</code> with <code>4000</code> and expect an error; now that <code>4000-4999</code> are good values, you need to bump this up to <code>5000</code>.
-<li>The definition of &#8220;too many repeated numerals&#8221; has also changed. This test used to call <code>from_roman()</code> with <code>'MMMM'</code> and expect an error; now that <code>MMMM</code> is considered a valid Roman numeral, you need to bump this up to <code>'MMMMM'</code>.
-<li>The sanity check loops through every number in the range, from <code>1</code> to <code>3999</code>. Since the range has now expanded, this <code>for</code> loop need to be updated as well to go up to <code>4999</code>.
+<li>Les valeurs connues existantes ne changent pas (ce sont toujours des valeurs raisonnables à tester), mais vous avez besoin d’en ajouter quelques unes dans la plage <code>4000</code>. Ici, j’ai inclus <code>4000</code> (la plus courte), <code>4500</code> (la seconde plus courte), <code>4888</code> (la plus longue), et <code>4999</code> (la plus grande).
+<li>La définition de « grande entrée » a changé. Ce test appelait <code>to_roman()</code> avec <code>4000</code> et attendait une erreur, maintenant que <code>4000-4999</code> sont des valeurs correctes, vous devez repousser la limite à <code>5000</code>.
+<li>La définition de « trop de chiffres répétés » a également changé. Ce test appelait <code>from_roman()</code> avec <code>'MMMM'</code> et attendait une erreur. Maintenant que <code>MMMM</code> est considéré comme un nombre romain valide, vous avez besoin de repousser ce test jusqu’à <code>'MMMMM'</code>.
+<li>Le test d’intégrité parcourt chaque numéro dans l’intervalle, à partir de <code>1</code> jusque <code>3999</code>. Depuis, la gamme s’est élargie, cette boucle <code>for</code> a besoin d’être mise à jour afin d’aller jusqu’à <code>4999</code>.
 </ol>
 
 <p>Now your test cases are up to date with the new requirements, but your code is not, so you expect several of the test cases to fail.
+<p>Vos cas de test sont à jour avec les nouvelles exigences, mais votre code ne l’est pas, de sorte que vous attendez de plusieurs tests qu’ils échouent.
 
 <pre class='screen cmdline'>
 <samp class=p>you@localhost:~/diveintopython3/examples$ </samp><kbd>python3 romantest9.py -v</kbd>
@@ -223,12 +224,12 @@ Ran 12 tests in 0.171s
 
 FAILED (errors=3)</samp></pre>
 <ol>
-<li>The <code>from_roman()</code> known values test will fail as soon as it hits <code>'MMMM'</code>, because <code>from_roman()</code> still thinks this is an invalid Roman numeral.
-<li>The <code>to_roman()</code> known values test will fail as soon as it hits <code>4000</code>, because <code>to_roman()</code> still thinks this is out of range.
-<li>The roundtrip check will also fail as soon as it hits <code>4000</code>, because <code>to_roman()</code> still thinks this is out of range.
+<li>Le test <code>from_roman()</code> des valeurs connues échoue dès qu’il atteint <code>'MMMM'</code>, car <code>from_roman()</code> pense toujours que c’est un nombre romain invalide.
+<li>Le test <code>to_roman()</code> des valeurs connues échoue dès qu’il atteint <code>4000</code>, car <code>to_roman()</code> pense toujours qu’il est en dehors de l’intervalle.
+<li>Le test aller-retour échouera également dès qu’il atteindra <code>4000</code>, car <code>to_roman()</code> pense toujours qu’il est en dehors de l’intervalle.
 </ol>
 
-<p>Now that you have test cases that fail due to the new requirements, you can think about fixing the code to bring it in line with the test cases. (When you first start coding unit tests, it might feel strange that the code being tested is never &#8220;ahead&#8221; of the test cases. While it&#8217;s behind, you still have some work to do, and as soon as it catches up to the test cases, you stop coding. After you get used to it, you&#8217;ll wonder how you ever programmed without tests.)
+<p>Maintenant que vous avez des cas de test qui échouent en raison des nouvelles exigences, vous pouvez penser à fixer le code pour le mettre en conformité avec les scénarios de test. (Lorsque vous commencez à utiliser les tests unitaires, il pourra vous sembler étrange que le code testé ne soit jamais « en avance » sur les cas de test. Même s’il est en retard, vous avez encore du travail à faire, et dès qu’il remplit tous les tests, vous arrêtez de coder. Une fois que vous y serez habitué, vous vous demanderez comment vous avez pu programmer sans tests.)
 
 <p class=d>[<a href=examples/roman9.py>download <code>roman9.py</code></a>]
 <pre class=pp><code>roman_numeral_pattern = re.compile('''
@@ -244,7 +245,7 @@ FAILED (errors=3)</samp></pre>
     ''', re.VERBOSE)
 
 def to_roman(n):
-    '''convert integer to Roman numeral'''
+    '''convertit un entier en nombre romain'''
     if not isinstance(n, int):
         raise NotIntegerError('non-integers can not be converted')
 <a>    if not (0 &lt; n &lt; 5000):                        <span class=u>&#x2461;</span></a>
@@ -262,11 +263,11 @@ def from_roman(s):
     .
     .</code></pre>
 <ol>
-<li>You don&#8217;t need to make any changes to the <code>from_roman()</code> function at all. The only change is to <var>roman_numeral_pattern</var>. If you look closely, you&#8217;ll notice that I changed the maximum number of optional <code>M</code> characters from <code>3</code> to <code>4</code> in the first section of the regular expression. This will allow the Roman numeral equivalents of <code>4999</code> instead of <code>3999</code>. The actual <code>from_roman()</code> function is completely generic; it just looks for repeated Roman numeral characters and adds them up, without caring how many times they repeat. The only reason it didn&#8217;t handle <code>'MMMM'</code> before is that you explicitly stopped it with the regular expression pattern matching.
-<li>The <code>to_roman()</code> function only needs one small change, in the range check. Where you used to check <code>0 &lt; n &lt; 4000</code>, you now check <code>0 &lt; n &lt; 5000</code>. And you change the error message that you <code>raise</code> to reflect the new acceptable range (<code>1..4999</code> instead of <code>1..3999</code>). You don&#8217;t need to make any changes to the rest of the function; it handles the new cases already. (It merrily adds <code>'M'</code> for each thousand that it finds; given <code>4000</code>, it will spit out <code>'MMMM'</code>. The only reason it didn&#8217;t do this before is that you explicitly stopped it with the range check.)
+<li>Vous n’avez pas besoin d’apporter de modifications à la fonction <code>from_roman()</code> du tout. Le seul changement a apporté se situe dans <var>roman_numeral_pattern</var>. Si vous regardez attentivement, vous remarquerez que j’ai changé le nombre maximal d’option <code>M</code> de <code>3</code> à <code>4</code> dans la première section de l’expression régulière. Cela permettra les équivalents de chiffres romains de <code>4999</code> au lieu de <code>3999</code>. La fonction <code>from_roman()</code> est totalement générique : elle cherche juste les caractères représentant des nombres romains et les additionne, sans se soucier de combien de fois ils sont répétés. La seule raison pour laquelle il ne traitait <code>'MMMM'</code> avant, c’est que vous l’avez explicitement arrêté avec le modèle d’expression régulière correspondant.
+<li>La fonction <code>to_roman()</code> doit seulement un petit changement dans le contrôle de portée. Comme vous avez vérifié <code>0 < n < 4000</code>, vous pouvez désormais vérifier <code>0 < n < 5000</code>. Et vous changez le message d’erreur que vous soulevez afin de refléter le nouvel intervalle acceptable (<code>1..4999</code> au lieu de <code>1..3999</code>). Vous n’avez pas besoin d’apporter des modifications au reste de la fonction, elle prend déjà les nouveaux cas en compte. (Il ajoute joyeusement <code>'M'</code> pour chaque mille qu’il trouve : pour <code>4000</code>, il va renvoyer <code>'MMMM'</code>. La seule raison pour laquelle il ne le faisait pas avant, c’est que vous l’avez explicitement arrêté par le test d’intervalle.)
 </ol>
 
-<p>You may be skeptical that these two small changes are all that you need. Hey, don&#8217;t take my word for it; see for yourself.
+<p>Vous pourriez être sceptique que ces deux petits changements sont tout ce que vous avez besoin. Hey, voyez par vous-même.
 
 <pre class='nd screen cmdline'>
 <samp class=p>you@localhost:~/diveintopython3/examples$ </samp><kbd>python3 romantest9.py -v</kbd>
@@ -291,7 +292,7 @@ Ran 12 tests in 0.203s
 <li>All the test cases pass. Stop coding.
 </ol>
 
-<p>Comprehensive unit testing means never having to rely on a programmer who says &#8220;Trust me.&#8221;
+<p>Des tests unitaires compréhensifs signifient ne pas devoir croire un programmeur qui vous dit « Faites-moi confiance ».
 
 <p class=a>&#x2042;
 
