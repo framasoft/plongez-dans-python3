@@ -24,7 +24,7 @@ mark{display:inline}
 </blockquote>
 <p id=toc>&nbsp;
 <h2 id=divingin>Diving In</h2>
-<p class=f>Just as <a href=regular-expressions.html>regular expressions</a> put <a href=strings.html>strings</a> on steroids, the <code>itertools</code> module puts <a href=iterators.html>iterators</a> on steroids. But first, I want to show you a classic puzzle.
+<p class=f>Tout comme <a href=regular-expressions.html>les expressions rationnelles</a> mettent <a href=strings.html>les chaines</a> sous stéroïdes, le module <code>itertools</code> met <a href=iterators.html>les iterateurs</a> sous stéroïdes. Mais d’abord, je voudrais vous montrer un défi classique.
 
 <pre class=nd><code>HAWAII + IDAHO + IOWA + OHIO == STATES
 510199 + 98153 + 9301 + 3593 == 621246
@@ -39,13 +39,13 @@ S = 6
 T = 2
 E = 4</code></pre>
 
-<p>Puzzles like this are called <i>cryptarithms</i> or <i>alphametics</i>. The letters spell out actual words, but if you replace each letter with a digit from <code>0&ndash;9</code>, it also &#8220;spells&#8221; an arithmetic equation. The trick is to figure out which letter maps to each digit. All the occurrences of each letter must map to the same digit, no digit can be repeated, and no &#8220;word&#8221; can start with the digit 0.
+<p>Des défis comme celui-ci sont appelés <i>cryptarithme</i> ou <i>alphamétique</i>. Les lettres épellées sont des mots réels, mais si vous remplacez chaque lettre par un nombre de <code>0</code> à <code>9</code>, ils deviennent une équation arithmétique. L’astuce est de trouver quelle lettre correspond à chaque chiffre. Toutes les occurences de chaque lettre doivent correspondre au même chiffre, aucun chiffre ne peut être répété, et aucun «&nbsp;mot&nbsp;» ne peut commencer avec le chiffre 0.
 
-<aside>The most well-known alphametic puzzle is <code>SEND + MORE = MONEY</code>.</aside>
+<aside>Le défi alphamétique le plus connu est <code>SEND + MORE = MONEY</code>.</aside>
 
-<p>In this chapter, we&#8217;ll dive into an incredible Python program originally written by Raymond Hettinger. This program solves alphametic puzzles <em>in just 14 lines of code</em>.
+<p>Dans ce chapitre, nous allons plonger dans un programme Python incroyable écrit à l’origine par Raymond Hettinger. Ce programme résout les défis alphamétiques <em>en seulement quatorze lignes de code</em>.
 
-<p class=d>[<a href=examples/alphametics.py>download <code>alphametics.py</code></a>]
+<p class=d>[<a href=examples/alphametics.py>télécharger <code>alphametics.py</code></a>]
 <pre class=pp><code>import re
 import itertools
 
@@ -74,7 +74,7 @@ if __name__ == '__main__':
         if solution:
             print(solution)</code></pre>
 
-<p>You can run the program from the command line. On Linux, it would look like this. (These may take some time, depending on the speed of your computer, and there is no progress bar. Just be patient!)
+<p>Vous pouvez lancer le programme depuis la ligne de commande. Sous Linux, il ressemblerait à ceci. (Cela peu prendre du temps selon la vitesse de votre ordinateur, et il n’y a pas de barre de progression. Soyez patient-e&nbsp;!)
 
 <pre class='nd screen cmdline'>
 <samp class=p>you@localhost:~/diveintopython3/examples$ </samp><kbd>python3 alphametics.py "HAWAII + IDAHO + IOWA + OHIO == STATES"</kbd>
@@ -89,9 +89,9 @@ if __name__ == '__main__':
 
 <p class=a>&#x2042;
 
-<h2 id=re-findall>Finding all occurrences of a pattern</h2>
+<h2 id=re-findall>Trouver toutes les occurences d’un motif</h2>
 
-<p>The first thing this alphametics solver does is find all the letters (A&ndash;Z) in the puzzle.
+<p>La première chose que fait ce résolveur d’alphamétique est trouver toutes les lettres (A&ndash;Z) dans le défi.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import re</kbd>
@@ -100,19 +100,19 @@ if __name__ == '__main__':
 <a><samp class=p>>>> </samp><kbd class=pp>re.findall('[A-Z]+', 'SEND + MORE == MONEY')</kbd>     <span class=u>&#x2461;</span></a>
 <samp class=pp>['SEND', 'MORE', 'MONEY']</samp></pre>
 <ol>
-<li>The <code>re</code> module is Python&#8217;s implementation of <a href=regular-expressions.html>regular expressions</a>. It has a nifty function called <code>findall()</code> which takes a regular expression pattern and a string, and finds all occurrences of the pattern within the string. In this case, the pattern matches sequences of numbers. The <code>findall()</code> function returns a list of all the substrings that matched the pattern.
-<li>Here the regular expression pattern matches sequences of letters. Again, the return value is a list, and each item in the list is a string that matched the regular expression pattern.
+<li>Le module <code>re</code> est l’implémentation de Python des <a href=regular-expressions.html>expressions rationnelles</a>. Il a une fonction habile nommée <code>findall()</code> qui prend une expression rationnelle et une chaine, et trouve toutes les occurences du motif dans la chaine. Dans ce cas, le motif correspond aux séquences de nombres. La fonction <code>findall()</code> retourne une liste de toutes les sous-chaines qui correspondent au motif.
+<li>Voici une expression rationnelle qui détecte les séquences de lettres. À nouveau, la valeur de retour est une liste, et chaque élément de la liste est une chaine qui correspondait au motif de l’expression rationnelle.
 </ol>
 
-<p>Here&#8217;s another example that will stretch your brain a little.
+<p>Voici un autre exemple qui stimulera un peu votre cerveau.
 
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>re.findall(' s.*? s', "The sixth sick sheikh's sixth sheep's sick.")</kbd>
 <samp class=pp>[' sixth s', " sheikh's s", " sheep's s"]</samp></pre>
 
-<aside>This is the <a href=http://en.wikipedia.org/wiki/Tongue-twister>hardest tongue twister</a> in the English language.</aside>
+<aside>Ceci est le <a href="https://fr.wikipedia.org/wiki/Virelangue">virelangue</a> le plus complexe de l’anglais.</aside>
 
-<p>Surprised? The regular expression looks for a space, an <code>s</code>, and then the shortest possible series of any character (<code>.*?</code>), then a space, then another <code>s</code>. Well, looking at that input string, I see five matches:
+<p>Surpri-e&nbsp;? L’expression rationnelle cherche une espace, un <code>s</code>, puis la plus petite série possible de n’importe quel caractère (<code>.*?</code>), puis une espace, puis un autre <code>s</code>. Eh bien, en regardant la chaine d’entrée, je trouve cinq correspondances&nbs;:
 
 <ol>
 <li><code>The<mark> sixth s</mark>ick sheikh's sixth sheep's sick.</code>
@@ -122,15 +122,15 @@ if __name__ == '__main__':
 <li><code>The sixth sick sheikh's sixth<mark> sheep's s</mark>ick.</code>
 </ol>
 
-<p>But the <code>re.findall()</code> function only returned three matches. Specifically, it returned the first, the third, and the fifth. Why is that? Because <em>it doesn&#8217;t return overlapping matches</em>. The first match overlaps with the second, so the first is returned and the second is skipped. Then the third overlaps with the fourth, so the third is returned and the fourth is skipped. Finally, the fifth is returned. Three matches, not five.
+<p>Mais la fonction <code>re.findall()</code> n’en a renvoyé que trois. Plus spécifiquement, elle a renvoyé la première, la troisième, et la cinquième. Pourquoi donc&nbsp;? Parce qu’<em>elle ne retourne pas de sous-chaines qui se recouvrent</em>. La première recouvre la seconde, donc la première est retournée et la seconde est sautée. Puis, la troisième recouvre la seconde, donc la troisième est renvoyée et la quatrième sautée. Enfin, la cinquième est retournée. Trois correspondances, pas cinq.
 
-<p>This has nothing to do with the alphametics solver; I just thought it was interesting.
+<p>Ceci n’a rien à voir avec le résolveur d’alphanumérique&nbsp;; je considérais seulement que c’était intéressant.
 
 <p class=a>&#x2042;
 
-<h2 id=unique-items>Finding the unique items in a sequence</h2>
+<h2 id=unique-items>Trouver les éléments uniques d’une séquence</h2>
 
-<p><a href=native-datatypes.html#sets>Sets</a> make it trivial to find the unique items in a sequence.
+<p>Les <a href=native-datatypes.html#sets>ensembles</a> rendent trivial la recherche d’éléments uniques dans une séquence.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_list = ['The', 'sixth', 'sick', "sheik's", 'sixth', "sheep's", 'sick']</kbd>
@@ -145,23 +145,23 @@ if __name__ == '__main__':
 <a><samp class=p>>>> </samp><kbd class=pp>set(''.join(words))</kbd>              <span class=u>&#x2463;</span></a>
 <samp class=pp>{'E', 'D', 'M', 'O', 'N', 'S', 'R', 'Y'}</samp></pre>
 <ol>
-<li>Given a list of several strings, the <code>set()</code> function will return a set of unique strings from the list. This makes sense if you think of it like a <code>for</code> loop. Take the first item from the list, put it in the set. Second. Third. Fourth. Fifth&nbsp;&mdash;&nbsp;wait, that&#8217;s in the set already, so it only gets listed once, because Python sets don&#8217;t allow duplicates. Sixth. Seventh&nbsp;&mdash;&nbsp;again, a duplicate, so it only gets listed once. The end result? All the unique items in the original list, without any duplicates. The original list doesn&#8217;t even need to be sorted first.
-<li>The same technique works with strings, since a string is just a sequence of characters.
-<li>Given a list of strings, <code>''.join(<var>a_list</var>)</code> concatenates all the strings together into one.
-<li>So, given a list of strings, this line of code returns all the unique characters across all the strings, with no duplicates.
+<li>Étant doné une liste de plusieurs chaines, la fonction <code>set()</code> renvoie un ensemble de chaines uniques de la liste. Cela a du sens si vous y pensez comme une boucle <code>for</code>. Prenez le premier élément de la liste, ajoutez-le dans l’ensemble. Puis le second. Le troisième. Le quatrième. Le cinquième&nbsp;&mdash;&nbsp;euh, attendez, celui-ci était déjà dans l’ensemble, donc il se retrouve listé seulement une fois, parce que les ensembles de Python n’autorisent pas les dupliquats. Puis le sixième. Puis le septième&nbsp;&mdash;&nbsp;à nouveau, un doublon, donc il ne se fait lister qu’une fois. Le résultat final&nbsp;? Tous les élements, uniques, de la liste originale, sans aucun doublon. La liste originale n’a même pas besoin d’être pré-triée.
+<li>La même technique fonctionne sur les chaines, puisque les haines ne sont que des suites de caractères.
+<li>Étant donné une liste de chaines, <code>''.join(<var>une_liste</var>)</code> concatène toutes les chaines en une seule.
+<li>Donc, étant donné une liste de chaine, cette ligne renvoie tous les caractères, uniques, qui apparaissent dans la chaine, sans doublon.
 </ol>
 
-<p>The alphametics solver uses this technique to build a set of all the unique characters in the puzzle.
+<p>Le résolveur d’alphamétique utilise cette technique pour construire l’ensemble de tous les caractères de l’ensemble.
 
 <pre class='nd pp'><code>unique_characters = set(''.join(words))</code></pre>
 
-<p>This list is later used to assign digits to characters as the solver iterates through the possible solutions.
+<p>Cette liste est utilisée par la suite pour assigner des chiffres aux caractères, pendant que le résolveur itère parmi les solutions possibles.
 
 <p class=a>&#x2042;
 
-<h2 id=assert>Making assertions</h2>
+<h2 id=assert>Faire des assertions</h2>
 
-<p>Like many programming languages, Python has an <code>assert</code> statement. Here&#8217;s how it works.
+<p>Comme beaucoup de langages de programmation, Python a une instruction <code>assert</code>. Voici comment il fonctionne.
 
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>assert 1 + 1 == 2</kbd>                                     <span class=u>&#x2460;</span></a>
@@ -174,27 +174,27 @@ AssertionError</samp>
   File "&lt;stdin>", line 1, in &lt;module>
 AssertionError: Only for very large values of 2</samp></pre>
 <ol>
-<li>The <code>assert</code> statement is followed by any valid Python expression. In this case, the expression <code>1 + 1 == 2</code> evaluates to <code>True</code>, so the <code>assert</code> statement does nothing.
-<li>However, if the Python expression evaluates to <code>False</code>, the <code>assert</code> statement will raise an <code>AssertionError</code>.
-<li>You can also include a human-readable message that is printed if the <code>AssertionError</code> is raised.
+<li>L’instruction <code>assert</code> est suivie de n’importe quelle expression Python valide. Dans ce cas, l’expression <code>1 + 1 == 2</code> est évaluée à <code>True</code>, donc l’instruction <code>assert</code> ne fait rien.
+<li>Cependant, si Python évalue l’expression à <code>False</code>, l’instruction <code>assert</code> lèvera une <code>AssertionError</code>.
+<li>Vous pouvez également inclure un message humainemnt lisible qui sera affiché si l’<code>AssertionError</code> est levée.
 </ol>
 
-<p>Therefore, this line of code:
+<p>Ainsi, cette ligne&nbsp;:
 
 <pre class='nd pp'><code>assert len(unique_characters) &lt;= 10, 'Too many letters'</code></pre>
 
-<p>&hellip;is equivalent to this:
+<p>&hellip; est équivalente à ceci&nbsp;:
 
 <pre class='nd pp'><code>if len(unique_characters) > 10:
     raise AssertionError('Too many letters')</code></pre>
 
-<p>The alphametics solver uses this exact <code>assert</code> statement to bail out early if the puzzle contains more than ten unique letters. Since each letter is assigned a unique digit, and there are only ten digits, a puzzle with more than ten unique letters can not possibly have a solution.
+<p>Le résolveur d’alphamétique utilise cette instruction <code>assert</code> pour s’arrêter immédiatement si le défi contient plus de dix lettres différences. Étant donné que chaque lettre est associée à un chiffre unique, et qu’il y a seulement dix chiffres, un défiavec plus de dix lettres différentes ne peut pas avoir de solution.
 
 <p class=a>&#x2042;
 
-<h2 id=generator-expressions>Generator expressions</h2>
+<h2 id=generator-expressions>Expressions génératrices</h2>
 
-<p>A generator expression is like a <a href=generators.html>generator function</a> without the function.
+<p>Une expression génératrice est comme une <a href=generators.html>fonction génératrice</a>, sans fonction.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>unique_characters = {'E', 'D', 'M', 'O', 'N', 'S', 'R', 'Y'}</kbd>
@@ -208,17 +208,17 @@ AssertionError: Only for very large values of 2</samp></pre>
 <a><samp class=p>>>> </samp><kbd class=pp>tuple(ord(c) for c in unique_characters)</kbd>   <span class=u>&#x2463;</span></a>
 <samp class=pp>(69, 68, 77, 79, 78, 83, 82, 89)</samp></pre>
 <ol>
-<li>A generator expression is like an anonymous function that yields values. The expression itself looks like a <a href=comprehensions.html#listcomprehension>list comprehension</a>, but it&#8217;s wrapped in parentheses instead of square brackets.
-<li>The generator expression returns&hellip; an iterator.
-<li>Calling <code>next(<var>gen</var>)</code> returns the next value from the iterator.
-<li>If you like, you can iterate through all the possible values and return a tuple, list, or set, by passing the generator expression to <code>tuple()</code>, <code>list()</code>, or <code>set()</code>. In these cases, you don&#8217;t need an extra set of parentheses&nbsp;&mdash;&nbsp;just pass the &#8220;bare&#8221; expression <code>ord(c) for c in unique_characters</code> to the <code>tuple()</code> function, and Python figures out that it&#8217;s a generator expression.
+<li>Une expression génératrice est comme une fonction anonyme qui prodit des valeurs. L’expression en elle-même ressemble un peu à une <a href=comprehensions.html#listcomprehension>liste par compréhension</a>, à part qu’elle est entourée de parenthèses plutôt que de crochets.
+<li>L’expression génératrice renvoie&hellip; un itérateur.
+<li>Appeller <code>next(<var>gen</var>)</code> retourne la valeur suivante de l’itérateur.
+<li>Si vous le souhaitez, vous pouvez itérer à travers toutes les valeurs possibles et renvoyer un n-uplet, une liste, ou un ensemble, en passant l’expression génératrice à <code>tuple()</code>, <code>list()</code>, ou <code>set()</code>. Dans ces cas, vous n’avez pas besoin d’une paire supplémentaire de parenthèses&nbsp;&mdash;&nbsp;passez tout simplement l’expression <code>ord(c) for c in unique_characters</code> «&nbsp;brute&nbsp;» à la fonction <code>tuple()</code>, et Python devinera qu’il s’agit d’une expression génératrice.
 </ol>
 
 <blockquote class=note>
-<p><span class=u>&#x261E;</span>Using a generator expression instead of a list comprehension can save both <abbr>CPU</abbr> and <abbr>RAM</abbr>. If you&#8217;re building an list just to throw it away (<i>e.g.</i> passing it to <code>tuple()</code> or <code>set()</code>), use a generator expression instead!
+<p><span class=u>&#x261E;</span>Utiliser une expression génératrice plutôt qu’une liste par compréhension peut économiser à la fois du <abbr>CPU</abbr> et de la <abbr>RAM</abbr>. Si vous voulez construire une liste et la jeter (par exemple la passer à <code>tuple()</code> ou <code>set()</code>), utilisez une expression génératrice à la place&nbsp;!
 </blockquote>
 
-<p>Here&#8217;s another way to accomplish the same thing, using a <a href=generators.html>generator function</a>:
+<p>Voici une autre façon d’accomplir la même chose, en utilisant une <a href=generators.html>fonction génératrice</a>&nbsp;:
 
 <pre class='nd pp'><code>def ord_map(a_string):
     for c in a_string:
@@ -226,7 +226,7 @@ AssertionError: Only for very large values of 2</samp></pre>
 
 gen = ord_map(unique_characters)</code></pre>
 
-<p>The generator expression is more compact but functionally equivalent.
+<p>L’expression génératrice est méthode plus compacte mais équivalente.
 
 <p class=a>&#x2042;
 
