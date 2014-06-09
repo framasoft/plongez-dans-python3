@@ -1,6 +1,6 @@
 ---
 title: Itérateurs avancés
-status: En cours
+status: Relecture
 permalink: advanced-iterators.html
 ---
 <!DOCTYPE html>
@@ -24,7 +24,7 @@ mark{display:inline}
 </blockquote>
 <p id=toc>&nbsp;
 <h2 id=divingin>Diving In</h2>
-<p class=f>Tout comme <a href=regular-expressions.html>les expressions rationnelles</a> mettent <a href=strings.html>les chaines</a> sous stéroïdes, le module <code>itertools</code> met <a href=iterators.html>les iterateurs</a> sous stéroïdes. Mais d’abord, je voudrais vous montrer un défi classique.
+<p class=f>Tout comme <a href=regular-expressions.html>les expressions rationnelles</a> mettent <a href=strings.html>les chaines</a> sous stéroïdes, le module <code>itertools</code> met <a href=iterators.html>les iterateurs</a> sous stéroïdes. Mais d’abord, je voudrais vous montrer une énigme classique.
 
 <pre class=nd><code>HAWAII + IDAHO + IOWA + OHIO == STATES
 510199 + 98153 + 9301 + 3593 == 621246
@@ -39,11 +39,11 @@ S = 6
 T = 2
 E = 4</code></pre>
 
-<p>Des défis comme celui-ci sont appelés <i>cryptarithme</i> ou <i>alphamétique</i>. Les lettres épellées sont des mots réels, mais si vous remplacez chaque lettre par un nombre de <code>0</code> à <code>9</code>, ils deviennent une équation arithmétique. L’astuce est de trouver quelle lettre correspond à chaque chiffre. Toutes les occurences de chaque lettre doivent correspondre au même chiffre, aucun chiffre ne peut être répété, et aucun «&nbsp;mot&nbsp;» ne peut commencer avec le chiffre 0.
+<p>Des énigmes comme celle-ci sont appelées <i>cryptarithme</i> ou <i>alphamétique</i>. Les lettres épellées sont des mots réels, mais si vous remplacez chaque lettre par un nombre de <code>0</code> à <code>9</code>, ils deviennent une équation arithmétique. L’astuce est de trouver quelle lettre correspond à chaque chiffre. Toutes les occurences de chaque lettre doivent correspondre au même chiffre, aucun chiffre ne peut être répété, et aucun «&nbsp;mot&nbsp;» ne peut commencer avec le chiffre 0.
 
-<aside>Le défi alphamétique le plus connu est <code>SEND + MORE = MONEY</code>.</aside>
+<aside>L’alphamétique le plus connu est <code>SEND + MORE = MONEY</code>.</aside>
 
-<p>Dans ce chapitre, nous allons plonger dans un programme Python incroyable écrit à l’origine par Raymond Hettinger. Ce programme résout les défis alphamétiques <em>en seulement quatorze lignes de code</em>.
+<p>Dans ce chapitre, nous allons plonger dans un programme Python incroyable écrit à l’origine par Raymond Hettinger. Ce programme résout les alphamétiques <em>en seulement quatorze lignes de code</em>.
 
 <p class=d>[<a href=examples/alphametics.py>télécharger <code>alphametics.py</code></a>]
 <pre class=pp><code>import re
@@ -91,7 +91,7 @@ if __name__ == '__main__':
 
 <h2 id=re-findall>Trouver toutes les occurences d’un motif</h2>
 
-<p>La première chose que fait ce résolveur d’alphamétique est trouver toutes les lettres (A&ndash;Z) dans le défi.
+<p>La première chose que fait ce résolveur d’alphamétique est trouver toutes les lettres (A&ndash;Z) dans l’énigme.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import re</kbd>
@@ -188,7 +188,7 @@ AssertionError: Only for very large values of 2</samp></pre>
 <pre class='nd pp'><code>if len(unique_characters) > 10:
     raise AssertionError('Too many letters')</code></pre>
 
-<p>Le résolveur d’alphamétique utilise cette instruction <code>assert</code> pour s’arrêter immédiatement si le défi contient plus de dix lettres différences. Étant donné que chaque lettre est associée à un chiffre unique, et qu’il y a seulement dix chiffres, un défiavec plus de dix lettres différentes ne peut pas avoir de solution.
+<p>Le résolveur d’alphamétique utilise cette instruction <code>assert</code> pour s’arrêter immédiatement si l’énigme contient plus de dix lettres différences. Étant donné que chaque lettre est associée à un chiffre unique, et qu’il y a seulement dix chiffres, une énigme avec plus de dix lettres différentes ne peut pas avoir de solution.
 
 <p class=a>&#x2042;
 
@@ -413,7 +413,7 @@ Wesley</samp></pre>
  'N': '5', 'S': '1', 'R': '6', 'Y': '7'}</samp></pre>
 <ol>
 <li>Étant donné une liste de lettrres et une liste de chiffre (chacun-e représené-e comme une chaine à un caractère), la fonction <code>zip</code> retournera un appariement de lettres et de chiffres, dans l’ordre.
-<li>En quoi est-ce génial&nbsp;? Parce que cette structure de données se trouve être exactement celle à passer à la fonction <code>dict()</code> pour créer un dictionnaire qui utilise les lettres comme clé et leur value associée comme valeurs. (Ce n’est pas la seule façon de le faire, bien sûr. Vous pouvez utiliser un <a href=comprehensions.html#dictionarycomprehension>dictionnaire par compréhension</a> pour créer un dictionnaire directement.) Même si la représentation affichée du dictionnaire liste les paires dans un ordre différent (les dictionnaires n’ont par d’«&nbs;ordre&nbsp;» en eux-mêmes), vous pouvez voir que chaque lettre est associée au chiffre, en se basant sur l’ordre des suites <var>characters</var> et <var>guess</var> originales.
+<li>En quoi est-ce génial&nbsp;? Parce que cette structure de données se trouve être exactement celle à passer à la fonction <code>dict()</code> pour créer un dictionnaire qui utilise les lettres comme clé et leur value associée comme valeurs. (Ce n’est pas la seule façon de le faire, bien sûr. Vous pouvez utiliser un <a href=comprehensions.html#dictionarycomprehension>dictionnaire par compréhension</a> pour créer un dictionnaire directement.) Même si la représentation affichée du dictionnaire liste les paires dans un ordre différent (les dictionnaires n’ont par d’«&nbsp;ordre&nbsp;» en eux-mêmes), vous pouvez voir que chaque lettre est associée au chiffre, en se basant sur l’ordre des suites <var>characters</var> et <var>guess</var> originales.
 </ol>
 
 <p id=guess>Le résolveur d’alphamétiques utilise cette technique pour créer un dictionnaire qui fait correspondre à chaque lettre un chiffre de la solution, pour chaque solution possible.
@@ -429,9 +429,9 @@ for guess in itertools.permutations(digits, len(characters)):
 
 <p class=a>&#x2042;
 
-<h2 id=string-translate>A New Kind Of String Manipulation</h2>
+<h2 id=string-translate>Une Nouvelle Sorte de Manipulation de Chaine</h2>
 
-<p>Python strings have many methods. You learned about some of those methods in <a href=strings.html>the Strings chapter</a>: <code>lower()</code>, <code>count()</code>, and <code>format()</code>. Now I want to introduce you to a powerful but little-known string manipulation technique: the <code>translate()</code> method.
+<p>Les chaines PYthon ont beaucoup de méthodes. Vous avez découvert certaines d’entre elles dans le chapitre sur <a href=strings.html>Les Chaines</a>&nbsp;: <code>lower()</code>, <code>count()</code>, et <code>format()</code>. Maintenant je voudrais vous faire découvrir une technique de manipulation des chaines puissante mais peu connue&nbsp;: la méthode <code>translate()</code>.
 
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>translation_table = {ord('A'): ord('O')}</kbd>  <span class=u>&#x2460;</span></a>
@@ -440,14 +440,14 @@ for guess in itertools.permutations(digits, len(characters)):
 <a><samp class=p>>>> </samp><kbd class=pp>'MARK'.translate(translation_table)</kbd>       <span class=u>&#x2462;</span></a>
 <samp class=pp>'MORK'</samp></pre>
 <ol>
-<li>String translation starts with a translation table, which is just a dictionary that maps one character to another. Actually, &#8220;character&#8221; is incorrect&nbsp;&mdash;&nbsp;the translation table really maps one <em>byte</em> to another.
-<li>Remember, bytes in Python 3 are integers. The <code>ord()</code> function returns the <abbr>ASCII</abbr> value of a character, which, in the case of A&ndash;Z, is always a byte from 65 to 90.
-<li>The <code>translate()</code> method on a string takes a translation table and runs the string through it. That is, it replaces all occurrences of the keys of the translation table with the corresponding values. In this case, &#8220;translating&#8221; <code>MARK</code> to <code>MORK</code>.
+<li>La traduction commence avec une table de traduction, qui n’est qu’un dictionnaire faisant correspondre un caractère à un autre. À vrai dire, «&nbsp;caractère&nbsp;» est incorrect&nbsp;&mdash;&nbsp;la table de traduction fait en fait correspondre un <em>octet</em> à un autre.
+<li>Souvenez-vous, les octets en Python 3 sont des entiers. La fonction <code>ord()</code> retourne la valeur <abbr>ASCII</abbr> d’un caractère, qui est, dans le A&ndash;Z, un octet entre 65 et 90.
+<li>Le méthode <code>translate()</code> d’une chaine prend une table de traduction et l’applique à la chaine. C’est-à-dire qu’elle remplace chaque occurence de l’une des clés de la table de traduction par la valeur correspondante. Dans ce cas, «&nbsp;traduisant&nbsp;» <code>MARK</code> en <code>MORK</code>.
 </ol>
 
-<aside>Now you&#8217;re getting to the <em>really</em> fun part.</aside>
+<aside>Maintenant vous arrivez <em>vraiment</em> à la partie amusante.</aside>
 
-<p>What does this have to do with solving alphametic puzzles? As it turns out, everything.
+<p>Quel est le rapport avec le résolveur d’alphamétique&nbsp;? À vrai dire, tout.
 
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>characters = tuple(ord(c) for c in 'SMEDONRY')</kbd>       <span class=u>&#x2460;</span></a>
@@ -462,19 +462,19 @@ for guess in itertools.permutations(digits, len(characters)):
 <a><samp class=p>>>> </samp><kbd class=pp>'SEND + MORE == MONEY'.translate(translation_table)</kbd>  <span class=u>&#x2463;</span></a>
 <samp class=pp>'9567 + 1085 == 10652'</samp></pre>
 <ol>
-<li>Using a <a href=#generator-expressions>generator expression</a>, we quickly compute the byte values for each character in a string. <var>characters</var> is an example of the value of <var>sorted_characters</var> in the <code>alphametics.solve()</code> function.
-<li>Using another generator expression, we quickly compute the byte values for each digit in this string. The result, <var>guess</var>, is of the form <a href=#guess>returned by the <code>itertools.permutations()</code> function</a> in the <code>alphametics.solve()</code> function.
-<li>This translation table is generated by <a href=#dict-zip>zipping <var>characters</var> and <var>guess</var> together</a> and building a dictionary from the resulting sequence of pairs. This is exactly what the <code>alphametics.solve()</code> function does inside the <code>for</code> loop.
-<li>Finally, we pass this translation table to the <code>translate()</code> method of the original puzzle string. This converts each letter in the string to the corresponding digit (based on the letters in <var>characters</var> and the digits in <var>guess</var>). The result is a valid Python expression, as a string.
+<li>En utilisant une <a href=#generator-expressions>expression génératrice</a>, nous calculons rapidement les valeurs des octets de chaque caractère dans la chaine. <var>characters</var> est un exemple d’une valeur de <var>sorted_characters</var> dans la fonction <code>alphametics.solve()</code>.
+<li>En utilisant une autre expression génératrice, nous calculons rapidement la valeur des octets de chaque chiffre dans cette chaine. Le résultat, <var>guess</var>, est de la forme <a href=#guess>retournée par la fonction <code>itertools.permutations()</code></a> dans la fonction <code>alphametics.solve()</code>.
+<li>Cette table de traduction est engendrée en <a href=#dict-zip>zippant <var>characters</var> et <var>guess</var> ensemble</a> et en construisant un dictionnaire à partir de la suite de paires résultante. C’est exactement ce que fait la fonction <code>alphametics.solve()</code> dans la boucle <code>for</code>.
+<li>Finalement, nous passons cette table de traduction à la méthode <code>translate()</code> de la chaine originale de l’énigme. Elle convertir chaque lettre de la chaine en le chiffre correspondant (en se basant sur les lettres dans <var>characters</var> et les chiffres dans <var>guess</var>). Le résultat est une expression Python valide, dans une chaine.
 </ol>
 
-<p>That&#8217;s pretty impressive. But what can you do with a string that happens to be a valid Python expression?
+<p>C’est assez impressionant. Mais que pouvez-vous faire avec une chaine qui se trouve être une expression Python valide&nbsp;?
 
 <p class=a>&#x2042;
 
-<h2 id=eval>Evaluating Arbitrary Strings As Python Expressions</h2>
+<h2 id=eval>Évaluer des Chaines Arbitraires comme des Expressions Python</h2>
 
-<p>This is the final piece of the puzzle (or rather, the final piece of the puzzle solver). After all that fancy string manipulation, we&#8217;re left with a string like <code>'9567 + 1085 == 10652'</code>. But that&#8217;s a string, and what good is a string? Enter <code>eval()</code>, the universal Python evaluation tool.
+<p>C’est la partie finale de notre énigme (ou plutôt, de notre résolveur d’énigme). Après toutes ces manipulations de chaine fantaisistes, nous nous retrouvons avec une chaine de la forme <code>'9567 + 1085 == 10652'</code>. Mais c’est une chaine, et que peut-on faire avec une chaine&nbsp;? La donner <code>eval()</code>, l’outil d’évalutation Python universel.
 
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>eval('1 + 1 == 2')</kbd>
@@ -484,7 +484,7 @@ for guess in itertools.permutations(digits, len(characters)):
 <samp class=p>>>> </samp><kbd class=pp>eval('9567 + 1085 == 10652')</kbd>
 <samp class=pp>True</samp></pre>
 
-<p>But wait, there&#8217;s more! The <code>eval()</code> function isn&#8217;t limited to boolean expressions. It can handle <em>any</em> Python expression and returns <em>any</em> datatype.
+<p>Mais attendez, il y a mieux&nbsp;! La fonction <code>eval()</code> n’est pas limitée aux expressions booléennes. Elle peut traiter <em>n’importe quelle expression</em>, et renvoyer <em>n’importe quel type de données</em>.
 
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>eval('"A" + "B"')</kbd>
@@ -496,7 +496,7 @@ for guess in itertools.permutations(digits, len(characters)):
 <samp class=p>>>> </samp><kbd class=pp>eval('["*"] * 5')</kbd>
 <samp class=pp>['*', '*', '*', '*', '*']</samp></pre>
 
-<p>But wait, that&#8217;s not all!
+<p>Mais attendez, ce n’est pas tout&nbsp;!
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>x = 5</kbd>
@@ -508,12 +508,12 @@ for guess in itertools.permutations(digits, len(characters)):
 <a><samp class=p>>>> </samp><kbd class=pp>eval("math.sqrt(x)")</kbd>  <span class=u>&#x2462;</span></a>
 <samp class=pp>2.2360679774997898</samp></pre>
 <ol>
-<li>The expression that <code>eval()</code> takes can reference global variables defined outside the <code>eval()</code>. If called within a function, it can reference local variables too.
-<li>And functions.
-<li>And modules.
+<li>L’expression qu’<code>eval()</code> prend peut faie référence à des variables globales définies en-dehors d’<code>eval()</code>. Si elle est appelée dans une fonction, elle peut auss faire référence aux variables locales.
+<li>Et aux fonctions.
+<li>Et aux modules.
 </ol>
 
-<p>Hey, wait a minute&hellip;
+<p>Euh… attendez une minute&hellip;
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import subprocess</kbd>
@@ -521,25 +521,25 @@ for guess in itertools.permutations(digits, len(characters)):
 <samp class=pp>'Desktop         Library         Pictures \
  Documents       Movies          Public   \
  Music           Sites'</samp>
-<a><samp class=p>>>> </samp><kbd class=pp>eval("subprocess.getoutput('rm /some/random/file')")</kbd>  <span class=u>&#x2461;</span></a></pre>
+<a><samp class=p>>>> </samp><kbd class=pp>eval("subprocess.getoutput('rm /un/fichier/quelconque')")</kbd>  <span class=u>&#x2461;</span></a></pre>
 <ol>
-<li>The <code>subprocess</code> module allows you to run arbitrary shell commands and get the result as a Python string.
-<li>Arbitrary shell commands can have permanent consequences.
+<li>Le module <code>subprocess</code> vous permet d’exécuter n’importe quelle commande shell et avoir le résultat sous forme de chaine Python.
+<li>Des commandes shell arbitraires peuvent avoir des effets permanents.
 </ol>
 
-<p>It&#8217;s even worse than that, because there&#8217;s a global <code>__import__()</code> function that takes a module name as a string, imports the module, and returns a reference to it. Combined with the power of <code>eval()</code>, you can construct a single expression that will wipe out all your files:
+<p>C’est même pire que ça, puisqu’il y a une fonction globale <code>__import__()</code> qui prend un nom de module sous forme de chaine de caractère, l’importe, et retourne une référence vers celui-ci. Combiné à la puissance d’<code>eval()</code>, vous pouvez construire une seule expression qui efface tous vos fichiers&nbsp;:
 
 <pre class=screen>
-<a><samp class=p>>>> </samp><kbd class=pp>eval("__import__('subprocess').getoutput('rm /some/random/file')")</kbd>  <span class=u>&#x2460;</span></a></pre>
+<a><samp class=p>>>> </samp><kbd class=pp>eval("__import__('subprocess').getoutput('rm /un/fichier/quelconque')")</kbd>  <span class=u>&#x2460;</span></a></pre>
 <ol>
-<li>Now imagine the output of <code>'rm -rf ~'</code>. Actually there wouldn&#8217;t be any output, but you wouldn&#8217;t have any files left either.
+<li>Maintenant, imaginez la sortie de <code>'rm -rf ~'</code>. En fait, il n’y aurait pas du tout de sortie, mais vous n’auriez plus du tout de fichier restant non plus.
 </ol>
 
-<p class=xxxl>eval() is EVIL
+<p class=xxxl>eval() est le MAL
 
-<p>Well, the evil part is evaluating arbitrary expressions from untrusted sources. You should only use <code>eval()</code> on trusted input. Of course, the trick is figuring out what&#8217;s &#8220;trusted.&#8221; But here&#8217;s something I know for certain: you should <b>NOT</b> take this alphametics solver and put it on the internet as a fun little web service. Don&#8217;t make the mistake of thinking, &#8220;Gosh, the function does a lot of string manipulation before getting a string to evaluate; <em>I can&#8217;t imagine</em> how someone could exploit that.&#8221; Someone <b>WILL</b> figure out how to sneak nasty executable code past all that string manipulation (<a href=http://www.securityfocus.com/blogs/746>stranger things have happened</a>), and then you can kiss your server goodbye.
+<p>Bon, en fait, ce qui est mal est d’évaluer des expressions arbitraires à partir de sources qui ne son pas de confiance. Vous devez utiliser <code>eval()</code> uniquement à partir d’une source sure. Bien sûr, le truc est de déterminer ce qui est «&nbsp;de confiance&nbsp;». Mais il y a une chose dont je suis sûr&nbsp;: vous <em>NE DEVEZ PAS</em> prendre ce résolveur d’alphamétique et le mettre sur internetcomme un petit service web amusant. Ne faites pas l’erreur de pensez «&nbsp;Bah, cette fonction fait plein de manipulations de chaine avant de donner une chaine à évaluer&nbsp;; <em>je ne trouve pas</em> de moyen pour exploiter ceci.&nbsp;» Quelqu’un <b>VA</b> trouver un moyen d’insérer un vilain code exécutable qui passera à travers les manipulations de chaine (<a href=http://www.securityfocus.com/blogs/746>des choses plus bizarres sont déjà arrivées</a> (en anglais)), et vous pourriez dire adieu à votre serveur.
 
-<p>But surely there&#8217;s <em>some</em> way to evaluate expressions safely? To put <code>eval()</code> in a sandbox where it can&#8217;t access or harm the outside world? Well, yes and no.
+<p>Mais il y a sans doute un moyen d’évaluer des expressions surement, non&nbsp;? Mettre <code>eval()</code> dans une boite où elle ne peut pas accéder ou faire du mal au monde extérieur&nbsp;? Eh bien, oui et non.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>x = 5</kbd>
@@ -557,12 +557,12 @@ NameError: name 'x' is not defined</samp>
   File "&lt;string>", line 1, in &lt;module>
 NameError: name 'math' is not defined</samp></pre>
 <ol>
-<li>The second and third parameters passed to the <code>eval()</code> function act as the global and local namespaces for evaluating the expression. In this case, they are both empty, which means that when the string <code>"x * 5"</code> is evaluated, there is no reference to <var>x</var> in either the global or local namespace, so <code>eval()</code> throws an exception.
-<li>You can selectively include specific values in the global namespace by listing them individually. Then those&nbsp;&mdash;&nbsp;and only those&nbsp;&mdash;&nbsp;variables will be available during evaluation.
-<li>Even though you just imported the <code>math</code> module, you didn&#8217;t include it in the namespace passed to the <code>eval()</code> function, so the evaluation failed.
+<li>Les deuxième et troisième paramètres passés à la fonction <code>eval()</code> font office d’espace de nom global et local pour évaluer l’expression. Dans ce cas, ils sont tous les deux vides, ce qui signifique que quand la chaine <code>"x * 5"</code> est évaluée, il n’y a pas de référence à <var>x</var> dans les espaces de nom global et local, donc <code>eval()</code> lève une exception.
+<li>Vous pouvez choisir d’inclure des valeurs spécifique dans l’espace de nom global en les listant individuellement. Puis ces variables&nbsp;&mdash;&nbsp;et seulement celles-ci&nbsp;&mdash;&nbsp;seront disponibles pendant toute l’évaluation.
+<li>Même si vous avez importé le module <code>math</code>, vous ne l’avez pas inclus dans l’espace de nom passé à la fonction<code>eval()</code>, donc l’évaluation a échoué.
 </ol>
 
-<p>Gee, that was easy. Lemme make an alphametics web service now!
+<p>Youpi, c’était facile. Faisons un service web d’alphamétiques maintenant&nbsp;!
 
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>eval("pow(5, 2)", {}, {})</kbd>                   <span class=u>&#x2460;</span></a>
@@ -570,15 +570,15 @@ NameError: name 'math' is not defined</samp></pre>
 <a><samp class=p>>>> </samp><kbd class=pp>eval("__import__('math').sqrt(5)", {}, {})</kbd>  <span class=u>&#x2461;</span></a>
 <samp class=pp>2.2360679774997898</samp></pre>
 <ol>
-<li>Even though you&#8217;ve passed empty dictionaries for the global and local namespaces, all of Python&#8217;s built-in functions are still available during evaluation. So <code>pow(5, 2)</code> works, because <code>5</code> and <code>2</code> are literals, and <code>pow()</code> is a built-in function.
-<li>Unfortunately (and if you don&#8217;t see why it&#8217;s unfortunate, read on), the <code>__import__()</code> function is also a built-in function, so it works too.
+    <li>Même si vous avez passé des dictionnaires vides pour les espaces de nom global et local, toutes les fonctions fournies directement par Python sont encore disponible pendant l’évalutation. Donc <code>pow(5, 2) marche, parce que <code>5</code> et <code>2</code> sont des littéraux et <code>pow()</code> est une fonction fournie directement.
+<li>Malheureusement (et si vous ne voyez pas en quoi c’est malheureux, continuez à lire), la fonction <code>__import__()</code> est aussi une fonction disponible directement, donc elle marche aussi.
 </ol>
 
-<p>Yeah, that means you can still do nasty things, even if you explicitly set the global and local namespaces to empty dictionaries when calling <code>eval()</code>:
+<p>Eh oui, cela signifique que vous pouvez encore faire des choses sales, même en définissant explicitement les espaces de nom global et local à des dictonnaires vides en appelant <code>eval()</code>&nbsp;:
 
-<pre class='nd screen'><samp class=p>>>> </samp><kbd class=pp>eval("__import__('subprocess').getoutput('rm /some/random/file')", {}, {})</kbd></pre>
+<pre class='nd screen'><samp class=p>>>> </samp><kbd class=pp>eval("__import__('subprocess').getoutput('rm /un/fichier/quelconque')", {}, {})</kbd></pre>
 
-<p>Oops. I&#8217;m glad I didn&#8217;t make that alphametics web service. Is there <em>any</em> way to use <code>eval()</code> safely? Well, yes and no.
+<p>Oups. Je suis heureux de ne pas avoir fait ce service d’alphamétiques. Y a-t-il une manière <em>quelconque</em> d’utilise <code>eval()</code> de façon sure&nbsp;? Eh bien, oui et non.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>eval("__import__('math').sqrt(5)",</kbd>
@@ -594,47 +594,47 @@ NameError: name '__import__' is not defined</samp>
   File "&lt;string>", line 1, in &lt;module>
 NameError: name '__import__' is not defined</samp></pre>
 <ol>
-<li>To evaluate untrusted expressions safely, you need to define a global namespace dictionary that maps <code>"__builtins__"</code> to <code>None</code>, the Python null value. Internally, the &#8220;built-in&#8221; functions are contained within a pseudo-module called <code>"__builtins__"</code>. This pseudo-module (<i>i.e.</i> the set of built-in functions) is made available to evaluated expressions unless you explicitly override it.
-<li>Be sure you&#8217;ve overridden <code>__builtins__</code>. Not <code>__builtin__</code>, <code>__built-ins__</code>, or some other variation that will work just fine but expose you to catastrophic risks.
+    <li>Pour évaluer des expressions qui ne sont pas de confiance de façon sure, vous devez définir un espace de nom global qui fait corresponde <code>None</code> (la valeur nulle de Python) à <code>"__builtins__"</code>. En interne, les fonctions accessibles directement, dites «&nbsp;built-in&nbsp;» sont contenues par un pseudo-module nommé <code>"__builtins__"</code>. Ce pseudo-module (<i>ie.</i> ensemble de fonctions «&nbsp;built-in&nbsp;») est mis à la disposition des expressions évaluées, à moins que vous ne changiez explicitement ce comportement, ce qu’on appelle «&nbsp;le surcharger&nbsp;».
+<li>Assurez-vous d’avoir d’avoir surchargé <code>__builtins__</code>. Pas <code>__builtin__</code>, ni <code>__built-ins__</code>, ni une autre variation qui semblerait marcher parfaitement, mais vous exposerait à des risques catastrophiques.
 </ol>
 
-<p>So <code>eval()</code> is safe now? Well, yes and no.
+<p>Donc <code>eval()</code> est sure maintenant&nbsp;? Eh bien, oui et non.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>eval("2 ** 2147483647",</kbd>
 <a><samp class=p>... </samp><kbd class=pp>    {"__builtins__":None}, {})</kbd>          <span class=u>&#x2460;</span></a>
 </pre>
 <ol>
-<li>Even without access to <code>__builtins__</code>, you can still launch a denial-of-service attack. For example, trying to raise <code>2</code> to the <code>2147483647</code><sup>th</sup> power will spike your server&#8217;s <abbr>CPU</abbr> utilization to 100% for quite some time. (If you&#8217;re trying this in the interactive shell, press <kbd>Ctrl-C</kbd> a few times to break out of it.) Technically this expression <em>will</em> return a value eventually, but in the meantime your server will be doing a whole lot of nothing.
+<li>Même sans accès à <code>__builtins__</code>, vous pouvez toujours lancer une attaque par déni de service. Par exemple, élever <code>2</code> à la puissance <code>2147483647</code> va faire monter l’utilisation du <abbr>CPU</abbr> de votre serveur à 100% pendant quelques temps. (Si vous voulez essayer ceci dans le shell interactif, appuyez sur <kbd>Ctrl-C</kbd> quelques fois pour en sortir.) Techniquement, cette expression <em>va</em> renvoyer une valeur un jour, mais entre temps, votre serveur travaillera beaucoup pour ne rien fait.
 </ol>
 
-<p>In the end, it <em>is</em> possible to safely evaluate untrusted Python expressions, for some definition of &#8220;safe&#8221; that turns out not to be terribly useful in real life. It&#8217;s fine if you&#8217;re just playing around, and it&#8217;s fine if you only ever pass it trusted input. But anything else is just asking for trouble.
+<p>Au final, il <em>est</em> possible d’évaluer des expressions Python qui ne soient pas de confiance sans trop de risque, pour certaines définitions de «&nbsp;risque&nbsp;» qui ne sont pas si terribles en réalité. C’est correct si c’est juste pour jouer avec, et si vous lui passez uniquement une entrée de confiance. Mais n’importe quoi d’autre n’est que tenter le diable.
 
 <p class=a>&#x2042;
 
-<h2 id=alphametics-finale>Putting It All Together</h2>
+<h2 id=alphametics-finale>Assembler le Tout</h2>
 
-<p>To recap: this program solves alphametic puzzles by brute force, <i>i.e.</i> through an exhaustive search of all possible solutions. To do this, it&hellip;
+<p>En résumé&nbsp;: ce programme résout les énigmes alphamétiques par force brute, c’est-à-dire en parcourant exhaustivement toutes les combinaisons possibles. Pour le faire, il&hellip;
 
 <ol>
-<li><a href=#re-findall>Finds all the letters in the puzzle</a> with the <code>re.findall()</code> function
-<li><a href=#unique-items>Find all the <em>unique</em> letters in the puzzle</a> with sets and the <code>set()</code> function
-<li><a href=#assert>Checks if there are more than 10 unique letters</a> (meaning the puzzle is definitely unsolvable) with an <code>assert</code> statement
-<li><a href=#generator-objects>Converts the letters to their ASCII equivalents</a> with a generator object
-<li><a href=#permutations>Calculates all the possible solutions</a> with the <code>itertools.permutations()</code> function
-<li><a href=#string-translate>Converts each possible solution to a Python expression</a> with the <code>translate()</code> string method
-<li><a href=#eval>Tests each possible solution by evaluating the Python expression</a> with the <code>eval()</code> function
-<li>Returns the first solution that evaluates to <code>True</code>
+<li><a href=#re-findall>Trouve toutes les lettres dans l’énigme</a> avec la fonction <code>re.findall()</code>
+<li><a href=#unique-items>Trouve toutes les <em>différentes</em> lettres dans l’énigme</a> avec des ensembles et la fonction <code>set()</code>
+<li><a href=#assert>Vérifie qu’il y a au plus dix lettres différentes</a> (signifiant que l’énigme est clairement irrésoluble) avec une instruction <code>assert</code>
+<li><a href=#generator-objects>Convertit chaque lettre en son équivalent ASCII</a> avec une expression génératrice
+<li><a href=#permutations>Calcule toutes les solutions possibles</a> avec la fonction <code>itertools.permutations()</code>
+<li><a href=#string-translate>Convertit chaque solution en une expression Python</a> avec la méthode de chaine <code>translate()</code>
+<li><a href=#eval>Teste chaque solution possible en évaluant l’expression Python</a> avec la fonction <code>eval()</code>
+<li>Retourne la première solution évaluée à <code>True</code>
 </ol>
 
-<p>&hellip;in just 14 lines of code.
+<p>&hellip;en seulement quatorze lignes de code.
 
 <p class=a>&#x2042;
 
-<h2 id=furtherreading>Further Reading</h2>
+<h2 id=furtherreading>Aller plus loin</h2>
 
 <ul>
-<li><a href=http://docs.python.org/3.1/library/itertools.html><code>itertools</code> module</a>
+<li><a href=http://docs.python.org/3.1/library/itertools.html>Le module<code>itertools</code></a>
 <li><a href=http://www.doughellmann.com/PyMOTW/itertools/><code>itertools</code>&nbsp;&mdash;&nbsp;Iterator functions for efficient looping</a>
 <li><a href=http://blip.tv/file/1947373/>Watch Raymond Hettinger&#8217;s &#8220;Easy AI with Python&#8221; talk</a> at PyCon 2009
 <li><a href=http://code.activestate.com/recipes/576615/>Recipe 576615: Alphametics solver</a>, Raymond Hettinger&#8217;s original alphametics solver for Python 2
@@ -643,9 +643,9 @@ NameError: name '__import__' is not defined</samp></pre>
 <li><a href=http://www.tkcs-collins.com/truman/alphamet/index.shtml>Alphametics Index</a>, including <a href=http://www.tkcs-collins.com/truman/alphamet/alphamet.shtml>lots of puzzles</a> and <a href=http://www.tkcs-collins.com/truman/alphamet/alpha_gen.shtml>a generator to make your own</a>
 </ul>
 
-<p>Many thanks to Raymond Hettinger for agreeing to relicense his code so I could port it to Python 3 and use it as the basis for this chapter.
+<p>Merci beaucoup à Raymond Hettinger pour avoir accepté de changer la licence de son code pour que je puisse le porter à Python 3 et l’utiliser comme base pour ce chapitre.
 
-<p class=v><a href=iterators.html rel=prev title='back to &#8220;Classes &amp; Iterators&#8221;'><span class=u>&#x261C;</span></a> <a href=unit-testing.html rel=next title='onward to &#8220;Unit Testing&#8221;'><span class=u>&#x261E;</span></a>
+<p class=v><a href=iterators.html rel=prev title='retour à «&nbsp;Classes &amp; Itérateurs&nbsp;»'><span class=u>&#x261C;</span></a> <a href=unit-testing.html rel=next title='Continuer vers «&nbsp;Tests Unitaires&nbsp;»'><span class=u>&#x261E;</span></a>
 
 <p class=c>&copy; 2001&ndash;11 <a href=about.html>Mark Pilgrim</a>
 <script src=j/jquery.js></script>
