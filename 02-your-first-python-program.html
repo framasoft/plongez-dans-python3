@@ -1,11 +1,11 @@
 ---
 title: Votre premier programme en Python
-status: En cours
+status: Relecture
 permalink: your-first-python-program.html
 ---
 <!DOCTYPE html>
 <meta charset=utf-8>
-<title>Your first Python program - Dive Into Python 3</title>
+<title>Votre premier programme Python - Plongez dans Python 3</title>
 <!--[if IE]><script src=j/html5.js></script><![endif]-->
 <link rel=stylesheet href=dip3.css>
 <style>
@@ -19,28 +19,28 @@ mark{display:inline}
 <link rel=stylesheet media=print href=print.css>
 <meta name=viewport content='initial-scale=1.0'>
 <form action=http://www.google.com/cse><div><input type=hidden name=cx value=014021643941856155761:l5eihuescdw><input type=hidden name=ie value=UTF-8>&nbsp;<input type=search name=q size=25 placeholder="powered by Google&trade;">&nbsp;<input type=submit name=sa value=Search></div></form>
-<p>You are here: <a href=index.html>Home</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#your-first-python-program>Dive Into Python 3</a> <span class=u>&#8227;</span>
-<p id=level>Difficulty level: <span class=u title=novice>&#x2666;&#x2662;&#x2662;&#x2662;&#x2662;</span>
-<h1>Your First Python Program</h1>
+<p>Vous êtes ici&nbsp;: <a href=index.html>Index</a> <span class=u>&#8226;</span> <a href=table-of-contents.html#your-first-python-program>Plongez dans Python 3</a> <span class=u>&#8227;</span>
+<p id=level>Niveau de difficulté&nbsp;: <span class=u title=novice>&#x2666;&#x2662;&#x2662;&#x2662;&#x2662;</span>
+<h1>Votre premier programme Python</h1>
 <blockquote class=q>
-<p><span class=u>&#x275D;</span> Don&#8217;t bury your burden in saintly silence. You have a problem?  Great. Rejoice, dive in, and investigate. <span class=u>&#x275E;</span><br>&mdash; <a href=http://en.wikiquote.org/wiki/Buddhism>Ven. Henepola Gunaratana</a>
+<p><span class=u>&#x275D;</span> N’enterre pas ton fardeau dans un silence saint. Tu as un problème&nbsp;? Bien. Réjouis-toi, approfondis, et investigue. <span class=u>&#x275E;</span><br>&mdash; <a href=http://en.wikiquote.org/wiki/Buddhism>Ven. Henepola Gunaratana</a>
 </blockquote>
 <p id=toc>&nbsp;
-<h2 id=divingin>Diving In</h2>
-<p class=f>Convention dictates that I should bore you with the fundamental building blocks of programming, so we can slowly work up to building something useful. Let&#8217;s skip all that. Here is a complete, working Python program. It probably makes absolutely no sense to you. Don&#8217;t worry about that, because you&#8217;re going to dissect it line by line. But read through it first and see what, if anything, you can make of it.
-<p class=d>[<a href=examples/humansize.py>download <code>humansize.py</code></a>]
+<h2 id=divingin>Plongée</h2>
+<p class=f>Les conventions dictent que je dois vous bassiner avec les briques fondamentales de la programmation, donc nous pouvons lentement travailler à construire quelque chose d’utile. Sautons tout ça. Ceci est un programme Python complet et fonctionnel. Il n’a probablement aucun sens pour vous. Ne vous en faites pas, car je vais le disséquer ligne par ligne. Mais commencez par le lire et voir si vous y comprenez quelque chose.
+<p class=d>[<a href=examples/humansize.py>télécharger <code>humansize.py</code></a>]
 <pre class=pp><code>SUFFIXES = {1000: ['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
             1024: ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']}
 
 def approximate_size(size, a_kilobyte_is_1024_bytes=True):
-    '''Convert a file size to human-readable form.
+    '''Convertit une taille de fichier en une forme lisible par un humain.
 
-    Keyword arguments:
-    size -- file size in bytes
-    a_kilobyte_is_1024_bytes -- if True (default), use multiples of 1024
-                                if False, use multiples of 1000
+    Paramètres par mot-clef :
+    size -- taille de fichiers en octets
+    a_kilobyte_is_1024_bytes -- si True (par défaut), utilise des multiples de 1024
+                                si False, utilise des multiples de 1000
 
-    Returns: string
+    Retourne : une chaîne de caractères
 
     '''
     if size &lt; 0:
@@ -57,60 +57,60 @@ def approximate_size(size, a_kilobyte_is_1024_bytes=True):
 if __name__ == '__main__':
     print(approximate_size(1000000000000, False))
     print(approximate_size(1000000000000))</code></pre>
-<p>Now let&#8217;s run this program on the command line. On Windows, it will look something like this:
+<p>Maintenant, lançons ce programme par la ligne de commande. Sous Windows, ça ressemblera à quelque chose comme ça&nbsp;:
 <pre class='nd screen'>
 <samp class=p>c:\home\diveintopython3\examples> </samp><kbd>c:\python31\python.exe humansize.py</kbd>
 <samp>1.0 TB
 931.3 GiB</samp></pre>
-<p>On Mac OS X or Linux, it would look something like this:
+<p>Sur Mac OS X ou Linux, ça ressemblera plutôt à ça&nbsp;:
 <pre class='nd screen cmdline'>
-<samp class=p>you@localhost:~/diveintopython3/examples$ </samp><kbd>python3 humansize.py</kbd>
+<samp class=p>vous@localhost:~/diveintopython3/examples$ </samp><kbd>python3 humansize.py</kbd>
 <samp>1.0 TB
 931.3 GiB</samp></pre>
 
-<p>What just happened? You executed your first Python program. You called the Python interpreter on the command line, and you passed the name of the script you wanted Python to execute. The script defines a single function, the <code>approximate_size()</code> function, which takes an exact file size in bytes and calculates a &#8220;pretty&#8221; (but approximate) size. (You&#8217;ve probably seen this in Windows Explorer, or the Mac OS X Finder, or Nautilus or Dolphin or Thunar on Linux. If you display a folder of documents as a multi-column list, it will display a table with the document icon, the document name, the size, type, last-modified date, and so on. If the folder contains a 1093-byte file named <code>TODO</code>, your file manager won&#8217;t display <code>TODO 1093 bytes</code>; it&#8217;ll say something like <code>TODO 1 KB</code> instead. That&#8217;s what the <code>approximate_size()</code> function does.)
+<p>Qu’est-ce qui vient de se passer&nbsp;? Vous venez d’exécuter votre premier programme Python. Vous appelez l’interpréteur Python par la ligne de commande et vous lui donnez le nom du script Python que vous voulez exécuter. Le script définit une unique fonction, la fonction <code>approximate_size()</code> qui prend une taille de fichier exacte en octets et calcule une taille plus esthétique (mais approximative). Vous avez probablement déjà vu ça dans l’Explorateur de Windows, le Finder de Mac OS X, ou Nautilus ou Dolphin ou Thunar sous Linux. Si vous avez un répertoire avec des documents dans une liste multi-colonnes, il affichera un tableau avec l’icône du document, le nom du document, la taille, le type, la date de dernière modification, etc. Si le fichier contient un fichier de 1093 octets nommé <code>TODO</code>, votre gestionnaire de fichiers n’affichera pas  <code>TODO 1093 octets</code>, mais plutôt quelque chose du genre <code>TODO 1 KO</code>. C’est ce que fait la fonction <code>approximate_size()</code>.
 
-<p>Look at the bottom of the script, and you&#8217;ll see two calls to <code>print(approximate_size(<var>arguments</var>))</code>. These are function calls&nbsp;&mdash;&nbsp;first calling the <code>approximate_size()</code> function and passing a number of arguments, then taking the return value and passing it straight on to the <code>print()</code> function. The <code>print()</code> function is built-in; you&#8217;ll never see an explicit declaration of it. You can just use it, anytime, anywhere. (There are lots of built-in functions, and lots more functions that are separated into <i>modules</i>. Patience, grasshopper.)
+<p>Regardez à la fin du script et vous verrez deux appels à <code>print(approximate_size(<var>arguments</var>))</code>. Ce sont des appels de fonctions &nbsp;&mdash;&nbsp;le premier appelle la fonction <code>approximate_size()</code> et lui passe des arguments (aussi appelés paramètres), puis prend la valeur de retour et la passe directement à la fonction <code>print()</code>. La fonction <code>print()</code> est fournie par Python&nbsp;: vous ne verrez jamais de déclaration explicite de celle-ci. Vous pouvez l’utiliser n’importe où, n’importe quand. (Il y a beaucoup de fonctions fournies par Python, et beaucoup d’entre elles sont séparées dans des <i>modules</i>. Patience, jeune padawan.)
 
-<p>So why does running the script on the command line give you the same output every time? We&#8217;ll get to that. First, let&#8217;s look at that <code>approximate_size()</code> function.
+<p>Donc, pourquoi exécuter ce script dans la ligne de commande vous donne le même résultat à chaque fois&nbsp;? Nous y arriverons. Jetons d’abord un coup d’œil à la fonction <code>approximate_size()</code>.
 
 <p class=a>&#x2042;
 
-<h2 id=declaringfunctions>Declaring Functions</h2>
-<p>Python has functions like most other languages, but it does not have separate header files like <abbr>C++</abbr> or <code>interface</code>/<code>implementation</code> sections like Pascal. When you need a function, just declare it, like this:
+<h2 id=declaringfunctions>Déclarer des Fonctions</h2>
+<p>Python a des fonctions comme la plupart des autres langages, mais n’a pas de fichiers d’en-tête séparés comme le <abbr>C++</abbr> ou des sections <code>interface</code>/<code>implémentation</code> comme le Pascal. Lorsque vous avez besoin d’une fonction, déclarez-la simplement, comme ceci&nbsp;:
 <pre class='nd pp'><code>def approximate_size(size, a_kilobyte_is_1024_bytes=True):</code></pre>
-<aside>When you need a function, just declare it.</aside>
-<p>The keyword <code>def</code> starts the function declaration, followed by the function name, followed by the arguments in parentheses. Multiple arguments are separated with commas.
-<p>Also note that the function doesn&#8217;t define a return datatype. Python functions do not specify the datatype of their return value; they don&#8217;t even specify whether or not they return a value. (In fact, every Python function returns a value; if the function ever executes a <code>return</code> statement, it will return that value, otherwise it will return <code>None</code>, the Python null value.)
+<aside>Quand vous avez besoin d’une fonction, déclarez-la, simplement.</aside>
+<p>Le mot-clef <code>def</code> commence une déclaration de fonction, suivi par le nom de la fonction, suivi par les paramètres entre parenthèses. Plusieurs paramètres peuvent être séparés par des virgules.
+<p>Notez qu’une fonction ne définit pas de type de retour. Les fonctions Python ne spécifient pas le type de leur valeur de retour&nbsp;: elles ne spécifient même pas si elles retournent ou non une valeur. (En fait, toute fonction Python retourne une valeur&nbsp;: si la fonction exécute une instruction <code>return</code>, elle retournera cette valeur, sinon elle retournera <code>None</code>, la valeure nulle de Python.)
 <blockquote class=note>
-<p><span class=u>&#x261E;</span>In some languages, functions (that return a value) start with <code>function</code>, and subroutines (that do not return a value) start with <code>sub</code>. There are no subroutines in Python. Everything is a function, all functions return a value (even if it&#8217;s <code>None</code>), and all functions start with <code>def</code>.
+<p><span class=u>&#x261E;</span>Dans certains langages, les fonctions (qui retournent une valeur) commencent par <code>function</code>, et les sous-routines (qui n’en retournent pas) commencent par <code>sub</code>. Il n’y a pas de sous-routine en Python. Tout est fonction, toutes les fonctions retournent des valeurs (même si c’est <code>None</code>), et toutes les fonctions commencent par <code>def</code>.
 </blockquote>
-<p>The <code>approximate_size()</code> function takes the two arguments&nbsp;&mdash;&nbsp;<var>size</var> and <var>a_kilobyte_is_1024_bytes</var>&nbsp;&mdash;&nbsp;but neither argument specifies a datatype. In Python, variables are never explicitly typed. Python figures out what type a variable is and keeps track of it internally.
+<p>La fonction <code>approximate_size()</code> prend deux paramètres&nbsp;&mdash;&nbsp;<var>size</var> et <var>a_kilobyte_is_1024_bytes</var>&nbsp;&mdash;&nbsp;mais aucun des deux ne spécifie un type. En Python, les variables ne sont jamais spécifiquement typées. Python devine quel est le type d’une variable et le garde en mémoire en interne.
 <blockquote class='note compare java'>
-<p><span class=u>&#x261E;</span>In Java and other statically-typed languages, you must specify the datatype of the function return value and each function argument. In Python, you never explicitly specify the datatype of anything. Based on what value you assign, Python keeps track of the datatype internally.
+<p><span class=u>&#x261E;</span>En Java et dans les autres langages typés statiquement, vous devez spécifier le type de retour de la fonction, et le type de chacun des paramètres de la fonction. En Python vous n’avez jamais besoin de spécifier explicitement le type de quoi que ce soit. En fonction de la valeur que vous assignez, Python garde l’information sur le type de données en interne.
 </blockquote>
 
-<h3 id=optional-arguments>Optional and Named Arguments</h3>
+<h3 id=optional-arguments>Paramètres Optionnels et Nommés</h3>
 
-<p>Python allows function arguments to have default values; if the function is called without the argument, the argument gets its default value. Furthermore, arguments can be specified in any order by using named arguments.
+<p>Python autorise les paramètres de fonctions à avoir des valeurs par défaut&nbsp;: si une fonction est appelée sans paramètre, le paramètre prend sa valeur par défaut. De plus, les paramètres peuvent être spécifiés dans n’importe quel ordre en utilisant les paramètres nommés.
 
-<p>Let&#8217;s take another look at that <code>approximate_size()</code> function declaration:
+<p>Regardons à nouveau la déclaration de la fonction <code>approximate_size()</code>&nbsp;:
 
 <pre class='nd pp'><code>def approximate_size(size, a_kilobyte_is_1024_bytes=True):</code></pre>
 
-<p>The second argument, <var>a_kilobyte_is_1024_bytes</var>, specifies a default value of <code>True</code>. This means the argument is <i>optional</i>; you can call the function without it, and Python will act as if you had called it with <code>True</code> as a second parameter.
+<p>Le second paramètre, <var>a_kilobyte_is_1024_bytes</var>, spécifie une valeur par défaut qui est <code>True</code>. Cela signifie que le paramètre est <i>optionnel</i>&nbsp;: vous pouvez appeler la fonction sans celui-ci, et Python fera comme si vous aviez appelé la fonction avec <code>True</code> comme second paramètre.
 
-<p>Now look at the bottom of the script:
+<p>Maintenant regardez la fin du script&nbsp;:
 
 <pre class=pp><code>if __name__ == '__main__':
 <a>    print(approximate_size(1000000000000, False))  <span class=u>&#x2460;</span></a>
 <a>    print(approximate_size(1000000000000))         <span class=u>&#x2461;</span></a></code></pre>
 <ol>
-<li>This calls the <code>approximate_size()</code> function with two arguments. Within the <code>approximate_size()</code> function, <var>a_kilobyte_is_1024_bytes</var> will be <code>False</code>, since you explicitly passed <code>False</code> as the second argument.
-<li>This calls the <code>approximate_size()</code> function with only one argument. But that&#8217;s OK, because the second argument is optional! Since the caller doesn&#8217;t specify, the second argument defaults to <code>True</code>, as defined by the function declaration.
+<li>Ceci appelle la fonction <code>approximate_size()</code> avec deux paramètres. Dans la fonction <code>approximate_size()</code>, <var>a_kilobyte_is_1024_bytes</var> sera <code>False</code>, puisque vous avez passé explicitement <code>False</code> comme second paramètre.
+<li>Ceci appelle la fonction <code>approximate_size()</code> avec un seul paramètre. Mais c’est correct, car le second paramètre est optionnel&nbsp;! Puisque l’appel ne le spécifie pas, le second argument prend par défaut la valeur <code>True</code>, comme défini dans la déclaration de la fonction.
 </ol>
 
-<p>You can also pass values into a function by name.
+<p>Vous pouvez également passer des valeurs à une fonction par leur nom.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>from humansize import approximate_size</kbd>
@@ -127,43 +127,43 @@ SyntaxError: non-keyword arg after keyword arg</samp>
 <samp class=traceback>  File "&lt;stdin>", line 1
 SyntaxError: non-keyword arg after keyword arg</samp></pre>
 <ol>
-<li>This calls the <code>approximate_size()</code> function with <code>4000</code> for the first argument (<var>size</var>) and <code>False</code> for the argument named <var>a_kilobyte_is_1024_bytes</var>. (That happens to be the second argument, but doesn&#8217;t matter, as you&#8217;ll see in a minute.)
-<li>This calls the <code>approximate_size()</code> function with <code>4000</code> for the argument named <var>size</var> and <code>False</code> for the argument named <var>a_kilobyte_is_1024_bytes</var>. (These named arguments happen to be in the same order as the arguments are listed in the function declaration, but that doesn&#8217;t matter either.)
-<li>This calls the <code>approximate_size()</code> function with <code>False</code> for the argument named <var>a_kilobyte_is_1024_bytes</var> and <code>4000</code> for the argument named <var>size</var>. (See? I told you the order didn&#8217;t matter.)
-<li>This call fails, because you have a named argument followed by an unnamed (positional) argument, and that never works. Reading the argument list from left to right, once you have a single named argument, the rest of the arguments must also be named.
-<li>This call fails too, for the same reason as the previous call. Is that surprising? After all, you passed <code>4000</code> for the argument named <code>size</code>, then &#8220;obviously&#8221; that <code>False</code> value was meant for the <var>a_kilobyte_is_1024_bytes</var> argument. But Python doesn&#8217;t work that way. As soon as you have a named argument, all arguments to the right of that need to be named arguments, too.
+<li>Ceci appelle la fonction <code>approximate_size()</code> avec <code>4000</code> comme premier paramètre (<var>size</var>) et <code>False</code> pour le paramètre nommé <var>a_kilobyte_is_1024_bytes</var>. (Il s’avère qu’il s’agit du second paramètre, mais ça n’a pas d’importance, comme vous allez le voir dans une minute.)
+<li>Ceci appelle la fonction <code>approximate_size()</code> avec <code>4000</code> pour le paramètre nommé <var>size</var> et <code>False</code> pour l’argument nommé <var>a_kilobyte_is_1024_bytes</var>. (Il s’avère que ces arguments sont dans le même ordre que ceux listés dans la déclaration de la fonction, mais ça n’a pas d’importance non plus.)
+<li>Ceci appelle la fonction <code>approximate_size()</code> avec <code>False</code> pour le paramètre nommé <var>a_kilobyte_is_1024_bytes</var> et <code>4000</code> pour l’argument nommé <var>size</var>. (Vous voyez&nbsp;? Je vous avais dit que l’ordre n’avait pas d’importance.)
+<li>Si cet appel échoue c’est parce que vous avez un paramètre nommé suivi d’un paramètre non nommé (positionel), et ça ne marche jamais. Lisez la liste d’argument de gauche à droite, une fois que vous avez un paramètre nommé, tous ceux qui suivent doivent aussi être nommés.
+<li>Cet appel échoue également, pour la même raison que le précédent. Est-ce surprenant&nbsp;? Après tout, nous avons passé <code>4000</code> à l’argument nommé <code>size</code>, donc évidemment, <code>False</code> était destiné au paramètre <var>a_kilobyte_is_1024_bytes</var>. Mais Python ne fonctionne pas de cette façon. Dès que vous avez un paramètre nommé, tous les paramètres à la droite de celui-ci doivent aussi être nommés.
 </ol>
 
 <p class=a>&#x2042;
 
-<h2 id=readability>Writing Readable Code</h2>
-<p>I won&#8217;t bore you with a long finger-wagging speech about the importance of documenting your code. Just know that code is written once but read many times, and the most important audience for your code is yourself, six months after writing it (<i>i.e.</i> after you&#8217;ve forgotten everything but need to fix something). Python makes it easy to write readable code, so take advantage of it. You&#8217;ll thank me in six months.
-<h3 id=docstrings>Documentation Strings</h3>
-<p>You can document a Python function by giving it a documentation string (<code>docstring</code> for short). In this program, the <code>approximate_size()</code> function has a <code>docstring</code>:
+<h2 id=readability>Écrire du Code Lisible</h2>
+<p>Je ne vais pas vous ennuyer avec un long discours menaçant à propos de documenter son code. Sachez simplement que du code est écrit une fois, mais lu souvent, et l’audience la plus importante de votre code est vous-même, six mois après l’avoir écrit (c’est-à-dire après que vous ayiez tout oublié mais que devez corriger quelque chose). Python rend facile l’écriture de code lisible, tirez-en donc avantage. Vous me remercierez dans six mois.
+<h3 id=docstrings>Chaînes de Documentation</h3>
+<p>Vous pouvez documenter une fonction Python en lui donnant une chaîne de documentation («&nbsp;documentation string&nbsp;» en anglais, abrégé en <code>docstring</code>). Dans ce programme, la fonction <code>approximate_size()</code> a une <code>docstring</code>&nbsp;:
 <pre class='nd pp'><code>def approximate_size(size, a_kilobyte_is_1024_bytes=True):
-    '''Convert a file size to human-readable form.
+    '''Convertit une taille de fichier en un format lisible par un humain.
 
-    Keyword arguments:
-    size -- file size in bytes
-    a_kilobyte_is_1024_bytes -- if True (default), use multiples of 1024
-                                if False, use multiples of 1000
+    Paramètres par mot-clef :
+    size -- taille de fichiers en octets
+    a_kilobyte_is_1024_bytes -- si True (par défaut), utilise des multiples de 1024
+                                si False, utilise des multiples de 1000
 
-    Returns: string
+    Retourne : une chaîne de caractères
 
     '''</code></pre>
-<aside>Every function deserves a decent docstring.</aside>
-<p>Triple quotes signify a multi-line string. Everything between the start and end quotes is part of a single string, including carriage returns, leading white space, and other quote characters. You can use them anywhere, but you&#8217;ll see them most often used when defining a <code>docstring</code>.
+<aside>Toute fonction a droit à une docstring décente.</aside>
+<p>Les triple apostrophes signifient qu’il s’agit d’une chaîne multiligne. Tout ce qui est entre les apostrophes de début et de fin fait partie de la même chaîne, y compris les retour chariot, les espaces de début de ligne, et les autres caractères de citation. Vous pouvez les utiliser n’importe où, mais vous les verrez le plus fréquemment lors de la définition d’une <code>docstring</code>.
 <blockquote class='note compare perl5'>
-<p><span class=u>&#x261E;</span>Triple quotes are also an easy way to define a string with both single and double quotes, like <code>qq/.../</code> in Perl 5.
+<p><span class=u>&#x261E;</span>Les triples apostrophes sont aussi une façon simple de définir une chaîne contenant à la fois des apostrophes et des guillemets, comme <code>qq/.../</code> dans Perl 5.
 </blockquote>
-<p>Everything between the triple quotes is the function&#8217;s <code>docstring</code>, which documents what the function does. A <code>docstring</code>, if it exists, must be the first thing defined in a function (that is, on the next line after the function declaration). You don&#8217;t technically need to give your function a <code>docstring</code>, but you always should. I know you&#8217;ve heard this in every programming class you&#8217;ve ever taken, but Python gives you an added incentive: the <code>docstring</code> is available at runtime as an attribute of the function.
+<p>Tout ce qui est entre les triples apostrophes est la <code>docstring</code> de la fonction, qui documente ce que fait la fonction. Une <code>docstring</code>, si elle existe, doit être la première chose définie dans la fonction (c’est-à-dire la ligne suivant immédiatement la déclaration de la fonction). Vous n’avez pas techniquement besoin de donner une <code>docstring</code> à votre fonction, mais vous devriez toujours. Je sais que vous avez déjà entendu cela dans tous les cours de programmation que vous avez eu, mais Python vous y incite encore plus&nbsp;: la <code>docstring</code> est disponible à tout moment de l’exécution en tant qu’attribut de la fonction.
 <blockquote class=note>
-<p><span class=u>&#x261E;</span>Many Python <abbr>IDE</abbr>s use the <code>docstring</code> to provide context-sensitive documentation, so that when you type a function name, its <code>docstring</code> appears as a tooltip. This can be incredibly helpful, but it&#8217;s only as good as the <code>docstring</code>s you write.
+<p><span class=u>&#x261E;</span>Beaucoup d’<abbr>EDI</abbr>s Python utilisent la <code>docstring</code> pour fournir de la documentation contextuelle, de telle façon que lorsque vous tapez le nom d’une fonction, sa <code>docstring</code> apparait dans une infobulle. Ça peut être incroyablement utile, mais sa qualité dépend de la qualité des <code>docstring</code>s que vous écrivez.
 </blockquote>
 <p class=a>&#x2042;
 
-<h2 id=importsearchpath>The <code>import</code> Search Path</h2>
-<p>Before this goes any further, I want to briefly mention the library search path. Python looks in several places when you try to import a module. Specifically, it looks in all the directories defined in <code>sys.path</code>. This is just a list, and you can easily view it or modify it with standard list methods. (You&#8217;ll learn more about lists in <a href=native-datatypes.html#lists>Native Datatypes</a>.)
+<h2 id=importsearchpath>Le Chemin de Recherche de <code>import</code></h2>
+<p>Avant d’aller plus loin, je voudrais mentionner brièvement le chemin de recherche de bibliothèques. Python cherche à plusieurs endroits lorsque vous essayez d’importer un module. Plus spécifiquement, il regarde dans tous les dossiers définis dans <code>sys.path</code>. Il s’agit uniquement d’une liste, et vous pouvez facilement la voir ou la modifier avec les méthodes de liste standards (Vous en saurez plus sur les listes dans <a href=native-datatypes.html#lists>Les Types Prédéfinis</a>.)
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>import sys</kbd>                                                 <span class=u>&#x2460;</span></a>
 <a><samp class=p>>>> </samp><kbd class=pp>sys.path</kbd>                                                   <span class=u>&#x2461;</span></a>
@@ -187,50 +187,50 @@ SyntaxError: non-keyword arg after keyword arg</samp></pre>
  '/usr/lib/python3.1/dist-packages', 
  '/usr/local/lib/python3.1/dist-packages']</samp></pre>
 <ol>
-<li>Importing the <code>sys</code> module makes all of its functions and attributes available.
-<li><code>sys.path</code> is a list of directory names that constitute the current search path. (Yours will look different, depending on your operating system, what version of Python you&#8217;re running, and where it was originally installed.)  Python will look through these directories (in this order) for a <code>.py</code> file whose name matches what you&#8217;re trying to import.
-<li>Actually, I lied; the truth is more complicated than that, because not all modules are stored as <code>.py</code> files. Some are <i>built-in modules</i>; they are actually baked right into Python itself. Built-in modules behave just like regular modules, but their Python source code is not available, because they are not written in Python! (Like Python itself, these built-in modules are written in C.)
-<li>You can add a new directory to Python&#8217;s search path at runtime by adding the directory name to <code>sys.path</code>, and then Python will look in that directory as well, whenever you try to import a module. The effect lasts as long as Python is running.
-<li>By using <code>sys.path.insert(0, <var>new_path</var>)</code>, you inserted a new directory as the first item of the <code>sys.path</code> list, and therefore at the beginning of Python&#8217;s search path. This is almost always what you want. In case of naming conflicts (for example, if Python ships with version 2 of a particular library but you want to use version 3), this ensures that your modules will be found and used instead of the modules that came with Python.
+<li>Importer le module <code>sys</code> rend disponible toutes ses fonctions et attributs.
+<li><code>sys.path</code> est une liste de noms de dossiers qui constitue le chemin de recherche actuel. (Le vôtre ressemblera à autre chose, en fonction de votre système d’exploitation, la version de Python que vous utilisez, et où il a été installé à l’origine.). Python recherchera dans ces dossiers (et dans cet ordre) un fichier <code>.py</code> dont le nom correspond à celui que vous essayez d’importer.
+<li>En fait, j’ai menti&nbsp;: la vérité est bien plus compliquée que cela, car tous les modules ne sont pas stockés dans des fichiers <code>.py</code>. Certains sont des <i>modules natifs</i>&nbsp;: ils font en effet partie de Python lui-même. Les modules natifs se comportent comme des modules classiques, mais leur code Python n’est pas disponible, car ils ne sont pas écrits en Python&nbsp;:! (Comme Python lui-même, ces modules natifs sont écrits en C.)
+<li>Vous pouvez ajouter un nouveau dossier au chemin de recherche de Python en ajoutant le nom de celui-ci à <code>sys.path</code>, et alors Python regardera aussi dans ce dossier quand vous essayez d’importer un module. Et ce tant que Python est en cours d’exécution.
+<li>En utilisant <code>sys.path.insert(0, <var>new_path</var>)</code>, vous ajoutez un nouveau dossier comme premier élément de la liste <code>sys.path</code>, et donc au début du chemin de recherche de Python. C’est presque toujours ce que vous voulez. Dans le cas de conflits de noms (par exemple si Python est distribué avec la version 2 d’une bibliothèque donnée mais que vous voulez utiliser la version 3), cela permet de s’assurer que vos modules seront trouvés et utilisés à la place de ceux qui sont distribués avec Python.
 </ol>
 
 <p class=a>&#x2042;
 
 <h2 id=everythingisanobject>Everything Is An Object</h2>
-<p>In case you missed it, I just said that Python functions have attributes, and that those attributes are available at runtime. A function, like everything else in Python, is an object.
-<p>Run the interactive Python shell and follow along:
+<p>Au cas où vous ne l’auriez pas remarqué, les fonctions Python ont des attributs, et ces attributs sont accessibles à l’exécution. En Python, tout est objet, y compris les fonctions.
+<p>Lancez un shell interactif Python et exécutez le code suivant&nbsp;:
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>import humansize</kbd>                               <span class=u>&#x2460;</span></a>
 <a><samp class=p>>>> </samp><kbd class=pp>print(humansize.approximate_size(4096, True))</kbd>  <span class=u>&#x2461;</span></a>
 <samp class=pp>4.0 KiB</samp>
 <a><samp class=p>>>> </samp><kbd class=pp>print(humansize.approximate_size.__doc__)</kbd>      <span class=u>&#x2462;</span></a>
-<samp>Convert a file size to human-readable form.
+<samp>Convertit une taille de fichier en un format lisible par un humain.
 
-    Keyword arguments:
-    size -- file size in bytes
-    a_kilobyte_is_1024_bytes -- if True (default), use multiples of 1024
-                                if False, use multiples of 1000
+    Paramètres par mot-clef&nbsp;:
+    size -- taille de fichiers en octets
+    a_kilobyte_is_1024_bytes -- si True (par défaut), utilise des multiples de 1024
+                                si False, utilise des multiples de 1000
 
-    Returns: string
+    Retourne : une chaîne de caractères
 
 </samp></pre>
 <ol>
-<li>The first line imports the <code>humansize</code> program as a module&nbsp;&mdash;&nbsp;a chunk of code that you can use interactively, or from a larger Python program. Once you import a module, you can reference any of its public functions, classes, or attributes. Modules can do this to access functionality in other modules, and you can do it in the Python interactive shell too. This is an important concept, and you&#8217;ll see a lot more of it throughout this book.
-<li>When you want to use functions defined in imported modules, you need to include the module name. So you can&#8217;t just say <code>approximate_size</code>; it must be <code>humansize.approximate_size</code>. If you&#8217;ve used classes in Java, this should feel vaguely familiar.
-<li>Instead of calling the function as you would expect to, you asked for one of the function&#8217;s attributes, <code>__doc__</code>.
+<li>La première ligne importe le programme <code>humansize</code> en tant que module&nbsp;&mdash;&nbsp;un bout de code que vous pouvez utiliser de façon interactive, ou dans un programme Python plus gros. Une fois que vous avez importé un module, vous pouvez faire référence à n’importe laquelle de ses fonctions, classes, et attributs publics. Les modules peuvent faire de même pour accéder aux fonctionnalités d’autres modules, et vous pouvez le faire aussi dans le shell interactif de Python. C’est un concept important, et vous en verrez bien plus au cours de ce livre.
+<li>Quand vous voulez utiliser les fonctions définies dans des modules importés, vous devez inclure le nom du module. Vous ne pouvez seulement dire <code>approximate_size</code>&nbsp;: ce doit être <code>humansize.approximate_size</code>. Si vous avez utilisé des classes en Java, ce concept devrait vous être vaguement familier.
+<li>Plutôt que d’appeler la fonction comme vous auriez pu vous y attendre, nous avons utilisé un des attributs de la fonction, <code>__doc__</code>.
 </ol>
 <blockquote class='note compare perl5'>
-<p><span class=u>&#x261E;</span><code>import</code> in Python is like <code>require</code> in Perl. Once you <code>import</code> a Python module, you access its functions with <code><var>module</var>.<var>function</var></code>; once you <code>require</code> a Perl module, you access its functions with <code><var>module</var>::<var>function</var></code>.
+<p><span class=u>&#x261E;</span><code>import</code> est comme <code>require</code> en Perl. Une fois que vous <code>import</code>ez un module Python, vous avez accès à toutes ses fonctions par <code><var>module</var>.<var>fonction</var></code>&nbsp;: une fois que vous avez utilisé <code>require</code> sur un module Perl, vous avez accès à toutes ses fonctions avec <code><var>module</var>::<var>function</var></code>.
 </blockquote>
-<h3 id=whatsanobject>What&#8217;s An Object?</h3>
-<p>Everything in Python is an object, and everything can have attributes and methods. All functions have a built-in attribute <code>__doc__</code>, which returns the <var>docstring</var> defined in the function&#8217;s source code. The <code>sys</code> module is an object which has (among other things) an attribute called <var>path</var>. And so forth.
-<p>Still, this doesn&#8217;t answer the more fundamental question: what is an object?  Different programming languages define &#8220;object&#8221; in different ways. In some, it means that <em>all</em> objects <em>must</em> have attributes and methods; in others, it means that all objects are subclassable. In Python, the definition is looser. Some objects have neither attributes nor methods, <em>but they could</em>. Not all objects are subclassable. But everything is an object in the sense that it can be assigned to a variable or passed as an argument to a function.
-<p>You may have heard the term &#8220;first-class object&#8221; in other programming contexts. In Python, functions are <i>first-class objects</i>. You can pass a function as an argument to another function. Modules are <i>first-class objects</i>. You can pass an entire module as an argument to a function. Classes are first-class objects, and individual instances of a class are also first-class objects.
-<p>This is important, so I&#8217;m going to repeat it in case you missed it the first few times: <em>everything in Python is an object</em>. Strings are objects. Lists are objects. Functions are objects. Classes are objects. Class instances are objects. Even modules are objects.
+<h3 id=whatsanobject>Qu’est-ce qu’un objet&nbsp;?</h3>
+<p>Tout, en Python, est objet, et tout peut avoir des attributs et des méthodes. Toutes les fonctions ont un attribut créé automatiquement, <code>__doc__</code>, qui contient la <var>docstring</var> définie dans le code source de la fonction. Le module <code>sys</code> est un objet qui a (entre autres) un attribut appelé <var>path</var>, etc.
+<p>Cependant, cela ne répond pas à la question plus fondamentale&nbsp;: qu’est-ce qu’un objet&nbsp;? Des langages de programmation différents définissent «&nbsp;objet&nbsp;» de différentes façons. Pour certains, cela signifie que <em>tous</em> les objets <em>doivent</em> avoir des attributs et des méthodes&nbsp;: pour d’autres, cela signifie que tous les objets peuvent être dérivés. En Python, la définition est plus libre. Certains objets n’ont ni attribut ni méthode, <em>mais ils pourraient</em>. Tous les objets ne sont pas dérivables. Mais tout est objet dans le sens où tout peut-être assigné à une variable ou passé en paramètre à une fonction.
+<p>Vous pouvez avoir entendu parler du terme «&nbsp;objet de première classe&nbsp;» dans d’autres contextes de programmation. En Python, les fonctions sont des <i>objets de première classe</i>. Vous pouvez passer une fonction en paramètre à une autre fonction. Les modules sont des <i>objets de première classe</i>. Vous pouvez passer tout un module en paramètre à une fonction. Les classes sont des objets de première classe, et les instances d’une classe sont aussi des objets de première classe.
+<p>Ceci est important, donc je vais le répéter si vous l’avez manqué les premières fois&nbsp;: <em>tout en Python est objet</em>. Les strings sont des objets. Les listes sont des objets. Les fonctions sont des objets. Les classes sont des objets. Même les modules sont des objets.
 <p class=a>&#x2042;
 
-<h2 id=indentingcode>Indenting Code</h2>
-<p>Python functions have no explicit <code>begin</code> or <code>end</code>, and no curly braces to mark where the function code starts and stops. The only delimiter is a colon (<code>:</code>) and the indentation of the code itself.
+<h2 id=indentingcode>Indenter le Code</h2>
+<p>Les fonctions Python n’ont pas de <code>begin</code> ni de <code>end</code> explicites ni d’accolades pour marquer où une fonction commence et se termine. Le seul délimiteur est le double point (<code>:</code>) et l’indentation du code elle-même.
 <pre class=pp><code><a>def approximate_size(size, a_kilobyte_is_1024_bytes=True):  <span class=u>&#x2460;</span></a>
 <a>    if size &lt; 0:                                            <span class=u>&#x2461;</span></a>
 <a>        raise ValueError('number must be non-negative')     <span class=u>&#x2462;</span></a>
@@ -243,81 +243,81 @@ SyntaxError: non-keyword arg after keyword arg</samp></pre>
 
     raise ValueError('number too large')</code></pre>
 <ol>
-<li>Code blocks are defined by their indentation. By &#8220;code block,&#8221; I mean functions, <code>if</code> statements, <code>for</code> loops, <code>while</code> loops, and so forth. Indenting starts a block and unindenting ends it. There are no explicit braces, brackets, or keywords. This means that whitespace is significant, and must be consistent. In this example, the function code is indented four spaces. It doesn&#8217;t need to be four spaces, it just needs to be consistent. The first line that is not indented marks the end of the function.
-<li>In Python, an <code>if</code> statement is followed by a code block. If the <code>if</code> expression evaluates to true, the indented block is executed, otherwise it falls to the <code>else</code> block (if any). Note the lack of parentheses around the expression.
-<li>This line is inside the <code>if</code> code block. This <code>raise</code> statement will raise an exception (of type <code>ValueError</code>), but only if <code>size &lt; 0</code>.
-<li>This is <em>not</em> the end of the function. Completely blank lines don&#8217;t count. They can make the code more readable, but they don&#8217;t count as code block delimiters. The function continues on the next line.
-<li>The <code>for</code> loop also marks the start of a code block. Code blocks can contain multiple lines, as long as they are all indented the same amount. This <code>for</code> loop has three lines of code in it. There is no other special syntax for multi-line code blocks. Just indent and get on with your life.
+<li>Les blocs de code sont définis par leur indentation. Par «&nbsp;bloc de code&nbsp;», je parle des fonctions, blocs <code>if</code>, boucles <code>for</code>, boucles <code>while</code>, etc. Indenter débute un bloc et désindenter le termine. Il n’y a pas d’accolade, crochet, ou mot-clef explicite. Cela signifie que les espaces blancs sont significatifs et doivent être cohérents. Dans cet exemple, le code de la fonction est indenté avec quatre espaces. Il n’est pas obligatoire d’utiliser quatre espaces, il faut seulement être cohérent. La première ligne à ne pas être indentée marque la fin de la fonction.
+<li>En Python, une instruction <code>if</code> est suivie par un bloc de code. Si l’expression du <code>if</code> est évaluée à <code>True</code> (c’est-à-dire «&nbsp;vrai&nbsp;»), le bloc indenté est exécuté, sinon c’est le bloc <code>else</code> qui l’est (s’il y en a un). Notez l’absence de parenthèses autour de l’expression.
+<li>Cette ligne est à l’intérieur du bloc if. L’instruction <code>raise</code> lèvera une exception (du type <code>ValueError</code>), mais seulement si <code>size &lt; 0</code>.
+<li>Ce n’est <em>pas</em> la fin de la fonction. Les lignes complètement blanches ne comptent pas. Elles peuvent rendre le code plus lisible, mais ne comptent pas comme des délimiteurs de blocs. La fonction continue à la ligne suivante.
+<li>La boucle <code>for</code> marque aussi le début d’un bloc de code. Les blocs de code peuvent contenir plusieurs lignes, à condition que toutes soient indentées au même niveau. Cette boucle <code>for</code> contient trois lignes de code. Il n’y a pas de syntaxe particulière pour les blocs de code multilignes. Indentez simplement et passez votre chemin.
 </ol>
-<p>After some initial protests and several snide analogies to Fortran, you will make peace with this and start seeing its benefits. One major benefit is that all Python programs look similar, since indentation is a language requirement and not a matter of style. This makes it easier to read and understand other people&#8217;s Python code.
+<p>Après quelques protestations initiales et des analogies narquoises à Fortran, vous ferez la paix avec ceci et commencerez à en voir les bénéfices. Un avantage majeur est que tous les programmes Python se ressemblent, puisque l’indentation est une attente du langage et pas seulement une question de style. Cela rend plus simple la lecture et la compréhension de votre code Python par d’autres personnes.
 <blockquote class='note compare java'>
-<p><span class=u>&#x261E;</span>Python uses carriage returns to separate statements and a colon and indentation to separate code blocks. <abbr>C++</abbr> and Java use semicolons to separate statements and curly braces to separate code blocks.
+<p><span class=u>&#x261E;</span>Python utilise les retours chariot pour séparer les instructions et un double point et une indentation pour séparer les blocs de code. <abbr>C++</abbr> et Java utilisent des point-virgules pour séparer les instructions et des accolades pour séparer les blocs de code.
 </blockquote>
 <p class=a>&#x2042;
 
 <h2 id=exceptions>Exceptions</h2>
 
-<p>Exceptions are everywhere in Python. Virtually every module in the standard Python library uses them, and Python itself will raise them in a lot of different circumstances. You&#8217;ll see them repeatedly throughout this book.
+<p>Les exceptions sont partout en Python. Presque tous les modules de la bibliothèque standard de Python les utilise, et Python lui-même en lève dans beaucoup de situations différentes. Vous verrez que nous en utilisons fréquemment au cours de ce livre.
 
-<p>What is an exception? Usually it&#8217;s an error, an indication that something went wrong. (Not all exceptions are errors, but never mind that for now.) Some programming languages encourage the use of error return codes, which you <em>check</em>. Python encourages the use of exceptions, which you <em>handle</em>.
+<p>Qu’est-ce qu’une exception ? En général, c’est une erreur indiquant que quelque chose s’est mal passé (Toutes les exceptions ne sont pas des erreurs, mais nous passerons là-dessus pour le moment.). Certains langages de programmation encouragent l’utilisation de code de retour d’erreur, que vous pouvez <em>vérifier</em>. Python encourage l’utilisation d’exceptions que vous pouvez <em>gérer</em>.
 
-<p>When an error occurs in the Python Shell, it prints out some details about the exception and how it happened, and that&#8217;s that. This is called an <em>unhandled</em> exception. When the exception was raised, there was no code to explicitly notice it and deal with it, so it bubbled its way back up to the top level of the Python Shell, which spits out some debugging information and calls it a day. In the shell, that's no big deal, but if that happened while your actual Python program was running, the entire program would come to a screeching halt if nothing handles the exception. Maybe that&#8217;s what you want, maybe it isn&#8217;t.
-
-<blockquote class='note compare java'>
-<p><span class=u>&#x261E;</span>Unlike Java, Python functions don&#8217;t declare which exceptions they might raise. It&#8217;s up to you to determine what possible exceptions you need to catch.
-</blockquote>
-
-<p>An exception doesn&#8217;t need to result in a complete program crash, though. Exceptions can be <em>handled</em>. Sometimes an exception is really because you have a bug in your code (like accessing a variable that doesn&#8217;t exist), but sometimes an exception is something you can anticipate. If you&#8217;re opening a file, it might not exist. If you&#8217;re importing a module, it might not be installed. If you&#8217;re connecting to a database, it might be unavailable, or you might not have the correct security credentials to access it. If you know a line of code may raise an exception, you should handle the exception using a <code>try...except</code> block.
+<p>Quand une erreur survient dans le Shell Python, elle est affichée avec quelques détails à propos de l’exception et de comment elle est survenue, et c’est tout. Ceci est appelé une exception <em>non gérée</em>. Lorsque l’exception a été levée, il n’y avait pas de code pour explicitement la remarquer et la gérer, donc elle est remontée jusqu’au niveau supérieur&nbsp;: le Shell Python, qui affiche quelques informations de débogage et met un point final à cette histoire. Dans le shell, ce n’est pas bien grave. Mais si ça arrive alors que votre programme Python réel est en cours d’exécution, tout le programme va s’arrêter en hurlant et rien ne gèrera l’exception. Ça peut être ce que vous désirez, mais peut-être pas.
 
 <blockquote class='note compare java'>
-<p><span class=u>&#x261E;</span>Python uses <code>try...except</code> blocks to handle exceptions, and the <code>raise</code> statement to generate them. Java and <abbr>C++</abbr> use <code>try...catch</code> blocks to handle exceptions, and the <code>throw</code> statement to generate them.
+<p><span class=u>&#x261E;</span>Contrairement à Java, les fonctions Python ne déclarent pas quelles exceptions elles peuvent lever. C’est à vous de déterminer quelles exceptions vous avez à gérer.
 </blockquote>
 
-<p>The <code>approximate_size()</code> function raises exceptions in two different cases: if the given <var>size</var> is larger than the function is designed to handle, or if it&#8217;s less than zero.
+<p>Une exception ne résulte pas nécessairement en un plantage du programme, cependant. Les exceptions peuvent très bien être <em>gérées</em>. Parfois, une exception est vraiment parce que vous avez un bogue dans votre code (comme accéder à une variable qui n’existe pas), mais parfois, une exception est quelque chose que vous pouvez anticiper. Si vous ouvrez un fichier, il peut ne pas exister. Si vous importez un module, il peut ne pas être installé. Si vous vous connectez à une base de données, elle peut être indisponible, ou vous pouvez ne pas y avoir les droits d’accès. Si vous savez qu’une ligne de votre code peut lever une exception, vous pouvez gérer l’exception en utilisant un bloc <code>try...except</code>.
+
+<blockquote class='note compare java'>
+<p><span class=u>&#x261E;</span>Python utilise des blocs <code>try...except</code> pour gérer les exceptions, et l’instruction <code>raise</code> pour les engendrer. Java et <abbr>C++</abbr> utilisent <code>try...catch</code> pour gérer les exceptions et l’instruction <code>throw</code> pour les engendrer.
+</blockquote>
+
+<p>La fonction <code>approximate_size()</code> lève des exceptions dans deux cas&nbsp;: si la taille donnée est plus grande que ce que la fonction peut gérer, ou si elle est plus petite que zéro.
 
 <pre class='nd pp'><code>if size &lt; 0:
     raise ValueError('number must be non-negative')</code></pre>
 
-<p>The syntax for raising an exception is simple enough. Use the <code>raise</code> statement, followed by the exception name, and an optional human-readable string for debugging purposes. The syntax is reminiscent of calling a function. (In reality, exceptions are implemented as classes, and this <code>raise</code> statement is actually creating an instance of the <code>ValueError</code> class and passing the string <code>'number must be non-negative'</code> to its initialization method. But <a href=iterators.html#defining-classes>we&#8217;re getting ahead of ourselves</a>!)
+<p>La syntaxe pour lever une exception est assez simple. Utilisez l’instruction <code>raise</raise>, suivie du nom de l’exception, et une chaîne lisible humainement pour du débogage éventuel. La syntaxe nous rappelle un appel de fonction. En réalité, les exceptions sont implémentées comme étant des classes, et l’instruction <code>raise</code> sert en fait à créer une instance de la classe <code>ValueError</code> en lui passant la chaîne <code>'number must be non-negative'</code> à sa méthode d’initialisation. Mais <a href=iterators.html#defining-classes>nous sommes en train de prendre trop d’avance</a>&nbsp;!
 
 <blockquote class=note>
-<p><span class=u>&#x261E;</span>You don&#8217;t need to handle an exception in the function that raises it. If one function doesn&#8217;t handle it, the exception is passed to the calling function, then that function&#8217;s calling function, and so on &#8220;up the stack.&#8221; If the exception is never handled, your program will crash, Python will print a &#8220;traceback&#8221; to standard error, and that&#8217;s the end of that. Again, maybe that&#8217;s what you want; it depends on what your program does.
+<p><span class=u>&#x261E;</span>Vous n’avez pas besoin de gérer une exception que vous levez. Si une fonction ne la gère pas, elle est passée à la fonction appelante, puis à la fonction qui a appelé la fonction appelante, et ainsi de suite jusqu’en haut de la pile. Si l’exception n’est jamais gérée, votre programme plantera, Python affichera un «&nbsp;traceback&nbsp;» dans <var>stderr</var> et ce sera tout. Encore une fois, ce peut être quelque chose que vous voulez&nbsp;; ça dépend de ce que fait votre programme.
 </blockquote>
 
-<h3 id=importerror>Catching Import Errors</h3>
+<h3 id=importerror>Gérer les Erreurs d’Import</h3>
 
-<p>One of Python&#8217;s built-in exceptions is <code>ImportError</code>, which is raised when you try to import a module and fail. This can happen for a variety of reasons, but the simplest case is when the module doesn&#8217;t exist in your <a href=#importsearchpath>import search path</a>. You can use this to include optional features in your program. For example, <a href=case-study-porting-chardet-to-python-3.html>the <code>chardet</code> library</a> provides character encoding auto-detection. Perhaps your program wants to use this library <em>if it exists</em>, but continue gracefully if the user hasn&#8217;t installed it. You can do this with a <code>try..except</code> block.
+<p>Une des exceptions fournies par Python est <code>ImportError</code>, qui est levée lorsque vous essayez d’importer un module et échouez. Cela peut arriver pour diverses raisons, mais le cas le plus simplement est que le module n’existe pas dans votre <a href=#importsearchpath>chemin de recherche d’import</a>. Vous pouvez utiliser ceci pour inclure des fonctionnalités optionelles dans votre programme. Par exemple <a href=case-study-porting-chardet-to-python-3.html>la bibliothèque <code>chardet</code></a> fournit une détection automatique des encodages de caractères. Peut-être que votre programme veut utiliser cette bibliothèque <em>si elle est disponible</em>, mais continuer correctement si l’utilisateur ne l’a pas installée. Vous pouvez faire cela avec un bloc <code>try..except</code>.
 
 <pre class='nd pp'><code><mark>try</mark>:
   import chardet
 <mark>except</mark> ImportError:
   chardet = None</code></pre>
 
-<p>Later, you can check for the presence of the <code>chardet</code> module with a simple <code>if</code> statement:
+<p>Par la suite, vous pouvez vérifier la présence du module <code>chardet</code> avec une simple instruction <code>if</code>&nbsp;:
 
 <pre class='nd pp'><code>if chardet:
-  # do something
+  # faire quelque chose
 else:
-  # continue anyway</code></pre>
+  # continuer de toute façon</code></pre>
 
-<p>Another common use of the <code>ImportError</code> exception is when two modules implement a common <abbr>API</abbr>, but one is more desirable than the other. (Maybe it&#8217;s faster, or it uses less memory.) You can try to import one module but fall back to a different module if the first import fails. For example, <a href=xml.html>the XML chapter</a> talks about two modules that implement a common <abbr>API</abbr>, called the <code>ElementTree</code> <abbr>API</abbr>. The first, <code>lxml</code>, is a third-party module that you need to download and install yourself. The second, <code>xml.etree.ElementTree</code>, is slower but is part of the Python 3 standard library.
+<p>Un autre cas courant d’utilisation de l’exception <code>ImportError</code> est lorsque deux modules implémentent une même <abbr>API</abbr>, mais que l’un est préférable à l’autre (Par exemple s’il est plus rapide ou utilise moins de mémoire.). Vous pouvez essayer d’importer le premier module, mais vous résigner à en utiliser un autre si le premier import échoue. Par exemple, <a href=xml.html>le chapitre sur XML</a> parle de deux modules qui implémentent une même <abbr>API</abbr>, appelée <abbr>API</abbr> <code>ElementTree</code>. Le premier, <code>lxml</code>, est un module tiers que vous devez télécharger et installer vous-même. Le second, <code>xml.etree.ElementTree</code>, est plus lent, mais fait partie de la bibliothèque standard de Python 3.
 
 <pre class='nd pp'><code>try:
     from lxml import etree
 except ImportError:
     import xml.etree.ElementTree as etree</code></pre>
 
-<p>By the end of this <code>try..except</code> block, you have imported <em>some</em> module and named it <var>etree</var>. Since both modules implement a common <abbr>API</abbr>, the rest of your code doesn&#8217;t need to keep checking which module got imported. And since the module that <em>did</em> get imported is always called <var>etree</var>, the rest of your code doesn&#8217;t need to be littered with <code>if</code> statements to call differently-named modules.
+<p>À propos, à la fin de ce bloc <code>try..except</code>, vous avez importé <em>un</em> des modules et l’avez appelé <var>etree</var>. Puisque les deux modules ont une même <abbr>API</abbr>, le reste du code n’a pas besoin de savoir lequel des deux a été importé. Et puisque le module qui a <em>effectivement</em> été importé est toujours appelé <var>etree</var>, le reste de votre code n’a pas besoin d’avoir recours à des instructions <code>if</code> pour appeler des modules nommés différement.
 
 <p class=a>&#x2042;
 
-<h2 id=nameerror>Unbound Variables</h2>
+<h2 id=nameerror>Variables Non Définies</h2>
 
-<p>Take another look at this line of code from the <code>approximate_size()</code> function:
+<p>Jetons à nouveau un coup d’œil à cette ligne du code de la fonction <code>approximate_size()</code> :
 
 <pre class='nd pp'><code>multiple = 1024 if a_kilobyte_is_1024_bytes else 1000</code></pre>
 
-<p>You never declare the variable <var>multiple</var>, you just assign a value to it. That&#8217;s OK, because Python lets you do that. What Python will <em>not</em> let you do is reference a variable that has never been assigned a value. Trying to do so will raise a <code>NameError</code> exception.
+<p>Vous ne déclarez jamais la variable <var>multiple</var>, vous ne faites que lui assigner une valeur. C’est correct, puisque Python vous laisse faire ceci. Ce que Python ne vous laissera <em>pas</em> faire, c’est référencer une variable à laquelle il n’a pas été assigné une valeur. Essayer de faire ceci lèvera une exception <code>NameError</code>.
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>x</kbd>
 <samp class=traceback>Traceback (most recent call last):
@@ -327,13 +327,13 @@ NameError: name 'x' is not defined</samp>
 <samp class=p>>>> </samp><kbd class=pp>x</kbd>
 <samp class=pp>1</samp></pre>
 
-<p>You will thank Python for this one day.
+<p>Vous remercierez Python rien que pour ça.
 
 <p class=a>&#x2042;
 
-<h2 id=case>Everything is Case-Sensitive</h2>
+<h2 id=case>La Casse a Toujours de l’Importance.</h2>
 
-<p>All names in Python are case-sensitive: variable names, function names, class names, module names, exception names. If you can get it, set it, call it, construct it, import it, or raise it, it&#8217;s case-sensitive.
+<p>Tous les noms en Python sont sensibles à la casse&nbsp;: noms de variables, de fonctions, de classes, de modules, et d’exceptions. Vous pouvez les récupérer, les définir, les appeler, les construire, les importer, et ou les lever, c’est sensible à la casse.
 
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>an_integer = 1</kbd>
@@ -353,41 +353,41 @@ NameError: name 'An_Integer' is not defined</samp>
 NameError: name 'an_inteGer' is not defined</samp>
 </pre>
 
-<p>And so on.
+<p>Et ainsi de suite.
 
 <p class=a>&#x2042;
 
-<h2 id=runningscripts>Running Scripts</h2>
-<aside>Everything in Python is an object.</aside>
-<p>Python modules are objects and have several useful attributes. You can use this to easily test your modules as you write them, by including a special block of code that executes when you run the Python file on the command line. Take the last few lines of <code>humansize.py</code>:
+<h2 id=runningscripts>Exécuter des Scripts</h2>
+<aside>Tout en Python est un objet.</aside>
+<p>Les modules Pythons sont des objets et ont plusieurs attributs utiles. Vous pouvez vous en servir pour tester vos modules alors que vous les écrivez, en incluant un bloc spécial qui s’exécute (uniquement) losque vous lancez le fichier Python directement depuis la ligne de commande. Prenez les dernières lignes de <code>humansize.py</code>:
 <pre class='nd pp'><code>
 if __name__ == '__main__':
     print(approximate_size(1000000000000, False))
     print(approximate_size(1000000000000))</code></pre>
 <blockquote class='note compare clang'>
-<p><span class=u>&#x261E;</span>Like <abbr>C</abbr>, Python uses <code>==</code> for comparison and <code>=</code> for assignment. Unlike <abbr>C</abbr>, Python does not support in-line assignment, so there&#8217;s no chance of accidentally assigning the value you thought you were comparing.
+<p><span class=u>&#x261E;</span>Comme le <abbr>C</abbr>, Python utilise <code>==</code> pour les comparaisons et <code>=</code> pour les assignations. Contrairement au <abbr>C</abbr>, Python ne supporte pas l’assignation à l’intérieur d’une autre instruction, donc il n’y a aucun risque d’assigner accidentellement une valeur que vous voulez comparer.
 </blockquote>
-<p>So what makes this <code>if</code> statement special?  Well, modules are objects, and all modules have a built-in attribute <code>__name__</code>. A module&#8217;s <code>__name__</code> depends on how you&#8217;re using the module. If you <code>import</code> the module, then <code>__name__</code> is the module&#8217;s filename, without a directory path or file extension.
+<p>Qu’est-ce qui rend cette instruction <code>if</code> si spéciale&nbsp;? Eh bien, les modules sont des objets, et tous les objets ont un attribut automatique <code>__name__</code>, qui contient le nom d’un module. Le nom d’un module dépend de la façon dont vous utilisez le module. Si vous avez importé le module, <code>__name__</code> est le nom du module, sans le nom du répertoire et sans l’extension du fichier.
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>import humansize</kbd>
 <samp class=p>>>> </samp><kbd class=pp>humansize.__name__</kbd>
 <samp class=pp>'humansize'</samp></pre>
-<p>But you can also run the module directly as a standalone program, in which case <code>__name__</code> will be a special default value, <code>__main__</code>. Python will evaluate this <code>if</code> statement, find a true expression, and execute the <code>if</code> code block. In this case, to print two values.
+<p>Mais vous pouvez aussi exécuter le module directement comme un programme à part entière, et dans ce cas, <code>__name__</code> sera une valeur spéciale par défaut, <code>__main__</code>. Python évaluera cette instruction <code>if</code>, trouvera une expression vraie, et exécutera le bloc de code <code>if</code>. Dans ce cas, pour afficher deux valeurs.
 <pre class='nd screen'>
 <samp class=p>c:\home\diveintopython3> </samp><kbd>c:\python31\python.exe humansize.py</kbd>
 <samp>1.0 TB
 931.3 GiB</samp></pre>
-<p>And that&#8217;s your first Python program!
+<p>Et c’est votre premier programme Python&nbsp;!
 <p class=a>&#x2042;
 
-<h2 id=furtherreading>Further Reading</h2>
+<h2 id=furtherreading>Aller Plus Loin</h2>
 <ul>
-<li><a href=http://www.python.org/dev/peps/pep-0257/>PEP 257: Docstring Conventions</a> explains what distinguishes a good <code>docstring</code> from a great <code>docstring</code>.
-<li><a href=http://docs.python.org/3.1/tutorial/controlflow.html#documentation-strings>Python Tutorial: Documentation Strings</a> also touches on the subject.
-<li><a href=http://www.python.org/dev/peps/pep-0008/>PEP 8: Style Guide for Python Code</a> discusses good indentation style.
-<li><a href=http://docs.python.org/3.1/reference/><cite>Python Reference Manual</cite></a> explains what it means to say that <a href=http://docs.python.org/3.1/reference/datamodel.html#objects-values-and-types>everything in Python is an object</a>, because some people are <a href=http://www.douglasadams.com/dna/pedants.html>pedants</a> and like to discuss that sort of thing at great length.
+<li><a href=http://www.python.org/dev/peps/pep-0257/>PEP 257: Docstring Conventions</a> explique ce qui distingue une bonne <code>docstring</code> d’une grande <code>docstring</code>.
+<li><a href=http://docs.python.org/3.1/tutorial/controlflow.html#documentation-strings>Python Tutorial: Documentation Strings</a> traite aussi ce sujet.
+<li><a href=http://www.python.org/dev/peps/pep-0008/>PEP 8: Style Guide for Python Code</a> discute d’un bon style d’indentation.
+<li><a href=http://docs.python.org/3.1/reference/><cite>Python Reference Manual</cite></a> explique ce que signifie que de dire qu’<a href=http://docs.python.org/3.1/reference/datamodel.html#objects-values-and-types>en Python tout est objet</a>, car les gens sont <a href=http://www.douglasadams.com/dna/pedants.html>pédants</a> et aiment discuter de ce genre de choses pendant des heures.
 </ul>
-<p class=v><a rel=prev href=installing-python.html title='back to &#8220;Installing Python&#8221;'><span class=u>&#x261C;</span></a> <a rel=next href=native-datatypes.html title='onward to &#8220;Native Datatypes&#8221;'><span class=u>&#x261E;</span></a>
+<p class=v><a rel=prev href=installing-python.html title='retourner à «&nbsp;Installer Python&nbsp;»'><span class=u>&#x261C;</span></a> <a rel=next href=native-datatypes.html title='aller à «&nbsp;Les Types Prédéfinis&nbsp;»'><span class=u>&#x261E;</span></a>
 <p class=c>&copy; 2001&ndash;11 <a href=about.html>Mark Pilgrim</a>
 <script src=j/jquery.js></script>
 <script src=j/prettify.js></script>
