@@ -15,32 +15,32 @@ body{counter-reset:h1 6}
 <link rel=stylesheet media=print href=print.css>
 <meta name=viewport content='initial-scale=1.0'>
 <form action=http://www.google.com/cse><div><input type=hidden name=cx value=014021643941856155761:l5eihuescdw><input type=hidden name=ie value=UTF-8>&nbsp;<input type=search name=q size=25 placeholder="powered by Google&trade;">&nbsp;<input type=submit name=sa value=Search></div></form>
-<p>You are here: <a href=index.html>Home</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#generators>Dive Into Python 3</a> <span class=u>&#8227;</span>
-<p id=level>Difficulty level: <span class=u title=intermediate>&#x2666;&#x2666;&#x2666;&#x2662;&#x2662;</span>
+<p>Vous êtes ici&nbsp;: <a href=index.html>Accueil</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#generators>Plongez dans Python 3</a> <span class=u>&#8227;</span>
+<p id=level>Niveau de difficulté&nbsp;: <span class=u title=intermediate>&#x2666;&#x2666;&#x2666;&#x2662;&#x2662;</span>
 <h1>Closures <i class=baa>&amp;</i> Generators</h1>
 <blockquote class=q>
 <p><span class=u>&#x275D;</span> My spelling is Wobbly. It&#8217;s good spelling but it Wobbles, and the letters get in the wrong places. <span class=u>&#x275E;</span><br>&mdash; Winnie-the-Pooh
 </blockquote>
 <p id=toc>&nbsp;
-<h2 id=divingin>Diving In</h2>
-<p class=f>Having grown up the son of a librarian and an English major, I have always been fascinated by languages. Not programming languages. Well yes, programming languages, but also natural languages. Take English. English is a schizophrenic language that borrows words from German, French, Spanish, and Latin (to name a few). Actually, &#8220;borrows&#8221; is the wrong word; &#8220;pillages&#8221; is more like it. Or perhaps &#8220;assimilates&#8221;&nbsp;&mdash;&nbsp;like the Borg. Yes, I like that.
-<p class=c><code>We are the Borg. Your linguistic and etymological distinctiveness will be added to our own. Resistance is futile.</code>
-<p>In this chapter, you&#8217;re going to learn about plural nouns. Also, functions that return other functions, advanced regular expressions, and generators. But first, let&#8217;s talk about how to make plural nouns. (If you haven&#8217;t read <a href=regular-expressions.html>the chapter on regular expressions</a>, now would be a good time. This chapter assumes you understand the basics of regular expressions, and it quickly descends into more advanced uses.)
-<p>If you grew up in an English-speaking country or learned English in a formal school setting, you&#8217;re probably familiar with the basic rules:
+<h2 id=divingin>Plongée</h2>
+<p class=f>Ayant grandi comme étant le fils d’un-e bibliothècaire et d’un-e spécialiste de l’anglais, j’ai toujours été fasciné par les langues. Pas seulement les langages de programmaton. Enfin, si, les langages de programmation, mais aussi les langues naturelles. Prennez l’anglais par exemple. L’anglais est une langue qui emprunte des mots de l’allemand, du français, de l’espagnol, et du latin (entre autres). À vrai dire, «&nbsp;emprunter&nbsp;» n’est pas le meilleur mot&nbsp;; «&nbsp;piller&nbsp;» serait plus approprié. Ou peut-être «&nbsp;assimiler&nbsp;»&nbsp;&mdash;&nbsp;comme les Borg. Oui, j’aime bien cette expression.
+<p class=c><code>Nous sommes les Borg. Vos particularités linguistiques et étymologiques seront ajoutées aux notres. Toute résistance est futile.</code>
+<p>Dans ce chapitre, vous apprendrez à mettre des noms au pluriel en anglais. Mais aussi, à faire des fonctions qui retournent d’autres fonctions, des expressions rationnelles avancées, et des générateurs. Mais d’abord, parlons de comment les noms se mettent au pluriel en anglais. (Si vous n’avez pas <a href=regular-expressions.html>le chapitre sur les expressions rationnelles </a>, il serait temps de le faire. Ce chapitre assume que vous comprenez les bases des expressions rationnelles, et il descendra vite vers d’autres usages plus avancés.)
+<p>Si vous avez grandi dans un pays anglophone, ou que vous avez appris l’anglais à l’école, vous être probablement familier-e avec les règles de bases&nbsp;:
 <ul>
-<li>If a word ends in S, X, or Z, add ES. <i>Bass</i> becomes <i>basses</i>, <i>fax</i> becomes <i>faxes</i>, and <i>waltz</i> becomes <i>waltzes</i>.
-<li>If a word ends in a noisy H, add ES; if it ends in a silent H, just add S. What&#8217;s a noisy H? One that gets combined with other letters to make a sound that you can hear. So <i>coach</i> becomes <i>coaches</i> and <i>rash</i> becomes <i>rashes</i>, because you can hear the CH and SH sounds when you say them. But <i>cheetah</i> becomes <i>cheetahs</i>, because the H is silent.
-<li>If a word ends in Y that sounds like I, change the Y to IES; if the Y is combined with a vowel to sound like something else, just add S. So <i>vacancy</i> becomes <i>vacancies</i>, but <i>day</i> becomes <i>days</i>.
-<li>If all else fails, just add S and hope for the best.
+<li>Si un mot termine par S, X, ou Z, ajoutez ES. <i>Bass</i> devient <i>basses</i>, <i>fax</i> devient <i>faxes</i>, et <i>waltz</i> devient <i>waltzes</i>.
+<li>Si un mot se termine en un H prononcé, ajoutez ES&nbsp;; si il se termine par un H muet, ajoutez seulement un S. Qu’est-ce qu’un H prononcé&nbsp;? C’est un H qui est combiné à d’autres lettres pour faire un son que l’on peut entendre. Donc, <i>coach</i> devient <i>coaches</i> et <i>rash</i> devient <i>rashes</i>, parce que vous pouvez entendre les sons CH et SH lorsque vous les dites. Mais <i>cheetah</i> devient <i>cheetahs</i>, parce que le H est muet.
+<li>Si un mot termine par un Y qui sonne comme un I, changez le Y en IES&nbsp;; si le Y est combiné avec une voyelle qui lui fait faire un autre son, ajoutez seulement S. Donc <i>vacancy</i> devient <i>vacancies</i>, mais <i>day</i> devient <i>days</i>.
+<li>Si on est dans aucun des cas précédents, ajoutez simplement un S et espérez que ce soit bon.
 </ul>
-<p>(I know, there are a lot of exceptions. <i>Man</i> becomes <i>men</i> and <i>woman</i> becomes <i>women</i>, but <i>human</i> becomes <i>humans</i>. <i>Mouse</i> becomes <i>mice</i> and <i>louse</i> becomes <i>lice</i>, but <i>house</i> becomes <i>houses</i>. <i>Knife</i> becomes <i>knives</i> and <i>wife</i> becomes <i>wives</i>, but <i>lowlife</i> becomes <i>lowlifes</i>. And don&#8217;t even get me started on words that are their own plural, like <i>sheep</i>, <i>deer</i>, and <i>haiku</i>.)
-<p>Other languages, of course, are completely different.
-<p>Let&#8217;s design a Python library that automatically pluralizes English nouns. We&#8217;ll start with just these four rules, but keep in mind that you&#8217;ll inevitably need to add more.
+<p>(Je sais, il y a beaucoup d’exceptions. <i>Man</i> devient <i>men</i> and <i>woman</i> devient <i>women</i>, mais <i>human</i> devient <i>humans</i>. <i>Mouse</i> devient <i>mice</i> et <i>louse</i> devient <i>lice</i>, mais <i>house</i> devient <i>houses</i>. <i>Knife</i> devient <i>knives</i> et <i>wife</i> devient <i>wives</i>, mais <i>lowlife</i> devient <i>lowlifes</i>. Et ne me parlez même pas des mots qui sont leur propre plurien, comme <i>sheep</i>, <i>deer</i>, et <i>haiku</i>.)
+<p>Dans d’autres langues, bien sûr, ceci est complètement différent.
+<p>Concevons une bibliothèque Python qui met automatiquement des noms anglais au plurien. Nous allons commencer seulement avec ces quatre règles, mais souvenez-vous que vous allez inévitablement en ajouter d’autres.
 <p class=a>&#x2042;
 
-<h2 id=i-know>I Know, Let&#8217;s Use Regular Expressions!</h2>
-<p>So you&#8217;re looking at words, which, at least in English, means you&#8217;re looking at strings of characters. You have rules that say you need to find different combinations of characters, then do different things to them. This sounds like a job for regular expressions!
-<p class=d>[<a href=examples/plural1.py>download <code>plural1.py</code></a>]
+<h2 id=i-know>Je Sais, Utilisons des Expressions Rationnelles&nbsp;!</h2>
+<p>Donc, vous regardez des mots, ce qui signifie, du moins en anglais, So que vous regardez des chaines de caractères. Vous avez des règles qui vous disent que vous devez trouver différentes combinaisons de caractères, puis leur faire différentes choses. Cela ressemble à du boulot pour les expressions rationnelles&nbsp;!
+<p class=d>[<a href=examples/plural1.py>télécharger <code>plural1.py</code></a>]
 <pre class=pp><code>import re
 
 def plural(noun):          
@@ -53,8 +53,8 @@ def plural(noun):
     else:
         return noun + 's'</code></pre>
 <ol>
-<li>This is a regular expression, but it uses a syntax you didn&#8217;t see in <a href=regular-expressions.html><i>Regular Expressions</i></a>. The square brackets mean &#8220;match exactly one of these characters.&#8221; So <code>[sxz]</code> means &#8220;<code>s</code>, or <code>x</code>, or <code>z</code>&#8221;, but only one of them. The <code>$</code> should be familiar; it matches the end of string. Combined, this regular expression tests whether <var>noun</var> ends with <code>s</code>, <code>x</code>, or <code>z</code>.
-<li>This <code>re.sub()</code> function performs regular expression-based string substitutions.
+    <li>Ceci est une expression rationnelle, mais elle utilise une syntaxe que  vous n’avez pas vue dans <a href=regular-expressions.html><i>Expressions Rationnelles</i></a>. Les crochets signifient «&nbsp;chercher exactement un de ces caractères&nbsp;». Donc, <code>[sxz]</code> signifie «&nbsp;<code>s</code>, ou <code>x</code>, ou <code>z</code>&nbsp;», mais seulement l’un d’eux. Le <code>$</code> doit vous être familier&nbsp;; il correspond à la fin de la chaine. Combinés, cette expression rationnelle teste si <var>noun</var> termine par <code>s</code>, <code>x</code>, ou <code>z</code>.
+<li>Cette fonction <code>re.sub()</code> effectue un remplacement dans une chaine en se basant sur une expression rationnelle.
 </ol>
 
 <p>Let&#8217;s look at regular expression substitutions in more detail.
